@@ -8,12 +8,23 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
 
     <!-- Scripts -->
     <script src="{{ mix('js/app.js') }}" defer></script>
     
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+
+    @if (env('APP_ENV') == 'production')
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163561589-1"></script>
+        <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-163561589-1');
+    </script>
+@endif
 </head>
 <body class="bg-gray-100 h-screen antialiased leading-none">
     <div id="app">
