@@ -16,7 +16,7 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-    @if (env('APP_ENV') == 'production')
+    @if (App::environment('production'))
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163561589-1"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
