@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        Log::error('an error');
         return view('welcome');
     }
 }

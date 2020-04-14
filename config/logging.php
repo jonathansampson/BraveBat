@@ -11,7 +11,7 @@ return [
     'channels' => [
         'stack' => [
             'driver' => 'stack',
-            'channels' => ['single', 'bugsnag'],
+            'channels' => ['single', 'bugsnag', 'cloudwatch'],
             'ignore_exceptions' => false,
         ],
 
@@ -74,9 +74,23 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
-
         'bugsnag' => [
             'driver' => 'bugsnag',
+        ],
+
+        'cloudwatch' => [
+            'driver' => 'custom',
+            'via' => \App\Logging\CloudWatchLoggerFactory::class,
+            'sdk' => [
+                'region' => env('AWS_DEFAULT_REGION', 'us-west-2'),
+                'version' => 'latest',
+                'credentials' => [
+                    'key' => env('AWS_ACCESS_KEY_ID'),
+                    'secret' => env('AWS_SECRET_ACCESS_KEY')
+                ]
+            ],
+            'retention' => env('CLOUDWATCH_LOG_RETENTION', 7),
+            'level' => env('CLOUDWATCH_LOG_LEVEL', 'debug')
         ],
     ],
 
