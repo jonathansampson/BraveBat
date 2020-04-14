@@ -20,6 +20,7 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        dump('---');
         Bugsnag::notifyException(new RuntimeException("Test error"));
         return view('welcome');
     }
