@@ -1,0 +1,4 @@
+This is a Brave Rewards publisher verification file.
+
+Domain: bravebat.info
+Token: 41676b2316a568e2fb7875b97899811b079c8d4107b1ac56aa3aab3e2eff2041
