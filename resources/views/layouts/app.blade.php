@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    {{-- <link rel="stylesheet" href="{{mix('/css/main.css')}}"> --}}
+    <link rel="stylesheet" href="{{mix('/css/app.css')}}">
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
     <meta name="Description" content="Coronavirus Tracker">
 
@@ -24,7 +24,7 @@
   <div id='app'>
       @yield('content')
   </div>
-    {{-- <script src="{{mix('/js/app.js')}}"></script> --}}
+    <script src="{{mix('/js/app.js')}}"></script>
     @stack('scripts')
 </body>
 </html>
