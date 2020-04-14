@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-    brave bat
+    Brave Bat
 @endsection
