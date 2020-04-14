@@ -90,7 +90,7 @@ return [
                 ]
             ],
             'retention' => env('CLOUDWATCH_LOG_RETENTION', 7),
-            'level' => env('CLOUDWATCH_LOG_LEVEL', 'debug')
+            'level' => env('CLOUDWATCH_LOG_LEVEL', 'error')
         ],
     ],
 

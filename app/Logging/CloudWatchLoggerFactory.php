@@ -39,7 +39,7 @@ class CloudWatchLoggerFactory
         $logger = new Logger($name);
         // Set handler
         $test = $logger->pushHandler($handler);
-        dump($test);
+
         return $logger;
     }
 }

@@ -19,7 +19,6 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        Log::error('an error');
         return view('welcome');
     }
 }
