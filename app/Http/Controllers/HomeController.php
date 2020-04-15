@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\BraveTransparencyService;
 use Illuminate\Http\Request;
 
 
@@ -20,8 +21,8 @@ class HomeController extends Controller
     public function welcome()
     {
 
-
-
+        $service = new BraveTransparencyService();
+        dump($service->dom);
         return view('welcome');
     }
 }

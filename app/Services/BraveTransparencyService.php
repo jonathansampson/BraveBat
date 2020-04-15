@@ -9,7 +9,7 @@ use PHPHtmlParser\Dom;
 
 class BraveTransparencyService
 {
-    protected $dom;
+    public $dom;
 
     public function __construct()
     {
