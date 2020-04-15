@@ -12,6 +12,8 @@
     "devDependencies": {
         "@tailwindcss/custom-forms": "^0.2",
         "axios": "^0.19",
+        "browser-sync": "^2.26.7",
+        "browser-sync-webpack-plugin": "^2.0.1",
         "cross-env": "^7.0",
         "laravel-mix": "^5.0.1",
         "laravel-mix-purgecss": "^4.1",
@@ -26,6 +28,7 @@
     },
     "dependencies": {
         "@nesk/puphpeteer": "^1.6.0",
+        "chart.js": "^2.9.3",
         "tailwindcss": "^1.2.0"
     }
 }
