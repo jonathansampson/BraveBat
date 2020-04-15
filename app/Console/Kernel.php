@@ -26,7 +26,8 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('telescope:prune')->daily();
-        $schedule->command('import:bat_transparency')->daily();
+        $schedule->command('bat_transparency:import')->daily();
+        $schedule->command('sitemap:generate')->daily();
     }
 
     /**
