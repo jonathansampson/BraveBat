@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Services\BraveTransparencyService;
 use Illuminate\Http\Request;
-
+use Spatie\Browsershot\Browsershot;
 
 class HomeController extends Controller
 {
@@ -20,9 +20,12 @@ class HomeController extends Controller
 
     public function welcome()
     {
+        $html = Browsershot::url('https://brave.com/transparency/')->bodyHtml();
+        dump($html);
 
-        $service = new BraveTransparencyService();
-        dump($service->dom);
+
+        // $service = new BraveTransparencyService();
+        // dump($service->dom);
         return view('welcome');
     }
 }

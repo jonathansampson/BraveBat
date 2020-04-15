@@ -25,7 +25,8 @@
         "maxbanton/cwh": "^2.0",
         "nesk/puphpeteer": "^1.6",
         "paquettg/php-html-parser": "^2.2",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "spatie/browsershot": "^3.35"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
