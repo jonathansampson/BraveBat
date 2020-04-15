@@ -26,7 +26,8 @@
         "nesk/puphpeteer": "^1.6",
         "paquettg/php-html-parser": "^2.2",
         "predis/predis": "^1.1",
-        "spatie/browsershot": "^3.35"
+        "spatie/browsershot": "^3.35",
+        "spatie/laravel-sitemap": "^5.7"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
