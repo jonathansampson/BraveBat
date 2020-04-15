@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Carbon\Carbon;
 use Spatie\Browsershot\Browsershot;
 use PHPHtmlParser\Dom;
 
@@ -19,13 +20,6 @@ class BraveTransparencyService
         $html = Browsershot::url(config('bravebat.transparency_page'))->waitUntilNetworkIdle()->bodyHtml();
         $this->dom = new Dom;
         $this->dom->load($html);
-        // $puppeteer = new Puppeteer;
-        // $browser = $puppeteer->launch();
-        // $page = $browser->newPage();
-        // $page->goto(config('bravebat.transparency_page'));
-        // $data = $page->evaluate(JsFunction::createWithBody('return document.documentElement.outerHTML'));
-        // $this->dom = new Dom;
-        // $this->dom->load($data);
     }
 
     public function getBatPurchases()
@@ -57,6 +51,17 @@ class BraveTransparencyService
 
     public function getAdCampaigns()
     {
-        # code...
+        $rows = $this->dom->find('.brave-ads li');
+        $results = [];
+
+        foreach ($rows as $row) {
+            $parts = explode(' (', $row->text);
+            $results[] = [
+                'country' => $parts[0],
+                'campaigns' => str_replace(")", "", $parts[1]),
+                'record_date' => Carbon::today()
+            ];
+        }
+        return $results;
     }
 }

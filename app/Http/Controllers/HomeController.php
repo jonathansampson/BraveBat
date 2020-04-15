@@ -16,10 +16,6 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        // $html = Browsershot::url('https://brave.com/transparency/')->waitUntilNetworkIdle()->bodyHtml();
-        // dump($html);
-        // $service = new BraveTransparencyService();
-        // dump($service->dom);
         return view('welcome');
     }
 }
