@@ -1,1 +1,4 @@
-This is TBD
+Service folder:
+Brave Transaprency 
+
+Model: BatUsage model

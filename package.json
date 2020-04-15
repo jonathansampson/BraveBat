@@ -25,6 +25,7 @@
         "vue-template-compiler": "^2.6.10"
     },
     "dependencies": {
+        "@nesk/puphpeteer": "^1.6.0",
         "tailwindcss": "^1.2.0"
     }
 }
