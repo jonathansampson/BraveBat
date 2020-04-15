@@ -9,9 +9,9 @@ class ChartDataController extends Controller
 {
     public function dau()
     {
-        $labels = BraveUsage::pluck('month');
-        $dau = collect(BraveUsage::pluck('dau'))->map(fn ($item) => round(($item / 1000000), 1));
-
+        $data = BraveUsage::all();
+        $labels = collect($data)->map(fn ($item) => $item['month']);
+        $dau = collect($data)->map(fn ($item) => round(($item['dau'] / 1000000), 1));
         return [
             'labels' => $labels,
             'data' => [
