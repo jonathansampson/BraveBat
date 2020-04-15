@@ -24,8 +24,9 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('horizon:snapshot')->everyFiveMinutes();
+        $schedule->command('horizon:snapshot')->everyHour();
         $schedule->command('telescope:prune')->daily();
+        $schedule->command('import:bat_transparency')->daily();
     }
 
     /**

@@ -2,24 +2,25 @@
 
 namespace App\Console\Commands;
 
-use App\Tasks\ImportBatVerifiedCreator;
+use App\Models\BatPurchase;
+use App\Models\BraveAdCampaign;
 use Illuminate\Console\Command;
 
-class ImportBatVerifiedCreatorCommand extends Command
+class ImportBatTransparencyStats extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'import:bat_creator';
+    protected $signature = 'import:bat_transparency';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Import BAT verified creators';
+    protected $description = 'Import Bat Transparency Stats';
 
     /**
      * Create a new command instance.
@@ -38,6 +39,8 @@ class ImportBatVerifiedCreatorCommand extends Command
      */
     public function handle()
     {
-        ImportBatVerifiedCreator::import();
+        BatPurchase::import();
+        sleep(5);
+        BraveAdCampaign::import();
     }
 }
