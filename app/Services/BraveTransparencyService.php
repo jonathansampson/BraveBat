@@ -2,9 +2,7 @@
 
 namespace App\Services;
 
-use Nesk\Puphpeteer\Puppeteer;
-use Nesk\Rialto\Data\JsFunction;
-use Nesk\Puphpeteer\Resources\ElementHandle;
+use Spatie\Browsershot\Browsershot;
 use PHPHtmlParser\Dom;
 
 class BraveTransparencyService
@@ -18,13 +16,16 @@ class BraveTransparencyService
 
     public function getPage()
     {
-        $puppeteer = new Puppeteer;
-        $browser = $puppeteer->launch();
-        $page = $browser->newPage();
-        $page->goto(config('bravebat.transparency_page'));
-        $data = $page->evaluate(JsFunction::createWithBody('return document.documentElement.outerHTML'));
+        $html = Browsershot::url(config('bravebat.transparency_page'))->waitUntilNetworkIdle()->bodyHtml();
         $this->dom = new Dom;
-        $this->dom->load($data);
+        $this->dom->load($html);
+        // $puppeteer = new Puppeteer;
+        // $browser = $puppeteer->launch();
+        // $page = $browser->newPage();
+        // $page->goto(config('bravebat.transparency_page'));
+        // $data = $page->evaluate(JsFunction::createWithBody('return document.documentElement.outerHTML'));
+        // $this->dom = new Dom;
+        // $this->dom->load($data);
     }
 
     public function getBatPurchases()
