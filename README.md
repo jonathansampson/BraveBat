@@ -9,3 +9,7 @@ Model: BatUsage model
 'brand-light': '#f0f0f0',
 'brand-purple': '#a3278f',
 'brand-blue': '#4f30ab'
+
+<x-verified-badge verifiedDate="sfds"/>
+<x-download-badge />
+

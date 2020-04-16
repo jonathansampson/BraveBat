@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Your comprehensive information source about Brave Browser, Basic Attention Token and their passionate communities"/>
+
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>BraveBat | @yield('title' , "Resource on Brave Browser, BAT and Beyond") }} </title>
+<meta name="description" content="@yield('description', 'Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities')"/>
+    
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
 
     <!-- Scripts -->
@@ -16,15 +18,15 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
-    @if (App::environment('production'))
+    @if (app()->environment('production'))
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163561589-1"></script>
         <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'UA-163561589-1');
-    </script>
-@endif
+        </script>
+    @endif
 </head>
 <body class="antialiased leading-none bg-gray-100">
     <div id="app" class="flex flex-col min-h-screen">
@@ -34,7 +36,6 @@
             @yield('content')
         </main>
         @include('partials.footer')
-
     </div>
 </body>
 </html>

@@ -29,7 +29,6 @@ export default {
             data: data.data[key],
             backgroundColor: colors[index],
             borderColor: colors[index],
-
             fill: false,
             borderCapStyle: "butt",
             pointRadius: 3,
