@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class='container mx-auto lg:flex lg:flex-wrap'>
-        <div class='lg:w-full mb-3' style="max-height: 800px">
+    <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
+        <div class='mb-3' style="">
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 
                 identifier="dau"
@@ -11,9 +11,8 @@
                 x-title="Month"
             >
         </line-chart>
-
         </div>
-        <div class='lg:w-full mb-3' style="max-height: 800px">
+        <div class='mb-3' style="">
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 
                 identifier="bat_purchase"

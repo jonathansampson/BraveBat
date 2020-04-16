@@ -30,12 +30,12 @@ export default {
             backgroundColor: colors[index],
             borderColor: colors[index],
 
-            fill: false
-            // borderCapStyle: "butt",
-            // pointRadius: 3,
-            // lineTension: 0,
-            // hidden: hidden,
-            // cubicInterpolationMode: "default"
+            fill: false,
+            borderCapStyle: "butt",
+            pointRadius: 3,
+            lineTension: 0,
+            hidden: hidden,
+            cubicInterpolationMode: "default"
           };
           this.datasets.push(myNewDataset);
         });

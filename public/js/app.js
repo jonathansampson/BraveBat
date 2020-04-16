@@ -1941,12 +1941,12 @@ __webpack_require__.r(__webpack_exports__);
             data: data.data[key],
             backgroundColor: colors[index],
             borderColor: colors[index],
-            fill: false // borderCapStyle: "butt",
-            // pointRadius: 3,
-            // lineTension: 0,
-            // hidden: hidden,
-            // cubicInterpolationMode: "default"
-
+            fill: false,
+            borderCapStyle: "butt",
+            pointRadius: 3,
+            lineTension: 0,
+            hidden: hidden,
+            cubicInterpolationMode: "default"
           };
 
           _this.datasets.push(myNewDataset);
