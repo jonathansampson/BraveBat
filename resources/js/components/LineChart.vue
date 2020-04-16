@@ -13,7 +13,7 @@ export default {
       id: ""
     };
   },
-  props: ["colors", "identifier", "xTitle", "yTitle", "title"],
+  props: ["colors", "identifier"],
   mounted: function() {
     this.id = this.identifier;
     axios.post("/charts/" + this.identifier).then(res => {
@@ -47,10 +47,6 @@ export default {
           datasets: this.datasets
         },
         options: {
-          title: {
-            display: true,
-            text: this.title
-          },
           legend: {
             display: true,
             labels: {
@@ -63,10 +59,6 @@ export default {
               {
                 gridLines: {
                   display: false
-                },
-                scaleLabel: {
-                  display: true,
-                  labelString: this.xTitle
                 }
               }
             ],
@@ -74,10 +66,6 @@ export default {
               {
                 ticks: {
                   suggestedMin: 0
-                },
-                scaleLabel: {
-                  display: true,
-                  labelString: this.yTitle
                 }
               }
             ]

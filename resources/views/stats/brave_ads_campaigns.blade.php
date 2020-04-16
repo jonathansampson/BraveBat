@@ -12,9 +12,6 @@
                     <line-chart 
                         colors="{{json_encode(config('bravebat.colors'))}}" 
                         identifier="ad_campaign_supported_countries"
-                        title=""
-                        y-title="Brave Ads Supported Countries"
-                        x-title="Month"
                     >
                     </line-chart>
                 </div>
@@ -25,9 +22,6 @@
                     <line-chart 
                         colors="{{json_encode(config('bravebat.colors'))}}" 
                         identifier="active_ad_campaigns"
-                        title=""
-                        y-title="Brave Ads Active Campaigns"
-                        x-title="Month"
                     >
                     </line-chart>
                 </div>

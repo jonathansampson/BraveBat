@@ -10,9 +10,6 @@
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 
                 identifier="dau"
-                title=""
-                y-title="Daily Active Users"
-                x-title="Month"
             >
             </line-chart>
         </div>

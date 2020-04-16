@@ -1923,7 +1923,7 @@ __webpack_require__.r(__webpack_exports__);
       id: ""
     };
   },
-  props: ["colors", "identifier", "xTitle", "yTitle", "title"],
+  props: ["colors", "identifier"],
   mounted: function mounted() {
     var _this = this;
 
@@ -1961,10 +1961,6 @@ __webpack_require__.r(__webpack_exports__);
           datasets: _this.datasets
         },
         options: {
-          title: {
-            display: true,
-            text: _this.title
-          },
           legend: {
             display: true,
             labels: {
@@ -1976,19 +1972,11 @@ __webpack_require__.r(__webpack_exports__);
             xAxes: [{
               gridLines: {
                 display: false
-              },
-              scaleLabel: {
-                display: true,
-                labelString: _this.xTitle
               }
             }],
             yAxes: [{
               ticks: {
                 suggestedMin: 0
-              },
-              scaleLabel: {
-                display: true,
-                labelString: _this.yTitle
               }
             }]
           }

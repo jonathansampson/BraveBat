@@ -15,5 +15,4 @@ Route::get('brave_ads_campaigns', 'StatsController@brave_ads_campaigns')->name('
 Route::any('/charts/dau', 'ChartDataController@dau')->name('charts.dau');
 Route::any('/charts/bat_purchases', 'ChartDataController@batPurchases')->name('charts.bat_purchases');
 Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@adCampaignSupportedCountries')->name('charts.add_campaign_supported_countries');
-
-Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.add_campaign_supported_countries');
+Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.active_ad_campaigns');
