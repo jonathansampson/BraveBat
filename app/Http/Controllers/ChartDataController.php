@@ -20,7 +20,7 @@ class ChartDataController extends Controller
         ];
     }
 
-    public function batPurchase()
+    public function batPurchases()
     {
         $data = DB::select("SELECT 
             DATE_FORMAT(transaction_date, '%Y-%m') AS month,
@@ -38,6 +38,66 @@ class ChartDataController extends Controller
             'labels' => $labels,
             'data' => [
                 'BAT Tokens Purchased' => $bat_tokens
+            ]
+        ];
+    }
+
+    public function adCampaignSupportedCountries()
+    {
+        $data = DB::select("SELECT
+            DATE_FORMAT(record_date, '%Y-%m') AS month,
+            max(countries) AS countries
+        FROM (
+            SELECT
+                record_date,
+                count(campaigns) AS countries
+            FROM
+                brave_ad_campaigns
+            GROUP BY
+                record_date
+            ORDER BY
+                record_date) t
+        GROUP BY
+            month
+        ORDER BY
+            month");
+        $labels = collect($data)->map(fn ($item) => $item->month);
+        $countries = collect($data)->map(fn ($item) => $item->countries);
+
+        return [
+            'labels' => $labels,
+            'data' => [
+                'Number of Supported Countries' => $countries
+            ]
+        ];
+    }
+
+    public function activeAdCampaigns()
+    {
+        $data = DB::select("SELECT
+            DATE_FORMAT(record_date, '%Y-%m') AS month,
+            max(campaigns) AS campaigns
+        FROM (
+            SELECT
+                record_date,
+                sum(campaigns) AS campaigns
+            FROM
+                brave_ad_campaigns
+            GROUP BY
+                record_date
+            ORDER BY
+                record_date) t
+        GROUP BY
+            month
+        ORDER BY
+            month");
+        $labels = collect($data)->map(fn ($item) => $item->month);
+        $campaigns = collect($data)->map(fn ($item) => $item->campaigns);
+
+        return [
+            'labels' => $labels,
+            'data' => [
+                'Number of Active Campaigns' => $campaigns
             ]
         ];
     }

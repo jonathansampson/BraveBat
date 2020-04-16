@@ -10,7 +10,7 @@
         <div class='mb-3'>
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 
-                identifier="bat_purchase"
+                identifier="bat_purchases"
                 title=""
                 y-title="BAT Tokens Purchased"
                 x-title="Month"

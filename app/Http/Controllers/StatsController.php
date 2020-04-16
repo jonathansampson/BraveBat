@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\BatPurchase;
-use Illuminate\Http\Request;
 use App\Models\BraveUsage;
+use App\Models\BraveAdCampaign;
+use DB;
 
 class StatsController extends Controller
 {
@@ -13,10 +14,21 @@ class StatsController extends Controller
         $active_users = BraveUsage::all();
         return view('stats.brave_browser_active_users', compact('active_users'));
     }
+
     public function brave_initiated_bat_purchase()
     {
         $purchases = BatPurchase::all();
-        dump($purchases);
         return view('stats.brave_initiated_bat_purchase', compact('purchases'));
+    }
+
+    public function brave_ads_campaigns()
+    {
+        $latest = BraveAdCampaign::orderBy('record_date', 'desc')->first();
+        if ($latest) {
+            $campaigns = BraveAdCampaign::where('record_date', $latest->record_date)->get();
+            return view('stats.brave_ads_campaigns', compact('campaigns'));
+        } else {
+            abort(500);
+        }
     }
 }
