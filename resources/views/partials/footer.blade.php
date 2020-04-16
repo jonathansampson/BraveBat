@@ -4,16 +4,10 @@
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-3">
-                        <a class="text-brand-light" href="">About</a>
+                    <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">Brave Active Users</a>
                     </li>
                     <li class="pb-3">
-                        <a class="text-brand-light" href="">Support</a>
-                    </li>
-                    <li class="pb-3">
-                        <a class="text-brand-light" href="">Privacy Policy</a>
-                    </li>
-                    <li class="pb-3">
-                        <a class="text-brand-light" href="">Terms & Services</a>
+                    <a class="text-brand-light" href="{{route('stats.brave_initiated_bat_purchase')}}">Brave Initiated BAT Purchase</a>
                     </li>
                 </ul>
             </div>
@@ -39,10 +33,10 @@
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-3">
-                        <a class="text-brand-light" href="">Website</a>
+                        <a class="text-brand-light" href="">Privacy Policy</a>
                     </li>
                     <li class="pb-3">
-                        <a class="text-brand-light" href="">Youtube</a>
+                        <a class="text-brand-light" href="">Terms & Services</a>
                     </li>
                     <li class="pb-3">
                         <a class="text-brand-light" href="">Reddit</a>
