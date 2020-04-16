@@ -595,6 +595,10 @@ video {
   height: auto;
 }
 
+a {
+  color: #4f30ab;
+}
+
 .container{
   width: 100%;
 }
