@@ -26,13 +26,16 @@
     </script>
 @endif
 </head>
-<body class="h-screen antialiased leading-none bg-gray-100">
+<body class="flex flex-col min-h-screen antialiased leading-none bg-gray-100">
     <div id="app">
         @include('partials.nav')
 
-        @yield('content')
+        <main class="flex-grow">
+            @yield('content')
+        </main>
         @include('partials.footer')
 
     </div>
 </body>
 </html>
+
