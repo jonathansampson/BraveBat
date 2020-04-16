@@ -1,5 +1,8 @@
 @extends('layouts.app')
 
+@section('title', 'Brave Browser Active Users')
+@section('description', 'Monthly Brave Browser active user stats in chart and data table')
+
 @section('content')
     <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
         <h1 class="py-2 text-2xl font-semibold">Brave Browser Daily Active User (Millions)</h1>
