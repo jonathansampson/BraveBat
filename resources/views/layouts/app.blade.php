@@ -26,8 +26,8 @@
     </script>
 @endif
 </head>
-<body class="flex flex-col min-h-screen antialiased leading-none bg-gray-100">
-    <div id="app">
+<body class="antialiased leading-none bg-gray-100">
+    <div id="app" class="flex flex-col min-h-screen">
         @include('partials.nav')
 
         <main class="flex-grow">
