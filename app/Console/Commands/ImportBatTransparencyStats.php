@@ -13,7 +13,7 @@ class ImportBatTransparencyStats extends Command
      *
      * @var string
      */
-    protected $signature = 'bat_transparency:import';
+    protected $signature = 'import:bat_transparency';
 
     /**
      * The console command description.

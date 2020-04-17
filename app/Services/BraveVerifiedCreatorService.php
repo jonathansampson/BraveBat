@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Tasks;
+namespace App\Services;
 
 use Storage;
 use Carbon\Carbon;
 use App\Models\RawImport;
 
-class ImportBatVerifiedCreator
+class BraveVerifiedCreatorService
 {
     /**
      * Import Brave Verified Creator from unofficial API endpoint to database in raw format
@@ -23,9 +23,3 @@ class ImportBatVerifiedCreator
         }
     }
 }
-        // $date = Carbon::today()->format('Y-m-d');
-        // $filename = "brave/{$date}.txt";
-        // $exists = Storage::exists($filename);
-        // if (!$exists) {
-        //     Storage::put($filename, $file);
-        // }
