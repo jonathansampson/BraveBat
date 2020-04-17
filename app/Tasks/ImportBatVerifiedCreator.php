@@ -19,14 +19,17 @@ class ImportBatVerifiedCreator
         $file = file_get_contents($url);
         $date = Carbon::today()->format('Y-m-d');
         $filename = "brave/{$date}.txt";
-        Storage::put($filename, $file);
-
+        $exists = Storage::exists($filename);
+        if (!$exists) {
+            Storage::put($filename, $file);
+        }
         $content = json_decode($file);
-
         RawImport::truncate();
-        foreach ($content as $creator) {
+        foreach ($content as $key => $creator) {
             RawImport::create([
                 'creator' => $creator[0],
+                'indicator1' => $creator[1],
+                'indicator2' => $creator[2],
                 'detail' => json_encode($creator)
             ]);
         }
