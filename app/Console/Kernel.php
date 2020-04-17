@@ -28,6 +28,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('telescope:prune')->daily();
         $schedule->command('bat_transparency:import')->daily();
         $schedule->command('sitemap:generate')->daily();
+        $schedule->command('import:bat_creator')->dailyAt("01:00");
     }
 
     /**
