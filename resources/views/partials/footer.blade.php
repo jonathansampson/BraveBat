@@ -42,7 +42,7 @@
                         <a class="text-brand-light" href="">Terms & Services</a>
                     </li>
                     <li class="pb-4">
-                        <a class="text-brand-light" href="">Reddit</a>
+                        <a class="text-brand-light" href="/sitemap.xml">Sitemap</a>
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="">Vemio</a>
