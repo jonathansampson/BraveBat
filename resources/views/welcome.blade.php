@@ -7,5 +7,6 @@
     <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
         Welcome
     </div>
+    {{phpinfo()}}
 @endsection
 
