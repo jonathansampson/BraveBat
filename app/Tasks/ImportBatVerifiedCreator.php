@@ -2,9 +2,9 @@
 
 namespace App\Tasks;
 
-use App\RawImport;
-use Carbon\Carbon;
 use Storage;
+use Carbon\Carbon;
+use App\Models\RawImport;
 
 class ImportBatVerifiedCreator
 {
@@ -17,21 +17,15 @@ class ImportBatVerifiedCreator
     {
         $url = "https://publishers-distro.basicattentiontoken.org/api/v1/public/channels";
         $file = file_get_contents($url);
-        $date = Carbon::today()->format('Y-m-d');
-        $filename = "brave/{$date}.txt";
-        $exists = Storage::exists($filename);
-        if (!$exists) {
-            Storage::put($filename, $file);
-        }
         $content = json_decode($file);
-        RawImport::truncate();
-        foreach ($content as $key => $creator) {
-            RawImport::create([
-                'creator' => $creator[0],
-                'indicator1' => $creator[1],
-                'indicator2' => $creator[2],
-                'detail' => json_encode($creator)
-            ]);
+        foreach ($content as $input) {
+            RawImport::handleInput($input);
         }
     }
 }
+        // $date = Carbon::today()->format('Y-m-d');
+        // $filename = "brave/{$date}.txt";
+        // $exists = Storage::exists($filename);
+        // if (!$exists) {
+        //     Storage::put($filename, $file);
+        // }
