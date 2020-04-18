@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-use App\Models\RawImport;
+use App\Models\Creator;
 
 class BraveVerifiedCreatorService
 {
@@ -16,8 +16,13 @@ class BraveVerifiedCreatorService
         $url = "https://publishers-distro.basicattentiontoken.org/api/v1/public/channels";
         $file = file_get_contents($url);
         $content = json_decode($file);
-        foreach ($content as $input) {
-            RawImport::handleInput($input);
-        }
+        $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
+        $apiInfo = collect($content)->map(function ($item) {
+            return trim($item[0]);
+        })->toArray();
+        $apiInfo = array_unique($apiInfo);
+        $incomings = array_diff($apiInfo, $databaseInfo);
+        $outgoings = array_diff($databaseInfo, $apiInfo);
+        Creator::handleInput($incomings, $outgoings);
     }
 }
