@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Creator extends Model
@@ -17,7 +18,6 @@ class Creator extends Model
      */
     public static function handleInput($incomings, $outgoings)
     {
-        dump($incomings);
         // Handle incomings
         foreach ($incomings as $incoming) {
             $existing = self::where('creator', $incoming)->first();
@@ -25,15 +25,10 @@ class Creator extends Model
                 $existing->active = true;
                 $existing->save();
             } else {
-                $parts = explode('#channel:', $incoming);
-                if (count($parts) == 1) {
-                    $channel = 'website';
-                } else {
-                    $channel = $parts[0];
-                }
                 self::create([
                     'creator' => $incoming,
-                    'channel' => $channel
+                    'active' => true,
+                    'verified_at' => Carbon::today()
                 ]);
             }
         }
@@ -44,5 +39,22 @@ class Creator extends Model
             $creator->active = false;
             $creator->save();
         }
+
+        // Fill missing data 
+        // $missing_data = self::where('channel', '')->get();
+        // foreach ($missing_data as $creator) {
+        //     $creator->fillChannel();
+        // }
+    }
+
+    public function fillChannel()
+    {
+        $parts = explode('#channel:', $this->creator);
+        if (count($parts) == 1) {
+            $this->channel = 'website';
+        } else {
+            $this->channel = $parts[0];
+        }
+        $this->save();
     }
 }
