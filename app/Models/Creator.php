@@ -42,10 +42,10 @@ class Creator extends Model
         }
 
         // Fill missing data 
-        // $missing_data = self::where('channel', '')->get();
-        // foreach ($missing_data as $creator) {
-        //     $creator->fillChannel();
-        // }
+        $missing_data = self::where('channel', '')->get();
+        foreach ($missing_data as $creator) {
+            $creator->fillChannel();
+        }
     }
 
     public function fillChannel()
