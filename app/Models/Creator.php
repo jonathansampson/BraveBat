@@ -28,6 +28,7 @@ class Creator extends Model
                 self::create([
                     'creator' => $incoming,
                     'active' => true,
+                    'channel' => '',
                     'verified_at' => Carbon::today()
                 ]);
             }
