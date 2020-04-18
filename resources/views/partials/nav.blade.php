@@ -14,9 +14,9 @@
                     
                 </a>
             </div>
-            <div class="flex-1 text-right text-brand-light">
+            {{-- <div class="flex-1 text-right text-brand-light">
                 another
-            </div>
+            </div> --}}
         </div>
     </nav>
 
