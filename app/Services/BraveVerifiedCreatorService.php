@@ -24,8 +24,10 @@ class BraveVerifiedCreatorService
         Log::notice('complete database array');
         $incomings = array_diff($apiInfo, $databaseInfo);
         Log::notice('complete incoming array');
+        Log::notice(count($incomings));
         $outgoings = array_diff($databaseInfo, $apiInfo);
         Log::notice('complete outgoing array');
+        Log::notice(count($outgoings));
         Creator::handleInput($incomings, $outgoings);
     }
 }
