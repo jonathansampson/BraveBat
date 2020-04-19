@@ -15,14 +15,13 @@ class BraveVerifiedCreatorService
     {
         $url = "https://publishers-distro.basicattentiontoken.org/api/v1/public/channels";
         $content = json_decode(file_get_contents($url));
-        $apiInfo = array_unique(collect($content)->map(function ($item) {
+        $apiInfo = collect($content)->map(function ($item) {
             return trim($item[0]);
-        })->toArray());
+        })->unique()->toArray();
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
         $incomings = array_diff($apiInfo, $databaseInfo);
-        dd('here');
-
         $outgoings = array_diff($databaseInfo, $apiInfo);
+        dd('here');
         Creator::handleInput($incomings, $outgoings);
     }
 }
