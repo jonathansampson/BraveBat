@@ -3,12 +3,22 @@
 namespace App\Models;
 
 use Carbon\Carbon;
+use App\Models\Creators\Website;
+use App\Models\Creators\Youtube;
 use Illuminate\Database\Eloquent\Model;
 
 class Creator extends Model
 {
     protected $table = 'creators';
     protected $guarded = [];
+
+    /**
+     * Get the owning creatable model.
+     */
+    public function creatable()
+    {
+        return $this->morphTo();
+    }
 
     /**
      * Handle input from Brave API
@@ -57,5 +67,34 @@ class Creator extends Model
             $this->channel = $parts[0];
         }
         $this->save();
+    }
+
+    public function processCreatable()
+    {
+        if ($this->channel == 'website') {
+            $this->processWesbite();
+        } elseif ($this->channel == 'youtube') {
+            $this->processYoutube();
+        }
+    }
+
+    public function processWebsite()
+    {
+        $website = $this->creatable;
+        if (!$website) {
+            $website = Website::create(['name' => $this->creator]);
+            $this->creatable()->associate($website)->save();
+            $website->callApi();
+        }
+    }
+
+    public function processYoutube()
+    {
+        $youtube = $this->creatable;
+        if (!$youtube) {
+            $youtube = Youtube::create();
+            $this->creatable()->associate($youtube)->save();
+            $youtube->callApi();
+        }
     }
 }

@@ -37,21 +37,39 @@ class TwitchService
      */
     public function getUser($userLogin)
     {
-        $response = Http::withToken($this->access_token)
-            ->withHeaders([
-                "Client-ID" => config('services.twitch.client_id'),
-            ])
-            ->get('https://api.twitch.tv/helix/users?login=' . $userLogin);
+        try {
+            $response = Http::withToken($this->access_token)
+                ->withHeaders([
+                    "Client-ID" => config('services.twitch.client_id'),
+                ])
+                ->get('https://api.twitch.tv/helix/users?login=' . $userLogin);
 
-        if ($response->ok()) {
             $userInfo = $response->json()['data'][0];
+            $id = $userInfo['id'];
+            $display_name = $userInfo['display_name'];
+            $description = $userInfo['description'];
+            $thumbnail = $userInfo['profile_image_url'];
+            $view_count = $userInfo['view_count'];
+
             $response = Http::withToken($this->access_token)
                 ->withHeaders([
                     "Client-ID" => config('services.twitch.client_id'),
                 ])
                 ->get('api.twitch.tv/helix/users/follows?to_id=' . $userInfo['id']);
-            $userInfo['follower_count'] = $response->json()['total'];
-            return $userInfo;
+            $follower_count = $response->json()['total'];
+            return [
+                'success' => true,
+                'result' => [
+                    'id' => $id,
+                    'display_name' => $display_name,
+                    'description' => $description,
+                    'thumbnail' => $thumbnail,
+                    'view_count' => $view_count,
+                    'follower_count' => $follower_count,
+                ]
+            ];
+        } catch (\Exception $e) {
+            return ['success' => false, 'result' => 'API error'];
         }
     }
 }
