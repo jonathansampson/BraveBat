@@ -7,6 +7,5 @@
     <div class='container flex items-center justify-center px-4 py-4 py-32 mx-auto text-6xl text-center sm:px-6 md:px-8 text-brand-dark'>
         Coming Soon!
     </div>
-    {{phpinfo()}}
 @endsection
 
