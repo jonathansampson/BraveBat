@@ -18,8 +18,8 @@ class BraveVerifiedCreatorService
         $apiInfo = collect($content)->map(function ($item) {
             return trim($item[0]);
         })->toArray();
-        dd('here');
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
+        dd('here');
         $apiInfo = array_unique($apiInfo);
         $incomings = array_diff($apiInfo, $databaseInfo);
         $outgoings = array_diff($databaseInfo, $apiInfo);
