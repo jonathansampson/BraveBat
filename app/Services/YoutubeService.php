@@ -23,6 +23,7 @@ class YoutubeService
             return ['success' => false, 'result' => 'User not found'];
         }
         $data = $response->json();
+        $id = $data['items'][0]['id'];
         $title = $data['items'][0]['snippet']['title'];
         $description = $data['items'][0]['snippet']['description'];
         $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
@@ -34,6 +35,7 @@ class YoutubeService
         return  [
             'success' => true,
             'result' => [
+                'id' => $id,
                 'title' => $title,
                 'description' => $description,
                 'thumbnail' => $thumbnail,

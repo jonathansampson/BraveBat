@@ -6,7 +6,6 @@ use Carbon\Carbon;
 use App\Models\Creators\Website;
 use App\Models\Creators\Youtube;
 use Illuminate\Database\Eloquent\Model;
-use Log;
 
 class Creator extends Model
 {
@@ -24,7 +23,7 @@ class Creator extends Model
     /**
      * Handle input from Brave API
      *
-     * @param $input
+     * @param $incomings, outgoings
      * @return void
      */
     public static function handleInput($incomings, $outgoings)
@@ -51,51 +50,49 @@ class Creator extends Model
             $creator->active = false;
             $creator->save();
         }
-
-        // Fill missing data 
-        // $missing_data = self::where('channel', '')->get();
-        // foreach ($missing_data as $creator) {
-        //     $creator->fillChannel();
-        // }
     }
 
     public function fillChannel()
     {
         $parts = explode('#channel:', $this->creator);
-        if (count($parts) == 1) {
-            $this->channel = 'website';
-        } else {
+        if (count($parts) == 2) {
             $this->channel = $parts[0];
+            $this->channel_id = $parts[1];
+        } else {
+            $parts = explode('#author:', $this->creator);
+            if (count($parts) == 2 && $parts[0] == 'twitch') {
+                $this->channel = $parts[0];
+                $this->channel_id = $parts[1];
+            } else {
+                $this->channel = 'website';
+                $this->channel_id = $this->creator;
+            }
         }
         $this->save();
     }
 
     public function processCreatable()
     {
-        if ($this->channel == 'website') {
-            $this->processWesbite();
-        } elseif ($this->channel == 'youtube') {
-            $this->processYoutube();
+        if (!$this->creatable) {
+            if ($this->channel == 'website') {
+                $this->processWesbite();
+            } elseif ($this->channel == 'youtube') {
+                $this->processYoutube();
+            }
         }
     }
 
     public function processWebsite()
     {
-        $website = $this->creatable;
-        if (!$website) {
-            $website = Website::create(['name' => $this->creator]);
-            $this->creatable()->associate($website)->save();
-            $website->callApi();
-        }
+        $website = Website::create();
+        $this->creatable()->associate($website)->save();
+        $website->callApi();
     }
 
     public function processYoutube()
     {
-        $youtube = $this->creatable;
-        if (!$youtube) {
-            $youtube = Youtube::create();
-            $this->creatable()->associate($youtube)->save();
-            $youtube->callApi();
-        }
+        $youtube = Youtube::create();
+        $this->creatable()->associate($youtube)->save();
+        $youtube->callApi();
     }
 }
