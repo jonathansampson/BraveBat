@@ -45,8 +45,9 @@ class WebsiteService
             $tags = get_meta_tags($website);
             $description = '';
             if (isset($tags['description'])) {
-                $description = $tags['description'];
+                $description = substr($tags['description'], 0, 800);
             }
+
             return [
                 'success' => true,
                 'result' => [
