@@ -38,12 +38,14 @@ class Creator extends Model
                 $existing->active = true;
                 $existing->save();
             } else {
-                self::create([
+                $creator = self::create([
                     'creator' => $incoming,
                     'active' => true,
                     'channel' => '',
                     'verified_at' => Carbon::today()
                 ]);
+                $creator->fillChannel();
+                $creator->processCreatable();
             }
         }
 

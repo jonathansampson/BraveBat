@@ -29,6 +29,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:bat_transparency')->daily();
         $schedule->command('sitemap:generate')->daily();
         $schedule->command('import:bat_creator')->dailyAt("00:03");
+        $schedule->command('creator:backfill')->dailyAt("16:35");
     }
 
     /**

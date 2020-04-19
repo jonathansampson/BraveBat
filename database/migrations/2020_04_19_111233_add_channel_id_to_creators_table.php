@@ -15,7 +15,7 @@ class AddChannelIdToCreatorsTable extends Migration
     {
         Schema::table('creators', function (Blueprint $table) {
             $table->string('channel_id')->after('channel')->nullable();
-            $table->string('channel')->index()->nullable()->change();
+            $table->string('channel')->nullable()->change();
         });
     }
 
