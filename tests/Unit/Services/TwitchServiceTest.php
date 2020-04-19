@@ -26,8 +26,8 @@ class TwitchServiceTest extends TestCase
     public function twitch_service_cannot_get_a_twitch_user_info_with_an_invalid_username()
     {
         $service = new TwitchService;
-        $response = $service->getUser('dsfadsfsadfasdfasfs');
+        $response = $service->getUser('dsfadsfsadsdfssffasdfasfs');
         $this->assertFalse($response['success']);
-        $this->assertEquals($response['result'], 'API error');
+        $this->assertEquals($response['result'], 'User not found');
     }
 }

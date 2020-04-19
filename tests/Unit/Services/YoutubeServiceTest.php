@@ -28,6 +28,6 @@ class YoutubeServiceTest extends TestCase
         $service = new YoutubeService;
         $response = $service->getChannel('fedsfsafds');
         $this->assertFalse($response['success']);
-        $this->assertEquals($response['result'], "API error");
+        $this->assertEquals($response['result'], "User not found");
     }
 }
