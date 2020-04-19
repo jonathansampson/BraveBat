@@ -29,8 +29,6 @@ class Creator extends Model
      */
     public static function handleInput($incomings, $outgoings)
     {
-        Log::notice('start incoming');
-
         // Handle incomings
         foreach ($incomings as $incoming) {
             $existing = self::where('creator', $incoming)->first();
@@ -46,7 +44,6 @@ class Creator extends Model
                 ]);
             }
         }
-        Log::notice('start outgoing');
 
         // Handle outgoings
         foreach ($outgoings as $outgoing) {
@@ -55,13 +52,11 @@ class Creator extends Model
             $creator->save();
         }
 
-        Log::notice('start fill missing data');
-
         // Fill missing data 
-        $missing_data = self::where('channel', '')->get();
-        foreach ($missing_data as $creator) {
-            $creator->fillChannel();
-        }
+        // $missing_data = self::where('channel', '')->get();
+        // foreach ($missing_data as $creator) {
+        //     $creator->fillChannel();
+        // }
     }
 
     public function fillChannel()
