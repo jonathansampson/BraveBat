@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Models\Creator;
+use Log;
 
 class BraveVerifiedCreatorService
 {
@@ -18,10 +19,13 @@ class BraveVerifiedCreatorService
         $apiInfo = collect($content)->map(function ($item) {
             return trim($item[0]);
         })->unique()->toArray();
+        Log::notice('complete api array');
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
+        Log::notice('complete database array');
         $incomings = array_diff($apiInfo, $databaseInfo);
+        Log::notice('complete incoming array');
         $outgoings = array_diff($databaseInfo, $apiInfo);
-        dd('here');
+        Log::notice('complete outgoing array');
         Creator::handleInput($incomings, $outgoings);
     }
 }
