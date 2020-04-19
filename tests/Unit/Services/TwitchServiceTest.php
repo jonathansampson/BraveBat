@@ -16,7 +16,7 @@ class TwitchServiceTest extends TestCase
         $service = new TwitchService;
         $response = $service->getUser('allorzer0');
         $this->assertTrue($response['success']);
-        $this->assertEquals($response['result']['id'], "49458857");
+        $this->assertEquals($response['result']['display_name'], "AllOrZer0");
     }
 
     /**

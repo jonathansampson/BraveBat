@@ -33,9 +33,10 @@ class VimeoService
         if (!$response->ok()) {
             return ['success' => false, 'result' => 'User not found'];
         }
-
         $data = $response->json();
-        $name = $data['name'];
+        $link = $data['link'];
+        $name = explode('vimeo.com/', $link)[1];
+        $display_name = $data['name'];
         $description = $data['short_bio'];
         $thumbnail = $data['pictures']['sizes'][1]['link'];
         $follower_count = $data['metadata']['connections']['followers']['total'];
@@ -44,6 +45,7 @@ class VimeoService
             'success' => true,
             'result' => [
                 'name' => $name,
+                'display_name' => $display_name,
                 'description' => $description,
                 'thumbnail' => $thumbnail,
                 'follower_count' => $follower_count,

@@ -2,21 +2,21 @@
 
 namespace App\Models\Creators;
 
-use App\Services\YoutubeService;
+use App\Services\VimeoService;
 use Illuminate\Database\Eloquent\Model;
 
-class Youtube extends Model
+class Vimeo extends Model
 {
     use CreatableTrait;
 
     protected $guarded = [];
-    protected $table = 'creator_youtube';
+    protected $table = 'creator_vimeo';
 
     public function callApi()
     {
-        $service = new YoutubeService();
-        if ($this->youtube_id) {
-            $response = $service->getChannel($this->youtube_id);
+        $service = new VimeoService();
+        if ($this->vimeo_id) {
+            $response = $service->getUser($this->vimeo_id);
             if ($response['success']) {
                 $this->update($response['result']);
                 $this->syncName();

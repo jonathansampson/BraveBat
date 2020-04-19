@@ -37,25 +37,23 @@ class TwitterService
         $this->access_token = json_decode($response)->access_token;
     }
 
-    public function getUser($userHandle)
+    public function getUser($userId)
     {
-        $response = Http::withToken($this->access_token)->get('https://api.twitter.com/1.1/users/show.json?screen_name=' . $userHandle);
+        $response = Http::withToken($this->access_token)->get('https://api.twitter.com/1.1/users/show.json?user_id=' . $userId);
         if (!$response->ok()) {
             return ['success' => false, 'result' => 'User not found'];
         }
         $data = $response->json();
-        $id = $data['id'];
-        $name = $data['name'];
-        $screen_name = $data['screen_name'];
+        $display_name = $data['name'];
+        $name = $data['screen_name'];
         $description = $data['description'];
         $thumbnail = $data['profile_image_url_https'];
         $follower_count = $data['followers_count'];
         return [
             'success' => true,
             'result' => [
-                'id' => $id,
                 'name' => $name,
-                'screen_name' => $screen_name,
+                'display_name' => $display_name,
                 'description' => $description,
                 'thumbnail' => $thumbnail,
                 'follower_count' => $follower_count,

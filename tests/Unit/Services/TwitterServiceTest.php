@@ -14,9 +14,9 @@ class TwitterServiceTest extends TestCase
     public function twitter_service_can_get_data_from_a_valid_handle()
     {
         $service = new TwitterService;
-        $response = $service->getUser('songhua');
+        $response = $service->getUser('23150992');
         $this->assertTrue($response['success']);
-        $this->assertEquals($response['result']['id'], 23150992);
+        $this->assertEquals($response['result']['name'], "Songhua");
     }
 
     /**
@@ -26,7 +26,7 @@ class TwitterServiceTest extends TestCase
     public function twitter_service_cannot_get_data_from_an_invalid_handle()
     {
         $service = new TwitterService;
-        $response = $service->getUser('songdsfsfsssfsshua');
+        $response = $service->getUser('8273487238478743827432');
         $this->assertFalse($response['success']);
         $this->assertEquals($response['result'], 'User not found');
     }

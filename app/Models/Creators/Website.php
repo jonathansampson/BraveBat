@@ -7,17 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Website extends Model
 {
-    protected $guarded = [];
+    use CreatableTrait;
 
+    protected $guarded = [];
     protected $table = 'creator_websites';
 
-    /**
-     * Get the creator
-     */
-    public function creator()
-    {
-        return $this->morphOne('App\Models\Creator', 'creatable');
-    }
 
     public function httpsUrl()
     {
@@ -34,6 +28,9 @@ class Website extends Model
         $this->getAlexaRanking();
         $this->getMetaData();
         $this->getScreenshot();
+        if ($this->title || $this->description || $this->screenshot) {
+            $this->syncName();
+        }
     }
 
     public function getAlexaRanking()
@@ -48,22 +45,42 @@ class Website extends Model
 
     public function getMetaData()
     {
+        $https_success = $this->getMetaDataBasedOnUrl($this->httpsUrl());
+        if (!$https_success) {
+            $this->getMetaDataBasedOnUrl($this->httpUrl());
+        }
+    }
+
+    public function getMetaDataBasedOnUrl($url)
+    {
         $service = new WebsiteService();
-        $response = $service->getMetaData($this->httpsUrl());
+        $response = $service->getMetaData($url);
         if ($response['success']) {
             $this->title = $response['result']['title'];
             $this->description = $response['result']['description'];
             $this->save();
+            return true;
         }
+        return false;
     }
 
     public function getScreenshot()
     {
+        $https_success = $this->getScreenshotBasedOnUrl($this->httpsUrl());
+        if (!$https_success) {
+            $this->getScreenshotBasedOnUrl($this->httpUrl());
+        }
+    }
+
+    public function getScreenshotBasedOnUrl($url)
+    {
         $service = new WebsiteService();
-        $response = $service->getScreenshot($this->httpsUrl());
+        $response = $service->getScreenshot($url);
         if ($response['success']) {
             $this->screenshot = $response['result']['screenshot'];
             $this->save();
+            return true;
         }
+        return false;
     }
 }

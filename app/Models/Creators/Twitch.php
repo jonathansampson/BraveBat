@@ -2,21 +2,21 @@
 
 namespace App\Models\Creators;
 
-use App\Services\YoutubeService;
+use App\Services\TwitchService;
 use Illuminate\Database\Eloquent\Model;
 
-class Youtube extends Model
+class Twitch extends Model
 {
     use CreatableTrait;
 
     protected $guarded = [];
-    protected $table = 'creator_youtube';
+    protected $table = 'creator_twitch';
 
     public function callApi()
     {
-        $service = new YoutubeService();
-        if ($this->youtube_id) {
-            $response = $service->getChannel($this->youtube_id);
+        $service = new TwitchService();
+        if ($this->name) {
+            $response = $service->getUser($this->name);
             if ($response['success']) {
                 $this->update($response['result']);
                 $this->syncName();

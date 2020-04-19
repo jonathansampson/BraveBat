@@ -16,7 +16,7 @@ class YoutubeServiceTest extends TestCase
         $service = new YoutubeService;
         $response = $service->getChannel('UCrp_UI8XtuYfpiqluWLD7Lw');
         $this->assertTrue($response['success']);
-        $this->assertEquals($response['result']['title'], "CNBC Television");
+        $this->assertEquals($response['result']['name'], "CNBC Television");
     }
 
     /**

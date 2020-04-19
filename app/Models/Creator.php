@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use App\Models\Creators\Twitch;
+use App\Models\Creators\Twitter;
+use App\Models\Creators\Vimeo;
 use Carbon\Carbon;
 use App\Models\Creators\Website;
 use App\Models\Creators\Youtube;
@@ -75,24 +78,51 @@ class Creator extends Model
     {
         if (!$this->creatable) {
             if ($this->channel == 'website') {
-                $this->processWesbite();
+                $this->processWebsite();
             } elseif ($this->channel == 'youtube') {
                 $this->processYoutube();
+            } elseif ($this->channel == 'twitch') {
+                $this->processTwitch();
+            } elseif ($this->channel == 'twitter') {
+                $this->processTwitter();
+            } elseif ($this->channel == 'vimeo') {
+                $this->processVimeo();
             }
         }
     }
 
     public function processWebsite()
     {
-        $website = Website::create();
+        $website = Website::create(['name' => $this->channel_id]);
         $this->creatable()->associate($website)->save();
         $website->callApi();
     }
 
     public function processYoutube()
     {
-        $youtube = Youtube::create();
+        $youtube = Youtube::create(['youtube_id' => $this->channel_id]);
         $this->creatable()->associate($youtube)->save();
         $youtube->callApi();
+    }
+
+    public function processTwitch()
+    {
+        $twitch = Twitch::create(['name' => $this->channel_id]);
+        $this->creatable()->associate($twitch)->save();
+        $twitch->callApi();
+    }
+
+    public function processTwitter()
+    {
+        $twitter = Twitter::create(['twitter_id' => $this->channel_id]);
+        $this->creatable()->associate($twitter)->save();
+        $twitter->callApi();
+    }
+
+    public function processVimeo()
+    {
+        $vimeo = Vimeo::create(['vimeo_id' => $this->channel_id]);
+        $this->creatable()->associate($vimeo)->save();
+        $vimeo->callApi();
     }
 }
