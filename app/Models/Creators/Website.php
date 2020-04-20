@@ -26,9 +26,9 @@ class Website extends Model
     public function callApi()
     {
         $this->getAlexaRanking();
-        $this->getMetaData();
+        // $this->getMetaData();
         $this->getScreenshot();
-        if ($this->title || $this->description || $this->screenshot) {
+        if ($this->screenshot) {
             $this->syncName();
         }
     }
