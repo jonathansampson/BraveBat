@@ -42,11 +42,11 @@ class WebsiteService
         try {
             $page = file_get_contents($website);
             $titleTag = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match);
-            if ($titleTag) $title = $match[1];
+            if ($titleTag) $title = utf8_encode($match[1]);
             $tags = get_meta_tags($website);
             $description = '';
             if (isset($tags['description'])) {
-                $description = Str::limit($tags['description'], 250);
+                $description = utf8_encode(Str::limit($tags['description'], 250));
             }
             return [
                 'success' => true,

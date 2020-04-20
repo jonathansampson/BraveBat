@@ -39,6 +39,13 @@ class BackFillCreatorDataCommand extends Command
      */
     public function handle()
     {
+        // Creator::where('id', 56)
+        //     ->get()
+        //     ->each(function ($creator) {
+        //         $creator->fillChannel();
+        //         $creator->processCreatable();
+        //     });
+
         Log::notice('start back filling');
         Creator::whereNull('creatable_id')
             ->where('creator', 'not like', '%#%')
