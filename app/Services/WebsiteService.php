@@ -2,9 +2,10 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Facades\Http;
-use Spatie\Browsershot\Browsershot;
 use Storage;
+use Illuminate\Support\Str;
+use Spatie\Browsershot\Browsershot;
+use Illuminate\Support\Facades\Http;
 
 class WebsiteService
 {
@@ -45,9 +46,8 @@ class WebsiteService
             $tags = get_meta_tags($website);
             $description = '';
             if (isset($tags['description'])) {
-                $description = substr($tags['description'], 0, 800);
+                $description = Str::limit($tags['description'], 250);
             }
-
             return [
                 'success' => true,
                 'result' => [
