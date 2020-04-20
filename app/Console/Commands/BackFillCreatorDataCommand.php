@@ -56,6 +56,9 @@ class BackFillCreatorDataCommand extends Command
                 $creator->processCreatable();
             });
         Log::notice('finish back filling');
+        Notification::route('slack', config('services.slack.webhook'))
+            ->notify(new App\Notifications\ScheduledCommandFinished('Backfill job is done'));
+
         // Creator::whereNull('creatable_id')
         //     ->where('creator', 'like', '%twitch#author%')
         //     ->take(10)

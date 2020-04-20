@@ -47,6 +47,10 @@ return [
     'twitter' => [
         'client_id' => env('TWITTER_API_KEY'),
         'client_secret' => env('TWITTER_API_SECRET_KEY'),
+    ],
+
+    'slack' => [
+        'webhook' => env('SLACK_WEBHOOK')
     ]
 
 ];
