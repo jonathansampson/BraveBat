@@ -17,7 +17,7 @@ class StatsController extends Controller
 
     public function brave_initiated_bat_purchase()
     {
-        $purchases = BatPurchase::all();
+        $purchases = BatPurchase::orderBy('transaction_date', 'desc')->get();
         return view('stats.brave_initiated_bat_purchase', compact('purchases'));
     }
 
