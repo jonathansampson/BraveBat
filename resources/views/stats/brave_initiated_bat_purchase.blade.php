@@ -5,8 +5,7 @@
 
 @section('content')
     <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-        <h1 class="py-2 text-2xl font-semibold">Brave Initiated BAT Token Purchase</h1>
-        <p class="py-1 text-sm">BAT tokens are routinely purchased with advertiser dollars to support Brave Browser ad campaigns</p>
+        <h1 class="py-4 text-2xl font-semibold">Brave Initiated BAT Token Purchase</h1>
         <div class='mb-3'>
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 

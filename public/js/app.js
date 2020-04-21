@@ -1984,13 +1984,15 @@ __webpack_require__.r(__webpack_exports__);
     return {
       labels: [],
       datasets: [],
-      id: ""
+      id: "",
+      timeUnit: "month"
     };
   },
-  props: ["colors", "identifier"],
+  props: ["colors", "identifier", "unit"],
   mounted: function mounted() {
     var _this = this;
 
+    if (this.unit) this.timeUnit = this.unit;
     this.id = this.identifier;
     axios.post("/charts/" + this.identifier).then(function (res) {
       if (res.status == 200) {
@@ -2040,9 +2042,13 @@ __webpack_require__.r(__webpack_exports__);
               ticks: {
                 autoSkip: true,
                 maxRotation: 0,
-                padding: 10
+                autoSkipPadding: 10
               },
-              distribution: "linear"
+              distribution: "series",
+              type: "time",
+              time: {
+                unit: _this.timeUnit
+              }
             }],
             yAxes: [{
               ticks: {

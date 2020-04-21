@@ -5,7 +5,7 @@
 
 @section('content')
     <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-        <h1 class="py-2 text-2xl font-semibold">Brave Browser Daily Active User (Millions)</h1>
+        <h1 class="py-4 text-2xl font-semibold">Brave Browser Daily Active User (Millions)</h1>
         <div class='mb-3'>
             <line-chart 
                 colors="{{json_encode(config('bravebat.colors'))}}" 

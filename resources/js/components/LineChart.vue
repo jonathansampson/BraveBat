@@ -10,11 +10,13 @@ export default {
     return {
       labels: [],
       datasets: [],
-      id: ""
+      id: "",
+      timeUnit: "month"
     };
   },
-  props: ["colors", "identifier"],
+  props: ["colors", "identifier", "unit"],
   mounted: function() {
+    if (this.unit) this.timeUnit = this.unit;
     this.id = this.identifier;
     axios.post("/charts/" + this.identifier).then(res => {
       if (res.status == 200) {
@@ -63,9 +65,13 @@ export default {
                 ticks: {
                   autoSkip: true,
                   maxRotation: 0,
-                  padding: 10
+                  autoSkipPadding: 10
                 },
-                distribution: "linear"
+                distribution: "series",
+                type: "time",
+                time: {
+                  unit: this.timeUnit
+                }
               }
             ],
             yAxes: [
