@@ -2,9 +2,10 @@
 
 namespace App\Console\Commands;
 
+use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Log;
+use Illuminate\Support\Facades\Notification;
 
 class BackFillCreatorDataCommand extends Command
 {
