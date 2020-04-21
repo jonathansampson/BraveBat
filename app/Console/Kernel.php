@@ -32,7 +32,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('backfill:website')->dailyAt("16:30");
         $schedule->command('backfill:twitter')->dailyAt("16:35");
-        $schedule->command('backfill:vimeo')->dailyAt("16:40");
+        $schedule->command('backfill:vimeo')->dailyAt("17:05");
         $schedule->command('backfill:twitch')->dailyAt("16:45");
 
         // $schedule->command('backfill:youtube')->dailyAt("04:03");
