@@ -21,7 +21,10 @@
                     @foreach ($searchResults as $result)
                         <li class="">
                             <a href="" class="flex items-center block py-4 transition duration-150 ease-in-out text-brand-dark hover:bg-gray-700 hover:text-brand-light">
-                                <span class="ml-4">{{ $result->name }}</span>
+                                <div class="w-4 h-4 ml-2">
+                                    @include('partials.icons.' . $result->channel)
+                                </div>
+                                <span class="ml-2">{{ $result->name }}</span>
                             </a>
                         </li>
                     @endforeach
