@@ -49,7 +49,7 @@ class BackFillCreatorDataCommand extends Command
         //     });
         // Log::notice('finish back filling');
 
-        Log::notice('start back filling');
+        Log::notice('start youtube filling');
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%youtube#channel%')
             ->take(2000)
@@ -58,8 +58,8 @@ class BackFillCreatorDataCommand extends Command
                 $creator->fillChannel();
                 $creator->processCreatable();
             });
-        Log::notice('finish back filling');
+        Log::notice('finish youtube filling');
         Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new App\Notifications\ScheduledCommandFinished('Backfill job is done'));
+            ->notify(new App\Notifications\ScheduledCommandFinished('Backfill youtube is done'));
     }
 }
