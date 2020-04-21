@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { Chart } from "chart.js/dist/Chart.js";
+import { Chart } from "chart.js";
 
 export default {
   data: function() {
@@ -48,7 +48,7 @@ export default {
         },
         options: {
           legend: {
-            display: true,
+            display: false,
             labels: {
               boxWidth: 14,
               usePointStyle: true
@@ -59,13 +59,17 @@ export default {
               {
                 gridLines: {
                   display: false
+                },
+                ticks: {
+                  autoSkip: true
                 }
               }
             ],
             yAxes: [
               {
                 ticks: {
-                  suggestedMin: 0
+                  suggestedMin: 0,
+                  autoSkip: true
                 }
               }
             ]

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BraveUsage;
 use DB;
+use App\Models\BraveUsage;
 
 class ChartDataController extends Controller
 {
@@ -45,7 +45,8 @@ class ChartDataController extends Controller
     public function adCampaignSupportedCountries()
     {
         $data = DB::select("SELECT
-            DATE_FORMAT(record_date, '%Y-%m') AS month,
+            -- DATE_FORMAT(record_date, '%Y-%m') AS month,
+            DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
             max(countries) AS countries
         FROM (
             SELECT
@@ -75,7 +76,8 @@ class ChartDataController extends Controller
     public function activeAdCampaigns()
     {
         $data = DB::select("SELECT
-            DATE_FORMAT(record_date, '%Y-%m') AS month,
+            -- DATE_FORMAT(record_date, '%Y-%m') AS month,
+            DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
             max(campaigns) AS campaigns
         FROM (
             SELECT
@@ -98,6 +100,60 @@ class ChartDataController extends Controller
             'labels' => $labels,
             'data' => [
                 'Number of Active Campaigns' => $campaigns
+            ]
+        ];
+    }
+
+    public function batCreatorSummary()
+    {
+        $data = DB::select("SELECT
+            channel,
+            count(id) AS summary
+        FROM
+            creators
+        WHERE
+            active = 1
+        GROUP BY
+            channel
+        ORDER BY 
+            summary desc");
+        $labels = collect($data)->map(fn ($item) => $item->channel);
+        $summaries = collect($data)->map(fn ($item) => $item->summary);
+        // return [
+        //     'labels' => $labels,
+        //     'data' => $summaries
+        // ];
+        return [
+            'labels' => ['youtube', 'website', 'twitch', 'twitter', 'reddit', 'vimeo', 'github'],
+            'data' => [301686, 48383, 44928, 59325, 46156, 19613, 13742]
+        ];
+    }
+
+    public function creatorStats($channel = null)
+    {
+        // work on channel later
+        $data = DB::select("SELECT
+            DATE_FORMAT(record_date, '%Y-%m') AS month,
+            max(verified_creators) AS verified_creators
+        FROM (
+            SELECT
+                record_date,
+                sum(verified_creators) AS verified_creators
+            FROM
+                creator_stats
+            GROUP BY
+                record_date) t
+        GROUP BY
+            month
+        ORDER BY
+            month");
+        $labels = collect($data)->map(fn ($item) => $item->month);
+        $verified_creators = collect($data)->map(fn ($item) => $item->verified_creators);
+
+        return [
+            'labels' => $labels,
+            'data' => [
+                'Verified Creators' => $verified_creators
             ]
         ];
     }

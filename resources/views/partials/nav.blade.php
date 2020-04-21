@@ -14,9 +14,11 @@
                     
                 </a>
             </div>
-            {{-- <div class="flex-1 text-right text-brand-light">
-                another
-            </div> --}}
+            <div class="flex-1 text-right text-brand-light">
+                
+                {{-- <a href="{{route('login')}}" class="text-brand-light">Login</a> --}}
+                
+            </div>
         </div>
     </nav>
 

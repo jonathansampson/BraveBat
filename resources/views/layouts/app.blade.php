@@ -28,7 +28,7 @@
         </script>
     @endif
 </head>
-<body class="antialiased leading-none bg-gray-100">
+<body class="antialiased leading-none text-brand-dark">
     <div id="app" class="flex flex-col min-h-screen">
         @include('partials.nav')
 
