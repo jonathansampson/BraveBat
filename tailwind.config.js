@@ -9,10 +9,19 @@ module.exports = {
         'brand-purple': '#a3278f',
         'brand-blue': '#4f30ab'
       }
-    }
+    },
+    spinner: (theme) => ({
+      default: {
+        color: '#fb542b',
+        size: '1em',
+        border: '2px',
+        speed: '500ms',
+      },
+    }),
   },
   variants: {},
   plugins: [
-    require('@tailwindcss/custom-forms')
+    require('@tailwindcss/custom-forms'),
+    require('tailwindcss-spinner')()
   ]
 }

@@ -20,8 +20,13 @@ class BraveVerifiedCreatorService
             return trim($item[0]);
         })->unique()->toArray();
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
+
+        Log::notice('The count of new api is  ' . count($apiInfo));
+        Log::notice('The count of database is  ' . count($databaseInfo));
         $incomings = array_diff($apiInfo, $databaseInfo);
         $outgoings = array_diff($databaseInfo, $apiInfo);
+        Log::notice('The count of incomings is  ' . count($incomings));
+        Log::notice('The count of outgoings is  ' . count($outgoings));
         Creator::handleInput($incomings, $outgoings);
     }
 }

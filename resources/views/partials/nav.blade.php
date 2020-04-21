@@ -1,6 +1,6 @@
 <div class="bg-brand-dark">
     <nav class="container px-4 py-4 mx-auto sm:px-6 md:px-8">
-        <div class="flex items-center justify-center">
+        <div class="flex items-center justify-between">
             <div>
                 <a href="{{ url('/') }}" class="flex items-center font-semibold no-underline text-brand-orange">
                     <div class="w-6 h-6">
@@ -14,8 +14,9 @@
                     
                 </a>
             </div>
-            <div class="flex-1 text-right text-brand-light">
-                
+            <div class="text-brand-light">
+                <livewire:search>
+
                 {{-- <a href="{{route('login')}}" class="text-brand-light">Login</a> --}}
                 
             </div>
