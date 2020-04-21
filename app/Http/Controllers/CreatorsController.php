@@ -12,12 +12,15 @@ class CreatorsController extends Controller
     {
         $channel = 'website';
         $creators = Creator::where('channel', $channel)->get();
-        dd($creators);
+        return 'index';
+        // dd($creators);
     }
 
     public function show($channel, $name)
     {
         $creator = Creator::where('channel', $channel)->where('name', $name)->first();
-        dd($creator);
+        return 'show';
+
+        // dd($creator);
     }
 }
