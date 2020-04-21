@@ -21,10 +21,11 @@ export default {
         let data = res.data;
         this.labels = data.labels;
         let colors = JSON.parse(this.colors);
+        let brandColors = this.labels.map(label => colors[label]);
         this.datasets = [
           {
             data: data.data,
-            backgroundColor: colors.splice(0, data.data.length)
+            backgroundColor: brandColors
           }
         ];
       }

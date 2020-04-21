@@ -13,3 +13,7 @@ Model: BatUsage model
 <x-verified-badge verifiedDate="sfds"/>
 <x-download-badge />
 
+Search function - alpine and livewire
+Datatable function - alpine and livewire
+API
+Make a progressive web app

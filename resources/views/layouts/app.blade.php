@@ -18,6 +18,8 @@
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
 
+    @livewireStyles
+
     @if (app()->environment('production'))
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163561589-1"></script>
         <script>
@@ -37,6 +39,8 @@
         </main>
         @include('partials.footer')
     </div>
+    @livewireScripts
+
 </body>
 </html>
 

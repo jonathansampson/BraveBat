@@ -1933,9 +1933,14 @@ __webpack_require__.r(__webpack_exports__);
         var data = res.data;
         _this.labels = data.labels;
         var colors = JSON.parse(_this.colors);
+
+        var brandColors = _this.labels.map(function (label) {
+          return colors[label];
+        });
+
         _this.datasets = [{
           data: data.data,
-          backgroundColor: colors.splice(0, data.data.length)
+          backgroundColor: brandColors
         }];
       }
 

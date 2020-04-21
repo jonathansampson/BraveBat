@@ -25,5 +25,14 @@ return [
         '#faf089',
         '#9ae6b4',
         '#81e6d9',
+    ],
+    'creator_brand_colors' => [
+        'youtube' => '#ff0000',
+        'reddit' => '#ff4500',
+        'twitch' => '#6441a5',
+        'vimeo' => '#1ab7ea',
+        'github' => '#4078c0',
+        'twitter' => '#1da1f2',
+        'website' => '#343546',
     ]
 ];

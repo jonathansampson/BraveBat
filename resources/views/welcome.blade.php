@@ -28,7 +28,7 @@
             <h2 class="py-8 text-2xl font-semibold text-center">Verified Creator Platform Distribution</h2>
 
             <donut-chart 
-                colors="{{json_encode(config('bravebat.colors'))}}" 
+                colors="{{json_encode(config('bravebat.creator_brand_colors'))}}" 
                 identifier="bat_creator_summary"
                 >
             </donut-chart>

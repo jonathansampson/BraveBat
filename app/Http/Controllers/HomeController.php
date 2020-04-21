@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Creator;
+
 class HomeController extends Controller
 {
     public function __construct()
