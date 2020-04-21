@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace App\Console\Commands\Backfill;
 
 use Log;
 use App\Models\Creator;
@@ -8,21 +8,21 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\ScheduledCommandFinished;
 
-class BackFillCreatorDataCommand extends Command
+class BackFillTwitterDataCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'creator:backfill';
+    protected $signature = 'backfill:twitter';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Backfill Creator Data';
+    protected $description = 'Backfill Twitter Data';
 
     /**
      * Create a new command instance.
@@ -41,26 +41,20 @@ class BackFillCreatorDataCommand extends Command
      */
     public function handle()
     {
-        // Log::notice('start back filling');
-        // Creator::where('channel', '')
-        //     ->get()
-        //     ->each(function ($creator, $key) {
-        //         $creator->fillChannel();
-        //         // $creator->processCreatable();
-        //     });
-        // Log::notice('finish back filling');
-
-        Log::notice('start youtube filling');
+        Log::notice('start Twitter filling');
+        Notification::route('slack', config('services.slack.webhook'))
+            ->notify(new ScheduledCommandFinished('start Twitter filling'));
         Creator::whereNull('creatable_id')
-            ->where('creator', 'like', '%youtube#channel%')
-            ->take(2000)
+            ->where('creator', 'like', '%twitter#channel%')
+            ->take(1000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
                 $creator->processCreatable();
+                sleep(6);
             });
-        Log::notice('finish youtube filling');
+        Log::notice('finish Twitter filling');
         Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('Backfill youtube is done'));
+            ->notify(new ScheduledCommandFinished('finish Twitter filling'));
     }
 }
