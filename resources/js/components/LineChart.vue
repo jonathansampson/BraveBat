@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { Chart } from "chart.js/dist/Chart.js";
+import { Chart } from "chart.js";
 
 export default {
   data: function() {
@@ -62,7 +62,8 @@ export default {
                 },
                 ticks: {
                   autoSkip: true,
-                  maxRotation: 0
+                  maxRotation: 0,
+                  padding: 10
                 },
                 distribution: "linear"
               }

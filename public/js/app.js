@@ -1972,8 +1972,8 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var chart_js_dist_Chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js/dist/Chart.js */ "./node_modules/chart.js/dist/Chart.js");
-/* harmony import */ var chart_js_dist_Chart_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chart_js_dist_Chart_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -2018,7 +2018,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var ctx = document.getElementById(_this.id);
-      var myChart = new chart_js_dist_Chart_js__WEBPACK_IMPORTED_MODULE_0__["Chart"](ctx, {
+      var myChart = new chart_js__WEBPACK_IMPORTED_MODULE_0__["Chart"](ctx, {
         type: "line",
         data: {
           labels: _this.labels,
@@ -2039,7 +2039,8 @@ __webpack_require__.r(__webpack_exports__);
               },
               ticks: {
                 autoSkip: true,
-                maxRotation: 0
+                maxRotation: 0,
+                padding: 10
               },
               distribution: "linear"
             }],
