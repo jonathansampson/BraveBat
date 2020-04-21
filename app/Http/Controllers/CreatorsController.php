@@ -20,7 +20,6 @@ class CreatorsController extends Controller
     {
         $creator = Creator::where('channel', $channel)->where('name', $name)->first();
         return 'show';
-
         // dd($creator);
     }
 }
