@@ -6,6 +6,7 @@ use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\ScheduledCommandFinished;
 
 class BackFillCreatorDataCommand extends Command
 {
@@ -60,6 +61,6 @@ class BackFillCreatorDataCommand extends Command
             });
         Log::notice('finish youtube filling');
         Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new App\Notifications\ScheduledCommandFinished('Backfill youtube is done'));
+            ->notify(new ScheduledCommandFinished('Backfill youtube is done'));
     }
 }
