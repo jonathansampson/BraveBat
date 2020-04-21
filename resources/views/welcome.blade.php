@@ -41,9 +41,8 @@
             >
             </line-chart>
         </div>
-
     </div>
- 
 </div>
 @endsection
+
 

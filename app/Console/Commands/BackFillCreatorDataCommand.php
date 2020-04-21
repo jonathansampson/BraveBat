@@ -40,31 +40,26 @@ class BackFillCreatorDataCommand extends Command
      */
     public function handle()
     {
-        // Creator::where('id', 57)
+        // Log::notice('start back filling');
+        // Creator::where('channel', '')
         //     ->get()
-        //     ->each(function ($creator) {
+        //     ->each(function ($creator, $key) {
         //         $creator->fillChannel();
-        //         $creator->processCreatable();
+        //         // $creator->processCreatable();
         //     });
+        // Log::notice('finish back filling');
 
         Log::notice('start back filling');
-        Creator::where('channel', '')
+        Creator::whereNull('creatable_id')
+            ->where('creator', 'like', '%youtube#channel%')
+            ->take(2000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
-                // $creator->processCreatable();
+                $creator->processCreatable();
             });
         Log::notice('finish back filling');
         Notification::route('slack', config('services.slack.webhook'))
             ->notify(new App\Notifications\ScheduledCommandFinished('Backfill job is done'));
-
-        // Creator::whereNull('creatable_id')
-        //     ->where('creator', 'like', '%twitch#author%')
-        //     ->take(10)
-        //     ->get()
-        //     ->each(function ($creator, $key) {
-        //         $creator->fillChannel();
-        //         $creator->processCreatable();
-        //     });
     }
 }

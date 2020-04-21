@@ -3,7 +3,6 @@ window.axios = require('axios');
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.Vue = require('vue');
-import 'alpinejs';
 
 Vue.component('line-chart', require('./components/LineChart.vue').default);
 Vue.component('donut-chart', require('./components/DonutChart.vue').default);

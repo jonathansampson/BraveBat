@@ -1,4 +1,4 @@
-<div class="relative" >
+<div class="relative">
     <input
         wire:model.debounce.500ms="search"
         type="text"
@@ -28,7 +28,6 @@
                             </a>
                         </li>
                     @endforeach
-
                 </ul>
             @else
                 <div class="px-3 py-3 text-brand-dark">No results for "{{ $search }}"</div>

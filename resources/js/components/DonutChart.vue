@@ -30,7 +30,6 @@ export default {
         ];
       }
 
-      console.log(this.datasets);
       var ctx = document.getElementById(this.id);
       ctx.height = 200;
 

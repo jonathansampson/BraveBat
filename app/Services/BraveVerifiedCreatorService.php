@@ -14,7 +14,7 @@ class BraveVerifiedCreatorService
      */
     public static function import()
     {
-        $url = "https://publishers-distro.basicattentiontoken.org/api/v1/public/channels";
+        $url = config('bravebat.brave_api');
         $content = json_decode(file_get_contents($url));
         $apiInfo = collect($content)->map(function ($item) {
             return trim($item[0]);
