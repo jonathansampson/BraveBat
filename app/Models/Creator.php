@@ -45,7 +45,7 @@ class Creator extends Model
                     'verified_at' => Carbon::today()
                 ]);
                 $creator->fillChannel();
-                $creator->processCreatable();
+                // $creator->processCreatable();
             }
         }
 

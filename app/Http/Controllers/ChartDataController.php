@@ -119,14 +119,14 @@ class ChartDataController extends Controller
             summary desc");
         $labels = collect($data)->map(fn ($item) => $item->channel);
         $summaries = collect($data)->map(fn ($item) => $item->summary);
-        // return [
-        //     'labels' => $labels,
-        //     'data' => $summaries
-        // ];
         return [
-            'labels' => ['youtube', 'website', 'twitch', 'twitter', 'reddit', 'vimeo', 'github'],
-            'data' => [301686, 48383, 44928, 59325, 46156, 19613, 13742]
+            'labels' => $labels,
+            'data' => $summaries
         ];
+        // return [
+        //     'labels' => ['youtube', 'website', 'twitch', 'twitter', 'reddit', 'vimeo', 'github'],
+        //     'data' => [301686, 48383, 44928, 59325, 46156, 19613, 13742]
+        // ];
     }
 
     public function creatorStats($channel = null)
