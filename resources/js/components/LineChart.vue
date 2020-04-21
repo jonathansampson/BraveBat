@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import { Chart } from "chart.js";
+import { Chart } from "chart.js/dist/chart.js";
 
 export default {
   data: function() {
@@ -61,8 +61,10 @@ export default {
                   display: false
                 },
                 ticks: {
-                  autoSkip: true
-                }
+                  autoSkip: true,
+                  maxRotation: 0
+                },
+                distribution: "linear"
               }
             ],
             yAxes: [
@@ -70,7 +72,8 @@ export default {
                 ticks: {
                   suggestedMin: 0,
                   autoSkip: true
-                }
+                },
+                distribution: "linear"
               }
             ]
           }
