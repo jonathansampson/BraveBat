@@ -57,6 +57,3 @@ class BackFillWebsiteDataCommand extends Command
             ->notify(new ScheduledCommandFinished('finish website filling'));
     }
 }
-
-
-#author:
