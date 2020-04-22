@@ -5,8 +5,7 @@ namespace App\Console\Commands\Backfill;
 use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\ScheduledCommandFinished;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillTwitterDataCommand extends Command
 {
@@ -41,9 +40,7 @@ class BackFillTwitterDataCommand extends Command
      */
     public function handle()
     {
-        Log::notice('start Twitter filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('start Twitter filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Twitter filling');
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%twitter#channel%')
             ->take(1000)
@@ -54,7 +51,6 @@ class BackFillTwitterDataCommand extends Command
                 sleep(6);
             });
         Log::notice('finish Twitter filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('finish Twitter filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Twitter filling');
     }
 }

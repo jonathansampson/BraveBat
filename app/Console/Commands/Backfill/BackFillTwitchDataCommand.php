@@ -2,11 +2,9 @@
 
 namespace App\Console\Commands\Backfill;
 
-use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\ScheduledCommandFinished;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillTwitchDataCommand extends Command
 {
@@ -41,9 +39,7 @@ class BackFillTwitchDataCommand extends Command
      */
     public function handle()
     {
-        Log::notice('start Twitch filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('start Twitch filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Twitch filling');
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%twitch#author%')
             ->take(2000)
@@ -53,8 +49,6 @@ class BackFillTwitchDataCommand extends Command
                 $creator->processCreatable();
                 sleep(3);
             });
-        Log::notice('finish Twitch filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('finish Twitch filling'));
+        SimpleScheduledTaskSlackAndLogService::message('finish Twitch filling');
     }
 }

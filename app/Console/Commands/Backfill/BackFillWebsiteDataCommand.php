@@ -5,8 +5,8 @@ namespace App\Console\Commands\Backfill;
 use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\ScheduledCommandFinished;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
+
 
 class BackFillWebsiteDataCommand extends Command
 {
@@ -41,9 +41,8 @@ class BackFillWebsiteDataCommand extends Command
      */
     public function handle()
     {
-        Log::notice('start website filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('start website filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start website filling');
+
         Creator::whereNull('creatable_id')
             ->where('channel', 'website')
             ->take(2000)
@@ -53,7 +52,6 @@ class BackFillWebsiteDataCommand extends Command
                 $creator->processCreatable();
             });
         Log::notice('finish website filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('finish website filling'));
+        SimpleScheduledTaskSlackAndLogService::message('finish website filling');
     }
 }

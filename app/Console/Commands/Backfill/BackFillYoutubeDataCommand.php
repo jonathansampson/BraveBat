@@ -5,8 +5,7 @@ namespace App\Console\Commands\Backfill;
 use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\ScheduledCommandFinished;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillYoutubeDataCommand extends Command
 {
@@ -41,9 +40,8 @@ class BackFillYoutubeDataCommand extends Command
      */
     public function handle()
     {
-        Log::notice('start youtube filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('start youtube filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
+
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%youtube#channel%')
             ->take(2000)
@@ -53,7 +51,6 @@ class BackFillYoutubeDataCommand extends Command
                 $creator->processCreatable();
             });
         Log::notice('finish youtube filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('finish youtube filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
     }
 }

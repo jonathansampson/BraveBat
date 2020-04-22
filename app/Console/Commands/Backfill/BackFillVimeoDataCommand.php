@@ -5,8 +5,7 @@ namespace App\Console\Commands\Backfill;
 use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\ScheduledCommandFinished;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillVimeoDataCommand extends Command
 {
@@ -41,12 +40,10 @@ class BackFillVimeoDataCommand extends Command
      */
     public function handle()
     {
-        Log::notice('start Vimeo filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('start Vimeo filling'));
+        SimpleScheduledTaskSlackAndLogService::message('start Vimeo filling');
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%vimeo#channel%')
-            ->take(10)
+            ->take(1000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
@@ -54,7 +51,6 @@ class BackFillVimeoDataCommand extends Command
                 sleep(5);
             });
         Log::notice('finish Vimeo filling');
-        Notification::route('slack', config('services.slack.webhook'))
-            ->notify(new ScheduledCommandFinished('finish Vimeo filling'));
+        SimpleScheduledTaskSlackAndLogService::message('finish Vimeo filling');
     }
 }
