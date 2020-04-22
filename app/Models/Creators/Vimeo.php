@@ -14,8 +14,7 @@ class Vimeo extends Model
 
     public function callApi()
     {
-        // $service = new VimeoService();
-        $service = cache()->remember('vimeo_service', 3600, function () {
+        $service = cache()->remember('vimeo_service', 1800, function () {
             return new VimeoService();
         });
         if ($this->vimeo_id) {
@@ -27,8 +26,3 @@ class Vimeo extends Model
         }
     }
 }
-
-
-// $value = Cache::remember('users', $seconds, function () {
-//     return DB::table('users')->get();
-// });

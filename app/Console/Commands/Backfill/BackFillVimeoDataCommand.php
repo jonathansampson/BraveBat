@@ -51,7 +51,7 @@ class BackFillVimeoDataCommand extends Command
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
                 $creator->processCreatable();
-                sleep(10);
+                sleep(5);
             });
         Log::notice('finish Vimeo filling');
         Notification::route('slack', config('services.slack.webhook'))
