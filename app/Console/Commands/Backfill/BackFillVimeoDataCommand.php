@@ -46,7 +46,7 @@ class BackFillVimeoDataCommand extends Command
             ->notify(new ScheduledCommandFinished('start Vimeo filling'));
         Creator::whereNull('creatable_id')
             ->where('creator', 'like', '%vimeo#channel%')
-            ->take(2000)
+            ->take(10)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
