@@ -28,6 +28,7 @@
                             <li>
                                 <a href="{{route('creators.show', $result->id) }}" 
                                     class="flex items-center block py-4 transition duration-150 ease-in-out text-brand-dark hover:bg-gray-700 hover:text-brand-light"
+                                    tabindex="-1"
                                 >
                                     <div class="w-4 h-4 ml-2">
                                         @include('partials.icons.' . $result->channel)
