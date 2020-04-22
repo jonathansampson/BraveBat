@@ -10,7 +10,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('brave_browser_active_users', 'StatsController@brave_browser_active_users')->name('stats.brave_browser_active_users');
 Route::get('brave_initiated_bat_purchase', 'StatsController@brave_initiated_bat_purchase')->name('stats.brave_initiated_bat_purchase');
 Route::get('brave_ads_campaigns', 'StatsController@brave_ads_campaigns')->name('stats.brave_ads_campaigns');
-Route::get('creators/{channel}/{name}', 'CreatorsController@show')->name('creators.show');
+Route::get('creators/{id}', 'CreatorsController@show')->name('creators.show');
 Route::get('creators/{channel}', 'CreatorsController@index')->name('creators.index');
 
 

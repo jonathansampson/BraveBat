@@ -7,20 +7,27 @@ use Livewire\Component;
 
 class Search extends Component
 {
-    public $search = '';
+    public $search;
+    public $searchResults;
+
+    public function mounted()
+    {
+        $this->clear();
+    }
+
+
+    public function clear()
+    {
+        $this->search = '';
+        $this->searchResults = [];
+        $this->highlightIndex = 0;
+    }
 
     public function render()
     {
-        $searchResults = [];
         if (strlen($this->search) >= 2) {
-            $searchResults = Creator::where('name', 'LIKE', '%' . $this->search . '%')->get();
-            // $searchResults = Http::withToken(config('services.tmdb.token'))
-            //     ->get('https://api.themoviedb.org/3/search/movie?query=' . $this->search)
-            //     ->json()['results'];
+            $this->searchResults = Creator::where('name', 'LIKE', '%' . $this->search . '%')->take(5)->get();
         }
-
-        return view('livewire.search', [
-            'searchResults' => collect($searchResults)->take(7),
-        ]);
+        return view('livewire.search');
     }
 }

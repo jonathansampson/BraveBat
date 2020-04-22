@@ -16,9 +16,9 @@ class CreatorsController extends Controller
         // dd($creators);
     }
 
-    public function show($channel, $name)
+    public function show($id)
     {
-        $creator = Creator::where('channel', $channel)->where('name', $name)->first();
+        $creator = Creator::find($id);
         return 'show';
         // dd($creator);
     }
