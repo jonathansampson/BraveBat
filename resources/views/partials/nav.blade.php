@@ -1,4 +1,4 @@
-<div class="bg-brand-dark">
+<div class="bg-brand-dark" id='search'>
     <nav class="container px-4 py-4 mx-auto sm:px-6 md:px-8">
         <div class="flex flex-col items-center justify-between sm:flex-row">
             <div class="mb-4 sm:mb-0">
@@ -10,8 +10,7 @@
                     </div>
                     <div class="ml-2 text-2xl text-brand-light" style="font-family: 'Poppins', sans-serif;">
                         BraveBat
-                    </div>
-                    
+                    </div>   
                 </a>
             </div>
             <div class="text-brand-light">
@@ -22,5 +21,4 @@
             </div>
         </div>
     </nav>
-
 </div>

@@ -19,7 +19,6 @@ class CreatorWebsiteTest extends TestCase
         $website = Website::create(['name' => 'wikipedia.org']);
         $creator = $website->creator()->create(['creator' => 'Something']);
         $website->callApi();
-        $this->assertEquals($website->fresh()->title, "Wikipedia");
         $this->assertEquals($creator->fresh()->name, "wikipedia.org");
     }
 
@@ -32,7 +31,6 @@ class CreatorWebsiteTest extends TestCase
         $website = Website::create(['name' => 'neverssl.com']);
         $creator = $website->creator()->create(['creator' => 'Something']);
         $website->callApi();
-        $this->assertEquals($website->fresh()->title, "NeverSSL - Connecting ... ");
         $this->assertEquals($creator->fresh()->name, "neverssl.com");
     }
 
@@ -45,7 +43,6 @@ class CreatorWebsiteTest extends TestCase
         $website = Website::create(['name' => 'dsfsfsfsfsfsfsfssf.com']);
         $creator = $website->creator()->create(['creator' => 'Something']);
         $website->callApi();
-        $this->assertNull($website->fresh()->title);
         $this->assertNull($creator->fresh()->name);
     }
 }

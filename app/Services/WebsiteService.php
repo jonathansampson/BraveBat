@@ -37,29 +37,6 @@ class WebsiteService
         }
     }
 
-    public function getMetaData($website)
-    {
-        try {
-            $page = file_get_contents($website);
-            $titleTag = preg_match('/<title[^>]*>(.*?)<\/title>/ims', $page, $match);
-            if ($titleTag) $title = utf8_encode($match[1]);
-            $tags = get_meta_tags($website);
-            $description = '';
-            if (isset($tags['description'])) {
-                $description = utf8_encode(Str::limit($tags['description'], 250));
-            }
-            return [
-                'success' => true,
-                'result' => [
-                    'title' => $title,
-                    'description' => $description
-                ]
-            ];
-        } catch (\Exception $e) {
-            return ['success' => false, 'result' => 'Invalid website'];
-        }
-    }
-
     public function getScreenshot($website)
     {
         try {

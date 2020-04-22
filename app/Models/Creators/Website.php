@@ -26,7 +26,6 @@ class Website extends Model
     public function callApi()
     {
         $this->getAlexaRanking();
-        $this->getMetaData();
         $this->getScreenshot();
         if ($this->screenshot) {
             $this->syncName();
@@ -41,27 +40,6 @@ class Website extends Model
             $this->alexa_ranking = $response['result']['alexa_ranking'];
             $this->save();
         }
-    }
-
-    public function getMetaData()
-    {
-        $https_success = $this->getMetaDataBasedOnUrl($this->httpsUrl());
-        if (!$https_success) {
-            $this->getMetaDataBasedOnUrl($this->httpUrl());
-        }
-    }
-
-    public function getMetaDataBasedOnUrl($url)
-    {
-        $service = new WebsiteService();
-        $response = $service->getMetaData($url);
-        if ($response['success']) {
-            $this->title = $response['result']['title'];
-            $this->description = $response['result']['description'];
-            $this->save();
-            return true;
-        }
-        return false;
     }
 
     public function getScreenshot()

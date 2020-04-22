@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands\Backfill;
 
-use Log;
 use App\Models\Creator;
 use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
@@ -50,7 +49,6 @@ class BackFillVimeoDataCommand extends Command
                 $creator->processCreatable();
                 sleep(5);
             });
-        Log::notice('finish Vimeo filling');
         SimpleScheduledTaskSlackAndLogService::message('finish Vimeo filling');
     }
 }

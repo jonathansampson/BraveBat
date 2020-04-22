@@ -59,54 +59,6 @@ class WebsiteServiceTest extends TestCase
      * @test
      * @group api
      */
-    public function website_service_can_get_meta_data_from_valid_https_site()
-    {
-        $service = new WebsiteService;
-        $response = $service->getMetaData('https://google.com');
-        $this->assertTrue($response['success']);
-        $this->assertEquals($response['result']['title'], 'Google');
-    }
-
-    /**
-     * @test
-     * @group api
-     */
-    public function website_service_can_get_meta_data_from_valid_http_site()
-    {
-        $service = new WebsiteService;
-        $response = $service->getMetaData('http://neverssl.com');
-        $this->assertTrue($response['success']);
-        $this->assertEquals($response['result']['title'], 'NeverSSL - Connecting ... ');
-    }
-
-    /**
-     * @test
-     * @group api
-     */
-    public function website_service_cannot_get_meta_data_from_http_site_with_https_connection()
-    {
-        $service = new WebsiteService;
-        $response = $service->getMetaData('https://neverssl.com');
-        $this->assertFalse($response['success']);
-        $this->assertEquals($response['result'], 'Invalid website');
-    }
-
-    /**
-     * @test
-     * @group api
-     */
-    public function website_service_cannot_get_meta_data_from_invalid_website()
-    {
-        $service = new WebsiteService;
-        $response = $service->getMetaData('https://sdfdasfasfdsafas.com');
-        $this->assertFalse($response['success']);
-        $this->assertEquals($response['result'], 'Invalid website');
-    }
-
-    /**
-     * @test
-     * @group api
-     */
     public function website_service_can_take_screenshot_of_valid_website()
     {
         $service = new WebsiteService;
