@@ -10,10 +10,7 @@ class CreatorsController extends Controller
 
     public function index($channel)
     {
-        $channel = 'website';
-        $creators = Creator::where('channel', $channel)->get();
-        return 'index';
-        // dd($creators);
+        return view('creators.index');
     }
 
     public function show($id)

@@ -26,7 +26,7 @@
                     <ul class="divide-y divide-gray-400">
                         @foreach ($searchResults as $index => $result)
                             <li>
-                                <a href="{{route('creators.show', $result->id) }}" 
+                                <a href="{{route('creators.show', [$result->channel, $result->id]) }}" 
                                     class="flex items-center block py-4 transition duration-150 ease-in-out text-brand-dark hover:bg-gray-700 hover:text-brand-light"
                                     tabindex="-1"
                                 >

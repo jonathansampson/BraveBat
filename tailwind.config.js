@@ -22,6 +22,7 @@ module.exports = {
   variants: {},
   plugins: [
     require('@tailwindcss/custom-forms'),
-    require('tailwindcss-spinner')()
+    require('tailwindcss-spinner')(),
+    require('tailwindcss-plugins/pagination')
   ]
 }

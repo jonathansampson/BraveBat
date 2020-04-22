@@ -10,7 +10,7 @@ class SimpleScheduledTaskSlackAndLogService
 {
     public static function message($message)
     {
-        Log::notice($message);
+        Log::info($message);
         Notification::route('slack', config('services.slack.webhook'))
             ->notify(new ScheduledCommandFinished($message));
     }
