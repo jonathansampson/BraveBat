@@ -36,8 +36,7 @@
             @endforeach
         </tbody>
     </table>
-    <div class="flex flex-col items-center justify-between mt-6 xl:flex-row">
+    <div class="flex flex-col items-center justify-between my-6">
         {{$websites->links()}}
-        <div class="my-6">Showing {{$websites->firstItem()}} out {{$websites->lastItem()}} out of {{$websites->total()}} websites</div>
     </div>
 </div>

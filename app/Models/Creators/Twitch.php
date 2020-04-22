@@ -14,7 +14,9 @@ class Twitch extends Model
 
     public function callApi()
     {
-        $service = new TwitchService();
+        $service = cache()->remember('twitch_service', 1800, function () {
+            return new TwitchService();
+        });
         if ($this->name) {
             $response = $service->getUser($this->name);
             if ($response['success']) {

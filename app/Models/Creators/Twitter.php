@@ -14,7 +14,9 @@ class Twitter extends Model
 
     public function callApi()
     {
-        $service = new TwitterService();
+        $service = cache()->remember('twitter_service', 1800, function () {
+            return new TwitterService();
+        });
         if ($this->twitter_id) {
             $response = $service->getUser($this->twitter_id);
             if ($response['success']) {
