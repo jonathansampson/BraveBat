@@ -3,7 +3,7 @@
     <div class="flex items-center justify-between">
         <div>
             <label class="flex items-center justify-center">
-                <span class="pr-2 text-gray-700">Per Page</span>
+                <span class="pr-1 text-gray-700">Per Page</span>
                 <select class="mt-1 form-select" wire:model="perPage">
                   <option>10</option>
                   <option>25</option>
@@ -13,7 +13,7 @@
         </div>
         <div>
             <input 
-            class="block w-full mt-1 form-input" 
+            class="w-40 mt-1 form-input" 
             placeholder="Search Website..."
             wire:model='search'
             >
