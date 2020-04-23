@@ -12,6 +12,7 @@ class CreatorsController extends Controller
     public function index($channel)
     {
         $websites = Website::query()
+            ->whereNotNull("alexa_ranking")
             ->orderBy('alexa_ranking', 'asc')
             ->paginate(10);
         return view('creators.index', compact('websites'));
