@@ -25,4 +25,9 @@ class Twitter extends Model
             }
         }
     }
+
+    public function link()
+    {
+        return "https://twitter.com/{$this->name}";
+    }
 }

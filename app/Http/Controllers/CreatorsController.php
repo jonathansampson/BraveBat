@@ -13,10 +13,16 @@ class CreatorsController extends Controller
         return view('creators.index');
     }
 
-    public function show($id)
+    public function show($channel, $id)
     {
-        $creator = Creator::find($id);
-        return 'show';
-        // dd($creator);
+        $creator = Creator::where('id', $id)
+            ->where('channel', $channel)
+            ->whereNotNull('name')->first();
+        if ($creator) {
+            $creatable = $creator->creatable;
+            return view('creators.show', compact('creator', 'creatable'));
+        }
+
+        abort(404);
     }
 }

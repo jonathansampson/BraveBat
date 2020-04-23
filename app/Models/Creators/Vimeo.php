@@ -25,4 +25,9 @@ class Vimeo extends Model
             }
         }
     }
+
+    public function link()
+    {
+        return "https://vimeo.com/{$this->name}";
+    }
 }

@@ -23,6 +23,11 @@ class Website extends Model
         return "http://" . $this->name;
     }
 
+    public function link()
+    {
+        return "https://" . $this->name;
+    }
+
     public function callApi()
     {
         $this->getAlexaRanking();

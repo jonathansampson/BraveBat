@@ -13,7 +13,7 @@
         </div>
         <div>
             <input 
-            class="w-40 mt-1 form-input" 
+            class="w-40 mt-1 form-input sm:w-64" 
             placeholder="Search Website..."
             wire:model='search'
             >
@@ -31,12 +31,17 @@
             @foreach ($websites as $website)
             <tr>
                 <td class="px-2 py-4 border">{{$website->name}}</td>
-                <td class="px-2 py-4 border">{{$website->alexa_ranking}}</td>
+                <td class="px-2 py-4 border">
+                    @if ($website->alexa_ranking)
+                        {{number_format($website->alexa_ranking)}}                    
+                    @endif
+                </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <div class="flex flex-col items-center justify-between my-6">
+    <div class="flex flex-col items-center justify-between mt-6 xl:flex-row">
         {{$websites->links()}}
+        <div class="my-6">Showing {{$websites->firstItem()}} out {{$websites->lastItem()}} out of {{$websites->total()}} websites</div>
     </div>
 </div>

@@ -10,7 +10,7 @@
     <title>BraveBat | @yield('title' , "Resource on Brave Browser, BAT and Beyond")</title>
 <meta name="description" content="@yield('description', 'Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities')"/>
     
-    <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon" />
+    <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon" />
 
 
 

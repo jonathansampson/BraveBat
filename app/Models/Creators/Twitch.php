@@ -25,4 +25,9 @@ class Twitch extends Model
             }
         }
     }
+
+    public function link()
+    {
+        return "https://www.twitch.tv/{$this->name}";
+    }
 }

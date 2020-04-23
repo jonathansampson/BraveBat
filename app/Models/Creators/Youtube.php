@@ -23,4 +23,9 @@ class Youtube extends Model
             }
         }
     }
+
+    public function link()
+    {
+        return "https://www.youtube.com/channel/{$this->youtube_id}";
+    }
 }
