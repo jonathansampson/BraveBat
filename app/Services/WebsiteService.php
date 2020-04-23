@@ -49,7 +49,7 @@ class WebsiteService
                 ->save(storage_path('app/temp.png'));
 
             $contents = Storage::disk('local')->get('temp.png');
-            Storage::put($filename, $contents);
+            Storage::put($filename, $contents, 'public');
             return [
                 'success' => true,
                 'result' => [

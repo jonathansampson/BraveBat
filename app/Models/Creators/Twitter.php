@@ -30,4 +30,15 @@ class Twitter extends Model
     {
         return "https://twitter.com/{$this->name}";
     }
+
+    public static function rank()
+    {
+        $creatables = self::whereNotNull('thumbnail')->orderBy('follower_count', 'desc')->get();
+        $fraction = 1 / $creatables->count();
+        foreach ($creatables as $index => $creatable) {
+            $creator = $creatable->creator;
+            $creator->rank = $index * $fraction;
+            $creator->save();
+        }
+    }
 }

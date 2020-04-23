@@ -35,6 +35,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:vimeo')->dailyAt("13:12");
         $schedule->command('backfill:twitch')->dailyAt("13:13");
         $schedule->command('backfill:youtube')->dailyAt("13:15");
+
+        $schedule->command('creator:rank')->dailyAt("18:35");
     }
 
     /**

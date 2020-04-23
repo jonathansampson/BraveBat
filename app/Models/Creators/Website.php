@@ -66,4 +66,19 @@ class Website extends Model
         }
         return false;
     }
+
+    public static function rank()
+    {
+        self::whereNull('alexa_ranking')->get()->each(function ($item) {
+            $item->alexa_ranking = 10000000;
+            $item->save();
+        });
+        $creatables = self::whereNotNull('screenshot')->orderBy('alexa_ranking', 'asc')->get();
+        $fraction = 1 / $creatables->count();
+        foreach ($creatables as $index => $creatable) {
+            $creator = $creatable->creator;
+            $creator->rank = $index * $fraction;
+            $creator->save();
+        }
+    }
 }

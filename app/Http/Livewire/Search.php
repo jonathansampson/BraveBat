@@ -26,7 +26,12 @@ class Search extends Component
     public function render()
     {
         if (strlen($this->search) >= 2) {
-            $this->searchResults = Creator::where('name', 'LIKE', '%' . $this->search . '%')->take(5)->get();
+            $this->searchResults = Creator::query()
+                ->whereNotNull('rank')
+                ->where('name', 'LIKE', '%' . $this->search . '%')
+                ->orderBy('rank', 'asc')
+                ->take(10)
+                ->get();
         }
         return view('livewire.search');
     }

@@ -93,36 +93,67 @@ class Creator extends Model
 
     public function processWebsite()
     {
-        $website = $this->creatable ?? Website::create(['name' => $this->channel_id]);
-        $this->creatable()->associate($website)->save();
-        $website->callApi();
+        $this->touch();
+        if (!$this->creatable) {
+            $creatable = Website::create(['name' => $this->channel_id]);
+            $this->creatable()->associate($creatable)->save();
+        } else {
+            $creatable = $this->creatable;
+        }
+        $creatable->touch();
+        $creatable->callApi();
     }
 
     public function processYoutube()
     {
-        $youtube = $this->creatable ?? Youtube::create(['youtube_id' => $this->channel_id]);
-        $this->creatable()->associate($youtube)->save();
-        $youtube->callApi();
+        $this->touch();
+        if (!$this->creatable) {
+            $creatable = Youtube::create(['youtube_id' => $this->channel_id]);
+            $this->creatable()->associate($creatable)->save();
+        } else {
+            $creatable = $this->creatable;
+        }
+        $creatable->touch();
+        $creatable->callApi();
     }
 
     public function processTwitch()
     {
-        $twitch = $this->creatable ?? Twitch::create(['name' => $this->channel_id]);
-        $this->creatable()->associate($twitch)->save();
-        $twitch->callApi();
+        $this->touch();
+        if (!$this->creatable) {
+            $creatable = Twitch::create(['name' => $this->channel_id]);
+            $this->creatable()->associate($creatable)->save();
+        } else {
+            $creatable = $this->creatable;
+        }
+        $creatable->touch();
+        $creatable->callApi();
     }
 
     public function processTwitter()
     {
-        $twitter = $this->creatable ?? Twitter::create(['twitter_id' => $this->channel_id]);
-        $this->creatable()->associate($twitter)->save();
-        $twitter->callApi();
+        $this->touch();
+        if (!$this->creatable) {
+            $creatable = Twitter::create(['twitter_id' => $this->channel_id]);
+            $this->creatable()->associate($creatable)->save();
+        } else {
+            $creatable = $this->creatable;
+        }
+        $creatable->touch();
+        $creatable->callApi();
     }
 
     public function processVimeo()
     {
-        $vimeo = $this->creatable ?? Vimeo::create(['vimeo_id' => $this->channel_id]);
-        $this->creatable()->associate($vimeo)->save();
-        $vimeo->callApi();
+        $this->touch();
+
+        if (!$this->creatable) {
+            $creatable = Vimeo::create(['vimeo_id' => $this->channel_id]);
+            $this->creatable()->associate($creatable)->save();
+        } else {
+            $creatable = $this->creatable;
+        }
+        $creatable->touch();
+        $creatable->callApi();
     }
 }

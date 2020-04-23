@@ -28,4 +28,15 @@ class Youtube extends Model
     {
         return "https://www.youtube.com/channel/{$this->youtube_id}";
     }
+
+    public static function rank()
+    {
+        $creatables = self::whereNotNull('thumbnail')->orderBy('subscriber_count', 'desc')->get();
+        $fraction = 1 / $creatables->count();
+        foreach ($creatables as $index => $creatable) {
+            $creator = $creatable->creator;
+            $creator->rank = $index * $fraction;
+            $creator->save();
+        }
+    }
 }
