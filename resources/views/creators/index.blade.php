@@ -10,13 +10,17 @@
         <table class="w-full">
             <thead>
                 <tr>
-                <th class="px-2 py-4 text-left">Website</th>
-                <th class="px-2 py-4 text-left">Alexa Ranking</th>
+                    <th class="px-2 py-4 text-left">#</th>
+                    <th class="px-2 py-4 text-left">Website</th>
+                    <th class="px-2 py-4 text-left">Alexa Ranking</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach ($websites as $website)
+                @foreach ($websites as $key => $website)
                 <tr>
+                    <td class="px-2 py-4 text-sm text-gray-600 border">
+                        {{$key + 1}}
+                    </dt>
                     <td class="px-2 py-4 border">
                         <a 
                             href="{{route('creators.show', [$website->creator->channel, $website->creator->id])}}"
@@ -33,7 +37,12 @@
             </tbody>
         </table>
         <div class="flex flex-col items-center justify-between my-6">
-            {{$websites->links()}}
+            <div class="hidden md:block">
+                {{$websites->links()}}
+            </div>
+            <div class="block md:hidden">
+                {{$websites->links('vendor.pagination.simple-default')}}
+            </div>
         </div>
     </div>
 </div>
