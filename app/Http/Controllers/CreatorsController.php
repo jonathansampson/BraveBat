@@ -4,13 +4,17 @@ namespace App\Http\Controllers;
 
 use App\Models\Creator;
 use Illuminate\Http\Request;
+use App\Models\Creators\Website;
 
 class CreatorsController extends Controller
 {
 
     public function index($channel)
     {
-        return view('creators.index');
+        $websites = Website::query()
+            ->orderBy('alexa_ranking', 'asc')
+            ->paginate(10);
+        return view('creators.index', compact('websites'));
     }
 
     public function show($channel, $id)
