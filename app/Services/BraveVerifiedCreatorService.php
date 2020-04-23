@@ -2,10 +2,11 @@
 
 namespace App\Services;
 
-use App\Models\Creator;
 use Log;
-use Carbon\Carbon;
 use Storage;
+use Carbon\Carbon;
+use App\Models\Creator;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BraveVerifiedCreatorService
 {
@@ -29,12 +30,12 @@ class BraveVerifiedCreatorService
         }, $content));
         echo count($apiInfo);
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
-        Log::info('The count of new api is  ' . count($apiInfo));
-        Log::info('The count of database is  ' . count($databaseInfo));
+        SimpleScheduledTaskSlackAndLogService::message('The count of new api is  ' . count($apiInfo));
+        SimpleScheduledTaskSlackAndLogService::message('The count of database is  ' . count($databaseInfo));
         $incomings = array_diff($apiInfo, $databaseInfo);
         $outgoings = array_diff($databaseInfo, $apiInfo);
-        Log::info('The count of incomings is  ' . count($incomings));
-        Log::info('The count of outgoings is  ' . count($outgoings));
+        SimpleScheduledTaskSlackAndLogService::message('The count of incomings is  ' . count($incomings));
+        SimpleScheduledTaskSlackAndLogService::message('The count of outgoings is  ' . count($outgoings));
         Creator::handleInput($incomings, $outgoings);
     }
 }
