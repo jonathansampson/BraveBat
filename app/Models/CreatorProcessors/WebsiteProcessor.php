@@ -17,7 +17,6 @@ class WebsiteProcessor
     {
         $this->getAlexaRanking();
         $this->getScreenshot();
-        $this->creator->touch();
     }
 
     public function getAlexaRanking()

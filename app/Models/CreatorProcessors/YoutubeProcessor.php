@@ -16,7 +16,6 @@ class YoutubeProcessor
     public function process()
     {
         $this->callApi();
-        $this->creator->touch();
     }
 
     public function callApi()

@@ -81,5 +81,7 @@ class Creator extends Model
         } elseif ($this->channel == 'vimeo') {
             (new VimeoProcessor($this))->process();
         }
+        $this->last_processed_at = now();
+        $this->save();
     }
 }

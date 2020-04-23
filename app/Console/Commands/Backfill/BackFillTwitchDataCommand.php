@@ -40,9 +40,8 @@ class BackFillTwitchDataCommand extends Command
     public function handle()
     {
         SimpleScheduledTaskSlackAndLogService::message('start Twitch filling');
-        Creator::where('updated_at', "<=", now()->subDay(3)->toDateTimeString())
+        Creator::whereNull('last_processed_at')
             ->where('channel', 'twitch')
-            ->orderBy('updated_at', 'asc')
             ->take(10)
             ->get()
             ->each(function ($creator, $key) {
