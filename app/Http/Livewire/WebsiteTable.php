@@ -14,9 +14,8 @@ class WebsiteTable extends Component
 
     public function render()
     {
-
         return view('livewire.website-table', [
-            'websites' => Website::where('name', 'like', '%' . $this->search . '%')->paginate($this->perPage)
+            'websites' => Website::where('name', 'like', '%' . $this->search . '%')->orderBy('alexa_ranking', 'asc')->paginate($this->perPage)
         ]);
     }
 }

@@ -83,4 +83,13 @@ class Website extends Model
             $creator->save();
         }
     }
+
+    public function friendly_alexa_ranking()
+    {
+        if ($this->alexa_ranking && $this->alexa_ranking < 10000000) {
+            return number_format($this->alexa_ranking);
+        } else {
+            return "Unranked";
+        }
+    }
 }

@@ -32,9 +32,7 @@
             <tr>
                 <td class="px-2 py-4 border">{{$website->name}}</td>
                 <td class="px-2 py-4 border">
-                    @if ($website->alexa_ranking)
-                        {{number_format($website->alexa_ranking)}}                    
-                    @endif
+                   {{$website->friendly_alexa_ranking()}}
                 </td>
             </tr>
             @endforeach

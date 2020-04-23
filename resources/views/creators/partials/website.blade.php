@@ -12,18 +12,14 @@
             </div>    
             <div class="mb-2 text-sm text-gray-500 capitalize">{{$creator->channel}}</div>    
         </div>
+        <div class="text-right">
+            <h1 class="mb-2 text-lg">
+                {{$creatable->friendly_alexa_ranking()}}
+            </h1>
+            <div class="mb-2 text-sm text-gray-500 capitalize">Alexa Rank</div>    
+        </div>
     </div>
-    <div class="px-4 pt-4">
+    <div class="px-4 pt-4 pb-6">
         <x-verified-badge />
-    </div>
-    <div class="flex justify-between px-4 py-6">
-        <div class="text-md">Alexa Rank</div>    
-        <div class="text-gray-600">
-            @if ($creatable->alexa_ranking && $creatable->alexa_ranking < 10000000)
-                {{number_format($creatable->alexa_ranking)}}
-            @else
-                Unranked
-            @endif
-        </div>    
     </div>
 </div>
