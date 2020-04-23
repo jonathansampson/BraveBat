@@ -16,13 +16,7 @@
                         <a class="text-brand-light" href="{{route('creators.index', 'twitter')}}">Twitter Creators</a>
                     </li>
                     <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'reddit')}}">Reddit Creators</a>
-                    </li>
-                    <li class="pb-4">
                         <a class="text-brand-light" href="{{route('creators.index', 'vimeo')}}">Vimeo Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'github')}}">Github Creators</a>
                     </li>
                 </ul>
             </div>
