@@ -10,7 +10,6 @@
         <table class="w-full">
             <thead>
                 <tr>
-                    <th class="px-2 py-4 text-left">#</th>
                     <th class="px-2 py-4 text-left">Website</th>
                     <th class="px-2 py-4 text-left">Alexa Ranking</th>
                 </tr>
@@ -18,19 +17,17 @@
             <tbody>
                 @foreach ($websites as $key => $website)
                 <tr>
-                    <td class="px-2 py-4 text-sm text-gray-600 border">
-                        {{$key + 1}}
-                    </dt>
+
                     <td class="px-2 py-4 border">
                         <a 
-                            href="{{route('creators.show', [$website->creator->channel, $website->creator->id])}}"
+                            href="{{route('creators.show', [$website->channel, $website->id])}}"
                             class="text-blue-500"
                             >
                             {{$website->name}}
                         </a>
                     </td>
                     <td class="px-2 py-4 border">
-                       {{$website->friendly_alexa_ranking()}}
+                       {{$website->alexa_ranking}}
                     </td>
                 </tr>
                 @endforeach

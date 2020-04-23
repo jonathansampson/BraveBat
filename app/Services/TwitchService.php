@@ -49,7 +49,6 @@ class TwitchService
             return ['success' => false, 'result' => 'User not found'];
         }
         $userInfo = $response->json()['data'][0];
-        $twitch_id = $userInfo['id'];
         $name = $userInfo['login'];
         $display_name = $userInfo['display_name'];
         $description = $userInfo['description'];
@@ -64,7 +63,6 @@ class TwitchService
         return [
             'success' => true,
             'result' => [
-                'twitch_id' => $twitch_id,
                 'name' => $name,
                 'display_name' => $display_name,
                 'description' => $description,

@@ -15,7 +15,6 @@ class Search extends Component
         $this->clear();
     }
 
-
     public function clear()
     {
         $this->search = '';

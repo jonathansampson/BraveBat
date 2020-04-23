@@ -14,10 +14,9 @@
                 </a>
             </div>
             <div class="text-brand-light">
-                <livewire:search>
+                {{-- <livewire:search> --}}
 
                 {{-- <a href="{{route('login')}}" class="text-brand-light">Login</a> --}}
-                
             </div>
         </div>
     </nav>

@@ -44,8 +44,8 @@ class TwitterService
             return ['success' => false, 'result' => 'User not found'];
         }
         $data = $response->json();
-        $display_name = $data['name'];
         $name = $data['screen_name'];
+        $display_name = $data['name'];
         $description = $data['description'];
         $thumbnail = $data['profile_image_url_https'];
         $follower_count = $data['followers_count'];

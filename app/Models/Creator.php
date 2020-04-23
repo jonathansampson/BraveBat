@@ -2,26 +2,18 @@
 
 namespace App\Models;
 
-use App\Models\Creators\Twitch;
-use App\Models\Creators\Twitter;
-use App\Models\Creators\Vimeo;
 use Carbon\Carbon;
-use App\Models\Creators\Website;
-use App\Models\Creators\Youtube;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\CreatorProcessors\VimeoProcessor;
+use App\Models\CreatorProcessors\TwitchProcessor;
+use App\Models\CreatorProcessors\TwitterProcessor;
+use App\Models\CreatorProcessors\WebsiteProcessor;
+use App\Models\CreatorProcessors\YoutubeProcessor;
 
 class Creator extends Model
 {
     protected $table = 'creators';
     protected $guarded = [];
-
-    /**
-     * Get the owning creatable model.
-     */
-    public function creatable()
-    {
-        return $this->morphTo();
-    }
 
     /**
      * Handle input from Brave API
@@ -79,81 +71,15 @@ class Creator extends Model
     public function processCreatable()
     {
         if ($this->channel == 'website') {
-            $this->processWebsite();
+            (new WebsiteProcessor($this))->process();
         } elseif ($this->channel == 'youtube') {
-            $this->processYoutube();
+            (new YoutubeProcessor($this))->process();
         } elseif ($this->channel == 'twitch') {
-            $this->processTwitch();
+            (new TwitchProcessor($this))->process();
         } elseif ($this->channel == 'twitter') {
-            $this->processTwitter();
+            (new TwitterProcessor($this))->process();
         } elseif ($this->channel == 'vimeo') {
-            $this->processVimeo();
+            (new VimeoProcessor($this))->process();
         }
-    }
-
-    public function processWebsite()
-    {
-        $this->touch();
-        if (!$this->creatable) {
-            $creatable = Website::create(['name' => $this->channel_id]);
-            $this->creatable()->associate($creatable)->save();
-        } else {
-            $creatable = $this->creatable;
-        }
-        $creatable->touch();
-        $creatable->callApi();
-    }
-
-    public function processYoutube()
-    {
-        $this->touch();
-        if (!$this->creatable) {
-            $creatable = Youtube::create(['youtube_id' => $this->channel_id]);
-            $this->creatable()->associate($creatable)->save();
-        } else {
-            $creatable = $this->creatable;
-        }
-        $creatable->touch();
-        $creatable->callApi();
-    }
-
-    public function processTwitch()
-    {
-        $this->touch();
-        if (!$this->creatable) {
-            $creatable = Twitch::create(['name' => $this->channel_id]);
-            $this->creatable()->associate($creatable)->save();
-        } else {
-            $creatable = $this->creatable;
-        }
-        $creatable->touch();
-        $creatable->callApi();
-    }
-
-    public function processTwitter()
-    {
-        $this->touch();
-        if (!$this->creatable) {
-            $creatable = Twitter::create(['twitter_id' => $this->channel_id]);
-            $this->creatable()->associate($creatable)->save();
-        } else {
-            $creatable = $this->creatable;
-        }
-        $creatable->touch();
-        $creatable->callApi();
-    }
-
-    public function processVimeo()
-    {
-        $this->touch();
-
-        if (!$this->creatable) {
-            $creatable = Vimeo::create(['vimeo_id' => $this->channel_id]);
-            $this->creatable()->associate($creatable)->save();
-        } else {
-            $creatable = $this->creatable;
-        }
-        $creatable->touch();
-        $creatable->callApi();
     }
 }

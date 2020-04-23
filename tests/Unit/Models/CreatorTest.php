@@ -55,8 +55,9 @@ class CreatorTest extends TestCase
             'channel_id' => 'bravebat.info'
         ]);
         $creator->processCreatable();
+        dd($creator->fresh());
+
         $this->assertEquals($creator->fresh()->name, 'bravebat.info');
-        $this->assertEquals($creator->creatable->name, 'bravebat.info');
     }
 
     /**
@@ -72,7 +73,6 @@ class CreatorTest extends TestCase
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'CNBC Television');
-        $this->assertEquals($creator->creatable->name, 'CNBC Television');
     }
 
     /**
@@ -88,7 +88,6 @@ class CreatorTest extends TestCase
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'allorzer0');
-        $this->assertEquals($creator->creatable->name, 'allorzer0');
     }
 
     /**
@@ -104,7 +103,6 @@ class CreatorTest extends TestCase
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'Songhua');
-        $this->assertEquals($creator->creatable->name, 'Songhua');
     }
 
     /**
@@ -120,6 +118,5 @@ class CreatorTest extends TestCase
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'rashiptrikha');
-        $this->assertEquals($creator->creatable->name, 'rashiptrikha');
     }
 }

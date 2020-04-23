@@ -28,7 +28,7 @@ class YoutubeService
         $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
 
         $view_count = $data['items'][0]['statistics']['viewCount'];
-        $subscriber_count = $data['items'][0]['statistics']['subscriberCount'];
+        $follower_count = $data['items'][0]['statistics']['subscriberCount'];
         $video_count = $data['items'][0]['statistics']['videoCount'];
 
         return  [
@@ -38,7 +38,7 @@ class YoutubeService
                 'description' => $description,
                 'thumbnail' => $thumbnail,
                 "view_count" => $view_count,
-                "subscriber_count" => $subscriber_count,
+                "follower_count" => $follower_count,
                 "video_count" => $video_count
             ]
         ];
