@@ -51,7 +51,6 @@ class BackFillWebsiteDataCommand extends Command
                 $creator->fillChannel();
                 $creator->processCreatable();
             });
-        Log::notice('finish website filling');
         SimpleScheduledTaskSlackAndLogService::message('finish website filling');
     }
 }

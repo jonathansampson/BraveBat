@@ -50,7 +50,6 @@ class BackFillYoutubeDataCommand extends Command
                 $creator->fillChannel();
                 $creator->processCreatable();
             });
-        Log::notice('finish youtube filling');
         SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
     }
 }
