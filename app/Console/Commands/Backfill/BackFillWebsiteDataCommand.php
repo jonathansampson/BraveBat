@@ -45,7 +45,7 @@ class BackFillWebsiteDataCommand extends Command
 
         Creator::whereNull('creatable_id')
             ->where('channel', 'website')
-            ->take(5000)
+            ->take(500)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->fillChannel();
