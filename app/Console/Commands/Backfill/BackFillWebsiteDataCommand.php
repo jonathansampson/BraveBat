@@ -43,12 +43,12 @@ class BackFillWebsiteDataCommand extends Command
     {
         SimpleScheduledTaskSlackAndLogService::message('start website filling');
 
-        Creator::whereNull('creatable_id')
+        Creator::where('updated_at', "<=", now()->subDay(3)->toDateTimeString())
             ->where('channel', 'website')
-            ->take(500)
+            ->orderBy('updated_at', 'asc')
+            ->take(10)
             ->get()
             ->each(function ($creator, $key) {
-                $creator->fillChannel();
                 $creator->processCreatable();
             });
         SimpleScheduledTaskSlackAndLogService::message('finish website filling');

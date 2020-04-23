@@ -41,12 +41,12 @@ class BackFillTwitterDataCommand extends Command
     public function handle()
     {
         SimpleScheduledTaskSlackAndLogService::message('start Twitter filling');
-        Creator::whereNull('creatable_id')
-            ->where('creator', 'like', '%twitter#channel%')
-            ->take(5000)
+        Creator::where('updated_at', "<=", now()->subDay(3)->toDateTimeString())
+            ->where('channel', 'twitter')
+            ->orderBy('updated_at', 'asc')
+            ->take(10)
             ->get()
             ->each(function ($creator, $key) {
-                $creator->fillChannel();
                 $creator->processCreatable();
                 sleep(6);
             });

@@ -42,12 +42,12 @@ class BackFillYoutubeDataCommand extends Command
     {
         SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
 
-        Creator::whereNull('creatable_id')
-            ->where('creator', 'like', '%youtube#channel%')
-            ->take(2000)
+        Creator::where('updated_at', "<=", now()->subDay(3)->toDateTimeString())
+            ->where('channel', 'youtube')
+            ->orderBy('updated_at', 'asc')
+            ->take(10)
             ->get()
             ->each(function ($creator, $key) {
-                $creator->fillChannel();
                 $creator->processCreatable();
             });
         SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
