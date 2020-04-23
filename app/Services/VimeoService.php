@@ -26,10 +26,8 @@ class VimeoService
                     'grant_type' => 'client_credentials',
                     'scope' => 'public'
                 ]);
-            echo 'I am here';
             return  $response['access_token'];
         });
-        echo $this->access_token;
     }
 
     public function getUser($userId)
