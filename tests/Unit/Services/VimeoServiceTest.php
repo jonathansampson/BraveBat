@@ -17,7 +17,7 @@ class VimeoServiceTest extends TestCase
         $response = $service->getUser('46924634');
         $this->assertTrue($response['success']);
         $this->assertEquals($response['result']['display_name'], "Raship Trikha");
-        $this->assertEquals($response['result']['name'], "rashiptrikha");
+        $this->assertEquals($response['result']['name'], "Raship Trikha");
     }
 
     /**

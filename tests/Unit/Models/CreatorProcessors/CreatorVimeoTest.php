@@ -24,7 +24,7 @@ class CreatorVimeoTest extends TestCase
         ]);
         $processor = new VimeoProcessor($creator);
         $processor->process();
-        $this->assertEquals('rashiptrikha', $creator->name);
+        $this->assertEquals('Raship Trikha', $creator->name);
         $this->assertEquals('Raship Trikha', $creator->display_name);
         $this->assertNotNull($creator->description);
         $this->assertNotNull($creator->thumbnail);

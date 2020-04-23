@@ -26,7 +26,7 @@ class VimeoProcessor
         $response = $service->getUser($this->creator->channel_id);
         if ($response['success']) {
             $this->creator->update($response['result']);
-            $this->creator->link = "https://vimeo.com/{$response['result']['name']}";
+            // $this->creator->link = "https://vimeo.com/{$response['result']['name']}"; Link already included in API
             $this->creator->valid = true;
         } else {
             $this->creator->valid = false;

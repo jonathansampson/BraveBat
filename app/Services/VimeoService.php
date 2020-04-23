@@ -40,7 +40,7 @@ class VimeoService
         }
         $data = $response->json();
         $link = $data['link'];
-        $name = explode('vimeo.com/', $link)[1];
+        $name = $data['name'];
         $display_name = $data['name'];
         $description = $data['short_bio'];
         $thumbnail = $data['pictures']['sizes'][1]['link'];
@@ -49,6 +49,7 @@ class VimeoService
         return [
             'success' => true,
             'result' => [
+                'link' => $link,
                 'name' => $name,
                 'display_name' => $display_name,
                 'description' => $description,
