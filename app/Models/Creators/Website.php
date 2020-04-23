@@ -52,6 +52,8 @@ class Website extends Model
         $https_success = $this->getScreenshotBasedOnUrl($this->httpsUrl());
         if (!$https_success) {
             $this->getScreenshotBasedOnUrl($this->httpUrl());
+            $this->https = false;
+            $this->save();
         }
     }
 
