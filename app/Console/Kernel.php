@@ -25,7 +25,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('horizon:snapshot')->hourly();
-        $schedule->command('import:bat_transparency')->daily();
+        $schedule->command('import:transparency')->daily();
 
         $schedule->command('backfill:website')->dailyAt("12:50"); // 500
         $schedule->command('backfill:twitter')->dailyAt("12:51"); // 5000
@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('backfill:youtube')->dailyAt("04:15"); // 2000
         // $schedule->command('creator:rank')->dailyAt("18:35");
-        $schedule->command('import:bat_creator')->dailyAt("13:20");
+        $schedule->command('import:creator')->dailyAt("14:00");
         // $schedule->command('sitemap:generate')->daily();
         // $schedule->command('telescope:prune')->daily();
 

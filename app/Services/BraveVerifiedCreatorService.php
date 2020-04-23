@@ -20,12 +20,14 @@ class BraveVerifiedCreatorService
 
         $url = config('bravebat.brave_api');
         $file = file_get_contents($url);
-        $content = json_decode($file);
         $filename = "{$date}.txt";
         Storage::put($filename, $file);
-        $apiInfo = collect($content)->map(function ($item) {
-            return trim($item[0]);
-        })->unique()->toArray();
+        $content = json_decode($file);
+        echo (count($content));
+        $apiInfo = array_unique(array_map(function ($item) {
+            return $item[0];
+        }, $content));
+        echo count($apiInfo);
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
         Log::info('The count of new api is  ' . count($apiInfo));
         Log::info('The count of database is  ' . count($databaseInfo));
