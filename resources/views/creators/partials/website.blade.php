@@ -19,7 +19,7 @@
     <div class="flex justify-between px-4 py-6">
         <div class="text-md">Alexa Rank</div>    
         <div class="text-gray-600">
-            @if ($creatable->alexa_ranking)
+            @if ($creatable->alexa_ranking && $creatable->alexa_ranking < 10000000)
                 {{number_format($creatable->alexa_ranking)}}
             @else
                 Unranked
