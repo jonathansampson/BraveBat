@@ -29,16 +29,10 @@ communities')
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-2xl font-semibold text-center">Verified Creator Platform Distribution</h2>
             @include('charts.donut', ['id' => 'bat_creator_summary'])
-            {{-- <donut-chart 
-                colors="{{json_encode(config('bravebat.creator_brand_colors'))}}"
-            identifier="bat_creator_summary"
-            >
-            </donut-chart> --}}
         </div>
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-2xl font-semibold text-center">Verified Creator Growth</h2>
-            <line-chart colors="{{json_encode(config('bravebat.colors'))}}" identifier="creator_stats">
-            </line-chart>
+            @include('charts.line', ['id' => 'creator_stats'])
         </div>
     </div>
 </div>
