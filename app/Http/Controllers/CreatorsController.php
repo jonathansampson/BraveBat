@@ -27,7 +27,7 @@ class CreatorsController extends Controller
             ],
             'vimeo' => [
                 'creator_title' => 'Vimeo Creator',
-                'rank_column_title' => 'Folowers',
+                'rank_column_title' => 'Followers',
                 'rank_column' => 'follower_count',
                 'rank_order' => 'desc',
             ],
