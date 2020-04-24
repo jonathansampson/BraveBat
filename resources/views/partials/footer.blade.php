@@ -3,7 +3,7 @@
         <div class="text-center md:text-left md:flex ">
             <div class="pt-3 md:w-1/3">
                 <ul>
-                    {{-- <li class="pb-4">
+                    <li class="pb-4">
                         <a class="text-brand-light" href="{{route('creators.index', 'youtube')}}">Youtube Creators</a>
                     </li>
                     <li class="pb-4">
@@ -17,7 +17,10 @@
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('creators.index', 'vimeo')}}">Vimeo Creators</a>
-                    </li> --}}
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'github')}}">Github Creators</a>
+                    </li>
                 </ul>
             </div>
             <div class="pt-3 md:w-1/3">

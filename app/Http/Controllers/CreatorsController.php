@@ -43,6 +43,12 @@ class CreatorsController extends Controller
                 'rank_column' => 'follower_count',
                 'rank_order' => 'desc',
             ],
+            'github' => [
+                'creator_title' => 'Github Developer',
+                'rank_column_title' => 'Followers',
+                'rank_column' => 'follower_count',
+                'rank_order' => 'desc',
+            ],
         ];
         if (!isset($channels[$channel])) {
             abort(404);
