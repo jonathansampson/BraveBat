@@ -51,6 +51,11 @@ return [
         'access_token_secret' => env('TWITTER_ACCESS_TOKEN_SECRET'),
     ],
 
+    'github' => [
+        'user' => env('GITHUB_USER'),
+        'token' => env('GITHUB_TOKEN'),
+    ],
+
     'slack' => [
         'webhook' => env('SLACK_WEBHOOK')
     ]

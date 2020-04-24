@@ -46,7 +46,7 @@ class BackFillGithubDataCommand extends Command
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
-                sleep(2);
+                sleep(10);
             });
         SimpleScheduledTaskSlackAndLogService::message('finish Github filling');
     }

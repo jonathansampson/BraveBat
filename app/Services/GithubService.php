@@ -10,12 +10,12 @@ class GithubService
 
     public function getUser($id)
     {
-        $response = Http::get($this->rootUrl . $id);
+        $response = Http::withBasicAuth(config('services.github.user'), config('services.github.token'))
+            ->get($this->rootUrl . $id);
         if (!$response->ok()) {
             return ['success' => false, 'result' => 'User not found'];
         }
         $data = $response->json();
-
         $name = $data['login'];
         $display_name = $data['name'];
         $thumbnail = $data['avatar_url'];
