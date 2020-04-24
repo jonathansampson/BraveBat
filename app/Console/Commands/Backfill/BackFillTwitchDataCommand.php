@@ -42,7 +42,7 @@ class BackFillTwitchDataCommand extends Command
         SimpleScheduledTaskSlackAndLogService::message('start Twitch filling');
         Creator::whereNull('last_processed_at')
             ->where('channel', 'twitch')
-            ->take(10)
+            ->take(10000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();

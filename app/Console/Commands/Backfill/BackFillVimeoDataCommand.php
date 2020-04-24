@@ -42,7 +42,7 @@ class BackFillVimeoDataCommand extends Command
         SimpleScheduledTaskSlackAndLogService::message('start Vimeo filling');
         Creator::whereNull('last_processed_at')
             ->where('channel', 'vimeo')
-            ->take(10)
+            ->take(10000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
