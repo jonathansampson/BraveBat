@@ -23,3 +23,6 @@ Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@adCam
 Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.active_ad_campaigns');
 Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary')->name('charts.bat_creator_summary');
 Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats')->name('charts.creator_stats');
+
+// Other Pages
+Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');

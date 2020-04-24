@@ -39,10 +39,7 @@
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-4">
-                        <a class="text-brand-light" href="">Privacy Policy</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="">Terms & Services</a>
+                    <a class="text-brand-light" href="{{route('privacy_policy')}}">Privacy Policy</a>
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="/sitemap.xml">Sitemap</a>
