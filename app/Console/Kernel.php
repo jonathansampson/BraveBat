@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:github')->dailyAt("10:45"); // 10000
 
         // $schedule->command('import:creator')->dailyAt("00:01");
-        // $schedule->command('backfill:youtube')->dailyAt("04:15"); // 2000
+        $schedule->command('backfill:youtube')->dailyAt("11:00"); // 20
 
         // $schedule->command('creator:rank')->dailyAt("18:35");
         // $schedule->command('sitemap:generate')->daily();
