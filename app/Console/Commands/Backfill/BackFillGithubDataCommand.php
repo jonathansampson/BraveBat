@@ -42,7 +42,7 @@ class BackFillGithubDataCommand extends Command
         SimpleScheduledTaskSlackAndLogService::message('start Github filling');
         Creator::whereNull('last_processed_at')
             ->where('channel', 'github')
-            ->take(10000)
+            ->take(10)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
