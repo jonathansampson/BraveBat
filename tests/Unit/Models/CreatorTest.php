@@ -119,4 +119,19 @@ class CreatorTest extends TestCase
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'rashiptrikha');
     }
+
+    /**
+     * @test
+     * @group api
+     */
+    public function creator_can_process_github()
+    {
+        $creator = factory(Creator::class)->create([
+            'creator' => 'github#channel:4323180',
+            'channel' => 'github',
+            'channel_id' => '4323180'
+        ]);
+        $creator->processCreatable();
+        $this->assertEquals($creator->fresh()->name, 'adamwathan');
+    }
 }

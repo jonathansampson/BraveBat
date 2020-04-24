@@ -5,6 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\CreatorProcessors\VimeoProcessor;
+use App\Models\CreatorProcessors\GithubProcessor;
 use App\Models\CreatorProcessors\TwitchProcessor;
 use App\Models\CreatorProcessors\TwitterProcessor;
 use App\Models\CreatorProcessors\WebsiteProcessor;
@@ -80,6 +81,8 @@ class Creator extends Model
             (new TwitterProcessor($this))->process();
         } elseif ($this->channel == 'vimeo') {
             (new VimeoProcessor($this))->process();
+        } elseif ($this->channel == 'github') {
+            (new GithubProcessor($this))->process();
         }
         $this->last_processed_at = now();
         $this->save();
