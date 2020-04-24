@@ -48,6 +48,6 @@ class BackFillYoutubeDataCommand extends Command
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
             });
-        SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
+        SimpleScheduledTaskSlackAndLogService::message('finish Youtube filling');
     }
 }

@@ -24,6 +24,7 @@ class YoutubeService
         }
         $data = $response->json();
         $name = $data['items'][0]['snippet']['title'];
+        $display_name = $data['items'][0]['snippet']['title'];
         $description = $data['items'][0]['snippet']['description'];
         $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
 
@@ -35,6 +36,7 @@ class YoutubeService
             'success' => true,
             'result' => [
                 'name' => $name,
+                'display_name' => $display_name,
                 'description' => $description,
                 'thumbnail' => $thumbnail,
                 "view_count" => $view_count,
