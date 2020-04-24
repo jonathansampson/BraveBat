@@ -4,7 +4,7 @@
 @section('description', 'Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities')
 
 @section('content')
-<div class="background-pattern">
+<div class="border-b border-gray-200 background-pattern">
     <div class='container px-4 py-20 mx-auto sm:px-6 md:px-8 sm:py-32'>
         <div class="flex items-center justify-center">
             <div class="text-center">
