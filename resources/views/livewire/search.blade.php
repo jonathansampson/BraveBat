@@ -3,6 +3,7 @@
         <label for="search" class="hidden">Search</label>
         <input 
             name='search' 
+            id="search"
             wire:model.debounce.500ms="search" 
             type="text"
             class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full focus:outline-none focus:shadow-outline text-brand-dark"
