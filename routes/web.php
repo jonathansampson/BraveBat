@@ -28,6 +28,6 @@ Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats
 // Other Pages
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 
-Route::get('test', function () {
-    Mail::to('songhua@gmail.com')->send(new TestAmazonSes('It works!'));
-});
+// Route::get('test', function () {
+//     Mail::to('songhua@gmail.com')->send(new TestAmazonSes('It works!'));
+// });
