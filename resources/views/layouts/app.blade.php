@@ -18,6 +18,7 @@
     @stack('styles')
     
     @livewireStyles
+    @laravelPWA
 
     @if (app()->environment('production'))
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163561589-1"></script>
