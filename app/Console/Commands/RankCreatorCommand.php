@@ -2,12 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Creators\Twitch;
+use App\Models\Creator;
 use Illuminate\Console\Command;
-use App\Models\Creators\Twitter;
-use App\Models\Creators\Vimeo;
-use App\Models\Creators\Website;
-use App\Models\Creators\Youtube;
 
 class RankCreatorCommand extends Command
 {
@@ -42,10 +38,6 @@ class RankCreatorCommand extends Command
      */
     public function handle()
     {
-        Website::rank();
-        Youtube::rank();
-        Twitter::rank();
-        Twitch::rank();
-        Vimeo::rank();
+        Creator::rank();
     }
 }

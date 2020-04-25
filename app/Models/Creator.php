@@ -87,4 +87,39 @@ class Creator extends Model
         $this->last_processed_at = now();
         $this->save();
     }
+
+    public static function rank()
+    {
+        self::all()->each(function ($creator) {
+            $creator->rank = null;
+            $creator->save();
+        });
+
+        $channels = ['youtube', 'vimeo', 'twitter', 'github', 'twitch'];
+        foreach ($channels as $channel) {
+            $creators = self::query()
+                ->where('active', true)
+                ->where('valid', true)
+                ->where('channel', $channel)
+                ->orderBy('follower_count', 'desc')
+                ->get();
+            $fraction = 1 / $creators->count();
+            foreach ($creators as $index => $creator) {
+                $creator->rank = $index * $fraction;
+                $creator->save();
+            }
+        }
+
+        $creators = self::query()
+            ->where('active', true)
+            ->where('valid', true)
+            ->where('channel', 'website')
+            ->orderBy('alexa_ranking', 'asc')
+            ->get();
+        $fraction = 1 / $creators->count();
+        foreach ($creators as $index => $creator) {
+            $creator->rank = $index * $fraction;
+            $creator->save();
+        }
+    }
 }
