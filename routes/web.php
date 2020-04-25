@@ -1,5 +1,6 @@
 <?php
 
+use App\Mail\TestAmazonSes;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
@@ -26,3 +27,7 @@ Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats
 
 // Other Pages
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
+
+Route::get('test', function () {
+    Mail::to('songhua@gmail.com')->send(new TestAmazonSes('It works!'));
+});
