@@ -96,3 +96,11 @@
     });
 </script>
 @endpush
+
+@push('styles')
+<style>
+.grecaptcha-badge { 
+    visibility: hidden; 
+}
+</style>
+@endpush

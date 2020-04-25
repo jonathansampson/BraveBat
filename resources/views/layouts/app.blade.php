@@ -12,11 +12,12 @@
     
     <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon" />
 
-    <script src="{{ mix('js/app.js') }} defer"></script>
+    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
+    @stack('styles')
+    
     @livewireStyles
 
     @if (app()->environment('production'))
