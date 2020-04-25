@@ -58,5 +58,10 @@ return [
 
     'slack' => [
         'webhook' => env('SLACK_WEBHOOK')
+    ],
+
+    'recaptcha' => [
+        'key' => env('RECAPTCHA_KEY'),
+        'secret' => env('RECAPTCHA_SECRET'),
     ]
 ];
