@@ -12,7 +12,7 @@
 
                     <form class="w-full p-6" method="POST" action="{{ route('login') }}">
                         @csrf
-
+                        <input type="hidden" name="recaptcha" id="recaptcha">
                         <div class="flex flex-wrap mb-6">
                             <label for="email" class="block mb-2 text-sm font-bold text-gray-700">
                                 {{ __('E-Mail Address') }}:
@@ -75,3 +75,17 @@
         </div>
     </div>
 @endsection
+
+
+@push('scripts')
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.key') }}"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.key') }}', {action: 'login'}).then(function(token) {
+            if (token) {
+                document.getElementById('recaptcha').value = token;
+            }
+        });
+    });
+</script>
+@endpush

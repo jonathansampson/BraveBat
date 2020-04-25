@@ -1,11 +1,12 @@
 <?php
 
-use App\Mail\TestAmazonSes;
 use Illuminate\Support\Facades\Route;
 
+Auth::routes(['verify' => true]);
+
 Route::get('/', 'HomeController@welcome')->name('welcome');
-Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 
 // Stats
 Route::get('brave_browser_active_users', 'StatsController@brave_browser_active_users')->name('stats.brave_browser_active_users');
@@ -24,10 +25,3 @@ Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@adCam
 Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.active_ad_campaigns');
 Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary')->name('charts.bat_creator_summary');
 Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats')->name('charts.creator_stats');
-
-// Other Pages
-Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
-
-// Route::get('test', function () {
-//     Mail::to('songhua@gmail.com')->send(new TestAmazonSes('It works!'));
-// });

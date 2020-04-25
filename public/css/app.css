@@ -15793,6 +15793,10 @@ video {
   position: absolute;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 @media (min-width: 640px){
   .sm\:space-y-0 > :not(template) ~ :not(template){
     --space-y-reverse: 0;
@@ -75164,3 +75168,4 @@ video {
             animation: spinAround 500ms infinite linear;
   }
 }
+
