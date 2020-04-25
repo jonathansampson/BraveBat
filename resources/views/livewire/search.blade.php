@@ -4,6 +4,7 @@
         <input 
             name='search' 
             id="search"
+            autocomplete="off"
             wire:model.debounce.500ms="search" 
             type="text"
             class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full focus:outline-none focus:shadow-outline text-brand-dark"

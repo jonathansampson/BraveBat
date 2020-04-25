@@ -26,7 +26,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "livewire/livewire": "^1.0",
+        "livewire/livewire": "1.0.12",
         "maxbanton/cwh": "^2.0",
         "nesk/puphpeteer": "^1.6",
         "paquettg/php-html-parser": "^2.2",
