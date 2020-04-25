@@ -44,6 +44,9 @@
                     <li class="pb-4">
                         <a class="text-brand-light" href="/sitemap.xml">Sitemap</a>
                     </li>
+                    <li class="pb-4">
+                        <a href="mailto:support@bravebat.info">support@bravebat.info</a>
+                    </li>
                 </ul>
             </div>
         </div>

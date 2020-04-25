@@ -103,12 +103,8 @@
             BraveBat may update this policy. We’ll notify you about significant changes by emailing the account owner. You can access, change or delete your personal information at any time by contacting our support team.
         </p>
         <p class="pt-4">
-            Questions about this privacy policy? Please get in touch and we’ll be happy to answer them!
-        
+            Questions about this privacy policy? Please get in touch and we’ll be happy to answer them! Our email is support@bravebat.info.
         </p>
-
-
-       
     </div>
 
 </div>
