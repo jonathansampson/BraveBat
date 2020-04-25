@@ -12,7 +12,6 @@
     
     <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon" />
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
 
     <!-- Styles -->
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -39,6 +38,8 @@
         </main>
         @include('partials.footer')
     </div>
+    <script src="{{ mix('js/app.js') }}"></script>
+
     @livewireScripts
     @stack('scripts')
 </body>

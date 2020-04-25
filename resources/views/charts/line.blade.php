@@ -4,7 +4,7 @@
 
 @push('scripts')
 
-<script>
+<script defer>
   axios.post("/charts/{{$id}}")
     .then(res => {
       if (res.status == 200) {
