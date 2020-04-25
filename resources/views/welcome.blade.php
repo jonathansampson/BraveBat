@@ -12,7 +12,7 @@ communities')
                 <h1 class="pb-4 text-3xl font-semibold leading-normal sm:pb-8 md:text-4xl lg:text-5xl">
                     Support Brave Creators
                 </h1>
-                <p class="pb-16 text-sm leading-6 text-gray-700 sm:text-lg">
+                <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
                     User Brave Browser to protect your online privacy and support {{round($creator_count / 1000) }}K
                     amazing verified creators
                 </p>
