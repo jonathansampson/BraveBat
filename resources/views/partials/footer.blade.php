@@ -48,7 +48,7 @@
             </div>
         </div>
         <div class="pt-4 pb-4 text-xs italic text-center">
-            This site is unofficial and not affiliated with Brave Software. If you like the site, please support us by downloading the Brave Browser using <a href="https://brave.com/iuv633" class="text-brand-orange">our referral link</a>.
+            This site is unofficial and not affiliated with Brave Software. If you like the site, please support us by downloading the Brave Browser using <a href="https://brave.com/iuv633" class="underline">our referral link</a>.
         </div>
     </footer>
 

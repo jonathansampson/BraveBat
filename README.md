@@ -8,7 +8,6 @@
 
 API
 Make a progressive web app
-caching by default on data
 Add additional verbiage on the show page to promote my promo code
 Add service provider for BAT price
 Run sitemap generation more consistently
