@@ -18,7 +18,8 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        return view('welcome');
+        $creator_count = Creator::count();
+        return view('welcome', compact('creator_count'));
     }
 
     public function privacy_policy()

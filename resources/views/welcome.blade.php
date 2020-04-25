@@ -9,17 +9,17 @@ communities')
     <div class='container px-4 py-20 mx-auto sm:px-6 md:px-8 sm:py-32'>
         <div class="flex items-center justify-center">
             <div class="text-center">
-                <h1 class="pb-8 text-3xl leading-normal sm:pb-16 md:text-4xl lg:text-5xl">Brave Browser Verified
-                    Creators Tracker</h1>
+                <h1 class="pb-4 text-3xl font-semibold leading-normal sm:pb-8 md:text-4xl lg:text-5xl">
+                    Support Brave Creators
+                </h1>
+                <p class="pb-16 text-sm leading-6 text-gray-600 sm:text-lg">
+                    User Brave Browser to protect your online privacy and support {{round($creator_count / 1000) }}K
+                    amazing verified creators
+                </p>
             </div>
         </div>
-        <div class="flex flex-col items-center justify-center sm:flex-row">
-            <div class="pb-8 sm:pb-0 sm:pr-8">
-                <x-stats-badge></x-stats-badge>
-            </div>
-            <div class="sm:pl-8">
-                <x-download-badge></x-download-badge>
-            </div>
+        <div class="flex items-center justify-center">
+            <x-download-badge></x-download-badge>
 
         </div>
     </div>
