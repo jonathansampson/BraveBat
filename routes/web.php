@@ -29,5 +29,5 @@ Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 
 Route::get('test', function () {
-    Mail::to('support@bravebat.info')->send(new TestAmazonSes('It works!'));
+    Mail::to('songhua@gmail.com')->send(new TestAmazonSes('It works!'));
 });
