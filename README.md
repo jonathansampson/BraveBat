@@ -1,8 +1,3 @@
-Service folder:
-Brave Transaprency 
-
-Model: BatUsage model
-
 'brand-orange': '#fb542b',
 'brand-dark': '#343546',
 'brand-gray': '#A0A1B2',
@@ -10,11 +5,11 @@ Model: BatUsage model
 'brand-purple': '#a3278f',
 'brand-blue': '#4f30ab'
 
-<x-verified-badge verifiedDate="sfds"/>
-<x-download-badge />
 
-Search function - alpine and livewire
-Datatable function - alpine and livewire
 API
 Make a progressive web app
-Caching
+caching by default on data
+Add additional verbiage on the show page to promote my promo code
+Add service provider for BAT price
+Run sitemap generation more consistently
+Program logic of twitter bot

@@ -9,99 +9,111 @@ class ChartDataController extends Controller
 {
     public function dau()
     {
-        $data = BraveUsage::all();
-        $labels = collect($data)->map(fn ($item) => $item['month']);
-        $dau = collect($data)->map(fn ($item) => round(($item['dau'] / 1000000), 1));
-        return [
-            'labels' => $labels,
-            'data' => [
-                'Daily Active Users' => $dau
-            ]
-        ];
+        $result = cache()->remember('dau', 86400, function () {
+            $data = BraveUsage::all();
+            $labels = collect($data)->map(fn ($item) => $item['month']);
+            $dau = collect($data)->map(fn ($item) => round(($item['dau'] / 1000000), 1));
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'Daily Active Users' => $dau
+                ]
+            ];
+        });
+        return $result;
     }
 
     public function batPurchases()
     {
-        $data = DB::select("SELECT 
-            DATE_FORMAT(transaction_date, '%Y-%m') AS month,
-            sum(transaction_amount) AS bat_tokens
-        FROM
-            bat_purchases
-        GROUP BY
-            month
-        ORDER BY
-            month");
-        $labels = collect($data)->map(fn ($item) => $item->month);
-        $bat_tokens = collect($data)->map(fn ($item) => $item->bat_tokens);
+        $result = cache()->remember('bat_purchase', 86400, function () {
+            $data = DB::select("SELECT 
+                DATE_FORMAT(transaction_date, '%Y-%m') AS month,
+                sum(transaction_amount) AS bat_tokens
+            FROM
+                bat_purchases
+            GROUP BY
+                month
+            ORDER BY
+                month");
+            $labels = collect($data)->map(fn ($item) => $item->month);
+            $bat_tokens = collect($data)->map(fn ($item) => $item->bat_tokens);
 
-        return [
-            'labels' => $labels,
-            'data' => [
-                'BAT Tokens Purchased' => $bat_tokens
-            ]
-        ];
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'BAT Tokens Purchased' => $bat_tokens
+                ]
+            ];
+        });
+        return $result;
     }
 
     public function adCampaignSupportedCountries()
     {
-        $data = DB::select("SELECT
-            -- DATE_FORMAT(record_date, '%Y-%m') AS month,
-            DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
-            max(countries) AS countries
-        FROM (
-            SELECT
-                record_date,
-                count(campaigns) AS countries
-            FROM
-                brave_ad_campaigns
+        $result = cache()->remember('ad_campaign_supported_countries', 86400, function () {
+            $data = DB::select("SELECT
+                -- DATE_FORMAT(record_date, '%Y-%m') AS month,
+                DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
+                max(countries) AS countries
+            FROM (
+                SELECT
+                    record_date,
+                    count(campaigns) AS countries
+                FROM
+                    brave_ad_campaigns
+                GROUP BY
+                    record_date
+                ORDER BY
+                    record_date) t
             GROUP BY
-                record_date
+                month
             ORDER BY
-                record_date) t
-        GROUP BY
-            month
-        ORDER BY
-            month");
-        $labels = collect($data)->map(fn ($item) => $item->month);
-        $countries = collect($data)->map(fn ($item) => $item->countries);
+                month");
+            $labels = collect($data)->map(fn ($item) => $item->month);
+            $countries = collect($data)->map(fn ($item) => $item->countries);
 
-        return [
-            'labels' => $labels,
-            'data' => [
-                'Number of Supported Countries' => $countries
-            ]
-        ];
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'Number of Supported Countries' => $countries
+                ]
+            ];
+        });
+        return $result;
     }
 
     public function activeAdCampaigns()
     {
-        $data = DB::select("SELECT
-            -- DATE_FORMAT(record_date, '%Y-%m') AS month,
-            DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
-            max(campaigns) AS campaigns
-        FROM (
-            SELECT
-                record_date,
-                sum(campaigns) AS campaigns
-            FROM
-                brave_ad_campaigns
+        $result = cache()->remember('active_ad_campaigns', 86400, function () {
+            $data = DB::select("SELECT
+                -- DATE_FORMAT(record_date, '%Y-%m') AS month,
+                DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
+                max(campaigns) AS campaigns
+            FROM (
+                SELECT
+                    record_date,
+                    sum(campaigns) AS campaigns
+                FROM
+                    brave_ad_campaigns
+                GROUP BY
+                    record_date
+                ORDER BY
+                    record_date) t
             GROUP BY
-                record_date
+                month
             ORDER BY
-                record_date) t
-        GROUP BY
-            month
-        ORDER BY
-            month");
-        $labels = collect($data)->map(fn ($item) => $item->month);
-        $campaigns = collect($data)->map(fn ($item) => $item->campaigns);
+                month");
+            $labels = collect($data)->map(fn ($item) => $item->month);
+            $campaigns = collect($data)->map(fn ($item) => $item->campaigns);
 
-        return [
-            'labels' => $labels,
-            'data' => [
-                'Number of Active Campaigns' => $campaigns
-            ]
-        ];
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'Number of Active Campaigns' => $campaigns
+                ]
+            ];
+        });
+        return $result;
     }
 
     public function batCreatorSummary()
@@ -130,30 +142,32 @@ class ChartDataController extends Controller
 
     public function creatorStats($channel = null)
     {
-        // work on channel later
-        $data = DB::select("SELECT
-            DATE_FORMAT(record_date, '%Y-%m') AS month,
-            max(verified_creators) AS verified_creators
-        FROM (
-            SELECT
-                record_date,
-                sum(verified_creators) AS verified_creators
-            FROM
-                creator_stats
+        $result = cache()->remember('creator_stats', 86400, function () {
+            $data = DB::select("SELECT
+                DATE_FORMAT(record_date, '%Y-%m') AS month,
+                max(verified_creators) AS verified_creators
+            FROM (
+                SELECT
+                    record_date,
+                    sum(verified_creators) AS verified_creators
+                FROM
+                    creator_stats
+                GROUP BY
+                    record_date) t
             GROUP BY
-                record_date) t
-        GROUP BY
-            month
-        ORDER BY
-            month");
-        $labels = collect($data)->map(fn ($item) => $item->month);
-        $verified_creators = collect($data)->map(fn ($item) => $item->verified_creators);
+                month
+            ORDER BY
+                month");
+            $labels = collect($data)->map(fn ($item) => $item->month);
+            $verified_creators = collect($data)->map(fn ($item) => $item->verified_creators);
 
-        return [
-            'labels' => $labels,
-            'data' => [
-                'Verified Creators' => $verified_creators
-            ]
-        ];
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'Verified Creators' => $verified_creators
+                ]
+            ];
+        });
+        return $result;
     }
 }

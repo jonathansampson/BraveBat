@@ -18,7 +18,9 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $creator_count = Creator::count();
+        $creator_count = cache()->remember('creator_count', 3600, function () {
+            return Creator::count();
+        });
         return view('welcome', compact('creator_count'));
     }
 
