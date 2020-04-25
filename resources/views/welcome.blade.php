@@ -9,7 +9,7 @@ communities')
     <div class='container px-4 py-20 mx-auto sm:px-6 md:px-8 sm:py-32'>
         <div class="flex items-center justify-center">
             <div class="text-center">
-                <h1 class="pb-4 text-3xl font-semibold leading-normal sm:pb-8 md:text-4xl lg:text-5xl">
+                <h1 class="pb-4 text-3xl font-bold leading-normal sm:pb-8 md:text-4xl lg:text-5xl">
                     Support Brave Creators
                 </h1>
                 <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
