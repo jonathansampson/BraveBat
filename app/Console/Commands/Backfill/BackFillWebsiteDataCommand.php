@@ -44,7 +44,7 @@ class BackFillWebsiteDataCommand extends Command
         SimpleScheduledTaskSlackAndLogService::message('start website filling');
         Creator::whereNull('last_processed_at')
             ->where('channel', 'website')
-            ->take(5000)
+            ->take(8000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
