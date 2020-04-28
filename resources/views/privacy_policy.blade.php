@@ -44,25 +44,25 @@
             As part of the services we provide, we use certain third party processors to process information of Brave Browser's verified creators. We do <span class="font-bold">NOT</span> use these processors to process your data.
         </p>
         <ul class="pt-4 list-inside">
-            <li class="list-disc">Google YouTube Data API 
+            <li class="list-disc">Google YouTube API Services
                 (<a href="https://policies.google.com/privacy?hl=en-US" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">Twitch API
+            <li class="list-disc">Twitch API Services
                 (<a href="https://www.twitch.tv/p/legal/privacy-notice/" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">GitHub API
+            <li class="list-disc">GitHub API Services
                 (<a href="https://help.github.com/en/github/site-policy/github-privacy-statement" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">Twitter API
+            <li class="list-disc">Twitter API Services
                 (<a href="https://help.twitter.com/en/rules-and-policies/personal-information" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">Vimeo API
+            <li class="list-disc">Vimeo API Services
                 (<a href="https://vimeo.com/privacy" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">Reddit API
+            <li class="list-disc">Reddit API Services
                 (<a href="https://www.redditinc.com/policies/privacy-policy-january-10-2020" class="text-blue-500">Privacy Policy</a>)
             </li>
-            <li class="list-disc">Brave Creator API
+            <li class="list-disc">Brave Creator API Services
                 (<a href="https://brave.com/publishers-creators-privacy/" class="text-blue-500">Privacy Policy</a>)
             </li>
         </ul>

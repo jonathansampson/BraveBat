@@ -7,6 +7,7 @@ Auth::routes(['verify' => true]);
 Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
+Route::get('terms_of_service', 'HomeController@terms_of_service')->name('terms_of_service');
 
 // Stats
 Route::get('brave_browser_active_users', 'StatsController@brave_browser_active_users')->name('stats.brave_browser_active_users');

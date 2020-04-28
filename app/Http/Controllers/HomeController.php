@@ -28,4 +28,9 @@ class HomeController extends Controller
     {
         return view('privacy_policy');
     }
+
+    public function terms_of_service()
+    {
+        return view('terms_of_service');
+    }
 }

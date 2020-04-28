@@ -39,13 +39,16 @@
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-4">
-                    <a class="text-brand-light" href="{{route('privacy_policy')}}">Privacy Policy</a>
+                        <a class="text-brand-light" href="{{route('privacy_policy')}}">Privacy Policy</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('terms_of_service')}}">Terms of Service</a>
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="/sitemap.xml">Sitemap</a>
                     </li>
                 </ul>
-                <div class="flex justify-center pb-4 space-x-2 md:justify-start ">
+                <div class="flex justify-center pt-1 pb-4 space-x-2 md:justify-start">
                     <div class="w-6 h-6">
                         <a href="mailto:support@bravebat.info" class="text-gray-500 hover:text-gray-300">
                             <svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M314.375 144h-180.75L224 221.465zm0 0"/><path d="M224 240a7.986 7.986 0 01-5.207-1.93L120 153.39V304h208V153.39l-98.793 84.68A7.986 7.986 0 01224 240zm0 0"/><path d="M224 0C100.29 0 0 100.29 0 224s100.29 224 224 224 224-100.29 224-224C447.86 100.348 347.652.14 224 0zm120 312a8 8 0 01-8 8H112a8 8 0 01-8-8V136a8 8 0 018-8h224a8 8 0 018 8zm0 0"/></svg>
