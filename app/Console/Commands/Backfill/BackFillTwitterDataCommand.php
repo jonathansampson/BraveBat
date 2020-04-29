@@ -49,6 +49,6 @@ class BackFillTwitterDataCommand extends Command
                 $creator->processCreatable();
                 sleep(6);
             });
-        SimpleScheduledTaskSlackAndLogService::message('start Twitter filling');
+        SimpleScheduledTaskSlackAndLogService::message('finish Twitter filling');
     }
 }
