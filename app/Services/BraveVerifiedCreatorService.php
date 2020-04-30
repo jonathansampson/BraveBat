@@ -29,7 +29,6 @@ class BraveVerifiedCreatorService
             if ($item[1] == '') return null;
             return trim($item[0]);
         }, $content)));
-        dd(count($apiInfo));
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
         SimpleScheduledTaskSlackAndLogService::message('The count of new api is  ' . count($apiInfo));
         SimpleScheduledTaskSlackAndLogService::message('The count of database is  ' . count($databaseInfo));
