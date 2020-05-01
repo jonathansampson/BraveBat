@@ -28,13 +28,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:transparency')->daily();
 
         $schedule->command('import:creator')->dailyAt("16:20");
-
-        $schedule->command('backfill:website')->dailyAt("12:10"); // 8000
         $schedule->command('backfill:twitter')->dailyAt("4:42"); // 10000
         $schedule->command('backfill:vimeo')->dailyAt("4:43"); // 10000
         $schedule->command('backfill:twitch')->dailyAt("4:44"); // 10000
-        $schedule->command('backfill:github')->dailyAt("9:38"); // 15000
-        $schedule->command('backfill:youtube')->dailyAt("4:51"); // 1900
+        $schedule->command('backfill:github')->dailyAt("4:45"); // 15000
+        $schedule->command('backfill:youtube')->dailyAt("4:46"); // 1900
+        $schedule->command('backfill:website')->dailyAt("17:20"); // 8000
 
         // $schedule->command('creator:rank')->dailyAt('23:00');
         // $schedule->command('sitemap:generate')->daily();
