@@ -17,14 +17,13 @@ class Creator extends Model
     protected $guarded = [];
 
     /**
-     * Handle input from Brave API
+     * Handle incomings from Brave API
      *
-     * @param $incomings, outgoings
+     * @param $incomings
      * @return void
      */
-    public static function handleInput($incomings, $outgoings)
+    public static function handleIncomings($incomings)
     {
-        // Handle incomings
         foreach ($incomings as $incoming) {
             $existing = self::where('creator', $incoming)->first();
             if ($existing) {
@@ -38,15 +37,22 @@ class Creator extends Model
                     'verified_at' => Carbon::today()
                 ]);
                 $creator->fillChannel();
-                // $creator->processCreatable();
             }
         }
+    }
 
-        // Handle outgoings
-        foreach ($outgoings as $outgoing) {
-            $creator = self::where('creator', $outgoing)->first();
-            $creator->active = false;
-            $creator->save();
+    /**
+     * Handle outgoings from Brave API
+     *
+     * @param $outgoings
+     * @return void
+     */
+    public function handleOutgoings($outgoings)
+    {
+        if (count($outgoings) <= 20000) {
+            foreach ($outgoings as $outgoing) {
+                self::where('creator', $outgoing)->delete();
+            }
         }
     }
 
