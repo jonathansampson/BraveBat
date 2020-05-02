@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('import:transparency')->daily();
 
-        // $schedule->command('import:creator')->dailyAt("16:20");
+        $schedule->command('import:creator')->dailyAt("07:40");
         $schedule->command('backfill:twitter')->dailyAt("4:42"); // 10000
         $schedule->command('backfill:vimeo')->dailyAt("4:43"); // 10000
         $schedule->command('backfill:twitch')->dailyAt("4:44"); // 10000
