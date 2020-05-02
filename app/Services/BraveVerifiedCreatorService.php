@@ -37,5 +37,6 @@ class BraveVerifiedCreatorService
         SimpleScheduledTaskSlackAndLogService::message('The count of incomings is  ' . count($incomings));
         SimpleScheduledTaskSlackAndLogService::message('The count of outgoings is  ' . count($outgoings));
         Creator::handleInput($incomings, $outgoings);
+        SimpleScheduledTaskSlackAndLogService::message('Done with creator import for today');
     }
 }
