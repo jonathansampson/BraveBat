@@ -47,7 +47,7 @@ class Creator extends Model
      * @param $outgoings
      * @return void
      */
-    public function handleOutgoings($outgoings)
+    public static function handleOutgoings($outgoings)
     {
         if (count($outgoings) <= 20000) {
             foreach ($outgoings as $outgoing) {
