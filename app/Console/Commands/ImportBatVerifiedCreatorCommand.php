@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Services\BraveVerifiedCreatorService;
+use App\Services\BraveApiService;
 use Illuminate\Console\Command;
 
 class ImportBatVerifiedCreatorCommand extends Command
@@ -38,6 +38,6 @@ class ImportBatVerifiedCreatorCommand extends Command
      */
     public function handle()
     {
-        BraveVerifiedCreatorService::import();
+        BraveApiService::import();
     }
 }
