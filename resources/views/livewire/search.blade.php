@@ -46,7 +46,4 @@
         </div>
         @endif
     </div>
-    @if (strlen($search) >= 2)
-    <button class="fixed inset-0 z-20 w-full h-full cursor-default" wire:click="clear"></button>
-    @endif
 </div>

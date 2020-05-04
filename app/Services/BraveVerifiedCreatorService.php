@@ -17,27 +17,29 @@ class BraveVerifiedCreatorService
      */
     public static function import()
     {
+        SimpleScheduledTaskSlackAndLogService::message('Start creator import for today');
         $date = Carbon::today()->format('Y-m-d');
 
         $url = config('bravebat.brave_api');
         $file = file_get_contents($url);
-        $filename = "brave/{$date}.txt";
-        Storage::put($filename, $file);
+        // $filename = "brave/{$date}.txt";
+        // Storage::put($filename, $file);
         $content = json_decode($file);
-
         $apiInfo = array_unique(array_filter(array_map(function ($item) {
             if ($item[1] == '') return null;
             return trim($item[0]);
         }, $content)));
         $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
-        SimpleScheduledTaskSlackAndLogService::message('The count of new api is  ' . count($apiInfo));
-        SimpleScheduledTaskSlackAndLogService::message('The count of database is  ' . count($databaseInfo));
+
         $incomings = array_diff($apiInfo, $databaseInfo);
         $outgoings = array_diff($databaseInfo, $apiInfo);
-        SimpleScheduledTaskSlackAndLogService::message('The count of incomings is  ' . count($incomings));
-        SimpleScheduledTaskSlackAndLogService::message('The count of outgoings is  ' . count($outgoings));
+
+        // SimpleScheduledTaskSlackAndLogService::message('The count of new api is  ' . count($apiInfo));
+        // SimpleScheduledTaskSlackAndLogService::message('The count of database is  ' . count($databaseInfo));
+        // SimpleScheduledTaskSlackAndLogService::message('The count of incomings is  ' . count($incomings));
+        // SimpleScheduledTaskSlackAndLogService::message('The count of outgoings is  ' . count($outgoings));
         Creator::handleIncomings($incomings);
         Creator::handleOutgoings($outgoings);
-        SimpleScheduledTaskSlackAndLogService::message('Done with creator import for today');
+        SimpleScheduledTaskSlackAndLogService::message('Finish creator import for today');
     }
 }

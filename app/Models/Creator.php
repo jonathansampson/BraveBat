@@ -10,6 +10,7 @@ use App\Models\CreatorProcessors\TwitchProcessor;
 use App\Models\CreatorProcessors\TwitterProcessor;
 use App\Models\CreatorProcessors\WebsiteProcessor;
 use App\Models\CreatorProcessors\YoutubeProcessor;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class Creator extends Model
 {
@@ -53,6 +54,8 @@ class Creator extends Model
             foreach ($outgoings as $outgoing) {
                 self::where('creator', $outgoing)->delete();
             }
+        } else {
+            SimpleScheduledTaskSlackAndLogService::message('something is wrong with outgoing creators. No deletion is made');
         }
     }
 

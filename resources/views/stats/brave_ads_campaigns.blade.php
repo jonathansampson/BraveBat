@@ -19,7 +19,7 @@
             </div>
         </div>
     </div>
-    <h1 class="py-2 text-2xl font-semibold">Detailed Transaction Data</h1>
+    <h1 class="py-2 text-2xl font-semibold">Country-Specific Data</h1>
     <table class="w-full">
         <thead>
             <tr>

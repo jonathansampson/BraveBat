@@ -26,7 +26,6 @@ class Search extends Component
     {
         if (strlen($this->search) >= 2) {
             $this->searchResults = Creator::query()
-                ->where("active", true)
                 ->where("valid", true)
                 ->whereNotNull("name")
                 ->whereNotNull("link")
