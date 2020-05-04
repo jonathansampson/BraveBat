@@ -15,6 +15,7 @@
             <tr>
                 <th class="px-2 py-4 text-left">Month</th>
                 <th class="px-2 py-4 text-left">Daily Active Users</th>
+                <th class="px-2 py-4 text-left">Source</th>
             </tr>
         </thead>
         <tbody>
@@ -22,6 +23,15 @@
             <tr>
                 <td class="px-2 py-4 border">{{$row['month']}}</td>
                 <td class="px-2 py-4 border">{{$row['dau'] / 1000000}} Million</td>
+                <td class="px-2 py-4 border">
+                    @if ($row['source'])
+                        <a class="text-blue-500" href="{{$row['source']}}">Source</a>
+                    @else 
+                        Estimated
+                    @endif
+                    
+                </td>
+
             </tr>
             @endforeach
         </tbody>

@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.137.1",
+            "version": "3.137.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c"
+                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/935060ae3d64f2bfeab7a6ba46bebe525047446c",
-                "reference": "935060ae3d64f2bfeab7a6ba46bebe525047446c",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
+                "reference": "af91c2fc467a326e5bcb5665e4e2ad3d84d28be2",
                 "shasum": ""
             },
             "require": {
@@ -140,7 +140,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-05-01T18:13:22+00:00"
+            "time": "2020-05-04T18:13:52+00:00"
         },
         {
             "name": "brick/math",
@@ -3736,16 +3736,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.10.3",
+            "version": "v0.10.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02"
+                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
-                "reference": "2bde2fa03e05dff0aee834598b951d6fc7c6fe02",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/a8aec1b2981ab66882a01cce36a49b6317dc3560",
+                "reference": "a8aec1b2981ab66882a01cce36a49b6317dc3560",
                 "shasum": ""
             },
             "require": {
@@ -3804,7 +3804,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2020-04-07T06:44:48+00:00"
+            "time": "2020-05-03T19:32:03+00:00"
         },
         {
             "name": "ralouphie/getallheaders",
@@ -6400,20 +6400,20 @@
         },
         {
             "name": "vlucas/phpdotenv",
-            "version": "v4.1.4",
+            "version": "v4.1.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "feb6dad5ae24b1380827aee1629b730080fde500"
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/feb6dad5ae24b1380827aee1629b730080fde500",
-                "reference": "feb6dad5ae24b1380827aee1629b730080fde500",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/539bb6927c101a5605d31d11a2d17185a2ce2bf1",
+                "reference": "539bb6927c101a5605d31d11a2d17185a2ce2bf1",
                 "shasum": ""
             },
             "require": {
-                "php": "^5.5.9 || ^7.0",
+                "php": "^5.5.9 || ^7.0 || ^8.0",
                 "phpoption/phpoption": "^1.7.2",
                 "symfony/polyfill-ctype": "^1.9"
             },
@@ -6460,7 +6460,17 @@
                 "env",
                 "environment"
             ],
-            "time": "2020-04-12T15:20:09+00:00"
+            "funding": [
+                {
+                    "url": "https://github.com/GrahamCampbell",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/vlucas/phpdotenv",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2020-05-02T14:08:57+00:00"
         },
         {
             "name": "voku/portable-ascii",
@@ -7311,16 +7321,16 @@
         },
         {
             "name": "mpociot/laravel-apidoc-generator",
-            "version": "4.7.0",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/mpociot/laravel-apidoc-generator.git",
-                "reference": "4082fb401bc8212aaef75b48f0e17cd3072e7b10"
+                "reference": "ec6709b70152f620ca439fb5a23f8ace90ae8ebf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/4082fb401bc8212aaef75b48f0e17cd3072e7b10",
-                "reference": "4082fb401bc8212aaef75b48f0e17cd3072e7b10",
+                "url": "https://api.github.com/repos/mpociot/laravel-apidoc-generator/zipball/ec6709b70152f620ca439fb5a23f8ace90ae8ebf",
+                "reference": "ec6709b70152f620ca439fb5a23f8ace90ae8ebf",
                 "shasum": ""
             },
             "require": {
@@ -7381,7 +7391,7 @@
                 "documentation",
                 "laravel"
             ],
-            "time": "2020-04-12T12:26:56+00:00"
+            "time": "2020-05-02T18:39:06+00:00"
         },
         {
             "name": "mpociot/reflection-docblock",
