@@ -55,7 +55,6 @@ class CreatorsController extends Controller
         }
         $channel_info = $channels[$channel];
         $creators = Creator::query()
-            ->where("active", true)
             ->where("valid", true)
             ->whereNotNull("name")
             ->whereNotNull("link")

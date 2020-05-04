@@ -124,8 +124,6 @@ class ChartDataController extends Controller
                 count(id) AS summary
             FROM
                 creators
-            WHERE
-                active = 1
             GROUP BY
                 channel
             ORDER BY 

@@ -2,7 +2,10 @@
 
 namespace Tests\Unit\Services;
 
+use Carbon\Carbon;
 use Tests\TestCase;
+use App\Models\Creator;
+use App\Models\ImportLog;
 use App\Services\BraveApiService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -17,23 +20,25 @@ class BraveApiServiceTest extends TestCase
     public function it_can_import_brave_api_creator_data()
     {
         config()->set('bravebat.brave_api', 'https://bravebat.info/test.txt');
+        factory(Creator::class)->create(['creator' => 'heliat.fr']);
+        factory(Creator::class)->create(['creator' => 'outgoing.com']);
+
         BraveApiService::import();
+        $import_log = ImportLog::first();
+        $this->assertDatabaseHas('import_logs', [
+            'yesterday_count' => 2,
+            'today_count' => 7,
+            'incomings' => 6,
+            'outgoings' => 1
+        ]);
+        $this->assertCount(7, Creator::all());
+        $this->assertDatabaseHas('creators', [
+            'creator' => 'linuxiarze.pl',
+            'channel' => 'website',
+            'verified_at' => Carbon::today()->toDateString()
+        ]);
+        $this->assertDatabaseMissing('creators', [
+            'creator' => 'outgoing.com',
+        ]);
     }
 }
-
-
-// $file = file_get_contents(config('bravebat.brave_api'));
-// // $date = Carbon::today()->format('Y-m-d');
-// // $filename = "brave/{$date}.txt";
-// // Storage::put($filename, $file);
-// $content = json_decode($file);
-// $apiInfo = array_unique(array_filter(array_map(function ($item) {
-//     if ($item[1] == '') return null;
-//     return trim($item[0]);
-// }, $content)));
-// $databaseInfo = Creator::where('active', true)->pluck('creator')->toArray();
-
-// $incomings = array_diff($apiInfo, $databaseInfo);
-// $outgoings = array_diff($databaseInfo, $apiInfo);
-// Creator::handleIncomings($incomings);
-// Creator::handleOutgoings($outgoings);

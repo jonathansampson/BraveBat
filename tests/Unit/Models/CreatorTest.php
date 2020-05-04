@@ -134,4 +134,68 @@ class CreatorTest extends TestCase
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'adamwathan');
     }
+
+    /**
+     * @test
+     */
+    public function creator_can_rank_website()
+    {
+        $creator1 = factory(Creator::class)->create([
+            'channel' => 'website',
+            'alexa_ranking' => 10,
+            'valid' => true
+        ]);
+        $creator2 = factory(Creator::class)->create([
+            'channel' => 'website',
+            'alexa_ranking' => 100,
+            'valid' => true
+        ]);
+        $creator3 = factory(Creator::class)->create([
+            'channel' => 'website',
+            'alexa_ranking' => 1000,
+            'valid' => true
+        ]);
+        $creator4 = factory(Creator::class)->create([
+            'channel' => 'website',
+            'alexa_ranking' => 10000,
+            'valid' => true
+        ]);
+        Creator::rank();
+        $this->assertEquals(0, $creator1->fresh()->rank);
+        $this->assertEquals(0.25, $creator2->fresh()->rank);
+        $this->assertEquals(0.50, $creator3->fresh()->rank);
+        $this->assertEquals(0.75, $creator4->fresh()->rank);
+    }
+
+    /**
+     * @test
+     */
+    public function creator_can_rank_youtube()
+    {
+        $creator1 = factory(Creator::class)->create([
+            'channel' => 'youtube',
+            'follower_count' => 10,
+            'valid' => true
+        ]);
+        $creator2 = factory(Creator::class)->create([
+            'channel' => 'youtube',
+            'follower_count' => 100,
+            'valid' => true
+        ]);
+        $creator3 = factory(Creator::class)->create([
+            'channel' => 'youtube',
+            'follower_count' => 1000,
+            'valid' => true
+        ]);
+        $creator4 = factory(Creator::class)->create([
+            'channel' => 'youtube',
+            'follower_count' => 10000,
+            'valid' => true
+        ]);
+        Creator::rank();
+        $this->assertEquals(0.75, $creator1->fresh()->rank);
+        $this->assertEquals(0.50, $creator2->fresh()->rank);
+        $this->assertEquals(0.25, $creator3->fresh()->rank);
+        $this->assertEquals(0, $creator4->fresh()->rank);
+    }
 }

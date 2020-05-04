@@ -26,19 +26,11 @@ class Creator extends Model
     public static function handleIncomings($incomings)
     {
         foreach ($incomings as $incoming) {
-            $existing = self::where('creator', $incoming)->first();
-            if ($existing) {
-                $existing->active = true;
-                $existing->save();
-            } else {
-                $creator = self::create([
-                    'creator' => $incoming,
-                    'active' => true,
-                    'channel' => '',
-                    'verified_at' => Carbon::today()
-                ]);
-                $creator->fillChannel();
-            }
+            $creator = self::make([
+                'creator' => $incoming,
+                'verified_at' => Carbon::today()
+            ]);
+            $creator->fillChannel();
         }
     }
 
@@ -99,36 +91,33 @@ class Creator extends Model
 
     public static function rank()
     {
-        self::all()->each(function ($creator) {
-            $creator->rank = null;
-            $creator->save();
-        });
-
         $channels = ['youtube', 'vimeo', 'twitter', 'github', 'twitch'];
         foreach ($channels as $channel) {
             $creators = self::query()
-                ->where('active', true)
                 ->where('valid', true)
                 ->where('channel', $channel)
                 ->orderBy('follower_count', 'desc')
                 ->get();
+            if ($creators->count()) {
+                $fraction = 1 / $creators->count();
+                foreach ($creators as $index => $creator) {
+                    $creator->rank = $index * $fraction;
+                    $creator->save();
+                }
+            }
+        }
+
+        $creators = self::query()
+            ->where('valid', true)
+            ->where('channel', 'website')
+            ->orderBy('alexa_ranking', 'asc')
+            ->get();
+        if ($creators->count()) {
             $fraction = 1 / $creators->count();
             foreach ($creators as $index => $creator) {
                 $creator->rank = $index * $fraction;
                 $creator->save();
             }
-        }
-
-        $creators = self::query()
-            ->where('active', true)
-            ->where('valid', true)
-            ->where('channel', 'website')
-            ->orderBy('alexa_ranking', 'asc')
-            ->get();
-        $fraction = 1 / $creators->count();
-        foreach ($creators as $index => $creator) {
-            $creator->rank = $index * $fraction;
-            $creator->save();
         }
     }
 }
