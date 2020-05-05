@@ -28,7 +28,6 @@ class Search extends Component
             $this->searchResults = Creator::query()
                 ->where("valid", true)
                 ->whereNotNull("name")
-                ->whereNotNull("link")
                 ->whereNotNull('rank')
                 ->where('name', 'LIKE', '%' . $this->search . '%')
                 ->orderBy('rank', 'asc')

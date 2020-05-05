@@ -16,7 +16,11 @@ class SearchTest extends TestCase
      */
     public function the_search_dropdown_works_correctly()
     {
-        $creator = factory(Creator::class)->create(['name' => 'bravebat.info', 'rank' => 1]);
+        $creator = factory(Creator::class)->create([
+            'name' => 'bravebat.info',
+            'rank' => 1,
+            'valid' => true,
+        ]);
         Livewire::test('search')
             ->assertDontSee('bravebat.info')
             ->set('search', 'bravebat')

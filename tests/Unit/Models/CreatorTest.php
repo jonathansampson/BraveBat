@@ -55,8 +55,6 @@ class CreatorTest extends TestCase
             'channel_id' => 'bravebat.info'
         ]);
         $creator->processCreatable();
-        dd($creator->fresh());
-
         $this->assertEquals($creator->fresh()->name, 'bravebat.info');
     }
 
