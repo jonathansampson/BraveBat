@@ -103,36 +103,66 @@ class Creator extends Model
         $this->save();
     }
 
-    public static function rank()
+    public function getRanking($ceiling)
+    {
+        if ($this->channel == 'website') {
+            $this->ranking = $ceiling / $this->alexa_ranking;
+        } else {
+            $this->ranking = $this->follower_count / $ceiling;
+        }
+        $this->save();
+    }
+
+    public static function fillRankings()
     {
         $channels = ['youtube', 'vimeo', 'twitter', 'github', 'twitch'];
         foreach ($channels as $channel) {
-            $creators = self::query()
+            $top_creator = self::query()
                 ->where('valid', true)
                 ->whereNotNull('name')
+                ->whereNotNull('follower_count')
                 ->where('channel', $channel)
                 ->orderBy('follower_count', 'desc')
-                ->get();
-            if ($creators->count()) {
-                $fraction = 1 / $creators->count();
-                foreach ($creators as $index => $creator) {
-                    $creator->ranking = $index * $fraction;
-                    $creator->save();
+                ->first();
+
+            if ($top_creator) {
+                $unranked_creators = self::query()
+                    ->where('valid', true)
+                    ->whereNotNull('follower_count')
+                    ->whereNotNull('name')
+                    ->whereNull('ranking')
+                    ->where('channel', $channel)
+                    ->orderBy('follower_count', 'desc')
+                    ->get();
+
+                foreach ($unranked_creators as $unranked_creator) {
+                    $unranked_creator->getRanking($top_creator->follower_count);
                 }
             }
         }
 
-        $creators = self::query()
-            ->where('valid', true)
-            ->whereNotNull('name')
-            ->where('channel', 'website')
-            ->orderBy('alexa_ranking', 'asc')
-            ->get();
-        if ($creators->count()) {
-            $fraction = 1 / $creators->count();
-            foreach ($creators as $index => $creator) {
-                $creator->ranking = $index * $fraction;
-                $creator->save();
+        $channels = ['website'];
+        foreach ($channels as $channel) {
+            $top_creator = self::query()
+                ->where('valid', true)
+                ->whereNotNull('name')
+                ->whereNotNull('alexa_ranking')
+                ->where('channel', $channel)
+                ->orderBy('alexa_ranking', 'asc')
+                ->first();
+            if ($top_creator) {
+                $unranked_creators = self::query()
+                    ->where('valid', true)
+                    ->whereNotNull('alexa_ranking')
+                    ->whereNotNull('name')
+                    ->whereNull('ranking')
+                    ->where('channel', $channel)
+                    ->orderBy('alexa_ranking', 'asc')
+                    ->get();
+
+                foreach ($unranked_creators as $unranked_creator) {
+                    $unranked_creator->getRanking($top_creator->alexa_ranking);
+                }
             }
         }
     }

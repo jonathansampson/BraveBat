@@ -38,6 +38,6 @@ class RankCreatorCommand extends Command
      */
     public function handle()
     {
-        Creator::rank();
+        Creator::fillRankings();
     }
 }
