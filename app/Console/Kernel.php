@@ -26,6 +26,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('import:transparency')->daily();
+        $schedule->command('sitemap:generate')->dailyAt("01:00");
 
         $schedule->command('import:creator')->dailyAt("00:01");
         $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
@@ -35,10 +36,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:github')->dailyAt("03:45"); // 15000
         $schedule->command('backfill:youtube')->dailyAt("03:46"); // 1900
 
-        $schedule->command('creator:rank')->dailyAt('17:55');
-        $schedule->command('sitemap:generate')->dailyAt("01:00");
-        // $schedule->command('telescope:prune')->daily();
-
+        $schedule->command('creator:rank')->dailyAt('7:55');
     }
 
     /**
