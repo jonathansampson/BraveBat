@@ -29,7 +29,7 @@ class Search extends Component
                 ->whereNotNull("name")
                 ->whereNotNull('ranking')
                 ->where('name', 'LIKE', '%' . $this->search . '%')
-                ->orderBy('ranking', 'asc')
+                ->orderBy('ranking', 'desc')
                 ->take(10)
                 ->get();
         }
