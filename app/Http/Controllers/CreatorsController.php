@@ -3,9 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
-use Illuminate\Http\Request;
-
-use function PHPSTORM_META\map;
 
 class CreatorsController extends Controller
 {
@@ -56,8 +53,6 @@ class CreatorsController extends Controller
         $channel_info = $channels[$channel];
         $creators = Creator::query()
             ->where("valid", true)
-            ->whereNotNull("name")
-            ->whereNotNull("link")
             ->where('channel', $channel)
             ->orderBy($channel_info['rank_column'], $channel_info['rank_order'])
             ->paginate(10);

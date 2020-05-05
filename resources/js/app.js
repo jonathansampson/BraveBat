@@ -4,3 +4,5 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 window.Vue = require('vue');
 import Chart from "chart.js";
+
+import 'alpinejs'

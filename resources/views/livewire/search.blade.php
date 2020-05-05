@@ -1,4 +1,4 @@
-<div>
+<div x-data="{ isOpen: false }" @click.away="isOpen = false">
     <div class="relative z-30">
         <label for="search" class="hidden">Search</label>
         <input 
@@ -9,6 +9,10 @@
             type="text"
             class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full focus:outline-none focus:shadow-outline text-brand-dark"
             placeholder="Search Verified Creators" 
+            @focus="isOpen = true"
+            @keydown="isOpen = true"
+            @keydown.escape.window="isOpen = false"
+            @keydown.shift.tab="isOpen = false"
             wire:keydown.escape="clear" 
             wire:keydown.tab="clear"
             wire:key="searchInput">
@@ -22,7 +26,7 @@
         <div wire:loading class="absolute inset-y-0 right-0 mr-4 spinner"></div>
 
         @if (strlen($search) >= 2)
-        <div class="absolute z-50 w-64 mt-4 text-sm bg-gray-200">
+        <div class="absolute z-50 w-64 mt-4 text-sm bg-gray-200" x-show="isOpen">
 
             @if ($searchResults->count())
 
