@@ -19,7 +19,6 @@ class Search extends Component
     {
         $this->search = '';
         $this->searchResults = [];
-        $this->highlightIndex = 0;
     }
 
     public function render()
