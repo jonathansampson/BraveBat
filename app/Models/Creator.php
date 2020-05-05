@@ -54,13 +54,15 @@ class Creator extends Model
 
     public static function creator_count()
     {
-        $results = DB::select("SELECT channel, count(id) as count from creators group by channel");
-        $creator_count = [];
-        foreach ($results as $result) {
-            $creator_count[$result->channel] = $result->count;
-        }
-        $creator_count['overall'] = array_sum($creator_count);
-        return $creator_count;
+        return cache()->remember('creator_count', 3600, function () {
+            $results = DB::select("SELECT channel, count(id) as count from creators group by channel");
+            $creator_count = [];
+            foreach ($results as $result) {
+                $creator_count[$result->channel] = $result->count;
+            }
+            $creator_count['overall'] = array_sum($creator_count);
+            return $creator_count;
+        });
     }
 
     public function fillChannel()

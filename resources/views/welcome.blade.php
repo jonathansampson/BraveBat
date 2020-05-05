@@ -20,12 +20,11 @@ communities')
         </div>
         <div class="flex items-center justify-center">
             <x-download-badge></x-download-badge>
-
         </div>
     </div>
 </div>
-<div class="container px-4 pb-8 mx-auto sm:px-6 md:px-8">
-    <div class="pt-16 text-3xl text-center">
+<div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
+    <div class="text-3xl text-center">
         Thriving Platform Ecosystem
     </div>
     <div class="flex flex-wrap">
@@ -49,31 +48,13 @@ communities')
         </div>
     </div>
 </div>
-<div class="bg-gray-100 ">
-<div class="container px-4 pb-8 mx-auto sm:px-6 md:px-8">
-    <div class="pt-12 text-3xl text-center">
-        Growing Brave Creator
+<div class="bg-gray-100">
+<div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
+    <div class="text-3xl text-center">
+        Growing Creator Community
     </div>
     @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'reddit', 'github'] as $channel)
-        <div class="flex items-center justify-center pt-16 text-2xl">
-            <div class="w-8 h-8 mr-2">
-                @includeIf('partials.icons.'.$channel)
-            </div>
-            <div>
-                {{round($creator_count[$channel] / 1000, 1) }}K
-                Creators
-            </div>
-        </div>
-        <div class="flex flex-wrap">
-            <div class="w-full lg:w-1/2">
-                <h2 class="py-8 text-xl font-semibold text-center">Total</h2>
-                @include('charts.line', ['id' => 'creator_daily_total_stats/'.$channel, 'brand_color' => $channel, 'unit' => 'day'])
-            </div>
-            <div class="w-full lg:w-1/2">
-                <h2 class="py-8 text-xl font-semibold text-center">Daily Addition</h2>
-                @include('charts.line', ['id' => 'creator_daily_addition_stats/'.$channel, 'brand_color' => $channel, 'unit' => 'day'])
-            </div>
-        </div>
+        @include('partials.channel_charts', ['channel' => $channel])
     @endforeach
 </div>
 </div>

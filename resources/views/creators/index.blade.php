@@ -4,9 +4,9 @@
 @section('description', 'Brave Verified Creators - ' .$channel_info["creator_title"])
 
 @section('content')
-<div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-    <div>
-        <h1 class="inline-block py-2 text-2xl font-semibold ">{{$channel_info['creator_title']}} </h1>
+<div class='container px-4 mx-auto sm:px-6 md:px-8'>
+    @include('partials.channel_charts', ['channel' => $channel])
+    <div class="py-8">
         <table class="w-full">
             <thead>
                 <tr>

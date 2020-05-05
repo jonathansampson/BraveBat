@@ -6,7 +6,6 @@ use App\Models\Creator;
 
 class CreatorsController extends Controller
 {
-
     public function index($channel)
     {
         $channels = [
@@ -57,7 +56,8 @@ class CreatorsController extends Controller
             ->orderBy($channel_info['rank_column'], $channel_info['rank_order'])
             ->paginate(10);
         $column = $channel_info['rank_column'];
-        return view('creators.index', compact('creators', 'channel', 'channel_info', 'column'));
+        $creator_count = Creator::creator_count();
+        return view('creators.index', compact('creators', 'channel', 'channel_info', 'column', 'creator_count'));
     }
 
     public function show($channel, $id)
