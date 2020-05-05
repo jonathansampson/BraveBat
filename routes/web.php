@@ -19,6 +19,7 @@ Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators
 
 
 
+
 // Chart APIs
 Route::any('/charts/dau', 'ChartDataController@dau')->name('charts.dau');
 Route::any('/charts/bat_purchases', 'ChartDataController@batPurchases')->name('charts.bat_purchases');
@@ -26,3 +27,5 @@ Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@adCam
 Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.active_ad_campaigns');
 Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary')->name('charts.bat_creator_summary');
 Route::any('/charts/creator_stats/{channel?}', 'ChartDataController@creatorStats')->name('charts.creator_stats');
+Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataController@creatorDailyAdditionStats')->name('charts.creator_daily_addition_stats');
+Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creatorDailyTotalStats')->name('charts.creator_daily_total_stats');

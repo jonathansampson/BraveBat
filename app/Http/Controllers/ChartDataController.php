@@ -168,4 +168,77 @@ class ChartDataController extends Controller
         });
         return $result;
     }
+
+
+    public function creatorDailyTotalStats($channel = null)
+    {
+        $result = cache()->remember('creator_daily_total_stats_' . $channel, 86400, function () use ($channel) {
+            if ($channel) {
+                $data = DB::select("SELECT
+                    record_date,
+                    sum(total) AS total
+                FROM
+                    creator_daily_stats
+                WHERE 
+                    channel = ?
+                GROUP BY
+                    record_date
+                ORDER BY 
+                    record_date", [$channel]);
+            } else {
+                $data = DB::select("SELECT
+                    record_date,
+                    sum(total) AS total
+                FROM
+                    creator_daily_stats
+                GROUP BY
+                    record_date
+                ORDER BY 
+                    record_date");
+            }
+            $labels = collect($data)->map(fn ($item) => $item->record_date);
+            $total = collect($data)->map(fn ($item) => $item->total);
+            return [
+                'labels' => $labels,
+                'data' => ['Total Verified Creators' => $total]
+            ];
+        });
+        return $result;
+    }
+
+    public function creatorDailyAdditionStats($channel = null)
+    {
+        $result = cache()->remember('creator_daily_addition_stats_' . $channel, 86400, function () use ($channel) {
+            if ($channel) {
+                $data = DB::select("SELECT
+                    record_date,
+                    sum(addition) AS addition
+                FROM
+                    creator_daily_stats
+                WHERE 
+                    channel = ?
+                GROUP BY
+                    record_date
+                ORDER BY 
+                    record_date", [$channel]);
+            } else {
+                $data = DB::select("SELECT
+                    record_date,
+                    sum(addition) AS addition
+                FROM
+                    creator_daily_stats
+                GROUP BY
+                    record_date
+                ORDER BY 
+                    record_date");
+            }
+            $labels = collect($data)->map(fn ($item) => $item->record_date);
+            $addition = collect($data)->map(fn ($item) => $item->addition);
+            return [
+                'labels' => $labels,
+                'data' => ['Daily New Verified Creators' => $addition]
+            ];
+        });
+        return $result;
+    }
 }
