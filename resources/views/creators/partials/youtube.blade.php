@@ -1,4 +1,4 @@
-<div class="w-full max-w-md overflow-hidden bg-white border rounded shadow-lg sm:w-2/3 md:w-1/2 ">
+<div class="w-full max-w-md overflow-hidden bg-white border rounded shadow-lg sm:w-2/3 md:w-1/2">
     <div class="flex items-center justify-between px-4 pt-6">
         <div>
             <img class="w-16 h-16 rounded-full" src="{{$creator->thumbnail}}" alt="{{$creator->name}}">
@@ -37,5 +37,12 @@
                 {{number_format($creator->view_count)}}
             </div>    
         </div>
+    </div>
+    <div class="border-t">
+        <ol class="mx-4 mb-4 list-inside">
+            <li class="mt-4 list-decimal ">Download <a href="{{config('bravebat.referral_link')}}" class="underline">Brave Browser</a></li>
+            <li class="mt-4 list-decimal "><a href="https://brave.com/tips/" class="underline">Leave a tip</a> or <a href="https://brave.com/brave-rewards/" class="underline">make regular controbutions</a></li>
+            <li class="mt-4 list-decimal ">Thank you!</li>
+        </ol>
     </div>
 </div>

@@ -3,6 +3,7 @@
 return [
     'admin_email' => 'songhua@gmail.com',
     'transparency_page' => 'https://brave.com/transparency/',
+    'referral_link' => 'https://brave.com/iuv633',
     'brave_api' => 'https://publishers-distro.basicattentiontoken.org/api/v3/public/channels',
     'colors' => [
         '#fb542b',

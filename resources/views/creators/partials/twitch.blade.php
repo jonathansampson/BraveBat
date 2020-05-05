@@ -32,4 +32,6 @@
             </div>    
         </div>
     </div>
+    @include('creators.partials.cta')
+
 </div>

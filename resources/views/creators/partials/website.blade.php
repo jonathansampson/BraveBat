@@ -22,4 +22,6 @@
     <div class="px-4 pt-4 pb-6">
         <x-verified-badge />
     </div>
+    @include('creators.partials.cta')
+
 </div>
