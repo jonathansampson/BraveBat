@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use App\Services\BraveApiService;
 use App\Models\Stats\CreatorDailyStats;

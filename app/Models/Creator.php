@@ -11,6 +11,7 @@ use App\Models\CreatorProcessors\TwitterProcessor;
 use App\Models\CreatorProcessors\WebsiteProcessor;
 use App\Models\CreatorProcessors\YoutubeProcessor;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use DB;
 
 class Creator extends Model
 {
@@ -49,6 +50,17 @@ class Creator extends Model
         } else {
             SimpleScheduledTaskSlackAndLogService::message('something is wrong with outgoing creators. No deletion is made');
         }
+    }
+
+    public static function creator_count()
+    {
+        $results = DB::select("SELECT channel, count(id) as count from creators group by channel");
+        $creator_count = [];
+        foreach ($results as $result) {
+            $creator_count[$result->channel] = $result->count;
+        }
+        $creator_count['overall'] = array_sum($creator_count);
+        return $creator_count;
     }
 
     public function fillChannel()

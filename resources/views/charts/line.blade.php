@@ -12,6 +12,7 @@
         let labels = data.labels;
         let unit = "{!! isset($unit) ? $unit : 'month' !!}";
         let colors = {!! json_encode(config('bravebat.colors')) !!}
+        let brand_color = "{!! isset($brand_color) ? config('bravebat.creator_brand_colors')[$brand_color] : null !!}";
         let datasets = [];
         Object.keys(data.data).forEach((key, index) => {
           let hidden = index == 0 ? false : true;
@@ -19,8 +20,8 @@
             label: key,
             borderWidth: 1,
             data: data.data[key],
-            backgroundColor: colors[index],
-            borderColor: colors[index],
+            backgroundColor: brand_color ? brand_color : colors[index],
+            borderColor: brand_color ? brand_color : colors[index],
             fill: false,
             borderCapStyle: "butt",
             pointRadius: 3,

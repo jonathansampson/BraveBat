@@ -13,7 +13,7 @@ communities')
                     Support Brave Creators
                 </h1>
                 <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
-                    User Brave Browser to protect your online privacy and support {{round($creator_count / 1000) }}K
+                    User Brave Browser to protect your online privacy and support {{round($creator_count['overall'] / 1000) }}K
                     amazing verified creators
                 </p>
             </div>
@@ -25,15 +25,56 @@ communities')
     </div>
 </div>
 <div class="container px-4 pb-8 mx-auto sm:px-6 md:px-8">
+    <div class="pt-16 text-3xl text-center">
+        Thriving Platform Ecosystem
+    </div>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-2xl font-semibold text-center">Verified Creator Platform Distribution</h2>
+            <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
             @include('charts.donut', ['id' => 'bat_creator_summary'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-2xl font-semibold text-center">Verified Creator Growth</h2>
-            @include('charts.line', ['id' => 'creator_stats'])
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users</h2>
+            @include('charts.line', ['id' => 'dau'])
         </div>
     </div>
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
+            @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
+        </div>
+        <div class="w-full lg:w-1/2">
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Initiated BAT Token Purchase</h2>
+            @include('charts.line', ['id' => 'bat_purchases'])
+        </div>
+    </div>
+</div>
+<div class="bg-gray-100 ">
+<div class="container px-4 pb-8 mx-auto sm:px-6 md:px-8">
+    <div class="pt-12 text-3xl text-center">
+        Growing Brave Creator
+    </div>
+    @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'reddit', 'github'] as $channel)
+        <div class="flex items-center justify-center pt-16 text-2xl">
+            <div class="w-8 h-8 mr-2">
+                @includeIf('partials.icons.'.$channel)
+            </div>
+            <div>
+                {{round($creator_count[$channel] / 1000, 1) }}K
+                Creators
+            </div>
+        </div>
+        <div class="flex flex-wrap">
+            <div class="w-full lg:w-1/2">
+                <h2 class="py-8 text-xl font-semibold text-center">Total</h2>
+                @include('charts.line', ['id' => 'creator_daily_total_stats/'.$channel, 'brand_color' => $channel, 'unit' => 'day'])
+            </div>
+            <div class="w-full lg:w-1/2">
+                <h2 class="py-8 text-xl font-semibold text-center">Daily Addition</h2>
+                @include('charts.line', ['id' => 'creator_daily_addition_stats/'.$channel, 'brand_color' => $channel, 'unit' => 'day'])
+            </div>
+        </div>
+    @endforeach
+</div>
 </div>
 @endsection

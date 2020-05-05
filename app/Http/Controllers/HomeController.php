@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
+use DB;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,7 @@ class HomeController extends Controller
     public function welcome()
     {
         $creator_count = cache()->remember('creator_count', 3600, function () {
-            return Creator::count();
+            return Creator::creator_count();
         });
         return view('welcome', compact('creator_count'));
     }

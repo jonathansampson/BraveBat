@@ -216,7 +216,7 @@ class ChartDataController extends Controller
                 FROM
                     creator_daily_stats
                 WHERE 
-                    channel = ?
+                    channel = ? AND record_date >= '2020-04-25'
                 GROUP BY
                     record_date
                 ORDER BY 
@@ -225,6 +225,8 @@ class ChartDataController extends Controller
                 $data = DB::select("SELECT
                     record_date,
                     sum(addition) AS addition
+                WHERE 
+                    record_date >= '2020-04-25'
                 FROM
                     creator_daily_stats
                 GROUP BY
