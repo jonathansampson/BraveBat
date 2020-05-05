@@ -11,6 +11,7 @@ use App\Models\CreatorProcessors\TwitterProcessor;
 use App\Models\CreatorProcessors\WebsiteProcessor;
 use App\Models\CreatorProcessors\YoutubeProcessor;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use App\Services\TweetService;
 use DB;
 
 class Creator extends Model
@@ -203,6 +204,8 @@ class Creator extends Model
             ->first();
         if ($top_creator) {
             SimpleScheduledTaskSlackAndLogService::message($top_creator->tweet_message());
+            $tweet_service = new TweetService();
+            $tweet_service->postTweet($top_creator->tweet_message());
         }
     }
 }
