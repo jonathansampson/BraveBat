@@ -109,13 +109,14 @@ class Creator extends Model
         foreach ($channels as $channel) {
             $creators = self::query()
                 ->where('valid', true)
+                ->whereNotNull('name')
                 ->where('channel', $channel)
                 ->orderBy('follower_count', 'desc')
                 ->get();
             if ($creators->count()) {
                 $fraction = 1 / $creators->count();
                 foreach ($creators as $index => $creator) {
-                    $creator->rank = $index * $fraction;
+                    $creator->ranking = $index * $fraction;
                     $creator->save();
                 }
             }
@@ -123,13 +124,14 @@ class Creator extends Model
 
         $creators = self::query()
             ->where('valid', true)
+            ->whereNotNull('name')
             ->where('channel', 'website')
             ->orderBy('alexa_ranking', 'asc')
             ->get();
         if ($creators->count()) {
             $fraction = 1 / $creators->count();
             foreach ($creators as $index => $creator) {
-                $creator->rank = $index * $fraction;
+                $creator->ranking = $index * $fraction;
                 $creator->save();
             }
         }

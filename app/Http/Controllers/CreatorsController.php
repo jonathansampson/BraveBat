@@ -52,6 +52,7 @@ class CreatorsController extends Controller
         $channel_info = $channels[$channel];
         $creators = Creator::query()
             ->where("valid", true)
+            ->whereNotNull("name")
             ->where('channel', $channel)
             ->orderBy($channel_info['rank_column'], $channel_info['rank_order'])
             ->paginate(10);
