@@ -166,4 +166,43 @@ class Creator extends Model
             }
         }
     }
+
+    public function tweet_message()
+    {
+        $alexa_ranking = number_format($this->alexa_ranking);
+        $follower_count = number_format($this->follower_count);
+        if ($this->channel == 'website') {
+            return "{$this->name} is just verified as a Brave Creator with an Alexa ranking of {$alexa_ranking}. {$this->link}";
+        }
+        if ($this->channel == 'youtube') {
+            return "YouTube channel {$this->name} is just verified as a Brave Creator with {$follower_count} subscribers. {$this->link}";
+        }
+        if ($this->channel == 'twitch') {
+            return "Twitch channel {$this->name} is just verified as a Brave Creator with {$follower_count} followers. {$this->link}";
+        }
+        if ($this->channel == 'twitter') {
+            return "Twitter account {$this->name} is just verified as a Brave Creator with {$follower_count} followers. {$this->link}";
+        }
+        if ($this->channel == 'vimeo') {
+            return "Vimeo channel {$this->name} is just verified as a Brave Creator with {$follower_count} followers. {$this->link}";
+        }
+        if ($this->channel == 'github') {
+            return "Github user {$this->name} is just verified as a Brave Creator with {$follower_count} followers. {$this->link}";
+        }
+    }
+
+    public static function tweet($channel)
+    {
+        $top_creator = self::query()
+            ->where('valid', true)
+            ->whereNotNull('name')
+            ->where('ranking', '>', 0.1)
+            ->where('channel', $channel)
+            ->where('verified_at', today()->toDateString())
+            ->orderBy('ranking', 'desc')
+            ->first();
+        if ($top_creator) {
+            SimpleScheduledTaskSlackAndLogService::message($top_creator->tweet_message());
+        }
+    }
 }

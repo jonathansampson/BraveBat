@@ -36,7 +36,15 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:github')->dailyAt("03:45"); // 15000
         $schedule->command('backfill:youtube')->dailyAt("03:46"); // 1900
 
-        $schedule->command('creator:rank')->dailyAt('7:55');
+        $schedule->command('creator:rank')->dailyAt('6:00');
+
+        // Tweet 
+        $schedule->command('top_creator:tweet website')->dailyAt('7:55');
+        $schedule->command('top_creator:tweet youtube')->dailyAt('8:55');
+        $schedule->command('top_creator:tweet vimeo')->dailyAt('9:55');
+        $schedule->command('top_creator:tweet twitter')->dailyAt('10:55');
+        $schedule->command('top_creator:tweet github')->dailyAt('11:55');
+        $schedule->command('top_creator:tweet twitch')->dailyAt('12:55');
     }
 
     /**
