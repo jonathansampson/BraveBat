@@ -192,12 +192,12 @@ class Creator extends Model
         }
     }
 
-    public static function tweet($channel)
+    public static function tweet($channel, $threshold)
     {
         $top_creator = self::query()
             ->where('valid', true)
             ->whereNotNull('name')
-            ->where('ranking', '>', 0.1)
+            ->where('ranking', '>', $threshold)
             ->where('channel', $channel)
             ->where('verified_at', today()->toDateString())
             ->orderBy('ranking', 'desc')

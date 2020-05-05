@@ -12,7 +12,7 @@ class TweetTopCreatorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'top_creator:tweet {channel}';
+    protected $signature = 'top_creator:tweet {channel} {threshold}';
 
     /**
      * The console command description.
@@ -39,6 +39,7 @@ class TweetTopCreatorCommand extends Command
     public function handle()
     {
         $channel = $this->argument('channel');
-        Creator::tweet($channel);
+        $threshold = $this->argument('threshold');
+        Creator::tweet($channel, $threshold);
     }
 }

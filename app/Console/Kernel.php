@@ -39,12 +39,12 @@ class Kernel extends ConsoleKernel
         $schedule->command('creator:rank')->dailyAt('6:00');
 
         // Tweet 
-        $schedule->command('top_creator:tweet website')->dailyAt('7:55');
-        $schedule->command('top_creator:tweet youtube')->dailyAt('8:55');
-        $schedule->command('top_creator:tweet vimeo')->dailyAt('9:55');
-        $schedule->command('top_creator:tweet twitter')->dailyAt('10:55');
-        $schedule->command('top_creator:tweet github')->dailyAt('11:55');
-        $schedule->command('top_creator:tweet twitch')->dailyAt('12:55');
+        $schedule->command('top_creator:tweet website 0.0005')->dailyAt('7:55');
+        $schedule->command('top_creator:tweet youtube 0.005')->dailyAt('8:55');
+        $schedule->command('top_creator:tweet twitch 0.005')->dailyAt('9:55');
+        $schedule->command('top_creator:tweet twitter 0.01')->dailyAt('10:55');
+        $schedule->command('top_creator:tweet github 0.01')->dailyAt('11:55');
+        $schedule->command('top_creator:tweet vimeo 0.01')->dailyAt('12:55');
     }
 
     /**
