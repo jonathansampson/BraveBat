@@ -37,6 +37,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:youtube')->dailyAt("03:46"); // 1900
 
         $schedule->command('creator:rank')->dailyAt('6:00');
+        $schedule->command('creator_daily_stats:generate')->dailyAt('7:00');
 
         // Tweet 
         $schedule->command('top_creator:tweet website 0.0005')->dailyAt('7:55');
