@@ -34,6 +34,10 @@
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('stats.brave_ads_campaigns')}}">Brave Ads Campaigns</a>
                     </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.brave_creator_historical_stats')}}">Brave Creator Historical Stats</a>
+                    </li>
+                    
                 </ul>
             </div>
             <div class="pt-3 md:w-1/3">
