@@ -173,22 +173,22 @@ class Creator extends Model
         $alexa_ranking = number_format($this->alexa_ranking);
         $follower_count = number_format($this->follower_count);
         if ($this->channel == 'website') {
-            return "{$this->name} is just verified as a #bravebrowser Creator with an Alexa ranking of {$alexa_ranking}. {$this->link}";
+            return "{$this->name} is just verified as a #bravebrowser Creator with an Alexa ranking of {$alexa_ranking}. 👏 {$this->link}";
         }
         if ($this->channel == 'youtube') {
-            return "YouTube channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} subscribers. {$this->link}";
+            return "YouTube channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} subscribers. 🙌 {$this->link}";
         }
         if ($this->channel == 'twitch') {
-            return "Twitch channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. {$this->link}";
+            return "Twitch channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 🎉 {$this->link}";
         }
         if ($this->channel == 'twitter') {
-            return "Twitter account {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. {$this->link}";
+            return "Twitter account {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 👏 {$this->link}";
         }
         if ($this->channel == 'vimeo') {
-            return "Vimeo channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. {$this->link}";
+            return "Vimeo channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 🙌 {$this->link}";
         }
         if ($this->channel == 'github') {
-            return "Github user {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. {$this->link}";
+            return "Github user {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 🎉 {$this->link}";
         }
     }
 
