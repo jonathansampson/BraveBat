@@ -12,7 +12,7 @@ return [
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
      */
-   'output_folder' => 'public/docs',
+    'output_folder' => 'public/docs',
 
     /*
      * Settings for `laravel` type output.
@@ -22,7 +22,7 @@ return [
          * Whether to automatically create a docs endpoint for you to view your generated docs.
          * If this is false, you can still set up routing manually.
          */
-        'autoload' => false,
+        'autoload' => true,
 
         /*
          * URL path to use for the docs endpoint (if `autoload` is true).
@@ -101,7 +101,7 @@ return [
                  * Match only routes whose domains match this pattern (use * as a wildcard to match any characters).
                  */
                 'domains' => [
-                    '*',
+                    'api/*',
                     // 'domain1.*',
                 ],
 
@@ -256,6 +256,7 @@ return [
     'example_languages' => [
         'bash',
         'javascript',
+        'php',
     ],
 
     /*

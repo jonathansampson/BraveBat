@@ -14,7 +14,6 @@ Route::get('brave_browser_active_users', 'StatsController@brave_browser_active_u
 Route::get('brave_initiated_bat_purchase', 'StatsController@brave_initiated_bat_purchase')->name('stats.brave_initiated_bat_purchase');
 Route::get('brave_ads_campaigns', 'StatsController@brave_ads_campaigns')->name('stats.brave_ads_campaigns');
 Route::get('brave_creator_historical_stats', 'StatsController@brave_creator_historical_stats')->name('stats.brave_creator_historical_stats');
-
 Route::get('creators/{channel}', 'CreatorsController@index')->name('creators.index');
 Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators.show');
 
@@ -29,3 +28,12 @@ Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary
 Route::any('/charts/creator_stats', 'ChartDataController@creatorStats')->name('charts.creator_stats');
 Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataController@creatorDailyAdditionStats')->name('charts.creator_daily_addition_stats');
 Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creatorDailyTotalStats')->name('charts.creator_daily_total_stats');
+
+//API
+// Route::get('docs', function () {
+//     return view('apidoc.index');
+// });
+
+// Route::get('api/78', function () {
+//     return 'ok';
+// });
