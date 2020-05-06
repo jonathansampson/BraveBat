@@ -208,4 +208,9 @@ class Creator extends Model
             $tweet_service->postTweet($top_creator->tweet_message());
         }
     }
+
+    public function screenshot()
+    {
+        return config('bravebat.s3') . $this->screenshot;
+    }
 }

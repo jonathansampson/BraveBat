@@ -7,7 +7,7 @@ return [
      * - "laravel" will generate the documentation as a Blade view,
      * so you can add routing and authentication.
      */
-    'type' => 'static',
+    'type' => 'laravel',
 
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
@@ -75,7 +75,7 @@ return [
         /*
          * The description for the exported Postman collection.
          */
-        'description' => null,
+        'description' => "BraveBat API for Brave Browser Verified Creators through all channels (website, YouTube, Twitch, Reddit, Github, Vimeo and Twitter)",
 
         /*
          * The "Auth" section that should appear in the postman collection. See the schema docs for more information:
@@ -101,7 +101,7 @@ return [
                  * Match only routes whose domains match this pattern (use * as a wildcard to match any characters).
                  */
                 'domains' => [
-                    'api/*',
+                    '*',
                     // 'domain1.*',
                 ],
 
@@ -109,7 +109,7 @@ return [
                  * Match only routes whose paths match this pattern (use * as a wildcard to match any characters).
                  */
                 'prefixes' => [
-                    '*',
+                    'api/*',
                     // 'users/*',
                 ],
 
@@ -150,7 +150,7 @@ return [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
-                    // 'Authorization' => 'Bearer {token}',
+                    'Authorization' => 'Bearer {your-token}',
                     // 'Api-Version' => 'v2',
                 ],
 
@@ -257,6 +257,7 @@ return [
         'bash',
         'javascript',
         'php',
+        'python'
     ],
 
     /*
@@ -283,7 +284,7 @@ return [
      * set this to any number (eg. 1234)
      *
      */
-    'faker_seed' => null,
+    'faker_seed' => 'faker seeder',
 
     /*
      * If you would like to customize how routes are matched beyond the route configuration you may
