@@ -2,6 +2,7 @@
     <div class="relative z-30">
         <label for="search" class="hidden">Search</label>
         <input 
+            aria-label="search"
             name='search' 
             id="search"
             autocomplete="off"
