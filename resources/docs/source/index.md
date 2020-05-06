@@ -25,15 +25,15 @@ Welcome to the generated API reference.
 #v1
 
 
-APIs for verified Brave Browser Creator: v1
-<!-- START_b50edf1f398c9f51b23264b7e24bb7ed -->
-## Get a website
+<!-- START_d8afcf81b557268db12b389598122c72 -->
+## Website
+Check if a website is a verified Brave Browser Creator
 
 > Example request:
 
 ```bash
 curl -X POST \
-    "http://bravebat.test/api/website" \
+    "http://bravebat.test/api/v1/website" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
@@ -43,7 +43,7 @@ curl -X POST \
 
 ```javascript
 const url = new URL(
-    "http://bravebat.test/api/website"
+    "http://bravebat.test/api/v1/website"
 );
 
 let headers = {
@@ -69,7 +69,7 @@ fetch(url, {
 
 $client = new \GuzzleHttp\Client();
 $response = $client->post(
-    'http://bravebat.test/api/website',
+    'http://bravebat.test/api/v1/website',
     [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -89,7 +89,7 @@ print_r(json_decode((string) $body));
 import requests
 import json
 
-url = 'http://bravebat.test/api/website'
+url = 'http://bravebat.test/api/v1/website'
 payload = {
     "url": "wikipedia.org"
 }
@@ -133,13 +133,131 @@ response.json()
 ```
 
 ### HTTP Request
-`POST api/website`
+`POST api/v1/website`
 
 #### Body Parameters
 Parameter | Type | Status | Description
 --------- | ------- | ------- | ------- | -----------
     `url` | string |  required  | The URL of the website.
     
-<!-- END_b50edf1f398c9f51b23264b7e24bb7ed -->
+<!-- END_d8afcf81b557268db12b389598122c72 -->
+
+<!-- START_140d2e8c335ffa622d02919fc4b7a15c -->
+## YouTube
+Check if a YouTube channel is a verified Brave Browser Creator
+
+> Example request:
+
+```bash
+curl -X POST \
+    "http://bravebat.test/api/v1/youtube" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {your-token}" \
+    -d '{"youtube_id":"UC2F_7pXTR8LNg3llt55ZMCQ"}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://bravebat.test/api/v1/youtube"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {your-token}",
+};
+
+let body = {
+    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+```php
+
+$client = new \GuzzleHttp\Client();
+$response = $client->post(
+    'http://bravebat.test/api/v1/youtube',
+    [
+        'headers' => [
+            'Content-Type' => 'application/json',
+            'Accept' => 'application/json',
+            'Authorization' => 'Bearer {your-token}',
+        ],
+        'json' => [
+            'youtube_id' => 'UC2F_7pXTR8LNg3llt55ZMCQ',
+        ],
+    ]
+);
+$body = $response->getBody();
+print_r(json_decode((string) $body));
+```
+
+```python
+import requests
+import json
+
+url = 'http://bravebat.test/api/v1/youtube'
+payload = {
+    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {your-token}'
+}
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()
+```
+
+
+> Example response (200):
+
+```json
+{
+    "success": true,
+    "data": {
+        "link": "https:\/\/www.youtube.com\/channel\/UCr_USjgn4PQhVpqOT6RcAtQ",
+        "name": "Some name",
+        "description": "Some description",
+        "subscribers": 1000
+    }
+}
+```
+> Example response (422):
+
+```json
+{
+    "success": false,
+    "message": "Missing required field"
+}
+```
+> Example response (404):
+
+```json
+{
+    "success": false,
+    "message": "Not found"
+}
+```
+
+### HTTP Request
+`POST api/v1/youtube`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `youtube_id` | string |  required  | The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ")
+    
+<!-- END_140d2e8c335ffa622d02919fc4b7a15c -->
 
 

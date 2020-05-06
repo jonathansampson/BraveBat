@@ -51,21 +51,21 @@
 <a href="{{ route("apidoc.json") }}">Get Postman Collection</a></p>
 <!-- END_INFO -->
 <h1>v1</h1>
-<p>APIs for verified Brave Browser Creator: v1</p>
-<!-- START_b50edf1f398c9f51b23264b7e24bb7ed -->
-<h2>Get a website</h2>
+<!-- START_d8afcf81b557268db12b389598122c72 -->
+<h2>Website</h2>
+<p>Check if a website is a verified Brave Browser Creator</p>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X POST \
-    "http://bravebat.test/api/website" \
+    "http://bravebat.test/api/v1/website" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
     -d '{"url":"wikipedia.org"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://bravebat.test/api/website"
+    "http://bravebat.test/api/v1/website"
 );
 
 let headers = {
@@ -88,7 +88,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://bravebat.test/api/website',
+    'http://bravebat.test/api/v1/website',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -105,7 +105,7 @@ print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://bravebat.test/api/website'
+url = 'http://bravebat.test/api/v1/website'
 payload = {
     "url": "wikipedia.org"
 }
@@ -142,7 +142,7 @@ response.json()</code></pre>
     "message": "Not found"
 }</code></pre>
 <h3>HTTP Request</h3>
-<p><code>POST api/website</code></p>
+<p><code>POST api/v1/website</code></p>
 <h4>Body Parameters</h4>
 <table>
 <thead>
@@ -162,7 +162,120 @@ response.json()</code></pre>
 </tr>
 </tbody>
 </table>
-<!-- END_b50edf1f398c9f51b23264b7e24bb7ed -->
+<!-- END_d8afcf81b557268db12b389598122c72 -->
+<!-- START_140d2e8c335ffa622d02919fc4b7a15c -->
+<h2>YouTube</h2>
+<p>Check if a YouTube channel is a verified Brave Browser Creator</p>
+<blockquote>
+<p>Example request:</p>
+</blockquote>
+<pre><code class="language-bash">curl -X POST \
+    "http://bravebat.test/api/v1/youtube" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -H "Authorization: Bearer {your-token}" \
+    -d '{"youtube_id":"UC2F_7pXTR8LNg3llt55ZMCQ"}'
+</code></pre>
+<pre><code class="language-javascript">const url = new URL(
+    "http://bravebat.test/api/v1/youtube"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "Authorization": "Bearer {your-token}",
+};
+
+let body = {
+    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response =&gt; response.json())
+    .then(json =&gt; console.log(json));</code></pre>
+<pre><code class="language-php">
+$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://bravebat.test/api/v1/youtube',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'Authorization' =&gt; 'Bearer {your-token}',
+        ],
+        'json' =&gt; [
+            'youtube_id' =&gt; 'UC2F_7pXTR8LNg3llt55ZMCQ',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre>
+<pre><code class="language-python">import requests
+import json
+
+url = 'http://bravebat.test/api/v1/youtube'
+payload = {
+    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+}
+headers = {
+  'Content-Type': 'application/json',
+  'Accept': 'application/json',
+  'Authorization': 'Bearer {your-token}'
+}
+response = requests.request('POST', url, headers=headers, json=payload)
+response.json()</code></pre>
+<blockquote>
+<p>Example response (200):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": true,
+    "data": {
+        "link": "https:\/\/www.youtube.com\/channel\/UCr_USjgn4PQhVpqOT6RcAtQ",
+        "name": "Some name",
+        "description": "Some description",
+        "subscribers": 1000
+    }
+}</code></pre>
+<blockquote>
+<p>Example response (422):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Missing required field"
+}</code></pre>
+<blockquote>
+<p>Example response (404):</p>
+</blockquote>
+<pre><code class="language-json">{
+    "success": false,
+    "message": "Not found"
+}</code></pre>
+<h3>HTTP Request</h3>
+<p><code>POST api/v1/youtube</code></p>
+<h4>Body Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>Type</th>
+<th>Status</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>youtube_id</code></td>
+<td>string</td>
+<td>required</td>
+<td>The YouTube ID (example: &quot;UCr_USjgn4PQhVpqOT6RcAtQ&quot;)</td>
+</tr>
+</tbody>
+</table>
+<!-- END_140d2e8c335ffa622d02919fc4b7a15c -->
       </div>
       <div class="dark-box">
                         <div class="lang-selector">
