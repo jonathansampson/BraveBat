@@ -33,4 +33,14 @@ class CreatorDailyStats extends Model
             );
         }
     }
+
+    public static function total($date)
+    {
+        return CreatorDailyStats::where('record_date', $date)->sum('total');
+    }
+
+    public static function addition($date)
+    {
+        return CreatorDailyStats::where('record_date', $date)->sum('addition');
+    }
 }

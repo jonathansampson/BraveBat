@@ -138,7 +138,7 @@ class ChartDataController extends Controller
         return $result;
     }
 
-    public function creatorStats($channel = null)
+    public function creatorStats()
     {
         $result = cache()->remember('creator_stats', 86400, function () {
             $data = DB::select("SELECT

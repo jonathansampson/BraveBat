@@ -45,6 +45,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('top_creator:tweet twitter 0.01')->dailyAt('10:55');
         $schedule->command('top_creator:tweet github 0.01')->dailyAt('11:55');
         $schedule->command('top_creator:tweet vimeo 0.01')->dailyAt('12:55');
+
+        // Monthly
+        $schedule->command('creator_stats:generate')->monthlyOn(4, '15:00');
     }
 
     /**

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BatPurchase;
 use App\Models\BraveUsage;
 use App\Models\BraveAdCampaign;
-use DB;
+use App\Models\Stats\CreatorStats;
 
 class StatsController extends Controller
 {
@@ -30,5 +30,11 @@ class StatsController extends Controller
         } else {
             abort(500);
         }
+    }
+
+    public function brave_creator_historical_stats()
+    {
+        $creator_stats = CreatorStats::orderBy('record_date', 'desc')->get();
+        return view('stats.brave_creator_historical_stats', compact('creator_stats'));
     }
 }
