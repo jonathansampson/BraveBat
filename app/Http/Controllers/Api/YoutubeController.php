@@ -18,14 +18,14 @@ class YoutubeController extends Controller
      * Check if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube 
      * channel link, channel name, channel description and the number of channel subscribers.
      * 
-     * @bodyParam youtube_id string required The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ") Example: UC2F_7pXTR8LNg3llt55ZMCQ
+     * @bodyParam youtube_id string required The YouTube ID (example: "UCaUKfGWDNnZ5wWCogMshVrQ") Example: UCaUKfGWDNnZ5wWCogMshVrQ
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.youtube.com/channel/UCr_USjgn4PQhVpqOT6RcAtQ",
-     *     "name": "Some name",
-     *     "description": "Some description",
-     *     "subscribers": 1000
+     *     "link": "https://www.youtube.com/channel/UCaUKfGWDNnZ5wWCogMshVrQ",
+     *     "name": "Yao Cabrera",
+     *     "description": "Los limites estan solo en tu cabeza..",
+     *     "subscribers": 6890000
      *   }
      * }
      * @response 422 {

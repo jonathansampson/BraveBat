@@ -18,16 +18,16 @@ class GithubController extends Controller
      * Check if a GitHub account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Github 
      * link, use name, display name, description, the number of followers and the number of repos.
      * 
-     * @bodyParam github_id string required The GitHub ID (example: "55092446"). Notice this is not Github username that you might be familiar with. Example: 55092446
+     * @bodyParam github_id string required The GitHub ID (example: "241138"). Notice this is not Github username that you might be familiar with. Example: 241138
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://github.com/husonghua",
-     *     "name": "Some name",
-     *     "display_name": "Some display name",
-     *     "description": "Some description",
-     *     "followers": 1000,
-     *     "repos": 10
+     *     "link": "https://github.com/karpathy",
+     *     "name": "karpathy",
+     *     "display_name": "Andrej",
+     *     "description": "I like to train Deep Neural Nets on large datasets.",
+     *     "followers": 24815,
+     *     "repos": 35
      *   }
      * }
      * @response 422 {

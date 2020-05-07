@@ -22,11 +22,11 @@ class TwitterController extends Controller
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://twitter.com/bravebatinfo",
-     *     "handle": "BraveBatInfo",
-     *     "display_name": "BraveBatInfo",
-     *     "description": "Some description: http://bravebat.info",
-     *     "followers": 1000
+     *     "link": "https://twitter.com/FreakyTheory",
+     *     "handle": "FreakyTheory",
+     *     "display_name": "Motivation",
+     *     "description": "Stop Doubting & Start Living a Wealthy Life.We Don't own any of the pictures!",
+     *     "followers": 3702201
      *   }
      * }
      * @response 422 {

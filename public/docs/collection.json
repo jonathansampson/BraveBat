@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "BraveBat API",
-        "_postman_id": "23d0aa63-c229-4034-8b23-9986c9c6f078",
+        "_postman_id": "420e0bf2-f884-4cf2-b99d-2b7aa36a53d8",
         "description": "BraveBat API for Brave Browser Verified Creators through all channels (website, YouTube, Twitch, Reddit, Github, Vimeo and Twitter)",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -37,7 +37,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"github_id\": \"55092446\"\n}"
+                            "raw": "{\n    \"github_id\": \"241138\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -101,7 +101,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"twitch_id\": \"onboard001\"\n}"
+                            "raw": "{\n    \"twitch_id\": \"zerator\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -140,7 +140,7 @@
                     }
                 },
                 {
-                    "name": "vimeo\nCheck if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo\nlink, channel name, channel description, the number of channel followers and the number of videos.",
+                    "name": "Vimeo\nCheck if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo\nlink, channel name, channel description, the number of channel followers and the number of videos.",
                     "request": {
                         "url": {
                             "protocol": "http",
@@ -165,7 +165,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"vimeo_id\": \"105082085\"\n}"
+                            "raw": "{\n    \"vimeo_id\": \"1512484\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -229,7 +229,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\n    \"youtube_id\": \"UC2F_7pXTR8LNg3llt55ZMCQ\"\n}"
+                            "raw": "{\n    \"youtube_id\": \"UCaUKfGWDNnZ5wWCogMshVrQ\"\n}"
                         },
                         "description": "",
                         "response": []

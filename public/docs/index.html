@@ -50,7 +50,14 @@
 <p>Welcome to the generated API reference.
 <a href="http://bravebat.test/docs/collection.json">Get Postman Collection</a></p>
 <!-- END_INFO -->
-<p>This is an <strong>unofficial</strong> API for Brave Browser verified creators. We are a fan of Brave Browser and BAT. The source data comes from <a href="https://publishers-distro.basicattentiontoken.org/api/v3/public/channels">https://publishers-distro.basicattentiontoken.org/api/v3/public/channels</a> (big file alert!), which we sync our data with daily. To use this API, you need to register an account with us <a href="/register">here</a>. If you have account already, please login <a href="/login">here</a> and generate an API token. This API is free to use, but we reserve the right to rate-limit your usage if you excessively use the API (currently at 60 API calls per minute). You are required to make a backlink to <a href="https://bravebat.info">https://bravebat.info</a> in your app or service with a link text like &quot;Powered by BraveBat&quot;, &quot;Data from BraveBat&quot;, etc. Be Brave and thank you!</p>
+<p>This is an <strong>unofficial</strong> API for Brave Browser verified creators. We are a fan of Brave Browser and BAT. The source data comes from <a href="https://publishers-distro.basicattentiontoken.org/api/v3/public/channels">https://publishers-distro.basicattentiontoken.org/api/v3/public/channels</a> (big file alert!), which we sync our data with daily. We also use other third-party API data to enrich the data. </p>
+<p>To use this API, you need to register an account with us <a href="/register">here</a>. If you have an account already, please log in <a href="/login">here</a> and get an API token. This API requires an API token and is free to use, but we reserve the right to rate-limit your usage if you excessively use the API (currently at 60 API calls per minute). You are required to make a backlink to <a href="https://bravebat.info">https://bravebat.info</a> in your app or service with an anchor text to the effect of &quot;Powered by BraveBat&quot;, &quot;Data from BraveBat&quot;, etc. </p>
+<p>The API is currrently on V1. There are currently a few limitations:</p>
+<ol>
+<li>The Reddit endpoint currently only returns true/false answer without additional datapoints. </li>
+<li>The YouTube endpoint currently does not have additional datapoints for all verified creators. </li>
+</ol>
+<p>Be Brave and thank you!</p>
 <h1>v1</h1>
 <!-- START_aa2d7691006b34558d15f286a5f83862 -->
 <h2>GitHub</h2>
@@ -64,7 +71,7 @@ link, use name, display name, description, the number of followers and the numbe
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
-    -d '{"github_id":"55092446"}'
+    -d '{"github_id":"241138"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://bravebat.test/api/v1/github"
@@ -77,7 +84,7 @@ let headers = {
 };
 
 let body = {
-    "github_id": "55092446"
+    "github_id": "241138"
 }
 
 fetch(url, {
@@ -98,7 +105,7 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {your-token}',
         ],
         'json' =&gt; [
-            'github_id' =&gt; '55092446',
+            'github_id' =&gt; '241138',
         ],
     ]
 );
@@ -109,7 +116,7 @@ import json
 
 url = 'http://bravebat.test/api/v1/github'
 payload = {
-    "github_id": "55092446"
+    "github_id": "241138"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -124,12 +131,12 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "success": true,
     "data": {
-        "link": "https:\/\/github.com\/husonghua",
-        "name": "Some name",
-        "display_name": "Some display name",
-        "description": "Some description",
-        "followers": 1000,
-        "repos": 10
+        "link": "https:\/\/github.com\/karpathy",
+        "name": "karpathy",
+        "display_name": "Andrej",
+        "description": "I like to train Deep Neural Nets on large datasets.",
+        "followers": 24815,
+        "repos": 35
     }
 }</code></pre>
 <blockquote>
@@ -163,7 +170,7 @@ response.json()</code></pre>
 <td><code>github_id</code></td>
 <td>string</td>
 <td>required</td>
-<td>The GitHub ID (example: &quot;55092446&quot;). Notice this is not Github username that you might be familiar with.</td>
+<td>The GitHub ID (example: &quot;241138&quot;). Notice this is not Github username that you might be familiar with.</td>
 </tr>
 </tbody>
 </table>
@@ -288,7 +295,7 @@ link, name, display name, description, the number of followers and the number of
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
-    -d '{"twitch_id":"onboard001"}'
+    -d '{"twitch_id":"zerator"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://bravebat.test/api/v1/twitch"
@@ -301,7 +308,7 @@ let headers = {
 };
 
 let body = {
-    "twitch_id": "onboard001"
+    "twitch_id": "zerator"
 }
 
 fetch(url, {
@@ -322,7 +329,7 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {your-token}',
         ],
         'json' =&gt; [
-            'twitch_id' =&gt; 'onboard001',
+            'twitch_id' =&gt; 'zerator',
         ],
     ]
 );
@@ -333,7 +340,7 @@ import json
 
 url = 'http://bravebat.test/api/v1/twitch'
 payload = {
-    "twitch_id": "onboard001"
+    "twitch_id": "zerator"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -348,12 +355,12 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "success": true,
     "data": {
-        "link": "https:\/\/www.twitch.tv\/onboard001",
-        "name": "Some name",
-        "display_name": "Some display name",
-        "description": "Some description",
-        "followers": 1000,
-        "views": 1000
+        "link": "https:\/\/www.twitch.tv\/zerator",
+        "name": "zerator",
+        "display_name": "ZeratoR",
+        "description": "Créateur de contenu vidéo \/  French Streamer and Videomaker \/ Everything is on : http:\/\/www.ZeratoR.com",
+        "followers": 808737,
+        "views": 83595247
     }
 }</code></pre>
 <blockquote>
@@ -387,7 +394,7 @@ response.json()</code></pre>
 <td><code>twitch_id</code></td>
 <td>string</td>
 <td>required</td>
-<td>The Twitch ID (example: &quot;onboard001&quot;)</td>
+<td>The Twitch ID (example: &quot;zerator&quot;)</td>
 </tr>
 </tbody>
 </table>
@@ -464,11 +471,11 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "success": true,
     "data": {
-        "link": "https:\/\/twitter.com\/bravebatinfo",
-        "handle": "BraveBatInfo",
-        "display_name": "BraveBatInfo",
-        "description": "Some description: http:\/\/bravebat.info",
-        "followers": 1000
+        "link": "https:\/\/twitter.com\/FreakyTheory",
+        "handle": "FreakyTheory",
+        "display_name": "Motivation",
+        "description": "Stop Doubting &amp; Start Living a Wealthy Life.We Don't own any of the pictures!",
+        "followers": 3702201
     }
 }</code></pre>
 <blockquote>
@@ -508,7 +515,7 @@ response.json()</code></pre>
 </table>
 <!-- END_2e028dc962dcba4b1098c2a606262c08 -->
 <!-- START_96d46fceead83342585edaee1eace471 -->
-<h2>vimeo</h2>
+<h2>Vimeo</h2>
 <p>Check if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo
 link, channel name, channel description, the number of channel followers and the number of videos.</p>
 <blockquote>
@@ -519,7 +526,7 @@ link, channel name, channel description, the number of channel followers and the
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
-    -d '{"vimeo_id":"105082085"}'
+    -d '{"vimeo_id":"1512484"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://bravebat.test/api/v1/vimeo"
@@ -532,7 +539,7 @@ let headers = {
 };
 
 let body = {
-    "vimeo_id": "105082085"
+    "vimeo_id": "1512484"
 }
 
 fetch(url, {
@@ -553,7 +560,7 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {your-token}',
         ],
         'json' =&gt; [
-            'vimeo_id' =&gt; '105082085',
+            'vimeo_id' =&gt; '1512484',
         ],
     ]
 );
@@ -564,7 +571,7 @@ import json
 
 url = 'http://bravebat.test/api/v1/vimeo'
 payload = {
-    "vimeo_id": "105082085"
+    "vimeo_id": "1512484"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -579,12 +586,12 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "success": true,
     "data": {
-        "link": "https:\/\/vimeo.com\/user105082085",
-        "name": "Some name",
-        "display name": "Some display name",
-        "description": "Some description",
-        "followers": 1000,
-        "videos": 10
+        "link": "https:\/\/vimeo.com\/visiophone",
+        "name": "visiophone",
+        "display name": "visiophone",
+        "description": null,
+        "followers": 1702,
+        "videos": 133
     }
 }</code></pre>
 <blockquote>
@@ -618,7 +625,7 @@ response.json()</code></pre>
 <td><code>vimeo_id</code></td>
 <td>string</td>
 <td>required</td>
-<td>The Vimeo ID (example: &quot;105082085&quot;). Notice this is not Vimeo username that you might be familiar with.</td>
+<td>The Vimeo ID (example: &quot;1512484&quot;). Notice this is not Vimeo username that you might be familiar with.</td>
 </tr>
 </tbody>
 </table>
@@ -748,7 +755,7 @@ channel link, channel name, channel description and the number of channel subscr
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     -H "Authorization: Bearer {your-token}" \
-    -d '{"youtube_id":"UC2F_7pXTR8LNg3llt55ZMCQ"}'
+    -d '{"youtube_id":"UCaUKfGWDNnZ5wWCogMshVrQ"}'
 </code></pre>
 <pre><code class="language-javascript">const url = new URL(
     "http://bravebat.test/api/v1/youtube"
@@ -761,7 +768,7 @@ let headers = {
 };
 
 let body = {
-    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+    "youtube_id": "UCaUKfGWDNnZ5wWCogMshVrQ"
 }
 
 fetch(url, {
@@ -782,7 +789,7 @@ $response = $client-&gt;post(
             'Authorization' =&gt; 'Bearer {your-token}',
         ],
         'json' =&gt; [
-            'youtube_id' =&gt; 'UC2F_7pXTR8LNg3llt55ZMCQ',
+            'youtube_id' =&gt; 'UCaUKfGWDNnZ5wWCogMshVrQ',
         ],
     ]
 );
@@ -793,7 +800,7 @@ import json
 
 url = 'http://bravebat.test/api/v1/youtube'
 payload = {
-    "youtube_id": "UC2F_7pXTR8LNg3llt55ZMCQ"
+    "youtube_id": "UCaUKfGWDNnZ5wWCogMshVrQ"
 }
 headers = {
   'Content-Type': 'application/json',
@@ -808,10 +815,10 @@ response.json()</code></pre>
 <pre><code class="language-json">{
     "success": true,
     "data": {
-        "link": "https:\/\/www.youtube.com\/channel\/UCr_USjgn4PQhVpqOT6RcAtQ",
-        "name": "Some name",
-        "description": "Some description",
-        "subscribers": 1000
+        "link": "https:\/\/www.youtube.com\/channel\/UCaUKfGWDNnZ5wWCogMshVrQ",
+        "name": "Yao Cabrera",
+        "description": "Los limites estan solo en tu cabeza..",
+        "subscribers": 6890000
     }
 }</code></pre>
 <blockquote>
@@ -845,7 +852,7 @@ response.json()</code></pre>
 <td><code>youtube_id</code></td>
 <td>string</td>
 <td>required</td>
-<td>The YouTube ID (example: &quot;UCr_USjgn4PQhVpqOT6RcAtQ&quot;)</td>
+<td>The YouTube ID (example: &quot;UCaUKfGWDNnZ5wWCogMshVrQ&quot;)</td>
 </tr>
 </tbody>
 </table>

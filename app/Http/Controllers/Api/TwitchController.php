@@ -18,16 +18,16 @@ class TwitchController extends Controller
      * Check if a Twitch channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Twitch 
      * link, name, display name, description, the number of followers and the number of views.
      * 
-     * @bodyParam twitch_id string required The Twitch ID (example: "onboard001") Example: onboard001
+     * @bodyParam twitch_id string required The Twitch ID (example: "zerator") Example: zerator
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.twitch.tv/onboard001",
-     *     "name": "Some name",
-     *     "display_name": "Some display name",
-     *     "description": "Some description",
-     *     "followers": 1000,
-     *     "views": 1000
+     *     "link": "https://www.twitch.tv/zerator",
+     *     "name": "zerator",
+     *     "display_name": "ZeratoR",
+     *     "description": "Créateur de contenu vidéo /  French Streamer and Videomaker / Everything is on : http://www.ZeratoR.com",
+     *     "followers": 808737,
+     *     "views": 83595247
      *   }
      * }
      * @response 422 {

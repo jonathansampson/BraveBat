@@ -14,20 +14,20 @@ class VimeoController extends Controller
 {
     use ApiResponseTrait;
     /**
-     * vimeo
+     * Vimeo
      * Check if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo 
      * link, channel name, channel description, the number of channel followers and the number of videos.
      * 
-     * @bodyParam vimeo_id string required The Vimeo ID (example: "105082085"). Notice this is not Vimeo username that you might be familiar with. Example: 105082085
+     * @bodyParam vimeo_id string required The Vimeo ID (example: "1512484"). Notice this is not Vimeo username that you might be familiar with. Example: 1512484
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://vimeo.com/user105082085",
-     *     "name": "Some name",
-     *     "display name": "Some display name",
-     *     "description": "Some description",
-     *     "followers": 1000,
-     *     "videos": 10
+     *     "link": "https://vimeo.com/visiophone",
+     *     "name": "visiophone",
+     *     "display name": "visiophone",
+     *     "description": null,
+     *     "followers": 1702,
+     *     "videos": 133
      *   }
      * }
      * @response 422 {
