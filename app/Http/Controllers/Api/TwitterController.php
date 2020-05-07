@@ -10,22 +10,23 @@ use Illuminate\Support\Facades\Validator;
 /**
  * @group v1
  */
-class YoutubeController extends Controller
+class TwitterController extends Controller
 {
     use ApiResponseTrait;
     /**
-     * YouTube
-     * Check if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube 
-     * channel link, channel name, channel description and the number of channel subscribers.
+     * Twitter
+     * Check if a Twitter account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Twitter 
+     * link, handle, display name, description and the number of followers.
      * 
-     * @bodyParam youtube_id string required The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ") Example: UC2F_7pXTR8LNg3llt55ZMCQ
+     * @bodyParam twitter_id string required The Twitter ID (example: "3488129179"). Notice this is not Twitter handle that you might be familiar with. Example: 3488129179
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.youtube.com/channel/UCr_USjgn4PQhVpqOT6RcAtQ",
-     *     "name": "Some name",
-     *     "description": "Some description",
-     *     "subscribers": 1000
+     *     "link": "https://twitter.com/bravebatinfo",
+     *     "handle": "BraveBatInfo",
+     *     "display_name": "BraveBatInfo",
+     *     "description": "Some description: http://bravebat.info",
+     *     "followers": 1000
      *   }
      * }
      * @response 422 {
@@ -40,14 +41,14 @@ class YoutubeController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'youtube_id' => 'required'
+            'twitter_id' => 'required'
         ]);
         if ($validator->fails()) {
             return self::missing_field_response();
         }
 
-        $creator = Creator::where('channel', 'youtube')
-            ->where('channel_id', $request->youtube_id)
+        $creator = Creator::where('channel', 'twitter')
+            ->where('channel_id', $request->twitter_id)
             ->first();
 
         if (!$creator) {
@@ -58,9 +59,10 @@ class YoutubeController extends Controller
             'success' => true,
             'data' => [
                 'link' => $creator->link,
-                'name' => $creator->name,
+                'handle' => $creator->name,
+                'display_name' => $creator->display_name,
                 'description' => $creator->description,
-                'subscribers' => $creator->follower_count
+                'followers' => $creator->follower_count
             ]
         ], 200);
     }

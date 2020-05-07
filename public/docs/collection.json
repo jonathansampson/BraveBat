@@ -2,9 +2,240 @@
     "variables": [],
     "info": {
         "name": "BraveBat API",
-        "_postman_id": "419d674a-5a35-498f-8da1-1f0aa8d9cb4e",
-        "description": "",
+        "_postman_id": "84753163-d6ed-4ae8-9682-55fe9d4a3105",
+        "description": "BraveBat API for Brave Browser Verified Creators through all channels (website, YouTube, Twitch, Reddit, Github, Vimeo and Twitter)",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
-    "item": []
+    "item": [
+        {
+            "name": "v1",
+            "description": "",
+            "item": [
+                {
+                    "name": "GitHub\nCheck if a GitHub account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Github\nlink, use name, display name, description, the number of followers and the number of repos.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/github",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"github_id\": \"55092446\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Reddit\nCheck if a Reddit account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the\nconfirmation. No additional data points are returned currently.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/reddit",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"reddit_id\": \"2lsiek42\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Twitch\nCheck if a Twitch channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Twitch\nlink, name, display name, description, the number of followers and the number of views.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/twitch",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"twitch_id\": \"onboard001\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Twitter\nCheck if a Twitter account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Twitter\nlink, handle, display name, description and the number of followers.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/twitter",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"twitter_id\": \"3488129179\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "vimeo\nCheck if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo\nlink, channel name, channel description, the number of channel followers and the number of videos.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/vimeo",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"vimeo_id\": \"105082085\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "Website\nCheck if a website is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the URL link,\nalexa ranking and screenshot.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/website",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"url\": \"wikipedia.org\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "YouTube\nCheck if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube\nchannel link, channel name, channel description and the number of channel subscribers.",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "bravebat.test",
+                            "path": "api\/v1\/youtube",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Authorization",
+                                "value": "Bearer {your-token}"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"youtube_id\": \"UC2F_7pXTR8LNg3llt55ZMCQ\"\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                }
+            ]
+        }
+    ]
 }

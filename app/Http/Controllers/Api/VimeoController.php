@@ -10,22 +10,24 @@ use Illuminate\Support\Facades\Validator;
 /**
  * @group v1
  */
-class YoutubeController extends Controller
+class VimeoController extends Controller
 {
     use ApiResponseTrait;
     /**
-     * YouTube
-     * Check if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube 
-     * channel link, channel name, channel description and the number of channel subscribers.
+     * vimeo
+     * Check if a Vimeo channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Vimeo 
+     * link, channel name, channel description, the number of channel followers and the number of videos.
      * 
-     * @bodyParam youtube_id string required The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ") Example: UC2F_7pXTR8LNg3llt55ZMCQ
+     * @bodyParam vimeo_id string required The Vimeo ID (example: "105082085"). Notice this is not Vimeo username that you might be familiar with. Example: 105082085
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.youtube.com/channel/UCr_USjgn4PQhVpqOT6RcAtQ",
+     *     "link": "https://vimeo.com/user105082085",
      *     "name": "Some name",
+     *     "display name": "Some display name",
      *     "description": "Some description",
-     *     "subscribers": 1000
+     *     "followers": 1000,
+     *     "videos": 10
      *   }
      * }
      * @response 422 {
@@ -40,14 +42,14 @@ class YoutubeController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'youtube_id' => 'required'
+            'vimeo_id' => 'required'
         ]);
         if ($validator->fails()) {
             return self::missing_field_response();
         }
 
-        $creator = Creator::where('channel', 'youtube')
-            ->where('channel_id', $request->youtube_id)
+        $creator = Creator::where('channel', 'vimeo')
+            ->where('channel_id', $request->vimeo_id)
             ->first();
 
         if (!$creator) {
@@ -59,8 +61,10 @@ class YoutubeController extends Controller
             'data' => [
                 'link' => $creator->link,
                 'name' => $creator->name,
+                'display_name' => $creator->display_name,
                 'description' => $creator->description,
-                'subscribers' => $creator->follower_count
+                'followers' => $creator->follower_count,
+                'videos' => $creator->video_count,
             ]
         ], 200);
     }

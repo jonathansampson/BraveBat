@@ -9,7 +9,7 @@ use Laravel\Sanctum\Sanctum;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class YoutubeTest extends TestCase
+class TwitchTest extends TestCase
 {
     use RefreshDatabase;
     protected $endpoint;
@@ -18,27 +18,29 @@ class YoutubeTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->endpoint = '/api/v1/youtube';
+        $this->endpoint = '/api/v1/twitch';
         $this->user = factory(User::class)->create();
         factory(Creator::class)->create([
-            'channel' => 'youtube',
+            'channel' => 'twitch',
             'channel_id' => '12345',
             'name' => 'hello',
+            'display_name' => 'Some display name',
             'description' => 'some description',
-            'link' => 'https://youtube.com/12345',
+            'link' => 'https://twitch.com/12345',
             'follower_count' => 10,
+            'view_count' => 1000,
         ]);
     }
 
     /** @test */
-    public function youtube_api_reject_unauthenticated_call()
+    public function twitch_api_reject_unauthenticated_call()
     {
-        $response = $this->postJson($this->endpoint, ['youtube_id' => '1234']);
+        $response = $this->postJson($this->endpoint, ['twitch_id' => '1234']);
         $response->assertStatus(401);
     }
 
     /** @test */
-    public function youtube_api_reject_missing_field()
+    public function twitch_api_reject_missing_field()
     {
         Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['dsf' => '1234']);
@@ -47,25 +49,27 @@ class YoutubeTest extends TestCase
     }
 
     /** @test */
-    public function youtube_api_reject_not_found()
+    public function twitch_api_reject_not_found()
     {
         Sanctum::actingAs($this->user);
-        $response = $this->postJson($this->endpoint, ['youtube_id' => '1234']);
+        $response = $this->postJson($this->endpoint, ['twitch_id' => '1234']);
         $response->assertStatus(404);
         $response->assertJson(['success' => false, 'message' => "Not found"]);
     }
 
     /** @test */
-    public function youtube_api_success()
+    public function twitch_api_success()
     {
         Sanctum::actingAs($this->user);
-        $response = $this->postJson($this->endpoint, ['youtube_id' => '12345']);
+        $response = $this->postJson($this->endpoint, ['twitch_id' => '12345']);
         $response->assertStatus(200);
         $response->assertJson(['success' => true, 'data' => [
             'name' => 'hello',
+            'display_name' => 'Some display name',
             'description' => 'some description',
-            'link' => 'https://youtube.com/12345',
-            'subscribers' => 10,
+            'link' => 'https://twitch.com/12345',
+            'followers' => 10,
+            'views' => 1000,
         ]]);
     }
 }

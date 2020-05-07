@@ -10,22 +10,24 @@ use Illuminate\Support\Facades\Validator;
 /**
  * @group v1
  */
-class YoutubeController extends Controller
+class GithubController extends Controller
 {
     use ApiResponseTrait;
     /**
-     * YouTube
-     * Check if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube 
-     * channel link, channel name, channel description and the number of channel subscribers.
+     * GitHub
+     * Check if a GitHub account is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Github 
+     * link, use name, display name, description, the number of followers and the number of repos.
      * 
-     * @bodyParam youtube_id string required The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ") Example: UC2F_7pXTR8LNg3llt55ZMCQ
+     * @bodyParam github_id string required The GitHub ID (example: "55092446"). Notice this is not Github username that you might be familiar with. Example: 55092446
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.youtube.com/channel/UCr_USjgn4PQhVpqOT6RcAtQ",
+     *     "link": "https://github.com/husonghua",
      *     "name": "Some name",
+     *     "display_name": "Some display name",
      *     "description": "Some description",
-     *     "subscribers": 1000
+     *     "followers": 1000,
+     *     "repos": 10
      *   }
      * }
      * @response 422 {
@@ -40,14 +42,14 @@ class YoutubeController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'youtube_id' => 'required'
+            'github_id' => 'required'
         ]);
         if ($validator->fails()) {
             return self::missing_field_response();
         }
 
-        $creator = Creator::where('channel', 'youtube')
-            ->where('channel_id', $request->youtube_id)
+        $creator = Creator::where('channel', 'github')
+            ->where('channel_id', $request->github_id)
             ->first();
 
         if (!$creator) {
@@ -59,8 +61,10 @@ class YoutubeController extends Controller
             'data' => [
                 'link' => $creator->link,
                 'name' => $creator->name,
+                'display_name' => $creator->display_name,
                 'description' => $creator->description,
-                'subscribers' => $creator->follower_count
+                'followers' => $creator->follower_count,
+                'repos' => $creator->repo_count,
             ]
         ], 200);
     }

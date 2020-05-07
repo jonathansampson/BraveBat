@@ -15,7 +15,8 @@ class WebsiteController extends Controller
     use ApiResponseTrait;
     /**
      * Website
-     * Check if a website is a verified Brave Browser Creator
+     * Check if a website is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the URL link, 
+     * alexa ranking and screenshot. 
      * 
      * @bodyParam url string required The URL of the website. Example: wikipedia.org
      * @response 200 {

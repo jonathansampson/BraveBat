@@ -10,22 +10,24 @@ use Illuminate\Support\Facades\Validator;
 /**
  * @group v1
  */
-class YoutubeController extends Controller
+class TwitchController extends Controller
 {
     use ApiResponseTrait;
     /**
-     * YouTube
-     * Check if a YouTube channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the YouTube 
-     * channel link, channel name, channel description and the number of channel subscribers.
+     * Twitch
+     * Check if a Twitch channel is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the Twitch 
+     * link, name, display name, description, the number of followers and the number of views.
      * 
-     * @bodyParam youtube_id string required The YouTube ID (example: "UCr_USjgn4PQhVpqOT6RcAtQ") Example: UC2F_7pXTR8LNg3llt55ZMCQ
+     * @bodyParam twitch_id string required The Twitch ID (example: "onboard001") Example: onboard001
      * @response 200 {
      *   "success": true,
      *   "data": {
-     *     "link": "https://www.youtube.com/channel/UCr_USjgn4PQhVpqOT6RcAtQ",
+     *     "link": "https://www.twitch.tv/onboard001",
      *     "name": "Some name",
+     *     "display_name": "Some display name",
      *     "description": "Some description",
-     *     "subscribers": 1000
+     *     "followers": 1000,
+     *     "views": 1000
      *   }
      * }
      * @response 422 {
@@ -40,14 +42,14 @@ class YoutubeController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'youtube_id' => 'required'
+            'twitch_id' => 'required'
         ]);
         if ($validator->fails()) {
             return self::missing_field_response();
         }
 
-        $creator = Creator::where('channel', 'youtube')
-            ->where('channel_id', $request->youtube_id)
+        $creator = Creator::where('channel', 'twitch')
+            ->where('channel_id', $request->twitch_id)
             ->first();
 
         if (!$creator) {
@@ -59,8 +61,10 @@ class YoutubeController extends Controller
             'data' => [
                 'link' => $creator->link,
                 'name' => $creator->name,
+                'display_name' => $creator->display_name,
                 'description' => $creator->description,
-                'subscribers' => $creator->follower_count
+                'followers' => $creator->follower_count,
+                'views' => $creator->view_count
             ]
         ], 200);
     }

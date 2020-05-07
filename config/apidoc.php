@@ -7,7 +7,7 @@ return [
      * - "laravel" will generate the documentation as a Blade view,
      * so you can add routing and authentication.
      */
-    'type' => 'laravel',
+    'type' => 'static',
 
     /*
      * Static output folder: HTML documentation and assets will be generated in this folder.
@@ -238,7 +238,7 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - the image size must be 230 x 52
      */
-    'logo' => false,
+    'logo' => resource_path('views') . '/apidoc/logo.png',
 
     /*
      * Name for the group of routes which do not have a @group set.
