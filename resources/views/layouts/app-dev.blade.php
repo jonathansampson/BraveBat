@@ -29,9 +29,9 @@
         </script>
     @endif
 </head>
-<body class="antialiased leading-none text-brand-dark">
+<body class="antialiased leading-6 text-brand-dark">
     <div id="app" class="flex flex-col min-h-screen">
-        @include('partials.nav')
+        @include('partials.nav-dev')
 
         <main class="flex-grow">
             @yield('content')

@@ -1,10 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app-dev')
 
 @section('content')
     <div class="container mx-auto">
         <div class="flex flex-wrap justify-center">
             <div class="w-full max-w-sm">
-                <div class="flex flex-col my-32 break-words bg-white border border-2 rounded shadow-md ">
+                <div class="flex flex-col my-16 break-words bg-white border border-2 rounded shadow-md ">
 
                     <div class="px-6 py-3 mb-0 font-semibold text-gray-700 bg-gray-200">
                         {{ __('Confirm Password') }}

@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
-Route::get('/home', 'HomeController@index')->name('home');
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 Route::get('terms_of_service', 'HomeController@terms_of_service')->name('terms_of_service');
 
@@ -17,6 +16,14 @@ Route::get('brave_ads_campaigns', 'StatsController@brave_ads_campaigns')->name('
 Route::get('brave_creator_historical_stats', 'StatsController@brave_creator_historical_stats')->name('stats.brave_creator_historical_stats');
 Route::get('creators/{channel}', 'CreatorsController@index')->name('creators.index');
 Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators.show');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('resend_verification_email', 'UsersController@resendVerificationEmail')->name('resend_verification_email');
+    Route::post('tokens', 'TokensController@store')->name('tokens.store');
+    Route::patch('tokens', 'TokensController@update')->name('tokens.update');
+    Route::delete('tokens', 'TokensController@destroy')->name('tokens.destroy');
+});
 
 
 // Chart APIs

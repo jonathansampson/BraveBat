@@ -4,6 +4,31 @@
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('welcome')}}">Home</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="/docs/index.html">API Docs</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('login')}}">Developer Login</a>
+                    </li>
+                    <li class="pb-4">
+                    <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">Brave Active Users</a>
+                    </li>
+                    <li class="pb-4">
+                    <a class="text-brand-light" href="{{route('stats.brave_initiated_bat_purchase')}}">Brave Initiated BAT Purchase</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.brave_ads_campaigns')}}">Brave Ads Campaigns</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.brave_creator_historical_stats')}}">Brave Creator Historical Stats</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pt-3 md:w-1/3">
+                <ul>
+                    <li class="pb-4">
                         <a class="text-brand-light" href="{{route('creators.index', 'youtube')}}">Youtube Creators</a>
                     </li>
                     <li class="pb-4">
@@ -23,23 +48,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="pt-3 md:w-1/3">
-                <ul>
-                    <li class="pb-4">
-                    <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">Brave Active Users</a>
-                    </li>
-                    <li class="pb-4">
-                    <a class="text-brand-light" href="{{route('stats.brave_initiated_bat_purchase')}}">Brave Initiated BAT Purchase</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('stats.brave_ads_campaigns')}}">Brave Ads Campaigns</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('stats.brave_creator_historical_stats')}}">Brave Creator Historical Stats</a>
-                    </li>
-                    
-                </ul>
-            </div>
+
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-4">
@@ -78,8 +87,6 @@
                             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"><path d="M12 24c6.629 0 12-5.371 12-12S18.629 0 12 0 0 5.371 0 12s5.371 12 12 12zM5.491 11.74l11.57-4.461c.537-.194 1.006.131.832.943l.001-.001-1.97 9.281c-.146.658-.537.818-1.084.508l-3-2.211-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.871 4.326-2.962-.924c-.643-.204-.657-.643.136-.953z"/></svg>
                         </a>
                     </div>
-                    
-
                 </div>
             </div>
         </div>

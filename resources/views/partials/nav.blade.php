@@ -14,9 +14,9 @@
                     </div>
                 </a>
             </div>
-            <div class="text-brand-light">
+            <div class="flex items-center text-brand-light">
                 <livewire:search>
-                {{-- <a href="{{route('login')}}" class="text-brand-light">Login</a> --}}
+                <a class="p-3 text-sm text-gray-300 no-underline hover:underline" href="/docs/index.html">API</a>
             </div>
         </div>
     </nav>
