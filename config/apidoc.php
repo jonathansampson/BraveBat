@@ -238,7 +238,7 @@ return [
      * If you want to use this, please be aware of the following rules:
      * - the image size must be 230 x 52
      */
-    'logo' => public_path('/images/logos/apidoc_logo.png'),
+    'logo' => false,
 
     /*
      * Name for the group of routes which do not have a @group set.
