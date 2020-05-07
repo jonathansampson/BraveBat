@@ -7,15 +7,18 @@ use Illuminate\Http\Request;
 
 class TokensController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('verified');
+    }
+
     public function store(Request $request)
     {
-
         $request->validate([
             'project' => 'required',
             'url' => 'required',
             'accept' => 'required',
         ]);
-
         $user = auth()->user();
         $user->tokens()->delete();
         $plainTextToken = $user->createToken('api')->plainTextToken;
