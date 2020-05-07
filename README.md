@@ -5,11 +5,3 @@
 'brand-purple': '#a3278f',
 'brand-blue': '#4f30ab'
 
-
-
-API
-Add additional verbiage on the show page to promote my promo code
-Add service provider for BAT price
-
-
-
