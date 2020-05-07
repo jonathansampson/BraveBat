@@ -21,6 +21,7 @@ Welcome to the generated API reference.
 [Get Postman Collection](http://bravebat.test/docs/collection.json)
 
 <!-- END_INFO -->
+This is an official API for Brave Browser verified creator. The source data comes from https://publishers-distro.basicattentiontoken.org/api/v3/public/channels (alert: big file), which we sync our database with daily. In order to use this API, you need to register an account with us here. This API is free to use, but we reserve the rights to rate-limit your usage if you use the API excessively. You are required to display the message “Powered by BraveBat” that links to https://bravebat.net/info somewhere prominently in your app or service.
 
 #v1
 
