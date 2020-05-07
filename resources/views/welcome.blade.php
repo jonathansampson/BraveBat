@@ -33,8 +33,8 @@ communities')
             @include('charts.donut', ['id' => 'bat_creator_summary'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users</h2>
-            @include('charts.line', ['id' => 'dau'])
+            <h2 class="py-8 text-xl font-semibold text-center">Total Brave Creators</h2>
+            @include('charts.line', ['id' => 'creator_stats'])
         </div>
     </div>
     <div class="flex flex-wrap">
@@ -43,8 +43,8 @@ communities')
             @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Initiated BAT Token Purchase</h2>
-            @include('charts.line', ['id' => 'bat_purchases'])
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users</h2>
+            @include('charts.line', ['id' => 'dau'])
         </div>
     </div>
 </div>
