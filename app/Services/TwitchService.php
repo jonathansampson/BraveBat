@@ -58,7 +58,7 @@ class TwitchService
             ->withHeaders([
                 "Client-ID" => config('services.twitch.client_id'),
             ])
-            ->get('api.twitch.tv/helix/users/follows?to_id=' . $userInfo['id']);
+            ->get('https://api.twitch.tv/helix/users/follows?to_id=' . $userInfo['id']);
         $follower_count = $response->json()['total'];
         return [
             'success' => true,

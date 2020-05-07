@@ -115,7 +115,7 @@ class CreatorTest extends TestCase
             'channel_id' => '46924634'
         ]);
         $creator->processCreatable();
-        $this->assertEquals($creator->fresh()->name, 'rashiptrikha');
+        $this->assertEquals($creator->fresh()->name, 'Raship Trikha');
     }
 
     /**

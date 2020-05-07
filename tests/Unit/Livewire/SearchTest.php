@@ -18,7 +18,7 @@ class SearchTest extends TestCase
     {
         $creator = factory(Creator::class)->create([
             'name' => 'bravebat.info',
-            'rank' => 1,
+            'ranking' => 1,
             'valid' => true,
         ]);
         Livewire::test('search')
