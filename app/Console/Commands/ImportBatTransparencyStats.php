@@ -40,7 +40,7 @@ class ImportBatTransparencyStats extends Command
     public function handle()
     {
         BatPurchase::import();
-        sleep(5);
         BraveAdCampaign::import();
+        $this->call('cache:clear');
     }
 }
