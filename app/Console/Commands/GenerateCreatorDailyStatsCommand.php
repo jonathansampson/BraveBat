@@ -39,6 +39,5 @@ class GenerateCreatorDailyStatsCommand extends Command
     public function handle()
     {
         CreatorDailyStats::generate(today()->toDateString());
-        $this->call('cache:clear');
     }
 }

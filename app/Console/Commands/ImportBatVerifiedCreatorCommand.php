@@ -42,5 +42,6 @@ class ImportBatVerifiedCreatorCommand extends Command
     {
         BraveApiService::import();
         CreatorDailyStats::generate(Carbon::today()->toDateString());
+        $this->call('cache:clear');
     }
 }
