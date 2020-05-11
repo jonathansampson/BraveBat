@@ -42,16 +42,24 @@ class WebsiteProcessor
         return "http://" . $this->creator->channel_id;
     }
 
+    public function httpsWwwUrl()
+    {
+        return "https://www." . $this->creator->channel_id;
+    }
+
     public function getScreenshot()
     {
         $https_screenshot = $this->getScreenshotBasedOnUrl($this->httpsUrl());
-        if (!$https_screenshot) {
-            $http_screenshot = $this->getScreenshotBasedOnUrl($this->httpUrl());
-            if (!$http_screenshot) {
-                $this->creator->valid = false;
-                $this->creator->save();
-            }
-        }
+        if ($https_screenshot) return;
+
+        $http_screenshot = $this->getScreenshotBasedOnUrl($this->httpUrl());
+        if ($http_screenshot) return;
+
+        $https_www_screenshot = $this->getScreenshotBasedOnUrl($this->httpsWwwUrl());
+        if ($https_www_screenshot) return;
+
+        $this->creator->valid = false;
+        $this->creator->save();
     }
 
     public function getScreenshotBasedOnUrl($url)
