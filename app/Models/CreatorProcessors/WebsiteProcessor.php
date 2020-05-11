@@ -58,7 +58,9 @@ class WebsiteProcessor
         $https_www_screenshot = $this->getScreenshotBasedOnUrl($this->httpsWwwUrl());
         if ($https_www_screenshot) return;
 
-        $this->creator->valid = false;
+        $this->creator->link = $this->creator->channel_id;
+        $this->creator->name = $this->creator->channel_id;
+        $this->creator->valid = true;
         $this->creator->save();
     }
 

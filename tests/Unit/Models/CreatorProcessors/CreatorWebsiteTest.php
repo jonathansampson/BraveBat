@@ -84,6 +84,9 @@ class CreatorWebsiteTest extends TestCase
         ]);
         $processor = new WebsiteProcessor($creator);
         $processor->process();
-        $this->assertFalse($creator->valid);
+        $this->assertEquals('dsfsfsfsfsfsfsfssf.com', $creator->name);
+        $this->assertGreaterThan(1000000, $creator->alexa_ranking);
+        $this->assertTrue($creator->valid);
+        $this->assertEquals('dsfsfsfsfsfsfsfssf.com', $creator->link);
     }
 }
