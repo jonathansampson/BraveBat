@@ -49,6 +49,16 @@ class BackFillWebsiteDataCommand extends Command
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
             });
+
+        Creator::where('valid', false)
+            ->where('last_processed_at', '<', now()->subDay(14))
+            ->where('channel', 'website')
+            ->orderBy('alexa_ranking')
+            ->take(4000)
+            ->get()
+            ->each(function ($creator, $key) {
+                $creator->processCreatable();
+            });
         SimpleScheduledTaskSlackAndLogService::message('finish website filling');
     }
 }

@@ -87,6 +87,6 @@ class CreatorWebsiteTest extends TestCase
         $this->assertEquals('dsfsfsfsfsfsfsfssf.com', $creator->name);
         $this->assertGreaterThan(1000000, $creator->alexa_ranking);
         $this->assertTrue($creator->valid);
-        $this->assertEquals('dsfsfsfsfsfsfsfssf.com', $creator->link);
+        $this->assertEquals('https://dsfsfsfsfsfsfsfssf.com', $creator->link);
     }
 }
