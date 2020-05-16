@@ -28,23 +28,23 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:transparency')->daily();
         $schedule->command('sitemap:generate')->dailyAt("01:00");
 
-        // $schedule->command('import:creator')->dailyAt("00:01");
-        // $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
-        // $schedule->command('backfill:twitter')->dailyAt("03:42"); // 10000
-        // $schedule->command('backfill:vimeo')->dailyAt("03:43"); // 10000
-        // $schedule->command('backfill:twitch')->dailyAt("03:44"); // 10000
-        // $schedule->command('backfill:github')->dailyAt("03:45"); // 15000
-        // $schedule->command('backfill:youtube')->dailyAt("03:46"); // 1900
+        $schedule->command('import:creator')->dailyAt("00:01");
+        $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
+        $schedule->command('backfill:twitter')->dailyAt("03:42"); // 10000
+        $schedule->command('backfill:vimeo')->dailyAt("03:43"); // 10000
+        $schedule->command('backfill:twitch')->dailyAt("03:44"); // 10000
+        $schedule->command('backfill:github')->dailyAt("03:45"); // 15000
+        $schedule->command('backfill:youtube')->dailyAt("03:46"); // 1900
         // $schedule->command('creator:rank')->dailyAt('6:00');
         // $schedule->command('creator_daily_stats:generate')->dailyAt('7:00');
 
-        $schedule->command('import:creator')->dailyAt("10:18");
-        $schedule->command('backfill:website')->dailyAt("11:41"); // 8000
-        $schedule->command('backfill:twitter')->dailyAt("11:42"); // 10000
-        $schedule->command('backfill:vimeo')->dailyAt("11:43"); // 10000
-        $schedule->command('backfill:twitch')->dailyAt("11:44"); // 10000
-        $schedule->command('backfill:github')->dailyAt("11:45"); // 15000
-        $schedule->command('backfill:youtube')->dailyAt("11:46"); // 1900
+        // $schedule->command('import:creator')->dailyAt("10:18");
+        // $schedule->command('backfill:website')->dailyAt("11:41"); // 8000
+        // $schedule->command('backfill:twitter')->dailyAt("11:42"); // 10000
+        // $schedule->command('backfill:vimeo')->dailyAt("11:43"); // 10000
+        // $schedule->command('backfill:twitch')->dailyAt("11:44"); // 10000
+        // $schedule->command('backfill:github')->dailyAt("11:45"); // 15000
+        // $schedule->command('backfill:youtube')->dailyAt("11:46"); // 1900
         $schedule->command('creator:rank')->dailyAt('14:00');
         $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
 
