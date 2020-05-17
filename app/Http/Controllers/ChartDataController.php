@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\BraveUsage;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class ChartDataController extends Controller
@@ -86,8 +87,8 @@ class ChartDataController extends Controller
     public function activeAdCampaigns(Request $request)
     {
         $country = $request->country;
-        cache()->forget('active_ad_campaigns');
-        $result = cache()->remember('active_ad_campaigns', 86400, function () use ($country) {
+        $country_string  = ($country) ? '_' . Str::snake($country) : '';
+        $result = cache()->remember('active_ad_campaigns' . $country_string, 86400, function () use ($country) {
             $country_sql = $country ? "WHERE country = '{$country}'" : "";
             $data = DB::select("SELECT
                 -- DATE_FORMAT(record_date, '%Y-%m') AS month,
