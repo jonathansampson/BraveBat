@@ -54,7 +54,7 @@ communities')
         <div class="text-3xl text-center">
             Growing Creator Community
         </div>
-        @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'reddit', 'github'] as $channel)
+        @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'github', 'reddit'] as $channel)
         @include('partials.channel_charts', ['channel' => $channel])
         @endforeach
     </div>
