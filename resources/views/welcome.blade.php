@@ -13,7 +13,8 @@ communities')
                     Support Brave Creators
                 </h1>
                 <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
-                    User Brave Browser to protect your online privacy and support {{round($creator_count['overall'] / 1000) }}K
+                    User Brave Browser to protect your online privacy and support
+                    <span class="font-semibold">{{round($creator_count['overall'] / 1000) }}K</span>
                     amazing verified creators
                 </p>
             </div>
@@ -49,13 +50,13 @@ communities')
     </div>
 </div>
 <div class="bg-gray-100">
-<div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
-    <div class="text-3xl text-center">
-        Growing Creator Community
-    </div>
-    @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'reddit', 'github'] as $channel)
+    <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
+        <div class="text-3xl text-center">
+            Growing Creator Community
+        </div>
+        @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'reddit', 'github'] as $channel)
         @include('partials.channel_charts', ['channel' => $channel])
-    @endforeach
-</div>
+        @endforeach
+    </div>
 </div>
 @endsection

@@ -25,6 +25,7 @@
             <tr>
                 <th class="px-2 py-4 text-left">Country</th>
                 <th class="px-2 py-4 text-left">Number of Active Ad Campaigns</th>
+                <th class="px-2 py-4 text-left">Details</th>
             </tr>
         </thead>
         <tbody>
@@ -32,6 +33,11 @@
             <tr>
                 <td class="px-2 py-4 border">{{$campaign->country}}</td>
                 <td class="px-2 py-4 border">{{$campaign->campaigns}}</td>
+                <td class="px-2 py-4 border">
+                    <a href="{{route('stats.brave_ads_campaigns', ['country' => $campaign->country])}}"
+                        class="text-blue-500">Details</a>
+
+                </td>
             </tr>
             @endforeach
         </tbody>

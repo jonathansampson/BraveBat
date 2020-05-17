@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BatPurchase;
 use App\Models\BraveUsage;
+use App\Models\BatPurchase;
+use Illuminate\Http\Request;
 use App\Models\BraveAdCampaign;
 use App\Models\Stats\CreatorStats;
 
@@ -21,14 +22,20 @@ class StatsController extends Controller
         return view('stats.brave_initiated_bat_purchase', compact('purchases'));
     }
 
-    public function brave_ads_campaigns()
+    public function brave_ads_campaigns(Request $request)
     {
-        $latest = BraveAdCampaign::orderBy('record_date', 'desc')->first();
-        if ($latest) {
-            $campaigns = BraveAdCampaign::where('record_date', $latest->record_date)->get();
-            return view('stats.brave_ads_campaigns', compact('campaigns'));
+        $country = $request->country;
+        if ($country) {
+            $campaigns = BraveAdCampaign::where('country', $country)->get();
+            return view('stats.brave_ads_campaigns_by_country', compact('campaigns', 'country'));
         } else {
-            abort(500);
+            $latest = BraveAdCampaign::orderBy('record_date', 'desc')->first();
+            if ($latest) {
+                $campaigns = BraveAdCampaign::where('record_date', $latest->record_date)->get();
+                return view('stats.brave_ads_campaigns', compact('campaigns'));
+            } else {
+                abort(500);
+            }
         }
     }
 

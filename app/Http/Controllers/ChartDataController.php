@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Models\BraveUsage;
+use Illuminate\Http\Request;
 
 class ChartDataController extends Controller
 {
@@ -82,9 +83,12 @@ class ChartDataController extends Controller
         return $result;
     }
 
-    public function activeAdCampaigns()
+    public function activeAdCampaigns(Request $request)
     {
-        $result = cache()->remember('active_ad_campaigns', 86400, function () {
+        $country = $request->country;
+        cache()->forget('active_ad_campaigns');
+        $result = cache()->remember('active_ad_campaigns', 86400, function () use ($country) {
+            $country_sql = $country ? "WHERE country = '{$country}'" : "";
             $data = DB::select("SELECT
                 -- DATE_FORMAT(record_date, '%Y-%m') AS month,
                 DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
@@ -95,6 +99,7 @@ class ChartDataController extends Controller
                     sum(campaigns) AS campaigns
                 FROM
                     brave_ad_campaigns
+                {$country_sql}
                 GROUP BY
                     record_date
                 ORDER BY
