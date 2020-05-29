@@ -13,17 +13,17 @@
                 @include('partials.icons.'.$creator->channel)
             </div>
             <h1 class="ml-2 text-lg">
-                <a href="{{$creator->link}}" target='_blank' class="text-blue-500">{{$creator->name}}</a>
+                <a href="{{$creator->link}}" target='_blank' class="text-blue-500" rel="nofollow">{{$creator->name}}</a>
             </h1>
-        </div>    
-        <div class="mb-2 text-sm text-gray-500 capitalize">{{$creator->channel}}</div>    
+        </div>
+        <div class="mb-2 text-sm text-gray-500 capitalize">{{$creator->channel}}</div>
     </div>
     <div class="pb-4">
         <div class="flex justify-between px-4 py-2">
-            <div class="text-md">Followers</div>    
+            <div class="text-md">Followers</div>
             <div class="text-gray-600">
                 {{number_format($creator->follower_count)}}
-            </div>    
+            </div>
         </div>
     </div>
     @include('creators.partials.cta')
