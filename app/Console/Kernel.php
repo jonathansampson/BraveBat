@@ -49,6 +49,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
 
         // Tweet 
+        $schedule->command('milestone:tweet')->dailyAt('6:55');
+
         $schedule->command('top_creator:tweet website 0.0005')->dailyAt('7:55');
         $schedule->command('top_creator:tweet youtube 0.005')->dailyAt('8:55');
         $schedule->command('top_creator:tweet twitch 0.005')->dailyAt('9:55');

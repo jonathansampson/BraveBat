@@ -2,8 +2,10 @@
 
 namespace App\Models\Stats;
 
-use Illuminate\Database\Eloquent\Model;
 use DB;
+use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Model;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class CreatorDailyStats extends Model
 {
@@ -34,13 +36,61 @@ class CreatorDailyStats extends Model
         }
     }
 
-    public static function total($date)
+    public static function total($date, $channel = null)
     {
-        return CreatorDailyStats::where('record_date', $date)->sum('total');
+        if ($channel) {
+            return CreatorDailyStats::where('record_date', $date)->where('channel', $channel)->sum('total');
+        } else {
+            return CreatorDailyStats::where('record_date', $date)->sum('total');
+        }
     }
 
     public static function addition($date)
     {
         return CreatorDailyStats::where('record_date', $date)->sum('addition');
+    }
+
+    public static function channelTweet()
+    {
+        $channels = [
+            'website' => 10000,
+            'youtube' => 50000,
+            'reddit' => 10000,
+            'github' => 10000,
+            'vimeo' => 10000,
+            'twitter' => 10000,
+            'twitch' => 10000,
+        ];
+        $today = Carbon::today()->toDateString();
+        $yesterday = Carbon::yesterday()->toDateString();
+
+        foreach ($channels as $channel => $threshold) {
+            $todayTotal =  floor(self::total($today, $channel) / $threshold);
+            $yesterdayTotal = floor(self::total($yesterday, $channel) / $threshold);
+            if ($todayTotal > $yesterdayTotal) {
+                $milestone = $todayTotal * $threshold;
+                $message = "The number of verified {$channel} Brave Creators has just surpassed {$milestone}! Be #brave. https://bravebat.info";
+                SimpleScheduledTaskSlackAndLogService::message($message);
+                $tweet_service = new TweetService();
+                $tweet_service->postTweet($message);
+            }
+        }
+    }
+
+    public static function overallTweet()
+    {
+        $threshold = 100000;
+        $today = Carbon::today()->toDateString();
+        $yesterday = Carbon::yesterday()->toDateString();
+
+        $todayTotal =  floor(self::total($today) / $threshold);
+        $yesterdayTotal = floor(self::total($yesterday) / $threshold);
+        if ($todayTotal > $yesterdayTotal) {
+            $milestone = $todayTotal * $threshold;
+            $message = "The number of verified Brave Creators has just surpassed {$milestone}. #bravebwoser \$BAT https://bravebat.info";
+            SimpleScheduledTaskSlackAndLogService::message($message);
+            $tweet_service = new TweetService();
+            $tweet_service->postTweet($message);
+        }
     }
 }
