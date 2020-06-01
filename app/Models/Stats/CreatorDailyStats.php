@@ -4,6 +4,7 @@ namespace App\Models\Stats;
 
 use DB;
 use Carbon\Carbon;
+use App\Services\TweetService;
 use Illuminate\Database\Eloquent\Model;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
 
