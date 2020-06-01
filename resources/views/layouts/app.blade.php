@@ -17,8 +17,8 @@
     <meta property='og:title' content='BraveBat'>
     <meta property='og:description'
         content='Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities'>
-    <meta property='og:image' content='https://static-cdn.jtvnw.net/ttv-static-metadata/twitch_logo3.jpg'>
-    <meta property='og:url' content='https://bravebat.info'>
+    <meta property='og:image' content='https://bravebat.info/images/logos/apple-icon-152.png'>
+    <meta property='og:url' content='{{URL::current()}}'>
     <meta property='og:type' content='website'>
 
     <link rel="shortcut icon" href="/images/favicon.svg" type="image/x-icon" />
