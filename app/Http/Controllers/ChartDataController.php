@@ -222,7 +222,7 @@ class ChartDataController extends Controller
                 FROM
                     creator_daily_stats
                 WHERE 
-                    channel = ? AND record_date >= '2020-04-25'
+                    channel = ? AND record_date >= '2020-05-01'
                 GROUP BY
                     record_date
                 ORDER BY 
