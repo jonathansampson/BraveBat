@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4f5afe8954feaf000345a95e1aa9d46a",
+    "content-hash": "56f1ceea88b024cbf89edf3c25f311cc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -4073,16 +4073,16 @@
         },
         {
             "name": "silviolleite/laravelpwa",
-            "version": "2.0.1",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silviolleite/laravel-pwa.git",
-                "reference": "28e2d65aae374c7f9154529838f4377e4c4660f0"
+                "reference": "4951f0d47b6943d9823e3c27d35b74016d99d735"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silviolleite/laravel-pwa/zipball/28e2d65aae374c7f9154529838f4377e4c4660f0",
-                "reference": "28e2d65aae374c7f9154529838f4377e4c4660f0",
+                "url": "https://api.github.com/repos/silviolleite/laravel-pwa/zipball/4951f0d47b6943d9823e3c27d35b74016d99d735",
+                "reference": "4951f0d47b6943d9823e3c27d35b74016d99d735",
                 "shasum": ""
             },
             "type": "library",
@@ -4115,7 +4115,7 @@
                 "progressive web apps",
                 "pwa"
             ],
-            "time": "2020-05-23T21:33:58+00:00"
+            "time": "2019-04-03T11:23:08+00:00"
         },
         {
             "name": "spatie/browsershot",
