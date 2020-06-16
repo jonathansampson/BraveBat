@@ -44,7 +44,7 @@ class BackFillYoutubeDataCommand extends Command
         Creator::whereNull('last_processed_at')
             ->where('channel', 'youtube')
             ->orderBy('id', 'desc')
-            ->take(2200)
+            ->take(20000)
             ->get()
             ->each(function ($creator, $key) {
                 $creator->processCreatable();
