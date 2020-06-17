@@ -11,14 +11,38 @@ return [
         'display' => 'standalone',
         'orientation' => 'any',
         'icons' => [
-            '72x72' => '/images/logos/apple-icon-120.png',
-            '96x96' => '/images/logos/apple-icon-120.png',
-            '128x128' => '/images/logos/apple-icon-152.png',
-            '144x144' => '/images/logos/apple-icon-152.png',
-            '152x152' => '/images/logos/apple-icon-152.png',
-            '192x192' => '/images/logos/apple-icon-192.png',
-            '384x384' => '/images/logos/apple-icon-512.png',
-            '512x512' => '/images/logos/apple-icon-512.png'
+            '72x72' => [
+                'path' => '/images/logos/apple-icon-120.png',
+                'purpose' => 'any'
+            ],
+            '96x96' => [
+                'path' => '/images/logos/apple-icon-120.png',
+                'purpose' => 'any'
+            ],
+            '128x128' => [
+                'path' => '/images/logos/apple-icon-152.png',
+                'purpose' => 'any'
+            ],
+            '144x144' => [
+                'path' => '/images/logos/apple-icon-152.png',
+                'purpose' => 'any'
+            ],
+            '152x152' => [
+                'path' => '/images/logos/apple-icon-152.png',
+                'purpose' => 'any'
+            ],
+            '192x192' => [
+                'path' => '/images/logos/apple-icon-192.png',
+                'purpose' => 'any'
+            ],
+            '384x384' => [
+                'path' => '/images/logos/apple-icon-512.png',
+                'purpose' => 'any'
+            ],
+            '512x512' => [
+                'path' => '/images/logos/apple-icon-512.png',
+                'purpose' => 'any'
+            ],
         ],
         'splash' => [
             '640x1136' => '/images/logos/apple-splash-640-1136.png',

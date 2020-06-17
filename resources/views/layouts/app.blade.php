@@ -45,7 +45,7 @@
     @endif
 </head>
 
-<body class="antialiased leading-none text-brand-dark">
+<body class="antialiased text-brand-dark">
     <div id="app" class="flex flex-col min-h-screen">
         @include('partials.nav')
 

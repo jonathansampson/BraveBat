@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "56f1ceea88b024cbf89edf3c25f311cc",
+    "content-hash": "bcbb9c5f0de22db3d9b82970831498fc",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -60,16 +60,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.142.2",
+            "version": "3.142.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "92cf325bfabc80d919282729a25063876a73205e"
+                "reference": "3e593efcfd06237219a1ee85319a0b3c863ee67e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/92cf325bfabc80d919282729a25063876a73205e",
-                "reference": "92cf325bfabc80d919282729a25063876a73205e",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3e593efcfd06237219a1ee85319a0b3c863ee67e",
+                "reference": "3e593efcfd06237219a1ee85319a0b3c863ee67e",
                 "shasum": ""
             },
             "require": {
@@ -141,7 +141,7 @@
                 "s3",
                 "sdk"
             ],
-            "time": "2020-06-15T18:17:20+00:00"
+            "time": "2020-06-16T18:16:10+00:00"
         },
         {
             "name": "brick/math",
@@ -1424,16 +1424,16 @@
         },
         {
             "name": "guzzlehttp/guzzle",
-            "version": "6.5.4",
+            "version": "6.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d"
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
-                "reference": "a4a1b6930528a8f7ee03518e6442ec7a44155d9d",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
+                "reference": "9d4290de1cfd701f38099ef7e183b64b4b7b0c5e",
                 "shasum": ""
             },
             "require": {
@@ -1441,7 +1441,7 @@
                 "guzzlehttp/promises": "^1.0",
                 "guzzlehttp/psr7": "^1.6.1",
                 "php": ">=5.5",
-                "symfony/polyfill-intl-idn": "1.17.0"
+                "symfony/polyfill-intl-idn": "^1.17.0"
             },
             "require-dev": {
                 "ext-curl": "*",
@@ -1487,7 +1487,7 @@
                 "rest",
                 "web service"
             ],
-            "time": "2020-05-25T19:35:05+00:00"
+            "time": "2020-06-16T21:01:06+00:00"
         },
         {
             "name": "guzzlehttp/promises",
@@ -1963,16 +1963,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.4.1",
+            "version": "v2.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "2aac713ced04e6e7f046748833dea5ab4c98b621"
+                "reference": "cf07490b92e07ee6206f712d4502e8a2a41f5049"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/2aac713ced04e6e7f046748833dea5ab4c98b621",
-                "reference": "2aac713ced04e6e7f046748833dea5ab4c98b621",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/cf07490b92e07ee6206f712d4502e8a2a41f5049",
+                "reference": "cf07490b92e07ee6206f712d4502e8a2a41f5049",
                 "shasum": ""
             },
             "require": {
@@ -2019,7 +2019,7 @@
                 "laravel",
                 "sanctum"
             ],
-            "time": "2020-06-11T13:58:49+00:00"
+            "time": "2020-06-16T19:14:01+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -4075,16 +4075,16 @@
         },
         {
             "name": "silviolleite/laravelpwa",
-            "version": "1.0.4",
+            "version": "2.0.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/silviolleite/laravel-pwa.git",
-                "reference": "4951f0d47b6943d9823e3c27d35b74016d99d735"
+                "reference": "28e2d65aae374c7f9154529838f4377e4c4660f0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/silviolleite/laravel-pwa/zipball/4951f0d47b6943d9823e3c27d35b74016d99d735",
-                "reference": "4951f0d47b6943d9823e3c27d35b74016d99d735",
+                "url": "https://api.github.com/repos/silviolleite/laravel-pwa/zipball/28e2d65aae374c7f9154529838f4377e4c4660f0",
+                "reference": "28e2d65aae374c7f9154529838f4377e4c4660f0",
                 "shasum": ""
             },
             "type": "library",
@@ -4117,7 +4117,7 @@
                 "progressive web apps",
                 "pwa"
             ],
-            "time": "2019-04-03T11:23:08+00:00"
+            "time": "2020-05-23T21:33:58+00:00"
         },
         {
             "name": "spatie/browsershot",
