@@ -1,5 +1,5 @@
 <div class="bg-brand-dark" id='search'>
-    <nav class="container px-4 py-4 mx-auto sm:px-6 md:px-8">
+    <nav class="container px-4 py-2 mx-auto sm:px-6 md:px-8">
         <div class="flex flex-col items-center justify-between sm:flex-row">
             <div class="mb-4 sm:mb-0">
                 <a href="{{ url('/') }}" class="flex items-center font-semibold no-underline text-brand-orange">
@@ -16,8 +16,8 @@
             </div>
             <div class="flex items-center text-brand-light">
                 <livewire:search>
-                <a class="p-3 text-sm text-gray-300 no-underline hover:underline" href="/docs/index.html">API</a>
+                    <a class="p-3 text-sm text-gray-300 no-underline hover:underline" href="/docs/index.html">API</a>
             </div>
         </div>
     </nav>
-</div> 
+</div>

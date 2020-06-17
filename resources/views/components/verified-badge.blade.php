@@ -17,7 +17,7 @@
         </svg>
     </div>
     <div class="flex flex-col pl-2 border-l border-gray-500 text-brand-dark">
-        <div class="pb-2 font-semibold">Brave Creator</div>
+        <div class="font-semibold">Brave Creator</div>
         <div class="flex items-center">
             <div class="w-3 h-3 text-brand-blue">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
