@@ -44,4 +44,9 @@ class StatsController extends Controller
         $creator_stats = CreatorStats::orderBy('record_date', 'desc')->get();
         return view('stats.brave_creator_historical_stats', compact('creator_stats'));
     }
+
+    public function bat_stats()
+    {
+        return view('stats.bat_stats');
+    }
 }

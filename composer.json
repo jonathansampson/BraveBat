@@ -12,7 +12,6 @@
         "bugsnag/bugsnag-laravel": "^2.0",
         "calebporzio/sushi": "^2.0",
         "doctrine/dbal": "^2.10",
-        "driesvints/blade-icons": "^2.1",
         "fabpot/goutte": "^4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",

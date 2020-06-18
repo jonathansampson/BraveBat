@@ -25,7 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('horizon:snapshot')->hourly();
-        $schedule->command('import:transparency')->daily();
+        $schedule->command('import:transparency')->dailyAt("00:00");
+        $schedule->command('bat_stats:generate')->dailyAt('00:01');
         $schedule->command('sitemap:generate')->dailyAt("01:00");
 
         $schedule->command('import:creator')->dailyAt("00:01");

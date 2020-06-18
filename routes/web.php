@@ -16,6 +16,9 @@ Route::get('brave_ads_campaigns', 'StatsController@brave_ads_campaigns')->name('
 Route::get('brave_creator_historical_stats', 'StatsController@brave_creator_historical_stats')->name('stats.brave_creator_historical_stats');
 Route::get('creators/{channel}', 'CreatorsController@index')->name('creators.index');
 Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators.show');
+Route::get('bat_stats', 'StatsController@bat_stats')->name('stats.bat_stats');
+
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -24,7 +27,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('tokens', 'TokensController@update')->name('tokens.update');
     Route::delete('tokens', 'TokensController@destroy')->name('tokens.destroy');
 });
-
 
 // Chart APIs
 Route::any('/charts/dau', 'ChartDataController@dau')->name('charts.dau');
@@ -35,3 +37,9 @@ Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary
 Route::any('/charts/creator_stats', 'ChartDataController@creatorStats')->name('charts.creator_stats');
 Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataController@creatorDailyAdditionStats')->name('charts.creator_daily_addition_stats');
 Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creatorDailyTotalStats')->name('charts.creator_daily_total_stats');
+// BAT Chart APIS
+Route::any('/charts/bat_price', 'ChartDataBatStatsController@batPrice')->name('charts.bat_price');
+Route::any('/charts/bat_holders_count', 'ChartDataBatStatsController@batHoldersCount')->name('charts.bat_holders_count');
+Route::any('/charts/bat_holders_add', 'ChartDataBatStatsController@batHoldersAdd')->name('charts.bat_holders_add');
+Route::any('/charts/bat_volume', 'ChartDataBatStatsController@batVolume')->name('charts.bat_volume');
+Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')->name('charts.bat_market_cap');

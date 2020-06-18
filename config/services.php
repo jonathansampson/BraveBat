@@ -63,5 +63,10 @@ return [
     'recaptcha' => [
         'key' => env('RECAPTCHA_KEY'),
         'secret' => env('RECAPTCHA_SECRET'),
+    ],
+
+    'ethplorer' => [
+        'bat_token_address' => env('BAT_TOKEN_ADDRESS'),
+        'api_key' => env('ETHPLORER_API_KEY'),
     ]
 ];
