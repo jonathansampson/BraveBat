@@ -50,7 +50,7 @@ class WebsiteServiceTest extends TestCase
     public function website_service_cannot_get_alexa_ranking_of_an_valid_website_if_ranking_is_too_low()
     {
         $service = new WebsiteService;
-        $response = $service->getAlexaRank('bravebat.info');
+        $response = $service->getAlexaRank('twips.app');
         $this->assertFalse($response['success']);
         $this->assertEquals($response['result'], 'Invalid website or alexa ranking too low');
     }

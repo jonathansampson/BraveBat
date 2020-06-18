@@ -49,4 +49,21 @@ class CreatorYoutubeTest extends TestCase
         $processor->process();
         $this->assertFalse($creator->valid);
     }
+
+    /**
+     * @test
+     * @group api
+     */
+    public function creator_youtube_can_pull_data_with_long_description()
+    {
+        $creator = Creator::create([
+            'channel_id' => 'UCrIocXxiqVRWjFB9snysqHw',
+            'creator' => 'youtube#channel:UCrIocXxiqVRWjFB9snysqHw',
+            'channel' => 'youtube',
+        ]);
+        $processor = new YoutubeProcessor($creator);
+        $processor->process();
+        $this->assertEquals('A JAH', $creator->name);
+        $this->assertTrue($creator->valid);
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 class YoutubeService
@@ -25,7 +26,7 @@ class YoutubeService
         $data = $response->json();
         $name = $data['items'][0]['snippet']['title'];
         $display_name = $data['items'][0]['snippet']['title'];
-        $description = $data['items'][0]['snippet']['description'];
+        $description = Str::limit($data['items'][0]['snippet']['description'], 900);
         $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
 
         $view_count = $data['items'][0]['statistics']['viewCount'];
