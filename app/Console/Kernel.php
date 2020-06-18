@@ -38,6 +38,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:youtube')->dailyAt("03:46"); // 20000
         $schedule->command('creator:rank')->dailyAt('6:00');
         $schedule->command('creator_daily_stats:generate')->dailyAt('7:00');
+        $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
+
 
         // $schedule->command('import:creator')->dailyAt("10:18");
         // $schedule->command('backfill:website')->dailyAt("11:41"); // 8000
