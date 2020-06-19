@@ -40,11 +40,11 @@ return [
     ],
     'communities' => [
         'reddit' => [
-            'brave_browser',
-            'batproject'
+            'brave_browser' => 'brave_browser',
+            'batproject' => 'batproject'
         ],
         'telegram' => [
-            'batproject'
+            'batproject' => 'batproject'
         ],
         'twitter' => [
             'brave' => '257245904',

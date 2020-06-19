@@ -287,4 +287,22 @@ class ChartDataController extends Controller
         });
         return $result;
     }
+
+    public function communities($site, $community)
+    {
+        $result = cache()->remember('community_' . $site . '_' . $community, 86400, function () use ($site, $community) {
+            $data = DB::select("SELECT record_date, 
+                subscribers 
+                FROM communities 
+                WHERE site = ? AND community = ?
+                ORDER BY record_date", [$site, $community]);
+            $labels = collect($data)->map(fn ($item) => $item->record_date);
+            $subscribers = collect($data)->map(fn ($item) => $item->subscribers);
+            return [
+                'labels' => $labels,
+                'data' => ['Subscribers' => $subscribers]
+            ];
+        });
+        return $result;
+    }
 }

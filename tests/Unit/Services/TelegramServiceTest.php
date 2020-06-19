@@ -5,7 +5,7 @@ namespace Tests\Unit\Services;
 use App\Services\TelegramService;
 use Tests\TestCase;
 
-class TelegramServiceServiceTest extends TestCase
+class TelegramServiceTest extends TestCase
 {
     /**
      * @test

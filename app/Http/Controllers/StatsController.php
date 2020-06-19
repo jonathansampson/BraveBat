@@ -66,4 +66,9 @@ class StatsController extends Controller
         ];
         return view('stats.creator_validation', compact('channels'));
     }
+
+    public function communities()
+    {
+        return view('stats.communities');
+    }
 }

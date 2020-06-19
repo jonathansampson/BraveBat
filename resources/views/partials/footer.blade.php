@@ -32,6 +32,9 @@
                         <a class="text-brand-light" href="{{route('stats.bat_stats')}}">BAT Token
                             Stats</a>
                     </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.communities')}}">Communities</a>
+                    </li>
                 </ul>
             </div>
             <div class="pt-3 md:w-1/3">

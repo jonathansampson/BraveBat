@@ -19,6 +19,7 @@ Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators
 Route::get('bat_stats', 'StatsController@bat_stats')->name('stats.bat_stats');
 Route::get('top_creators', 'StatsController@top_creators')->name('stats.top_creators');
 Route::get('creator_validation', 'StatsController@creator_validation')->name('stats.creator_validation');
+Route::get('communities', 'StatsController@communities')->name('stats.communities');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -39,6 +40,7 @@ Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataControll
 Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creatorDailyTotalStats')->name('charts.creator_daily_total_stats');
 Route::any('/charts/top_creators/{channel}', 'ChartDataController@topCreators')->name('charts.top_creators');
 Route::any('/charts/creator_validation/{channel}', 'ChartDataController@creatorValidation')->name('charts.creator_validation');
+Route::any('/charts/communities/{site}/{community}', 'ChartDataController@communities')->name('charts.communities');
 
 // BAT Chart APIS
 Route::any('/charts/bat_price', 'ChartDataBatStatsController@batPrice')->name('charts.bat_price');
