@@ -17,20 +17,20 @@ class Community extends Model
     {
         $communities = config('bravebat.communities');
 
-        // foreach ($communities['reddit'] as $community) {
-        //     self::createRedditCommunity($community);
-        // }
+        foreach ($communities['reddit'] as $community) {
+            self::createRedditCommunity($community);
+        }
 
-        // foreach ($communities['telegram'] as $community) {
-        //     self::createTelegramCommunity($community);
-        // }
-
-        // foreach ($communities['youtube'] as $community => $communityId) {
-        //     self::createYoutubeCommunity($community, $communityId);
-        // }
+        foreach ($communities['telegram'] as $community) {
+            self::createTelegramCommunity($community);
+        }
 
         foreach ($communities['twitter'] as $community => $communityId) {
             self::createTwitterCommunity($community, $communityId);
+        }
+
+        foreach ($communities['youtube'] as $community => $communityId) {
+            self::createYoutubeCommunity($community, $communityId);
         }
     }
 
