@@ -27,7 +27,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('import:transparency')->dailyAt("00:00");
         $schedule->command('bat_stats:generate')->dailyAt('00:01');
-        $schedule->command('communties:generate')->dailyAt('00:02');
+        $schedule->command('communities:generate')->dailyAt('00:02');
 
         $schedule->command('sitemap:generate')->dailyAt("01:00");
 
@@ -41,7 +41,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('creator:rank')->dailyAt('6:00');
         $schedule->command('creator_daily_stats:generate')->dailyAt('7:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
-
 
         // $schedule->command('import:creator')->dailyAt("10:18");
         // $schedule->command('backfill:website')->dailyAt("11:41"); // 8000
