@@ -9,6 +9,6 @@ Artisan::command('creator_daily_stats:update', function () {
     UpdateCreatorDailyStats::topCreators();
 })->describe('Update Creator Daily Stats');
 
-Artisan::command('communties:generate', function () {
+Artisan::command('communities:generate', function () {
     Community::generate();
 })->describe('Generate Communities');
