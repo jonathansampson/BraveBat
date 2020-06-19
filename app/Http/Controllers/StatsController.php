@@ -49,4 +49,21 @@ class StatsController extends Controller
     {
         return view('stats.bat_stats');
     }
+
+    public function top_creators()
+    {
+        return view('stats.top_creators');
+    }
+
+    public function creator_validation()
+    {
+        $channels = [
+            'youtube' => 'Invalid YouTube Creator Percentage (%)',
+            'twitch' => 'Invalid Twitch Creator Percentage (%)',
+            'twitter' => 'Invalid Twitter Creator Percentage (%)',
+            'vimeo' => 'Invalid Vimeo Creator Percentage (%)',
+            'github' => 'Invalid GitHub Creator Percentage (%)',
+        ];
+        return view('stats.creator_validation', compact('channels'));
+    }
 }

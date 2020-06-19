@@ -17,8 +17,8 @@ Route::get('brave_creator_historical_stats', 'StatsController@brave_creator_hist
 Route::get('creators/{channel}', 'CreatorsController@index')->name('creators.index');
 Route::get('creators/{channel}/{id}', 'CreatorsController@show')->name('creators.show');
 Route::get('bat_stats', 'StatsController@bat_stats')->name('stats.bat_stats');
-
-
+Route::get('top_creators', 'StatsController@top_creators')->name('stats.top_creators');
+Route::get('creator_validation', 'StatsController@creator_validation')->name('stats.creator_validation');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
@@ -37,6 +37,9 @@ Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary
 Route::any('/charts/creator_stats', 'ChartDataController@creatorStats')->name('charts.creator_stats');
 Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataController@creatorDailyAdditionStats')->name('charts.creator_daily_addition_stats');
 Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creatorDailyTotalStats')->name('charts.creator_daily_total_stats');
+Route::any('/charts/top_creators/{channel}', 'ChartDataController@topCreators')->name('charts.top_creators');
+Route::any('/charts/creator_validation/{channel}', 'ChartDataController@creatorValidation')->name('charts.creator_validation');
+
 // BAT Chart APIS
 Route::any('/charts/bat_price', 'ChartDataBatStatsController@batPrice')->name('charts.bat_price');
 Route::any('/charts/bat_holders_count', 'ChartDataBatStatsController@batHoldersCount')->name('charts.bat_holders_count');

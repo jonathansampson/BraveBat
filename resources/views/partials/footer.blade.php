@@ -54,6 +54,16 @@
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('creators.index', 'github')}}">Github Creators</a>
                     </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.top_creators')}}">
+                            Top Creators Analysis
+                        </a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.creator_validation')}}">
+                            Creator Validation Analysis
+                        </a>
+                    </li>
                 </ul>
             </div>
 

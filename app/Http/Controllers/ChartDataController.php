@@ -249,4 +249,42 @@ class ChartDataController extends Controller
         });
         return $result;
     }
+
+    public function topCreators($channel)
+    {
+        $result = cache()->remember('top_creators_' . $channel, 86400, function () use ($channel) {
+            $data = DB::select("SELECT record_date, 
+                top_count 
+                FROM creator_daily_stats 
+                WHERE top_count IS NOT NULL 
+                AND channel = ? 
+                ORDER BY record_date", [$channel]);
+            $labels = collect($data)->map(fn ($item) => $item->record_date);
+            $top_count = collect($data)->map(fn ($item) => $item->top_count);
+            return [
+                'labels' => $labels,
+                'data' => ['Top Creators' => $top_count]
+            ];
+        });
+        return $result;
+    }
+
+    public function creatorValidation($channel)
+    {
+        $result = cache()->remember('creator_validation_' . $channel, 86400, function () use ($channel) {
+            $data = DB::select("SELECT record_date, 
+            invalid_percent 
+            FROM creator_daily_stats 
+            WHERE invalid_percent IS NOT NULL 
+            AND channel = ?
+            ORDER BY record_date", [$channel]);
+            $labels = collect($data)->map(fn ($item) => $item->record_date);
+            $invalid_percent = collect($data)->map(fn ($item) => $item->invalid_percent);
+            return [
+                'labels' => $labels,
+                'data' => ['Invalid Percent (%)' => $invalid_percent]
+            ];
+        });
+        return $result;
+    }
 }
