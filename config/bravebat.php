@@ -37,5 +37,22 @@ return [
         'github' => '#4078c0',
         'twitter' => '#1da1f2',
         'website' => '#343546',
+    ],
+    'communities' => [
+        'reddit' => [
+            'brave_browser',
+            'batproject'
+        ],
+        'telegram' => [
+            'batproject'
+        ],
+        'twitter' => [
+            'brave' => '257245904',
+            'attentiontoken' => '841424245938769920',
+            'bat_community' => '984525722000744448'
+        ],
+        'youtube' => [
+            'bravesoftware' => 'UCFNTTISby1c_H-rm5Ww5rZg'
+        ],
     ]
 ];

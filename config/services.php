@@ -68,5 +68,9 @@ return [
     'ethplorer' => [
         'bat_token_address' => env('BAT_TOKEN_ADDRESS'),
         'api_key' => env('ETHPLORER_API_KEY'),
+    ],
+
+    'telegram' => [
+        'bot_token' => env('TELEGRAM_BOT_TOKEN'),
     ]
 ];
