@@ -56,6 +56,7 @@ return [
             '1668x2388' => '/images/logos/apple-splash-1668-2388.png',
             '2048x2732' => '/images/logos/apple-splash-2048-2732.png',
         ],
+        'shortcuts' => [],
         'custom' => []
     ]
 ];
