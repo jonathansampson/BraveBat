@@ -15,7 +15,7 @@
         "fabpot/goutte": "^4.0",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^2.0",
-        "guzzlehttp/guzzle": "^6.3",
+        "guzzlehttp/guzzle": "^7.0",
         "j7mbo/twitter-api-php": "^1.0",
         "laravel/framework": "^7.0",
         "laravel/horizon": "^4.3",
@@ -55,7 +55,9 @@
         }
     },
     "autoload": {
-        "files": ["app/helpers.php"],
+        "files": [
+            "app/helpers.php"
+        ],
         "psr-4": {
             "App\\": "app/"
         },
