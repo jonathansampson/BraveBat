@@ -44,7 +44,7 @@ communities')
             @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users</h2>
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users (M)</h2>
             @include('charts.line', ['id' => 'dau'])
         </div>
     </div>
