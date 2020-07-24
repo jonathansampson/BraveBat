@@ -36,7 +36,6 @@ class BraveUsage
                 'month' => '2020-01',
                 'dau' => 3800000,
                 'source' => ''
-
             ],
             [
                 'month' => '2019-12',
