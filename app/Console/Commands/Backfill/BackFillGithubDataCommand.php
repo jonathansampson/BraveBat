@@ -39,15 +39,28 @@ class BackFillGithubDataCommand extends Command
      */
     public function handle()
     {
+        $take = 10000;
         SimpleScheduledTaskSlackAndLogService::message('start Github filling');
-        Creator::whereNull('last_processed_at')
+        $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'github')
-            ->take(10000)
-            ->get()
-            ->each(function ($creator, $key) {
-                $creator->processCreatable();
-                sleep(10);
-            });
+            ->take($take)
+            ->get();
+        $this->process($newCreators);
+
+        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(60))
+            ->where('channel', 'github')
+            ->orderBy('id', 'asc')
+            ->take($take - $newCreators->count())
+            ->get();
+        $this->process($updatableCreators);
         SimpleScheduledTaskSlackAndLogService::message('finish Github filling');
+    }
+
+    private function process($creators)
+    {
+        $creators->each(function ($creator, $key) {
+            $creator->processCreatable();
+            sleep(10);
+        });
     }
 }

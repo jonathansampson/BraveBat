@@ -8,46 +8,39 @@ use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillTwitchDataCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'backfill:twitch';
-
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Backfill Twitch Data';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
+        $take = 15000;
         SimpleScheduledTaskSlackAndLogService::message('start Twitch filling');
-        Creator::whereNull('last_processed_at')
+        $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'twitch')
-            ->take(15000)
-            ->get()
-            ->each(function ($creator, $key) {
-                $creator->processCreatable();
-                sleep(3);
-            });
+            ->take($take)
+            ->get();
+        $this->process($newCreators);
+
+        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(30))
+            ->where('channel', 'twitch')
+            ->orderBy('id', 'asc')
+            ->take($take - $newCreators->count())
+            ->get();
+        $this->process($updatableCreators);
+
         SimpleScheduledTaskSlackAndLogService::message('finish Twitch filling');
+    }
+
+    private function process($creators)
+    {
+        $creators->each(function ($creator, $key) {
+            $creator->processCreatable();
+            sleep(3);
+        });
     }
 }

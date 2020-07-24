@@ -10,55 +10,39 @@ use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillWebsiteDataCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'backfill:website';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Backfill website Data';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
-        SimpleScheduledTaskSlackAndLogService::message('start website filling');
-        Creator::whereNull('last_processed_at')
+        $take = 8000;
+        SimpleScheduledTaskSlackAndLogService::message('start Website filling');
+        $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'website')
-            ->take(8000)
-            ->get()
-            ->each(function ($creator, $key) {
-                $creator->processCreatable();
-            });
+            ->take($take)
+            ->get();
+        $this->process($newCreators);
 
-        Creator::where('valid', false)
-            ->where('last_processed_at', '<', now()->subDay(14))
+        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(60))
             ->where('channel', 'website')
-            ->orderBy('alexa_ranking')
-            ->take(4000)
-            ->get()
-            ->each(function ($creator, $key) {
-                $creator->processCreatable();
-            });
-        SimpleScheduledTaskSlackAndLogService::message('finish website filling');
+            ->orderBy('id', 'asc')
+            ->take($take - $newCreators->count())
+            ->get();
+        $this->process($updatableCreators);
+
+        SimpleScheduledTaskSlackAndLogService::message('finish Website filling');
+    }
+
+    private function process($creators)
+    {
+        $creators->each(function ($creator, $key) {
+            $creator->processCreatable();
+        });
     }
 }

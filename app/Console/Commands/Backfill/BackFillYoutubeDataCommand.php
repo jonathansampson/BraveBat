@@ -9,46 +9,39 @@ use App\Services\SimpleScheduledTaskSlackAndLogService;
 
 class BackFillYoutubeDataCommand extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
     protected $signature = 'backfill:youtube';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Backfill Youtube Data';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         parent::__construct();
     }
 
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
+        $take = 20000;
         SimpleScheduledTaskSlackAndLogService::message('start Youtube filling');
-        Creator::whereNull('last_processed_at')
+        $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'youtube')
-            ->orderBy('id', 'desc')
-            ->take(20000)
-            ->get()
-            ->each(function ($creator, $key) {
-                $creator->processCreatable();
-            });
+            ->take($take)
+            ->get();
+        $this->process($newCreators);
+
+        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(60))
+            ->where('channel', 'youtube')
+            ->orderBy('id', 'asc')
+            ->take($take - $newCreators->count())
+            ->get();
+        $this->process($updatableCreators);
+
         SimpleScheduledTaskSlackAndLogService::message('finish Youtube filling');
+    }
+
+    private function process($creators)
+    {
+        $creators->each(function ($creator, $key) {
+            $creator->processCreatable();
+        });
     }
 }
