@@ -26,7 +26,7 @@ class BackFillTwitchDataCommand extends Command
             ->get();
         $this->process($newCreators);
 
-        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(30))
+        $updatableCreators = Creator::where('updated_at', '<', now()->subDay(60))
             ->where('channel', 'twitch')
             ->orderBy('id', 'asc')
             ->take($take - $newCreators->count())
