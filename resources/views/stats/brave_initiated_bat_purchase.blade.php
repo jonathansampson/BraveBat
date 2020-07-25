@@ -7,13 +7,13 @@
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave BAT Purchase in BAT</h1>
+            <h1 class="py-4 text-2xl font-semibold">Brave Token Purchase in BATs</h1>
             <div class='mb-3'>
                 @include('charts.line', ['id' => 'bat_purchases'])
             </div>
         </div>
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave BAT Purchase in Dollar</h1>
+            <h1 class="py-4 text-2xl font-semibold">Brave Token Purchase in Dollars</h1>
             <div class='mb-3'>
                 @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
             </div>
