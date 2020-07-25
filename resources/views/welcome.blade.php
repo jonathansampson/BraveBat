@@ -40,23 +40,22 @@ communities')
     </div>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
-            @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
-        </div>
-        <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users (M)</h2>
             @include('charts.line', ['id' => 'dau'])
-        </div>
-
-    </div>
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Initiated BAT Purchase</h2>
-            @include('charts.line', ['id' => 'bat_purchases'])
         </div>
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">BAT Price</h2>
             @include('charts.line', ['id' => 'bat_price', 'unit' => 'day'])
+        </div>
+    </div>
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
+            @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
+        </div>
+        <div class="w-full lg:w-1/2">
+            <h2 class="py-8 text-xl font-semibold text-center">Brave Initiated BAT Purchase</h2>
+            @include('charts.line', ['id' => 'bat_purchases'])
         </div>
     </div>
 </div>
