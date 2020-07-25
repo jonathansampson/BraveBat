@@ -24,7 +24,7 @@
                 <td class="px-2 py-4 border">{{$purchase->transaction_date}}</td>
                 <td class="px-2 py-4 border">{{number_format($purchase->transaction_amount)}}</td>
                 <td class="px-2 py-4 border">
-                    <a href="https://uphold.com/reserve/transactions/{{$purchase->transaction_record}}"
+                    <a href="{{$purchase->link()}}"
                         class="text-brand-orange">
                         {{$purchase->transaction_record}}
                     </a>
