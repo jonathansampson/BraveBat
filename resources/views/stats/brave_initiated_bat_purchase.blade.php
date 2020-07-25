@@ -15,6 +15,7 @@
             <tr>
                 <th class="px-2 py-4 text-left">Month</th>
                 <th class="px-2 py-4 text-left">Tokens Purchased</th>
+                <th class="px-2 py-4 text-left">Dollar Amount</th>
                 <th class="px-2 py-4 text-left">Transaction Record</th>
             </tr>
         </thead>
@@ -23,6 +24,7 @@
             <tr>
                 <td class="px-2 py-4 border">{{$purchase->transaction_date}}</td>
                 <td class="px-2 py-4 border">{{number_format($purchase->transaction_amount)}}</td>
+                <td class="px-2 py-4 border">${{number_format($purchase->dollar_amount)}}</td>
                 <td class="px-2 py-4 border">
                     <a href="{{$purchase->link()}}"
                         class="text-brand-orange">
