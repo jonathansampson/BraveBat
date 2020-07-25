@@ -32,6 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
 // Chart APIs
 Route::any('/charts/dau', 'ChartDataController@dau')->name('charts.dau');
 Route::any('/charts/bat_purchases', 'ChartDataController@batPurchases')->name('charts.bat_purchases');
+Route::any('/charts/bat_purchases_in_dollars', 'ChartDataController@batPurchasesDollars')->name('charts.bat_purchases_in_dollars');
 Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@adCampaignSupportedCountries')->name('charts.add_campaign_supported_countries');
 Route::any('/charts/active_ad_campaigns', 'ChartDataController@activeAdCampaigns')->name('charts.active_ad_campaigns');
 Route::any('/charts/bat_creator_summary', 'ChartDataController@batCreatorSummary')->name('charts.bat_creator_summary');

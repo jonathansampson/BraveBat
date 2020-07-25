@@ -50,6 +50,31 @@ class ChartDataController extends Controller
         return $result;
     }
 
+    public function batPurchasesDollars()
+    {
+        $result = cache()->remember('bat_purchase_dollar', 86400, function () {
+            $data = DB::select("SELECT 
+                DATE_FORMAT(transaction_date, '%Y-%m') AS month,
+                sum(dollar_amount) AS dollar_amount
+            FROM
+                bat_purchases
+            GROUP BY
+                month
+            ORDER BY
+                month");
+            $labels = collect($data)->map(fn ($item) => $item->month);
+            $dollar_amount = collect($data)->map(fn ($item) => $item->dollar_amount);
+
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'BAT Purchased In Dollars' => $dollar_amount
+                ]
+            ];
+        });
+        return $result;
+    }
+
     public function adCampaignSupportedCountries()
     {
         $result = cache()->remember('ad_campaign_supported_countries', 86400, function () {
