@@ -45,4 +45,12 @@ class BatPurchase extends Model
         $this->dollar_amount = $dollarAmount;
         $this->save();
     }
+
+    public static function backfillDollarAmount()
+    {
+        self::whereNull('dollar_amount')->get()->each(function ($purchase) {
+            $purchase->fetchDollarAmount();
+            sleep(30);
+        });
+    }
 }
