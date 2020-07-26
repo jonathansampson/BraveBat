@@ -60,7 +60,7 @@ class BackFillGithubDataCommand extends Command
     {
         $creators->each(function ($creator, $key) {
             $creator->processCreatable();
-            sleep(10);
+            sleep(5);
         });
     }
 }
