@@ -16,7 +16,7 @@ class BraveUsage
             [
                 'month' => '2020-06',
                 'dau' => 5300000,
-                'mau' => 16400000,
+                'mau' => 15600000,
                 'source' => 'https://twitter.com/BrendanEich/status/1285806207341490176',
             ],
             [
