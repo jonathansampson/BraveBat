@@ -11,6 +11,7 @@ class ChartDataController extends Controller
 {
     public function dau()
     {
+        $data = BraveUsage::all();
         $result = cache()->remember('dau', 86400, function () {
             $data = BraveUsage::all();
             $labels = collect($data)->map(fn ($item) => $item['month']);
@@ -19,6 +20,25 @@ class ChartDataController extends Controller
                 'labels' => $labels,
                 'data' => [
                     'Daily Active Users' => $dau
+                ]
+            ];
+        });
+        return $result;
+    }
+
+    public function mau()
+    {
+
+        $result = cache()->remember('mau', 86400, function () {
+            $data = array_filter(BraveUsage::all(), function ($item) {
+                return isset($item['mau']);
+            });
+            $labels = collect($data)->map(fn ($item) => $item['month']);
+            $mau = collect($data)->map(fn ($item) => round(($item['mau'] / 1000000), 1));
+            return [
+                'labels' => $labels,
+                'data' => [
+                    'Monthly Active Users' => $mau
                 ]
             ];
         });
