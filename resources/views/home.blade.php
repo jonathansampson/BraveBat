@@ -8,7 +8,7 @@
     @endif
     <div class="flex items-center">
         <div class="container px-4 py-4 mx-auto sm:px-6 md:px-8">
-                <div class="flex flex-col my-16 break-words bg-white border border-2 rounded shadow-md">
+                <div class="flex flex-col my-16 break-words bg-white border rounded shadow-md">
                     <div class="px-6 py-3 mb-0 font-semibold text-gray-700 bg-gray-200">
                         Developer Dashboard
                     </div>
