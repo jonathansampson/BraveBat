@@ -54,8 +54,8 @@ communities')
             @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Initiated BAT Purchase</h2>
-            @include('charts.line', ['id' => 'bat_purchases'])
+            <h2 class="py-8 text-xl font-semibold text-center">Brave-Initiated BAT Purchase ($)</h2>
+            @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
         </div>
     </div>
 </div>
