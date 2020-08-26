@@ -16,7 +16,7 @@
     <meta property='twitter:site' content='@BraveBatInfo'>
     <meta property='og:title' content='BraveBat'>
     <meta property='og:description'
-        content='Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities'>
+        content="@yield('description' , 'Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities')">
     <meta property='og:image' content='https://bravebat.info/images/logos/apple-icon-152.png'>
     <meta property='og:url' content='{{URL::current()}}'>
     <meta property='og:type' content='website'>
