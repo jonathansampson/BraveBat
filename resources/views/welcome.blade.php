@@ -44,7 +44,7 @@ communities')
             @include('charts.line', ['id' => 'dau'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">BAT Price</h2>
+            <h2 class="py-8 text-xl font-semibold text-center">BAT Price ($)</h2>
             @include('charts.line', ['id' => 'bat_price', 'unit' => 'day'])
         </div>
     </div>
