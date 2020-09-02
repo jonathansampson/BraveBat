@@ -19,15 +19,13 @@
                 <tr>
 
                     <td class="px-2 py-4 border">
-                        <a 
-                            href="{{route('creators.show', [$creator->channel, $creator->id])}}"
-                            class="text-blue-500"
-                            >
+                        <a href="{{route('creators.show', [$creator->channel, $creator->id])}}"
+                            class="text-brand-orange">
                             {{$creator->name}}
                         </a>
                     </td>
                     <td class="px-2 py-4 border">
-                       {{ number_format($creator->{$column}) }}
+                        {{ number_format($creator->{$column}) }}
                     </td>
                 </tr>
                 @endforeach

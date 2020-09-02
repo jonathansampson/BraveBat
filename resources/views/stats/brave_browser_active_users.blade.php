@@ -41,15 +41,16 @@
                 </td>
                 <td class="px-2 py-4 border">
                     @if ($row['source'])
-                        <a class="text-blue-500" href="{{$row['source']}}">Source</a>
-                    @else 
-                        Estimated
-                    @endif          
+                    <a class="text-brand-orange" href="{{$row['source']}}">Source</a>
+                    @else
+                    Estimated
+                    @endif
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    <p class="pt-4 text-sm italic">* The numbers of Monthly Active Users before 2020 are eyeballed from <a class="text-brand-orange" href="https://www.youtube.com/watch?v=o8_-5YxUqIQ&t=1666s">a YouTube slide</a></p>
+    <p class="pt-4 text-sm italic">* The numbers of Monthly Active Users before 2020 are eyeballed from <a
+            class="text-brand-orange" href="https://www.youtube.com/watch?v=o8_-5YxUqIQ&t=1666s">a YouTube slide</a></p>
 </div>
 @endsection
