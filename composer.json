@@ -18,7 +18,7 @@
         "guzzlehttp/guzzle": "^7.0",
         "j7mbo/twitter-api-php": "^1.0",
         "laravel/framework": "^7.0",
-        "laravel/horizon": "^4.3",
+        "laravel/horizon": "^4.0",
         "laravel/sanctum": "^2.2",
         "laravel/slack-notification-channel": "^2.0",
         "laravel/telescope": "^3.2",
