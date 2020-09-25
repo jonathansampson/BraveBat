@@ -31,7 +31,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('sitemap:generate')->dailyAt("01:00");
 
-        $schedule->command('import:creator')->dailyAt("00:01");
+        // $schedule->command('import:creator')->dailyAt("00:01");
         $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
         $schedule->command('backfill:twitter')->dailyAt("03:42"); // 10000
         $schedule->command('backfill:vimeo')->dailyAt("03:43"); // 10000
@@ -52,7 +52,7 @@ class Kernel extends ConsoleKernel
         // $schedule->command('creator:rank')->dailyAt('14:00');
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
 
-        // Tweet 
+        // Tweet
         $schedule->command('milestone:tweet')->dailyAt('6:55');
 
         $schedule->command('top_creator:tweet website 0.0005')->dailyAt('7:55');
