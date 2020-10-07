@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('sitemap:generate')->dailyAt("01:00");
 
         // $schedule->command('import:creator')->dailyAt("00:01");
-        $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
+        // $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
         $schedule->command('backfill:twitter')->dailyAt("03:42"); // 10000
         $schedule->command('backfill:vimeo')->dailyAt("03:43"); // 10000
         $schedule->command('backfill:twitch')->dailyAt("03:44"); // 10000
