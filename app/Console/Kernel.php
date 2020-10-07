@@ -24,6 +24,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        $schedule->call(function () {})->everyTenMinutes()->thenPing(config('bravebat.heartbeat'));
+
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('import:transparency')->hourly();
         $schedule->command('bat_stats:generate')->dailyAt('00:01');

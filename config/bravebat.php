@@ -1,6 +1,7 @@
 <?php
 
 return [
+    'heartbeat' => 'http://beats.envoyer.io/heartbeat/8oqVliCtYMhcpRA',
     'admin_email' => 'songhua@gmail.com',
     'transparency_page' => 'https://brave.com/transparency/',
     'referral_link' => 'https://brave.com/iuv633',
@@ -41,18 +42,18 @@ return [
     'communities' => [
         'reddit' => [
             'brave_browser' => 'brave_browser',
-            'batproject' => 'batproject'
+            'batproject' => 'batproject',
         ],
         'telegram' => [
-            'batproject' => 'batproject'
+            'batproject' => 'batproject',
         ],
         'twitter' => [
             'brave' => '257245904',
             'attentiontoken' => '841424245938769920',
-            'bat_community' => '984525722000744448'
+            'bat_community' => '984525722000744448',
         ],
         'youtube' => [
-            'bravesoftware' => 'UCFNTTISby1c_H-rm5Ww5rZg'
+            'bravesoftware' => 'UCFNTTISby1c_H-rm5Ww5rZg',
         ],
-    ]
+    ],
 ];
