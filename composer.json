@@ -30,6 +30,7 @@
         "nesk/puphpeteer": "^1.6",
         "paquettg/php-html-parser": "^2.2",
         "predis/predis": "^1.1",
+        "sammyjo20/lasso": "^1.2",
         "silviolleite/laravelpwa": "~2.0",
         "spatie/browsershot": "^3.35",
         "spatie/laravel-sitemap": "^5.7"
@@ -77,7 +78,8 @@
         "post-autoload-dump": [
             "Illuminate\\Foundation\\ComposerScripts::postAutoloadDump",
             "@php artisan package:discover --ansi",
-            "@php artisan vendor:publish --force --tag=livewire:assets --ansi"
+            "@php artisan vendor:publish --force --tag=livewire:assets --ansi",
+            "@php artisan horizon:publish --ansi"
         ],
         "post-root-package-install": [
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\""
