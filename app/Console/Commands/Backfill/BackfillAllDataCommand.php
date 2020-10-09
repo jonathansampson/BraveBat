@@ -21,7 +21,7 @@ class BackfillAllDataCommand extends Command
     {
         foreach ($this->channels() as $channel => $element) {
             SimpleScheduledTaskSlackAndLogService::message("start {$channel} filling");
-            $updatableCreators = Creator::where('updated_at', '<', now()->subDay(60))
+            $updatableCreators = Creator::where('updated_at', '<', now()->subDay($element['gap']))
                 ->where('channel', $channel)
                 ->orderBy('id', 'asc')
                 ->take($element['take'])
@@ -40,26 +40,32 @@ class BackfillAllDataCommand extends Command
             'website' => [
                 'take' => 2000,
                 'sleep' => 0,
+                'gap' => 90,
             ],
             'youtube' => [
                 'take' => 10000,
                 'sleep' => 0,
+                'gap' => 40,
             ],
             'github' => [
                 'take' => 1000,
                 'sleep' => 6,
+                'gap' => 80,
             ],
             'twitter' => [
                 'take' => 1000,
                 'sleep' => 6,
+                'gap' => 70,
             ],
             'vimeo' => [
                 'take' => 1000,
                 'sleep' => 6,
+                'gap' => 60,
             ],
             'twitch' => [
                 'take' => 1000,
                 'sleep' => 6,
+                'gap' => 50,
             ],
         ];
     }
