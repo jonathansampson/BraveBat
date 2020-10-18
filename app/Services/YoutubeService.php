@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Str;
 
 class YoutubeService
 {
@@ -14,7 +14,7 @@ class YoutubeService
         $queryString = http_build_query([
             'part' => 'snippet,statistics',
             'id' => $id,
-            'key' => config('services.youtube.api_key')
+            'key' => config('services.youtube.api_key'),
         ]);
         $response = Http::get($this->rootUrl . $queryString);
         if (!$response->ok()) {
@@ -30,10 +30,10 @@ class YoutubeService
         $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
 
         $view_count = $data['items'][0]['statistics']['viewCount'];
-        $follower_count = $data['items'][0]['statistics']['subscriberCount'];
+        $follower_count = isset($data['items'][0]['statistics']['subscriberCount']) ? $data['items'][0]['statistics']['subscriberCount'] : 0;
         $video_count = $data['items'][0]['statistics']['videoCount'];
 
-        return  [
+        return [
             'success' => true,
             'result' => [
                 'name' => $name,
@@ -42,8 +42,8 @@ class YoutubeService
                 'thumbnail' => $thumbnail,
                 "view_count" => $view_count,
                 "follower_count" => $follower_count,
-                "video_count" => $video_count
-            ]
+                "video_count" => $video_count,
+            ],
         ];
     }
 }
