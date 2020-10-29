@@ -37,7 +37,7 @@ class TweetCreatorMilestonesCommand extends Command
      */
     public function handle()
     {
-        // CreatorDailyStats::channelTweet();
-        // CreatorDailyStats::overallTweet();
+        CreatorDailyStats::channelTweet();
+        CreatorDailyStats::overallTweet();
     }
 }
