@@ -17,6 +17,6 @@ Artisan::command('communities:generate', function () {
 Artisan::command('temp:backfill_creator_daily_stats', function () {
     $channels = ['youtube', 'twitter', 'vimeo', 'reddit', 'twitch', 'website', 'github'];
     foreach ($channels as $channel) {
-        (new GenerateCreateDailyStatsFromBatWatch())->backfill($channel, '2020-06-18', '2020-10-29');
+        (new GenerateCreateDailyStatsFromBatWatch())->backfill($channel, '2020-09-24', '2020-10-29');
     }
 })->describe('Temporary backfill daily creator stats data');
