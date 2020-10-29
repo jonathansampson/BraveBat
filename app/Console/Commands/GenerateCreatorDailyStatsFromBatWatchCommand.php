@@ -2,23 +2,24 @@
 
 namespace App\Console\Commands;
 
+use App\Tasks\GenerateCreateDailyStatsFromBatWatch;
 use Illuminate\Console\Command;
 
-class TweetCreatorMilestonesCommand extends Command
+class GenerateCreatorDailyStatsFromBatWatchCommand extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'milestone:tweet';
+    protected $signature = 'creator_daily_stats:generate_from_bat_watch';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Tweet Milestones';
+    protected $description = 'Generate Daily Creator Stats from Bat Watch';
 
     /**
      * Create a new command instance.
@@ -37,7 +38,6 @@ class TweetCreatorMilestonesCommand extends Command
      */
     public function handle()
     {
-        // CreatorDailyStats::channelTweet();
-        // CreatorDailyStats::overallTweet();
+        app(GenerateCreateDailyStatsFromBatWatch::class)->generate();
     }
 }

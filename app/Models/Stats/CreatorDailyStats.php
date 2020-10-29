@@ -2,11 +2,11 @@
 
 namespace App\Models\Stats;
 
-use DB;
-use Carbon\Carbon;
-use App\Services\TweetService;
-use Illuminate\Database\Eloquent\Model;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use App\Services\TweetService;
+use Carbon\Carbon;
+use DB;
+use Illuminate\Database\Eloquent\Model;
 
 class CreatorDailyStats extends Model
 {
@@ -27,7 +27,7 @@ class CreatorDailyStats extends Model
             self::updateOrCreate(
                 [
                     'record_date' => $date_string,
-                    'channel' => $result->channel
+                    'channel' => $result->channel,
                 ],
                 [
                     'addition' => $result->addition,
@@ -66,7 +66,7 @@ class CreatorDailyStats extends Model
         $yesterday = Carbon::yesterday()->toDateString();
 
         foreach ($channels as $channel => $threshold) {
-            $todayTotal =  floor(self::total($today, $channel) / $threshold);
+            $todayTotal = floor(self::total($today, $channel) / $threshold);
             $yesterdayTotal = floor(self::total($yesterday, $channel) / $threshold);
             if ($todayTotal > $yesterdayTotal) {
                 $milestone = $todayTotal * $threshold;
@@ -84,7 +84,7 @@ class CreatorDailyStats extends Model
         $today = Carbon::today()->toDateString();
         $yesterday = Carbon::yesterday()->toDateString();
 
-        $todayTotal =  floor(self::total($today) / $threshold);
+        $todayTotal = floor(self::total($today) / $threshold);
         $yesterdayTotal = floor(self::total($yesterday) / $threshold);
         if ($todayTotal > $yesterdayTotal) {
             $milestone = $todayTotal * $threshold;

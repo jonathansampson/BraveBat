@@ -4,6 +4,7 @@ return [
     'heartbeat' => 'http://beats.envoyer.io/heartbeat/8oqVliCtYMhcpRA',
     'admin_email' => 'songhua@gmail.com',
     'transparency_page' => 'https://brave.com/transparency/',
+    'bat_watch' => 'https://bat.watch/',
     'referral_link' => 'https://brave.com/iuv633',
     'brave_api' => 'https://publishers-distro.basicattentiontoken.org/api/v3/public/channels',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",

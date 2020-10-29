@@ -44,7 +44,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('backfill:all')->dailyAt("01:00");
 
         $schedule->command('creator:rank')->dailyAt('18:00');
-        $schedule->command('creator_daily_stats:generate')->dailyAt('18:30');
+        $schedule->command('creator_daily_stats:generate_from_bat_watch')->dailyAt('18:30');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
 
         // $schedule->command('import:creator')->dailyAt("10:18");
