@@ -94,4 +94,13 @@ class CreatorDailyStats extends Model
             $tweet_service->postTweet($message);
         }
     }
+
+    public function generateAddition()
+    {
+        $previous = CreatorDailyStats::where('channel', $this->channel)->where('record_date', '<', $this->record_date)->orderBy('record_date', 'desc')->first();
+        if ($previous) {
+            $this->addition = $this->total - $previous->total;
+            $this->save();
+        }
+    }
 }

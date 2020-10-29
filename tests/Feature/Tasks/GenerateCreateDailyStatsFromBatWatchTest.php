@@ -19,6 +19,7 @@ class GenerateCreateDailyStatsFromBatWatchTest extends TestCase
     {
         (new GenerateCreateDailyStatsFromBatWatch())->generate();
         $this->assertCount(7, CreatorDailyStats::all());
+        $this->assertEquals(0, CreatorDailyStats::first()->addition);
     }
 
     /**

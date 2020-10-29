@@ -19,7 +19,7 @@ class GenerateCreateDailyStatsFromBatWatch
     {
         foreach ($data as $key => $value) {
             if ($key != 'total') {
-                CreatorDailyStats::updateOrCreate(
+                $creator_daily_stat = CreatorDailyStats::updateOrCreate(
                     [
                         'record_date' => today(),
                         'channel' => $key,
@@ -29,8 +29,10 @@ class GenerateCreateDailyStatsFromBatWatch
                         'total' => $value,
                     ]
                 );
+                $creator_daily_stat->generateAddition();
             }
         }
+
     }
 
     public function backfill($channel, $from, $to)
