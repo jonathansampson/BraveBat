@@ -15,7 +15,7 @@
 
     </div>
 </div>
-{{-- <div class="flex flex-wrap">
+<div class="flex flex-wrap">
     <div class="w-full lg:w-1/2">
         <h2 class="py-8 text-xl font-semibold text-center">Total</h2>
         @include('charts.line', ['id' => 'creator_daily_total_stats/'.$channel, 'brand_color' => $channel, 'unit' =>
@@ -26,4 +26,4 @@
         @include('charts.line', ['id' => 'creator_daily_addition_stats/'.$channel, 'brand_color' => $channel, 'unit' =>
         'day'])
     </div>
-</div> --}}
+</div>

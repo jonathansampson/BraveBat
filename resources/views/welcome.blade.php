@@ -59,7 +59,7 @@ communities')
         </div>
     </div>
 </div>
-{{-- <div class="bg-gray-100">
+<div class="bg-gray-100">
     <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
         <div class="text-3xl text-center">
             Growing Creator Community
@@ -68,5 +68,5 @@ communities')
         @include('partials.channel_charts', ['channel' => $channel])
         @endforeach
     </div>
-</div> --}}
+</div>
 @endsection
