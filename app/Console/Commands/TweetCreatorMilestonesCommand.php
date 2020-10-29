@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Stats\CreatorDailyStats;
 use Illuminate\Console\Command;
 
 class TweetCreatorMilestonesCommand extends Command
