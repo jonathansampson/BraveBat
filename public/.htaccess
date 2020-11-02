@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Handle bots
+    RewriteBase /
+    SetEnvIfNoCase User-Agent "^Semruhbot" bad_user
+    Deny from env=bad_user
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
@@ -18,11 +23,12 @@
     RewriteCond %{REQUEST_FILENAME} !-d
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
+
 </IfModule>
 
 <IfModule mod_expires.c>
 	ExpiresActive On
-	
+
     #1 Year
 
 	ExpiresByType image/x-icon "access plus 1 year"
@@ -31,7 +37,7 @@
 	ExpiresByType text/javascript "access plus 1 year"
 	ExpiresByType text/ecmascript "access plus 1 year"
 	ExpiresByType text/css "access plus 1 year"
-	
+
 	#7 Days
 	ExpiresByType image/gif A604800
 	ExpiresByType image/png A604800
@@ -40,6 +46,6 @@
 	ExpiresByType application/x-shockwave-flash A604800
 	ExpiresByType video/x-flv A604800
 	ExpiresByType application/pdf A604800
-	
+
 	#ExpiresByType text/html A900
 </IfModule>
