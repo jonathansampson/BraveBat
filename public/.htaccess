@@ -8,6 +8,7 @@
     # Handle bots
     RewriteBase /
     SetEnvIfNoCase User-Agent "^Semruhbot" bad_user
+    SetEnvIfNoCase User-Agent "^MJ12bot" bad_user
     Deny from env=bad_user
 
     # Handle Authorization Header
