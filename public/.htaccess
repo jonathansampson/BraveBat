@@ -6,9 +6,9 @@
     RewriteEngine On
 
     # Fight bots
-    RewriteCond %{HTTP_USER_AGENT} ^.*semrushbot.*$ [NC,OR]
-    RewriteCond %{HTTP_USER_AGENT} ^.*MJ12bot.*$ [NC,OR]
-    RewriteRule ^.*.* http://www.google.com/ [L]
+    # RewriteCond %{HTTP_USER_AGENT} ^.*semrushbot.*$ [NC,OR]
+    # RewriteCond %{HTTP_USER_AGENT} ^.*MJ12bot.*$ [NC,OR]
+    # RewriteRule ^.*.* http://www.google.com/ [L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
