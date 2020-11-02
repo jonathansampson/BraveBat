@@ -3,4 +3,6 @@ Disallow:
 
 User-agent: SemrushBot
 User-agent: MJ12bot
+User-agent: DotBot
+User-agent: AhrefsBot
 Disallow: /
