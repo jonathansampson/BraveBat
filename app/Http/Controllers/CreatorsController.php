@@ -50,7 +50,7 @@ class CreatorsController extends Controller
             abort(404);
         }
         $channel_info = $channels[$channel];
-        $creators = Creator::query()
+        $creators = Creator::select('id', 'channel', 'name', 'follower_count', 'alexa_ranking')
             ->where("valid", true)
             ->whereNotNull("name")
             ->where('channel', $channel)
