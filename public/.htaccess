@@ -5,11 +5,10 @@
 
     RewriteEngine On
 
-    # Handle bots
-    RewriteBase /
-    SetEnvIfNoCase User-Agent "^Semruhbot" bad_user
-    SetEnvIfNoCase User-Agent "^MJ12bot" bad_user
-    Deny from env=bad_user
+    # Fight bots
+    RewriteCond %{HTTP_USER_AGENT} ^.*semrushbot.*$ [NC,OR]
+    RewriteCond %{HTTP_USER_AGENT} ^.*MJ12bot.*$ [NC,OR]
+    RewriteRule ^.*.* http://www.google.com/ [L]
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
