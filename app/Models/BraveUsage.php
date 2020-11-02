@@ -8,6 +8,12 @@ class BraveUsage
     {
         return [
             [
+                'month' => '2020-10',
+                'dau' => 7000000,
+                'mau' => 20500000,
+                'source' => 'https://brave.com/20m-mau/',
+            ],
+            [
                 'month' => '2020-09',
                 'dau' => 6600000,
                 'mau' => 19600000,
