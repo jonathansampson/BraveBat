@@ -6,11 +6,10 @@
     RewriteEngine On
 
     # Fight bots
-    # RewriteCond %{REQUEST_URI} !/robots.txt$
-    # RewriteCond %{HTTP_USER_AGENT} ^$ [OR]
-    # RewriteCond %{HTTP_USER_AGENT} ^.*semrushbot.*$ [NC,OR]
-    # RewriteCond %{HTTP_USER_AGENT} ^.*MJ12bot.*$ [NC,OR]
-    # RewriteRule ^.*.* http://www.google.com/ [L]
+    RewriteCond %{HTTP_USER_AGENT} ^.*(semrushbot|MJ12bot).*$ [NC]
+    RewriteRule ^.*.* http://www.google.com/ [L]
+#    RewriteRule .* - [F,L]
+
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
