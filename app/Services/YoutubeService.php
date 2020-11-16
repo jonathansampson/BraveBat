@@ -27,8 +27,11 @@ class YoutubeService
         $name = $data['items'][0]['snippet']['title'];
         $display_name = $data['items'][0]['snippet']['title'];
         $description = Str::limit($data['items'][0]['snippet']['description'], 900);
-        $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
-
+        if (isset($data['items'][0]['snippet']['thumbnails'])) {
+            $thumbnail = $data['items'][0]['snippet']['thumbnails']['default']['url'];
+        } else {
+            $thumbnail = '';
+        }
         $view_count = $data['items'][0]['statistics']['viewCount'];
         $follower_count = isset($data['items'][0]['statistics']['subscriberCount']) ? $data['items'][0]['statistics']['subscriberCount'] : 0;
         $video_count = $data['items'][0]['statistics']['videoCount'];
