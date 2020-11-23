@@ -19,8 +19,8 @@ class BackfillAllDataCommand extends Command
 
     public function handle()
     {
+        SimpleScheduledTaskSlackAndLogService::message("start filling");
         foreach ($this->channels() as $channel => $element) {
-            SimpleScheduledTaskSlackAndLogService::message("start {$channel} filling");
             $updatableCreators = Creator::where('updated_at', '<', now()->subDay($element['gap']))
                 ->where('channel', $channel)
                 ->orderBy('id', 'asc')
@@ -30,8 +30,8 @@ class BackfillAllDataCommand extends Command
                 $creator->processCreatable();
                 sleep($element['sleep']);
             }
-            SimpleScheduledTaskSlackAndLogService::message("finish {$channel} filling");
         }
+        SimpleScheduledTaskSlackAndLogService::message("finish filling");
     }
 
     public function channels()
