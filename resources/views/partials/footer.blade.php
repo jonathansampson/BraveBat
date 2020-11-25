@@ -84,7 +84,7 @@
                 </ul>
                 <div class="flex justify-center pt-1 pb-4 space-x-2 md:justify-start">
                     <div class="w-6 h-6">
-                        <a href="mailto:support@bravebat.info" aria-label="Email"
+                        <a href="mailto:bravebatinfo@gmail.com" aria-label="Email"
                             class="text-gray-500 hover:text-gray-300">
                             <svg viewBox="0 0 448 448" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
                                 <path d="M314.375 144h-180.75L224 221.465zm0 0" />

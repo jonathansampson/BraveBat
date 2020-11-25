@@ -64,16 +64,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.161.2",
+            "version": "3.164.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "2703896142f292058ce9d6c9026a9329a89778e0"
+                "reference": "39ecf57d828eb50ab23fd70255a68b8996392ac9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/2703896142f292058ce9d6c9026a9329a89778e0",
-                "reference": "2703896142f292058ce9d6c9026a9329a89778e0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/39ecf57d828eb50ab23fd70255a68b8996392ac9",
+                "reference": "39ecf57d828eb50ab23fd70255a68b8996392ac9",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.161.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.164.0"
             },
-            "time": "2020-11-16T19:11:59+00:00"
+            "time": "2020-11-24T19:18:22+00:00"
         },
         {
             "name": "brick/math",
@@ -210,16 +210,16 @@
         },
         {
             "name": "bugsnag/bugsnag",
-            "version": "v3.24.0",
+            "version": "v3.25.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bugsnag/bugsnag-php.git",
-                "reference": "8d470f4cdea7407d2b72f4ab1f0c8e6f158971e0"
+                "reference": "5a62ea2449e090ac103b1e9883a8fc33567d4241"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/8d470f4cdea7407d2b72f4ab1f0c8e6f158971e0",
-                "reference": "8d470f4cdea7407d2b72f4ab1f0c8e6f158971e0",
+                "url": "https://api.github.com/repos/bugsnag/bugsnag-php/zipball/5a62ea2449e090ac103b1e9883a8fc33567d4241",
+                "reference": "5a62ea2449e090ac103b1e9883a8fc33567d4241",
                 "shasum": ""
             },
             "require": {
@@ -267,22 +267,22 @@
             ],
             "support": {
                 "issues": "https://github.com/bugsnag/bugsnag-php/issues",
-                "source": "https://github.com/bugsnag/bugsnag-php/tree/v3.24.0"
+                "source": "https://github.com/bugsnag/bugsnag-php/tree/v3.25.0"
             },
-            "time": "2020-10-27T13:27:44+00:00"
+            "time": "2020-11-25T13:15:13+00:00"
         },
         {
             "name": "bugsnag/bugsnag-laravel",
-            "version": "v2.20.1",
+            "version": "v2.21.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bugsnag/bugsnag-laravel.git",
-                "reference": "fe049f561f1bebce9800d65fc4a11909f8f45f5d"
+                "reference": "b470a34b2b6ba33b2aa4ef1a01c64843ae8ab91b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bugsnag/bugsnag-laravel/zipball/fe049f561f1bebce9800d65fc4a11909f8f45f5d",
-                "reference": "fe049f561f1bebce9800d65fc4a11909f8f45f5d",
+                "url": "https://api.github.com/repos/bugsnag/bugsnag-laravel/zipball/b470a34b2b6ba33b2aa4ef1a01c64843ae8ab91b",
+                "reference": "b470a34b2b6ba33b2aa4ef1a01c64843ae8ab91b",
                 "shasum": ""
             },
             "require": {
@@ -296,7 +296,7 @@
             "require-dev": {
                 "graham-campbell/testbench": "^3.1|^4.0|^5.0",
                 "mockery/mockery": "^0.9.4|^1.3.1",
-                "phpunit/phpunit": "^4.8.36|^5.6.3|^6.3.1|^7.5.15|^8.3.5"
+                "phpunit/phpunit": "^4.8.36|^6.3.1|^7.5.15|^8.3.5|^9.3.10"
             },
             "type": "library",
             "extra": {
@@ -331,9 +331,9 @@
             ],
             "support": {
                 "issues": "https://github.com/bugsnag/bugsnag-laravel/issues",
-                "source": "https://github.com/bugsnag/bugsnag-laravel/tree/v2.20.1"
+                "source": "https://github.com/bugsnag/bugsnag-laravel/tree/v2.21.0"
             },
-            "time": "2020-10-13T08:56:18+00:00"
+            "time": "2020-11-25T13:26:13+00:00"
         },
         {
             "name": "bugsnag/bugsnag-psr-logger",
@@ -1845,16 +1845,16 @@
         },
         {
             "name": "jaybizzle/crawler-detect",
-            "version": "v1.2.102",
+            "version": "v1.2.103",
             "source": {
                 "type": "git",
                 "url": "https://github.com/JayBizzle/Crawler-Detect.git",
-                "reference": "346cfd72d11bb41f15e82654e532dc55360612ac"
+                "reference": "3efa2860959cc971f17624b40bf0699823f9d0f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/346cfd72d11bb41f15e82654e532dc55360612ac",
-                "reference": "346cfd72d11bb41f15e82654e532dc55360612ac",
+                "url": "https://api.github.com/repos/JayBizzle/Crawler-Detect/zipball/3efa2860959cc971f17624b40bf0699823f9d0f3",
+                "reference": "3efa2860959cc971f17624b40bf0699823f9d0f3",
                 "shasum": ""
             },
             "require": {
@@ -1891,9 +1891,9 @@
             ],
             "support": {
                 "issues": "https://github.com/JayBizzle/Crawler-Detect/issues",
-                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.2.102"
+                "source": "https://github.com/JayBizzle/Crawler-Detect/tree/v1.2.103"
             },
-            "time": "2020-11-04T19:23:01+00:00"
+            "time": "2020-11-23T19:49:25+00:00"
         },
         {
             "name": "jenssegers/agent",
@@ -2219,16 +2219,16 @@
         },
         {
             "name": "laravel/sanctum",
-            "version": "v2.8.0",
+            "version": "v2.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/sanctum.git",
-                "reference": "b6420b0d4beace16f6e8248b221fd0b0deee47a1"
+                "reference": "331bd6572610b06ad6dd6b2a7c15a0465a3ca9c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/sanctum/zipball/b6420b0d4beace16f6e8248b221fd0b0deee47a1",
-                "reference": "b6420b0d4beace16f6e8248b221fd0b0deee47a1",
+                "url": "https://api.github.com/repos/laravel/sanctum/zipball/331bd6572610b06ad6dd6b2a7c15a0465a3ca9c9",
+                "reference": "331bd6572610b06ad6dd6b2a7c15a0465a3ca9c9",
                 "shasum": ""
             },
             "require": {
@@ -2279,7 +2279,7 @@
                 "issues": "https://github.com/laravel/sanctum/issues",
                 "source": "https://github.com/laravel/sanctum"
             },
-            "time": "2020-11-03T19:11:54+00:00"
+            "time": "2020-11-24T17:31:19+00:00"
         },
         {
             "name": "laravel/slack-notification-channel",
@@ -2968,27 +2968,25 @@
         },
         {
             "name": "maxbanton/cwh",
-            "version": "v2.0.1",
+            "version": "v2.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/maxbanton/cwh.git",
-                "reference": "cb1db98e1f3aa571437852270c6256a68706cd73"
+                "reference": "55445da8e6cb62f3ce7cb186c23c848b270134ca"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/maxbanton/cwh/zipball/cb1db98e1f3aa571437852270c6256a68706cd73",
-                "reference": "cb1db98e1f3aa571437852270c6256a68706cd73",
+                "url": "https://api.github.com/repos/maxbanton/cwh/zipball/55445da8e6cb62f3ce7cb186c23c848b270134ca",
+                "reference": "55445da8e6cb62f3ce7cb186c23c848b270134ca",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "^3.18",
                 "monolog/monolog": "^2.0",
-                "php": "^7.2"
+                "php": "^7.2 || ^8"
             },
             "require-dev": {
-                "maxbanton/dd": "^2.0",
-                "php-coveralls/php-coveralls": "^2.2",
-                "phpunit/phpunit": "^8.5",
+                "phpunit/phpunit": "^8.5 || ^9.4",
                 "squizlabs/php_codesniffer": "^3.5"
             },
             "suggest": {
@@ -3022,7 +3020,7 @@
                 "issues": "https://github.com/maxbanton/cwh/issues",
                 "source": "https://github.com/maxbanton/cwh"
             },
-            "time": "2020-01-17T09:08:44+00:00"
+            "time": "2020-11-17T15:34:20+00:00"
         },
         {
             "name": "mobiledetect/mobiledetectlib",
@@ -4688,16 +4686,16 @@
         },
         {
             "name": "sammyjo20/lasso",
-            "version": "1.2.4",
+            "version": "1.2.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Sammyjo20/Lasso.git",
-                "reference": "c5cdf24b67d83480ac32482e132fc86d04af57a4"
+                "reference": "f9f4c122c31000bea8645fea1fd0f91eee03c31a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Sammyjo20/Lasso/zipball/c5cdf24b67d83480ac32482e132fc86d04af57a4",
-                "reference": "c5cdf24b67d83480ac32482e132fc86d04af57a4",
+                "url": "https://api.github.com/repos/Sammyjo20/Lasso/zipball/f9f4c122c31000bea8645fea1fd0f91eee03c31a",
+                "reference": "f9f4c122c31000bea8645fea1fd0f91eee03c31a",
                 "shasum": ""
             },
             "require": {
@@ -4737,7 +4735,7 @@
             "description": "Lasso - Asset wrangling for Laravel made simple.",
             "support": {
                 "issues": "https://github.com/Sammyjo20/Lasso/issues",
-                "source": "https://github.com/Sammyjo20/Lasso/tree/v1.2.4"
+                "source": "https://github.com/Sammyjo20/Lasso/tree/v1.2.5"
             },
             "funding": [
                 {
@@ -4745,7 +4743,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-10-21T05:02:39+00:00"
+            "time": "2020-11-18T17:08:59+00:00"
         },
         {
             "name": "shetabit/visitor",
@@ -4870,16 +4868,16 @@
         },
         {
             "name": "spatie/browsershot",
-            "version": "3.40.3",
+            "version": "3.41.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/browsershot.git",
-                "reference": "321f0d8ec8e303d145968ebece9fa1ebf2497864"
+                "reference": "2cc87d4dad788b372549cf856c773a7e5a8fcace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/browsershot/zipball/321f0d8ec8e303d145968ebece9fa1ebf2497864",
-                "reference": "321f0d8ec8e303d145968ebece9fa1ebf2497864",
+                "url": "https://api.github.com/repos/spatie/browsershot/zipball/2cc87d4dad788b372549cf856c773a7e5a8fcace",
+                "reference": "2cc87d4dad788b372549cf856c773a7e5a8fcace",
                 "shasum": ""
             },
             "require": {
@@ -4924,7 +4922,7 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/browsershot/issues",
-                "source": "https://github.com/spatie/browsershot/tree/3.40.3"
+                "source": "https://github.com/spatie/browsershot/tree/3.41.0"
             },
             "funding": [
                 {
@@ -4932,7 +4930,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2020-11-12T16:31:59+00:00"
+            "time": "2020-11-18T08:51:42+00:00"
         },
         {
             "name": "spatie/crawler",
@@ -5067,16 +5065,16 @@
         },
         {
             "name": "spatie/image-optimizer",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/spatie/image-optimizer.git",
-                "reference": "f87f8328ca5bfabb3811241f5d35f17e146f7f83"
+                "reference": "b622d0cf29f57d7735d49f2b62471e6b788cb291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/f87f8328ca5bfabb3811241f5d35f17e146f7f83",
-                "reference": "f87f8328ca5bfabb3811241f5d35f17e146f7f83",
+                "url": "https://api.github.com/repos/spatie/image-optimizer/zipball/b622d0cf29f57d7735d49f2b62471e6b788cb291",
+                "reference": "b622d0cf29f57d7735d49f2b62471e6b788cb291",
                 "shasum": ""
             },
             "require": {
@@ -5115,9 +5113,9 @@
             ],
             "support": {
                 "issues": "https://github.com/spatie/image-optimizer/issues",
-                "source": "https://github.com/spatie/image-optimizer/tree/1.3.0"
+                "source": "https://github.com/spatie/image-optimizer/tree/1.3.1"
             },
-            "time": "2020-11-10T13:45:49+00:00"
+            "time": "2020-11-20T11:36:11+00:00"
         },
         {
             "name": "spatie/laravel-sitemap",
@@ -8387,16 +8385,16 @@
         },
         {
             "name": "facade/ignition",
-            "version": "2.5.1",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/facade/ignition.git",
-                "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a"
+                "reference": "08668034beb185fa2ac6f09b1034eaa440952ace"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/facade/ignition/zipball/3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
-                "reference": "3b3403f18bbdc0aeadf1ffaddf11a1588b12ec7a",
+                "url": "https://api.github.com/repos/facade/ignition/zipball/08668034beb185fa2ac6f09b1034eaa440952ace",
+                "reference": "08668034beb185fa2ac6f09b1034eaa440952ace",
                 "shasum": ""
             },
             "require": {
@@ -8460,7 +8458,7 @@
                 "issues": "https://github.com/facade/ignition/issues",
                 "source": "https://github.com/facade/ignition"
             },
-            "time": "2020-11-13T13:36:24+00:00"
+            "time": "2020-11-17T09:18:51+00:00"
         },
         {
             "name": "facade/ignition-contracts",

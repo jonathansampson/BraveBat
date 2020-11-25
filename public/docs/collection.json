@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "BraveBat API",
-        "_postman_id": "154a91ae-cf1b-4dee-baa7-638d2e067046",
+        "_postman_id": "26fd4001-f5a4-4ac2-8812-4c81e074f7db",
         "description": "BraveBat API for Brave Browser Verified Creators through all channels (website, YouTube, Twitch, Reddit, Github, Vimeo and Twitter)",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
