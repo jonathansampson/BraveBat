@@ -8,6 +8,12 @@ class BraveUsage
     {
         return [
             [
+                'month' => '2020-11',
+                'dau' => 7400000,
+                'mau' => 22200000,
+                'source' => 'https://twitter.com/BrendanEich/status/1333937921821274113',
+            ],
+            [
                 'month' => '2020-10',
                 'dau' => 7000000,
                 'mau' => 20500000,
