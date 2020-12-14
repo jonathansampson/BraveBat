@@ -2,7 +2,7 @@
 
 namespace App\Console\Commands;
 
-use App\Tasks\GenerateCreateDailyStatsFromBatWatch;
+use App\Tasks\GenerateCreateDailyStatsFromBatGrowth;
 use Illuminate\Console\Command;
 
 class GenerateCreatorDailyStatsFromBatGrowthCommand extends Command
@@ -38,6 +38,6 @@ class GenerateCreatorDailyStatsFromBatGrowthCommand extends Command
      */
     public function handle()
     {
-        app(GenerateCreateDailyStatsFromBatWatch::class)->generate();
+        app(GenerateCreateDailyStatsFromBatGrowth::class)->generate();
     }
 }
