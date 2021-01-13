@@ -12,12 +12,15 @@ use App\Models\Stats\CreatorDailyStats;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
 use App\Services\TweetService;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Creator extends Model
 {
     protected $table = 'creators';
     protected $guarded = [];
+
+    use HasFactory;
 
     /**
      * Handle incomings from Brave API
@@ -65,16 +68,6 @@ class Creator extends Model
             $creator_count['overall'] = array_sum($creator_count);
             return $creator_count;
         });
-
-        // return cache()->remember('creator_count', 3600, function () {
-        //     $results = DB::select("SELECT channel, count(id) as count from creators group by channel");
-        //     $creator_count = [];
-        //     foreach ($results as $result) {
-        //         $creator_count[$result->channel] = $result->count;
-        //     }
-        //     $creator_count['overall'] = array_sum($creator_count);
-        //     return $creator_count;
-        // });
     }
 
     public function fillChannel()

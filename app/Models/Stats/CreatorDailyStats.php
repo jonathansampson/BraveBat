@@ -6,12 +6,15 @@ use App\Services\SimpleScheduledTaskSlackAndLogService;
 use App\Services\TweetService;
 use Carbon\Carbon;
 use DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CreatorDailyStats extends Model
 {
     protected $table = 'creator_daily_stats';
     protected $guarded = [];
+
+    use HasFactory;
 
     public static function generate($date_string)
     {

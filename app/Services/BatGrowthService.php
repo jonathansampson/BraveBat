@@ -14,7 +14,7 @@ class BatGrowthService
         ];
         $html = Browsershot::url(config('bravebat.bat_growth'))->bodyHtml();
         $dom = new Dom;
-        $dom->load($html);
+        $dom->loadStr($html);
         $contents = $dom->find('strong.big-stats');
         $results = [];
         foreach ($contents as $key => $element) {

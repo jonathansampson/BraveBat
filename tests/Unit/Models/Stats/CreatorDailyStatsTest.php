@@ -15,13 +15,13 @@ class CreatorDailyStatsTest extends TestCase
      */
     public function daily_stats_can_generate_addition()
     {
-        $first = factory(CreatorDailyStats::class)->create([
+        $first = CreatorDailyStats::factory()->create([
             'record_date' => '2019-01-01',
             'total' => 12,
             'addition' => 0,
             'channel' => 'youtube',
         ]);
-        $second = factory(CreatorDailyStats::class)->create([
+        $second = CreatorDailyStats::factory()->create([
             'record_date' => '2019-01-03',
             'total' => 25,
             'addition' => 0,

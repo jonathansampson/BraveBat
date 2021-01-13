@@ -1,13 +1,20 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace Database\Factories;
 
 use App\Models\Creator;
-use Faker\Generator as Faker;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
-$factory->define(Creator::class, function (Faker $faker) {
-    return [
-        'creator' => 'bravebat.info',
-        'channel' => 'website'
-    ];
-});
+class CreatorFactory extends Factory
+{
+
+    protected $model = Creator::class;
+
+    public function definition()
+    {
+        return [
+            'creator' => 'bravebat.info',
+            'channel' => 'website',
+        ];
+    }
+}

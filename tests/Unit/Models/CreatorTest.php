@@ -15,7 +15,7 @@ class CreatorTest extends TestCase
      */
     public function creator_can_fill_website_channel()
     {
-        $creator = factory(Creator::class)->create(['creator' => 'bravebat.info']);
+        $creator = Creator::factory()->create(['creator' => 'bravebat.info']);
         $creator->fillChannel();
         $this->assertEquals($creator->fresh()->channel, 'website');
         $this->assertEquals($creator->fresh()->channel_id, 'bravebat.info');
@@ -26,7 +26,7 @@ class CreatorTest extends TestCase
      */
     public function creator_can_fill_non_twitch_channel()
     {
-        $creator = factory(Creator::class)->create(['creator' => 'youtube#channel:info']);
+        $creator = Creator::factory()->create(['creator' => 'youtube#channel:info']);
         $creator->fillChannel();
         $this->assertEquals($creator->fresh()->channel, 'youtube');
         $this->assertEquals($creator->fresh()->channel_id, 'info');
@@ -37,7 +37,7 @@ class CreatorTest extends TestCase
      */
     public function creator_can_fill_twitch_channel()
     {
-        $creator = factory(Creator::class)->create(['creator' => 'twitch#author:helloworld']);
+        $creator = Creator::factory()->create(['creator' => 'twitch#author:helloworld']);
         $creator->fillChannel();
         $this->assertEquals($creator->fresh()->channel, 'twitch');
         $this->assertEquals($creator->fresh()->channel_id, 'helloworld');
@@ -49,10 +49,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_website()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'bravebat.info',
             'channel' => 'website',
-            'channel_id' => 'bravebat.info'
+            'channel_id' => 'bravebat.info',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'bravebat.info');
@@ -64,10 +64,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_youtube()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'youtube#channel:UCrp_UI8XtuYfpiqluWLD7Lw',
             'channel' => 'youtube',
-            'channel_id' => 'UCrp_UI8XtuYfpiqluWLD7Lw'
+            'channel_id' => 'UCrp_UI8XtuYfpiqluWLD7Lw',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'CNBC Television');
@@ -79,10 +79,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_twitch()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'twitch#author:allorzer0',
             'channel' => 'twitch',
-            'channel_id' => 'allorzer0'
+            'channel_id' => 'allorzer0',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'allorzer0');
@@ -94,10 +94,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_twitter()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'twitter#channel:23150992',
             'channel' => 'twitter',
-            'channel_id' => '23150992'
+            'channel_id' => '23150992',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'Songhua');
@@ -109,10 +109,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_vimeo()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'vimeo#channel:46924634',
             'channel' => 'vimeo',
-            'channel_id' => '46924634'
+            'channel_id' => '46924634',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'Raship Trikha');
@@ -124,10 +124,10 @@ class CreatorTest extends TestCase
      */
     public function creator_can_process_github()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'creator' => 'github#channel:4323180',
             'channel' => 'github',
-            'channel_id' => '4323180'
+            'channel_id' => '4323180',
         ]);
         $creator->processCreatable();
         $this->assertEquals($creator->fresh()->name, 'adamwathan');
@@ -138,29 +138,29 @@ class CreatorTest extends TestCase
      */
     public function creator_can_rank_website()
     {
-        $creator1 = factory(Creator::class)->create([
+        $creator1 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'website',
             'alexa_ranking' => 10,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator2 = factory(Creator::class)->create([
+        $creator2 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'website',
             'alexa_ranking' => 100,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator3 = factory(Creator::class)->create([
+        $creator3 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'website',
             'alexa_ranking' => 1000,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator4 = factory(Creator::class)->create([
+        $creator4 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'website',
             'alexa_ranking' => 10000,
-            'valid' => true
+            'valid' => true,
         ]);
         Creator::fillRankings();
         $this->assertEquals(1, $creator1->fresh()->ranking);
@@ -174,30 +174,30 @@ class CreatorTest extends TestCase
      */
     public function creator_can_rank_youtube()
     {
-        $creator1 = factory(Creator::class)->create([
+        $creator1 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'youtube',
             'follower_count' => 10,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator2 = factory(Creator::class)->create([
+        $creator2 = Creator::factory()->create([
             'name' => '123',
 
             'channel' => 'youtube',
             'follower_count' => 100,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator3 = factory(Creator::class)->create([
+        $creator3 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'youtube',
             'follower_count' => 1000,
-            'valid' => true
+            'valid' => true,
         ]);
-        $creator4 = factory(Creator::class)->create([
+        $creator4 = Creator::factory()->create([
             'name' => '123',
             'channel' => 'youtube',
             'follower_count' => 10000,
-            'valid' => true
+            'valid' => true,
         ]);
         Creator::fillRankings();
         $this->assertEquals(0.001, $creator1->fresh()->ranking);
@@ -211,34 +211,34 @@ class CreatorTest extends TestCase
      */
     public function creator_can_rank_brased_on_ceiling()
     {
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'channel' => 'youtube',
             'follower_count' => 100000,
-            'valid' => true
+            'valid' => true,
         ]);
         $creator->getRanking(1000000);
         $this->assertEquals(0.1, $creator->fresh()->ranking);
 
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'channel' => 'youtube',
             'follower_count' => 0,
-            'valid' => true
+            'valid' => true,
         ]);
         $creator->getRanking(1000000);
         $this->assertEquals(0, $creator->fresh()->ranking);
 
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'channel' => 'website',
             'alexa_ranking' => 10,
-            'valid' => true
+            'valid' => true,
         ]);
         $creator->getRanking(10);
         $this->assertEquals(1, $creator->fresh()->ranking);
 
-        $creator = factory(Creator::class)->create([
+        $creator = Creator::factory()->create([
             'channel' => 'website',
             'alexa_ranking' => 10000,
-            'valid' => true
+            'valid' => true,
         ]);
         $creator->getRanking(10);
         $this->assertEquals(0.001, $creator->fresh()->ranking);

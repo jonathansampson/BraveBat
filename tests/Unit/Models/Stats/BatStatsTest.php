@@ -2,10 +2,10 @@
 
 namespace Tests\Unit\Models\Stats;
 
-use Tests\TestCase;
 use App\Models\Stats\BatStats;
-use Illuminate\Foundation\Testing\RefreshDatabase;
 use Carbon\Carbon;
+use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class BatStatsTest extends TestCase
 {
@@ -16,11 +16,11 @@ class BatStatsTest extends TestCase
      */
     public function bat_stats_can_update_holder_add()
     {
-        $today_stat = factory(BatStats::class)->create([
+        $today_stat = BatStats::factory()->create([
             'record_date' => Carbon::today(),
             'holders_count' => 15000,
         ]);
-        $yesterday_stat = factory(BatStats::class)->create([
+        $yesterday_stat = BatStats::factory()->create([
             'record_date' => Carbon::yesterday(),
             'holders_count' => 10000,
         ]);

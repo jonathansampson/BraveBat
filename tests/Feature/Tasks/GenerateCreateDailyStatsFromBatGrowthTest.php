@@ -4,7 +4,6 @@ namespace Tests\Feature\Tasks;
 
 use App\Models\Stats\CreatorDailyStats;
 use App\Tasks\GenerateCreateDailyStatsFromBatGrowth;
-use App\Tasks\GenerateCreateDailyStatsFromBatWatch;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -28,19 +27,19 @@ class GenerateCreateDailyStatsFromBatGrowthTest extends TestCase
      */
     public function it_can_get_backfill()
     {
-        factory(CreatorDailyStats::class)->create([
+        CreatorDailyStats::factory()->create([
             'channel' => 'youtube',
             'total' => '10',
             'addition' => '0',
             'record_date' => '2020-10-24',
         ]);
-        factory(CreatorDailyStats::class)->create([
+        CreatorDailyStats::factory()->create([
             'channel' => 'youtube',
             'total' => '10000',
             'addition' => '0',
             'record_date' => '2020-10-27',
         ]);
-        (new GenerateCreateDailyStatsFromBatWatch())->backfill('youtube', '2020-10-24', '2020-10-27');
+        (new GenerateCreateDailyStatsFromBatGrowth())->backfill('youtube', '2020-10-24', '2020-10-27');
         $this->assertCount(4, CreatorDailyStats::all());
         $day25 = CreatorDailyStats::where('channel', 'youtube')->where('record_date', '2020-10-25')->first();
         $day26 = CreatorDailyStats::where('channel', 'youtube')->where('record_date', '2020-10-26')->first();

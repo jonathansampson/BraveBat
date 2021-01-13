@@ -4,10 +4,9 @@ namespace Tests\Feature\Api;
 
 use App\Models\Creator;
 use App\User;
-use Tests\TestCase;
-use Laravel\Sanctum\Sanctum;
-use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Sanctum\Sanctum;
+use Tests\TestCase;
 
 class YoutubeTest extends TestCase
 {
@@ -19,8 +18,8 @@ class YoutubeTest extends TestCase
     {
         parent::setUp();
         $this->endpoint = '/api/v1/youtube';
-        $this->user = factory(User::class)->create();
-        factory(Creator::class)->create([
+        $this->user = User::factory()->create();
+        Creator::factory()->create([
             'channel' => 'youtube',
             'channel_id' => '12345',
             'name' => 'hello',

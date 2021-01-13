@@ -2,9 +2,8 @@
 
 namespace Tests\Unit\Services;
 
-use Tests\TestCase;
 use App\Services\EthplorerService;
-use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
 class EthplorerApiServiceTest extends TestCase
 {

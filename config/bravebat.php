@@ -7,7 +7,6 @@ return [
     'bat_watch' => 'https://bat.watch/',
     'bat_growth' => 'https://batgrowth.com/',
     'referral_link' => 'https://brave.com/iuv633',
-    'brave_api' => 'https://publishers-distro.basicattentiontoken.org/api/v3/public/channels',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",
     'colors' => [
         '#fb542b',

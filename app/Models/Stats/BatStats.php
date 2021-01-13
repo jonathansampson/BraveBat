@@ -4,11 +4,14 @@ namespace App\Models\Stats;
 
 use App\Services\EthplorerService;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class BatStats extends Model
 {
+    use HasFactory;
+
     protected $table = 'bat_stats';
     protected $guarded = [];
     protected $casts = [
