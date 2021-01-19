@@ -140,8 +140,7 @@
         </div>
         <div class="pt-4 pb-4 text-xs italic leading-4 text-center">
             This site is unofficial and not affiliated with Brave Software. Data comes from <a
-                href="{{config('bravebat.transparency_page')}}" class="underline">Brave's transparency report</a> and <a
-                href="{{config('bravebat.brave_api')}}" class="underline">its Creator List API</a>.
+                href="{{config('bravebat.transparency_page')}}" class="underline">Brave's transparency report</a>.
         </div>
     </footer>
 </div>
