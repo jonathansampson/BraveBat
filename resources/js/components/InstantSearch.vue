@@ -69,7 +69,10 @@
                         </a>
                     </li>
                 </ul>
-                <div class="px-3 py-3 text-brand-dark" v-else>
+                <div
+                    class="px-3 py-3 text-brand-dark"
+                    v-if="!results.length && !loading"
+                >
                     No results for '{{ term }}'!
                 </div>
             </div>
