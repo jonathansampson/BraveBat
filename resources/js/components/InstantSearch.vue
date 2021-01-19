@@ -111,7 +111,6 @@ export default {
             return this.term.length >= 3;
         },
     },
-
     watch: {
         term: function (val) {
             this.search();

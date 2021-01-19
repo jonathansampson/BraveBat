@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'heartbeat' => 'http://beats.envoyer.io/heartbeat/8oqVliCtYMhcpRA',
+    'heartbeat' => 'http://beats.envoyer.io/heartbeat/hNLvIxNdSHEosAG',
     'admin_email' => 'songhua@gmail.com',
     'transparency_page' => 'https://brave.com/transparency/',
     'bat_watch' => 'https://bat.watch/',
