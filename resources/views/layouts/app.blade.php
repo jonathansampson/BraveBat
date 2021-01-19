@@ -48,8 +48,6 @@
     <div id="app" class="flex flex-col min-h-screen">
 
         @include('partials.nav')
-        <example-component></example-component>
-
         <main class="flex-grow">
             @yield('content')
         </main>
