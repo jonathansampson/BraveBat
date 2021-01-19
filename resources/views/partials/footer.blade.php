@@ -1,6 +1,6 @@
-<div class="bg-gray-800">
+<div class="text-white bg-gray-800">
     <footer class="container px-4 py-6 mx-auto sm:px-6 md:px-8 text-brand-light">
-        <div class="text-center md:text-left md:flex ">
+        <div class="text-center md:text-left md:flex">
             <div class="pt-3 md:w-1/3">
                 <ul>
                     <li class="pb-4">
@@ -141,11 +141,7 @@
         <div class="pt-4 pb-4 text-xs italic leading-4 text-center">
             This site is unofficial and not affiliated with Brave Software. Data comes from <a
                 href="{{config('bravebat.transparency_page')}}" class="underline">Brave's transparency report</a> and <a
-                href="{{config('bravebat.brave_api')}}" class="underline">its Creator List API</a>. If you like the
-            site, please
-            support us by downloading the Brave Browser using <a href="{{config('bravebat.referral_link')}}"
-                class="underline">our referral link</a>.
+                href="{{config('bravebat.brave_api')}}" class="underline">its Creator List API</a>.
         </div>
     </footer>
-
 </div>

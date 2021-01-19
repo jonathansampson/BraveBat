@@ -1,8 +1,13 @@
-window._ = require('lodash');
-window.axios = require('axios');
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window._ = require("lodash");
+window.axios = require("axios");
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
-window.Vue = require('vue');
 import Chart from "chart.js";
+import InstantSearch from "./components/InstantSearch.vue";
+import { createApp } from "vue";
 
-import 'alpinejs'
+createApp({
+    components: {
+        InstantSearch,
+    },
+}).mount("#app");

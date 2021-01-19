@@ -6,7 +6,7 @@ return [
     'transparency_page' => 'https://brave.com/transparency/',
     'bat_watch' => 'https://bat.watch/',
     'bat_growth' => 'https://batgrowth.com/',
-    'referral_link' => 'https://brave.com/iuv633',
+    'referral_link' => 'https://brave.com',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",
     'colors' => [
         '#fb542b',

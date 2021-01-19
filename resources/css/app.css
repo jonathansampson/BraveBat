@@ -1,7 +1,5 @@
 @tailwind base;
-
 @tailwind components;
-
 @tailwind utilities;
 
 .background-pattern {
@@ -11,6 +9,3 @@
 .spinner {
     position: absolute;
 }
-
-
-

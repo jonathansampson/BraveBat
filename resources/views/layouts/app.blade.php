@@ -27,7 +27,6 @@
     <link href="{{ mix('css/app.css') }}" rel="stylesheet">
     @stack('styles')
 
-    @livewireStyles
     @laravelPWA
 
     @if (app()->environment('production'))
@@ -47,7 +46,9 @@
 
 <body class="antialiased text-brand-dark">
     <div id="app" class="flex flex-col min-h-screen">
+
         @include('partials.nav')
+        <example-component></example-component>
 
         <main class="flex-grow">
             @yield('content')
@@ -56,7 +57,6 @@
     </div>
     <script src="{{ mix('js/app.js') }}"></script>
 
-    @livewireScripts
     @stack('scripts')
 </body>
 

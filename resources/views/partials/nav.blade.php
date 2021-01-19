@@ -15,6 +15,7 @@
                 </a>
             </div>
             <div class="flex items-center text-brand-light">
+                <instant-search></instant-search>
                 <a class="p-3 text-sm text-gray-300 no-underline hover:underline" href="/docs/index.html">API</a>
             </div>
         </div>
