@@ -81,6 +81,7 @@
 </template>
 
 <script>
+import { debounce } from "lodash";
 import YoutubeLogo from "./Logos/YoutubeLogo.vue";
 import WebsiteLogo from "./Logos/WebsiteLogo.vue";
 import TwitterLogo from "./Logos/TwitterLogo.vue";
@@ -112,20 +113,21 @@ export default {
         },
     },
     watch: {
-        term: function (val) {
+        term: debounce(function (newVal) {
+            this.loading = true;
             this.search();
-        },
+        }, 1000),
     },
     methods: {
         search() {
             if (this.searchReady) {
-                this.loading = true;
                 axios.post(`/search?term=${this.term}`).then((response) => {
                     this.results = response.data;
                     this.loading = false;
                 });
             } else {
                 this.results = [];
+                this.loading = false;
             }
         },
     },
