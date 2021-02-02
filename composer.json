@@ -30,6 +30,7 @@
         "nesk/puphpeteer": "^2.0",
         "paquettg/php-html-parser": "^3.0",
         "predis/predis": "^1.1",
+        "protobuf-php/protobuf": "^0.1.3",
         "sammyjo20/lasso": "^1.2",
         "silviolleite/laravelpwa": "~2.0",
         "spatie/browsershot": "^3.35",
