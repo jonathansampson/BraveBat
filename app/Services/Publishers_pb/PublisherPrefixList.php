@@ -172,4 +172,3 @@ class PublisherPrefixList extends \Google\Protobuf\Internal\Message
     }
 
 }
-
