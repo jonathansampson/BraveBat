@@ -8,6 +8,10 @@ return [
     'bat_growth' => 'https://batgrowth.com/',
     'referral_link' => 'https://brave.com',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",
+    'catelog_page' => [
+        'v3' => "https://ads-serve.brave.com/v3/catalog",
+        'v7' => "https://ads-serve.brave.com/v7/catalog",
+    ],
     'colors' => [
         '#fb542b',
         '#4299e1',

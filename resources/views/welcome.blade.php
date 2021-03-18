@@ -13,7 +13,7 @@ communities')
                     Support Brave Creators
                 </h1>
                 <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
-                    User Brave Browser to protect your online privacy and support
+                    Use Brave Browser to protect your online privacy and support
                     <span class="font-semibold">{{round($creator_count['overall'] / 1000000) }}M</span>
                     amazing verified creators
                 </p>

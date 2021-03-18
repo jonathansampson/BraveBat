@@ -3,6 +3,7 @@
 namespace Tests\Unit\Services;
 
 use Publishers_pb\ChannelResponseList;
+use Publishers_pb\PublisherPrefixList;
 use Tests\TestCase;
 
 class BraveProtoApiServiceTest extends TestCase
@@ -13,7 +14,7 @@ class BraveProtoApiServiceTest extends TestCase
      */
     public function it_tries_to_get_a_channel_response_based_on_a_prefix()
     {
-        // Stream the file from https://pcdn.brave.com/publishers/prefixes/12e3
+        // Stream the file from https://pcdn.brave.com/publishers/prefixes/0804
         $fp = fopen("https://pcdn.brave.com/publishers/prefixes/12e3", 'rb');
 
         // Get the first 4 bytes, convert from binary to hex and then from hex to demical
@@ -23,7 +24,6 @@ class BraveProtoApiServiceTest extends TestCase
         // Read the rest of the file and use Brotli to uncompress it
         $body = fread($fp, $length);
         $response = brotli_uncompress($body);
-
         // Initiate a class object of ChannelResponseList and inject the API data into the object
         $channelResponseList = new ChannelResponseList();
         $channelResponseList->mergeFromString($response);
@@ -41,6 +41,16 @@ class BraveProtoApiServiceTest extends TestCase
      */
     public function it_tries_to_get_prefix_list()
     {
+
+        $data = file_get_contents("https://rewards.brave.com/publishers/prefix-list");
+        $prefix = new PublisherPrefixList();
+        $prefix->mergeFromString($data);
+        $response = brotli_uncompress($prefix->getPrefixes());
+
+        $byteArray = unpack("C*", $response);
+
+        dd(count($byteArray));
+        dd(array_shift($byteArray), array_shift($byteArray), array_shift($byteArray), array_shift($byteArray), array_shift($byteArray), array_shift($byteArray), array_shift($byteArray), array_shift($byteArray));
         // Stream the file from https://rewards.brave.com/publishers/prefix-list
         $fp = fopen("https://rewards.brave.com/publishers/prefix-list", 'rb');
 
