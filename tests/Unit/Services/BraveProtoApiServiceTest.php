@@ -29,10 +29,10 @@ class BraveProtoApiServiceTest extends TestCase
         $channelResponseList->mergeFromString($response);
 
         // Loop through the list array and properly get the result. SUCCESS!
-        foreach ($channelResponseList->getChannelResponses() as $channelResponse) {
-            echo ($channelResponse->getChannelIdentifier());
-            echo "\n";
-        }
+        // foreach ($channelResponseList->getChannelResponses() as $channelResponse) {
+        //     echo ($channelResponse->getChannelIdentifier());
+        //     echo "\n";
+        // }
     }
 
     /**

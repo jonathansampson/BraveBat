@@ -18,7 +18,5 @@ class BraveProtoApiService
 
         $data = file_get_contents("https://pcdn.brave.com/publishers/prefixes/12e3");
         $a = new UnknownFieldSet();
-        dd($a->unserialize($data));
-        dd(12);
     }
 }

@@ -5,6 +5,7 @@
 <div class="px-3 py-4 text-sm text-center text-green-700 bg-green-100 border-b border-green-200" role="alert">
     {!! session('status') !!}
 </div>
+
 @endif
 <div class="flex items-center">
     <div class="container px-4 py-4 mx-auto sm:px-6 md:px-8">
