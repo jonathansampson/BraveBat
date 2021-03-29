@@ -16584,6 +16584,7 @@ __webpack_require__.r(__webpack_exports__);
     var search = function search() {
       if (searchReady.value) {
         loading.value = true;
+        results.value = [];
         axios__WEBPACK_IMPORTED_MODULE_1___default().post("/search?term=".concat(term.value)).then(function (response) {
           results.value = response.data;
           loading.value = false;
@@ -16669,9 +16670,9 @@ var _hoisted_1 = {
 };
 
 var _hoisted_2 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", {
-  "class": "absolute inset-y-0"
+  "class": "absolute inset-y-0 flex items-center"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
-  "class": "w-5 pt-2 ml-2 text-gray-500 fill-current",
+  "class": "w-4 ml-2 text-gray-500 fill-current",
   viewBox: "0 0 24 24"
 }, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
   d: "M16.32 14.9l5.39 5.4a1 1 0 01-1.42 1.4l-5.38-5.38a8 8 0 111.41-1.41zM10 16a6 6 0 100-12 6 6 0 000 12z"
@@ -16728,7 +16729,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     name: "search",
     autocomplete: "off",
     type: "text",
-    "class": "w-64 px-8 py-2 text-sm bg-gray-300 rounded-full focus:outline-none focus:shadow-outline text-brand-dark",
+    "class": "w-64 px-8 py-2 text-sm bg-gray-300 rounded-full text-brand-dark focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50",
     placeholder: "Search Verified Creators",
     onKeyup: _cache[2] || (_cache[2] = function () {
       return $setup.search && $setup.search.apply($setup, arguments);

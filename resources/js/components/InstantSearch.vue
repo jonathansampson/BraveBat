@@ -8,21 +8,17 @@
         name="search"
         autocomplete="off"
         type="text"
-        class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full focus:outline-none focus:shadow-outline text-brand-dark"
+        class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full text-brand-dark focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
         placeholder="Search Verified Creators"
         @keyup="search"
       />
-      <div class="absolute inset-y-0">
-        <svg
-          class="w-5 pt-2 ml-2 text-gray-500 fill-current"
-          viewBox="0 0 24 24"
-        >
+      <div class="absolute inset-y-0 flex items-center">
+        <svg class="w-4 ml-2 text-gray-500 fill-current" viewBox="0 0 24 24">
           <path
             d="M16.32 14.9l5.39 5.4a1 1 0 01-1.42 1.4l-5.38-5.38a8 8 0 111.41-1.41zM10 16a6 6 0 100-12 6 6 0 000 12z"
           />
         </svg>
       </div>
-
       <div
         v-if="loading"
         class="absolute inset-y-0 right-0 flex items-center mr-3"
@@ -91,6 +87,7 @@ export default {
     const search = () => {
       if (searchReady.value) {
         loading.value = true
+        results.value = []
         axios.post(`/search?term=${term.value}`).then((response) => {
           results.value = response.data
           loading.value = false
