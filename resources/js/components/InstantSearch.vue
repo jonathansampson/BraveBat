@@ -10,7 +10,7 @@
         type="text"
         class="w-64 px-8 py-2 text-sm bg-gray-300 rounded-full text-brand-dark focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
         placeholder="Search Verified Creators"
-        @keyup="search"
+        @keyup="debouncedFn"
       />
       <div class="absolute inset-y-0 flex items-center">
         <svg class="w-4 ml-2 text-gray-500 fill-current" viewBox="0 0 24 24">
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import { useDebounceFn } from '@vueuse/core'
 import InstantSearchItem from './InstantSearchItem'
 import axios from 'axios'
 import { ref } from '@vue/reactivity'
@@ -86,8 +87,10 @@ export default {
 
     const search = () => {
       if (searchReady.value) {
+        console.log('search')
         loading.value = true
         results.value = []
+
         axios.post(`/search?term=${term.value}`).then((response) => {
           results.value = response.data
           loading.value = false
@@ -95,9 +98,13 @@ export default {
       }
     }
 
+    const debouncedFn = useDebounceFn(() => {
+      search()
+    }, 250)
+
     const searchReady = computed(() => term.value.length >= 3)
 
-    return { term, results, loading, search, searchReady }
+    return { term, results, loading, search, searchReady, debouncedFn }
   }
 }
 </script>
