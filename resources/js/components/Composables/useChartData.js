@@ -32,13 +32,8 @@ const brandColors = {
   website: '#343546'
 }
 
-export const useChartData = (data, days, brand = null) => {
-  let labels
-  if (days) {
-    labels = data.labels.slice(0, days)
-  } else {
-    labels = data.labels
-  }
+export const useLineChartData = (data, days, brand = null) => {
+  let labels = days ? data.labels.slice(0, days) : data.labels
   let datasets = []
   Object.keys(data.data).forEach((key, index) => {
     const temp = days ? data.data[key].slice(0, days) : data.data[key]
@@ -63,7 +58,7 @@ export const useChartData = (data, days, brand = null) => {
   }
 }
 
-export const useLineChatOption = () => {
+export const useLineChartOption = () => {
   return {
     tooltips: {
       callbacks: {
@@ -114,6 +109,32 @@ export const useLineChatOption = () => {
           distribution: 'linear'
         }
       ]
+    }
+  }
+}
+
+export const useDonutChartData = (data) => {
+  let labels = data.labels
+  let colors = labels.map((label) => brandColors[label])
+
+  let datasets = [
+    {
+      data: data.data,
+      backgroundColor: colors
+    }
+  ]
+  return {
+    labels,
+    datasets
+  }
+}
+
+export const useDonutChartOption = () => {
+  return {
+    responsive: true,
+    legend: {
+      display: true,
+      position: 'bottom'
     }
   }
 }

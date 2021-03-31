@@ -30,8 +30,8 @@ communities')
     </div>
     <div class="flex flex-wrap mt-8">
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
-            @include('charts.donut', ['id' => 'bat_creator_summary'])
+            <creator-donut-chart url="/charts/bat_creator_summary" title="Verified Creator Platform Distribution">
+            </creator-donut-chart>
         </div>
         <div class="w-full lg:w-1/2">
             <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false">
@@ -59,6 +59,4 @@ communities')
         </div>
     </div>
 </div>
-
-
 @endsection
