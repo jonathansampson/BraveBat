@@ -17804,14 +17804,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-end mb-2 mr-8 text-xs"
+  "class": "flex justify-end mb-2 mr-6 text-xxs"
 };
 var _hoisted_2 = {
-  "class": "flex items-center px-1 py-1 space-x-1 bg-gray-200 rounded-md"
+  "class": "flex items-center px-1 py-0.5 space-x-0.5 bg-gray-200 rounded-md"
 };
 
 var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
-  "class": "w-4 h-4",
+  "class": "w-3 h-3",
   fill: "none",
   stroke: "currentColor",
   viewBox: "0 0 24 24"
@@ -17839,7 +17839,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
       onClick: function onClick($event) {
         return _ctx.toggle(days);
       },
-      "class": ["px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200", {
+      "class": ["px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200", {
         'bg-white': days === _ctx.filteringDays
       }]
     }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(label), 11
@@ -17851,7 +17851,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.screenshot && _ctx.screenshot.apply(_ctx, arguments);
     }),
-    "class": "inline-flex items-center justify-center px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+    "class": "inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
   }, [_hoisted_3])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("canvas", _hoisted_4, null, 512
   /* NEED_PATCH */
   )]);
@@ -18334,7 +18334,6 @@ var useChartData = function useChartData(data, days) {
   };
 };
 var useLineChatOption = function useLineChatOption() {
-  var unit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'month';
   return {
     legend: {
       display: true,
@@ -18356,7 +18355,7 @@ var useLineChatOption = function useLineChatOption() {
         distribution: 'series',
         type: 'time',
         time: {
-          unit: unit
+          unit: "month"
         }
       }],
       yAxes: [{

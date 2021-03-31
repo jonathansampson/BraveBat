@@ -67,4 +67,6 @@ communities')
     </div>
 </div>
 
+<a target="_blank" href="https://twitter.com/intent/tweet?text=hello%20world&amp;via=twitterdev"><img
+        alt="Tweet Web Intent" src="https://g.twimg.com/dev/documentation/image/web-intent-tweet_0.jpg"></a>
 @endsection

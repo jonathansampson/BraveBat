@@ -1,22 +1,24 @@
 <template>
   <div>
-    <div class="flex justify-end mb-2 mr-8 text-xs">
-      <div class="flex items-center px-1 py-1 space-x-1 bg-gray-200 rounded-md">
+    <div class="flex justify-end mb-2 mr-6 text-xxs">
+      <div
+        class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-200 rounded-md"
+      >
         <button
           v-for="(days, label) in buttons"
           :key="label"
           @click="toggle(days)"
-          class="px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+          class="px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
           :class="{ 'bg-white': days === filteringDays }"
         >
           {{ label }}
         </button>
         <button
           @click="screenshot"
-          class="inline-flex items-center justify-center px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+          class="inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
         >
           <svg
-            class="w-4 h-4"
+            class="w-3 h-3"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"

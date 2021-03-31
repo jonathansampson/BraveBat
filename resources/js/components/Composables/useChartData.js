@@ -68,7 +68,7 @@ export const useChartData = (data, days, brand = null) => {
   }
 }
 
-export const useLineChatOption = (unit = 'month') => {
+export const useLineChatOption = () => {
   return {
     legend: {
       display: true,
@@ -91,7 +91,7 @@ export const useLineChatOption = (unit = 'month') => {
           distribution: 'series',
           type: 'time',
           time: {
-            unit: unit
+            unit: "month"
           }
         }
       ],
