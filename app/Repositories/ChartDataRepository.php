@@ -307,6 +307,14 @@ class ChartDataRepository
 
     public function communities($site, $community)
     {
+        $lookups = [
+            'youtube' => "YouTube Channel ",
+            'reddit' => "Subreddit ",
+            'telegram' => "Telegram Group ",
+            'twitter' => "Twitter @",
+        ];
+        $siteFullname = $lookups[$site];
+        $title = "$siteFullname{$community} followers";
         $data = DB::select("SELECT record_date,
                 subscribers
                 FROM communities
@@ -316,7 +324,9 @@ class ChartDataRepository
         $subscribers = collect($data)->map(fn($item) => $item->subscribers);
         return [
             'labels' => $labels,
-            'data' => ['Subscribers' => $subscribers],
+            'data' => [
+                $title => $subscribers,
+            ],
         ];
     }
 }

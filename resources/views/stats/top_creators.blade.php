@@ -8,12 +8,11 @@
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
             <h1 class="pt-4 pb-1 text-2xl font-semibold">
-                Top YouTube Creators
+                Top Youtube Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Subscriber Count: More Than 1M</p>
-            <div class='mb-3 mr-4'>
-                @include('charts.line', ['id' => 'top_creators/youtube', 'brand_color' => 'youtube', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/youtube" brand="youtube">
+            </toggleable-line-chart>
         </div>
 
         <div class="w-full lg:w-1/2">
@@ -21,9 +20,7 @@
                 Top Website Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Alexa Ranking: Better Than 1K</p>
-            <div class='mb-3 mr-4'>
-                @include('charts.line', ['id' => 'top_creators/website', 'brand_color' => 'website', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/website" brand="website">
         </div>
 
         <div class="w-full lg:w-1/2">
@@ -31,9 +28,7 @@
                 Top Twitch Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Follower Count: More Than 100K</p>
-            <div class='mb-3 mr-4'>
-                @include('charts.line', ['id' => 'top_creators/twitch', 'brand_color' => 'twitch', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/twitch" brand="twitch">
         </div>
 
         <div class="w-full lg:w-1/2">
@@ -41,9 +36,7 @@
                 Top Twitter Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Follower Count: More Than 1M</p>
-            <div class='mb-3 mr-4'>
-                @include('charts.line', ['id' => 'top_creators/twitter', 'brand_color' => 'twitter', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/twitter" brand="twitter">
         </div>
 
         <div class="w-full lg:w-1/2">
@@ -51,10 +44,7 @@
                 Top Vimeo Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Follower Count: More Than 1K</p>
-            <div class='mb-3 mr-4'>
-
-                @include('charts.line', ['id' => 'top_creators/vimeo', 'brand_color' => 'vimeo', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/vimeo" brand="vimeo">
         </div>
 
         <div class="w-full lg:w-1/2">
@@ -62,13 +52,8 @@
                 Top Github Creators
             </h1>
             <p class="pb-4 pl-1 text-sm text-gray-700">Follower Count: More Than 1K</p>
-            <div class='mb-3 mr-4'>
-
-                @include('charts.line', ['id' => 'top_creators/github', 'brand_color' => 'github', 'unit' =>'day'])
-            </div>
+            <toggleable-line-chart url="/charts/top_creators/github" brand="github">
         </div>
-
-
     </div>
 </div>
 @endsection

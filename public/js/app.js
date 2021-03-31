@@ -17616,7 +17616,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
   props: {
     title: {
       type: String,
-      required: true
+      required: false
     },
     url: {
       type: String,
@@ -17625,6 +17625,11 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
     toggleable: {
       type: Boolean,
       "default": true
+    },
+    brand: {
+      type: String,
+      required: false,
+      "default": null
     }
   },
   setup: function setup(props) {
@@ -17648,7 +17653,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
         data.value = res.data;
         chart.value = new (chart_js__WEBPACK_IMPORTED_MODULE_1___default())(canvas.value, {
           type: 'line',
-          data: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, null),
+          data: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, null, props.brand),
           options: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useLineChatOption)()
         });
       });
@@ -17812,6 +17817,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
+  key: 0,
   "class": "py-4 text-xl font-semibold text-center"
 };
 var _hoisted_2 = {
@@ -17847,9 +17853,9 @@ var _hoisted_6 = {
   ref: "canvas"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title), 1
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [_ctx.title ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("h2", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_ctx.toggleable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.buttons, function (days, label) {
+  )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_ctx.toggleable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.buttons, function (days, label) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
       key: label,
       onClick: function onClick($event) {

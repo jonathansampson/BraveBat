@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Carbon\Carbon;
 use App\Services\RedditService;
 use App\Services\TelegramService;
 use App\Services\TwitterService;
 use App\Services\YoutubeService;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Community extends Model
@@ -44,10 +44,10 @@ class Community extends Model
                 [
                     'record_date' => $today,
                     'site' => 'reddit',
-                    'community' => $community
+                    'community' => $community,
                 ],
                 [
-                    'subscribers' => $result['result']['subscribers']
+                    'subscribers' => $result['result']['subscribers'],
                 ]
             );
         }
@@ -63,10 +63,10 @@ class Community extends Model
                 [
                     'record_date' => $today,
                     'site' => 'twitter',
-                    'community' => $community
+                    'community' => $community,
                 ],
                 [
-                    'subscribers' => $result['result']['follower_count']
+                    'subscribers' => $result['result']['follower_count'],
                 ]
             );
         }
@@ -82,10 +82,10 @@ class Community extends Model
                 [
                     'record_date' => $today,
                     'site' => 'youtube',
-                    'community' => $community
+                    'community' => $community,
                 ],
                 [
-                    'subscribers' => $result['result']['follower_count']
+                    'subscribers' => $result['result']['follower_count'],
                 ]
             );
         }
@@ -101,10 +101,10 @@ class Community extends Model
                 [
                     'record_date' => $today,
                     'site' => 'telegram',
-                    'community' => $community
+                    'community' => $community,
                 ],
                 [
-                    'subscribers' => $result['result']['subscribers']
+                    'subscribers' => $result['result']['subscribers'],
                 ]
             );
         }

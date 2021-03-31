@@ -34,7 +34,6 @@ communities')
             @include('charts.donut', ['id' => 'bat_creator_summary'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center"></h2>
             <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false">
             </toggleable-line-chart>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 class="py-4 text-xl font-semibold text-center">
+    <h2 class="py-4 text-xl font-semibold text-center" v-if="title">
       {{ title }}
     </h2>
     <div class="flex justify-end mb-2 mr-6 text-xxs">
@@ -65,7 +65,7 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: true
+      required: false
     },
     url: {
       type: String,
@@ -74,6 +74,11 @@ export default defineComponent({
     toggleable: {
       type: Boolean,
       default: true
+    },
+    brand: {
+      type: String,
+      required: false,
+      default: null
     }
   },
   setup(props) {
@@ -99,7 +104,7 @@ export default defineComponent({
         data.value = res.data
         chart.value = new Chart(canvas.value, {
           type: 'line',
-          data: useChartData(data.value, null),
+          data: useChartData(data.value, null, props.brand),
           options: useLineChatOption()
         })
       })
