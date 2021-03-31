@@ -28,6 +28,13 @@ communities')
     <div class="text-3xl text-center">
         Thriving Platform Ecosystem
     </div>
+    {{-- <div class="flex flex-wrap">
+        <div class="w-full lg:w-1/2">
+            <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
+            <toggleable-line-chart url="/charts/active_ad_campaigns"></toggleable-line-chart>
+            <toggleable-line-chart url="/charts/dau"></toggleable-line-chart>
+        </div>
+    </div> --}}
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
@@ -44,8 +51,8 @@ communities')
             @include('charts.line', ['id' => 'dau'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">BAT Price ($)</h2>
-            @include('charts.line', ['id' => 'bat_price', 'unit' => 'day'])
+            <h2 class="py-8 text-xl font-semibold text-center">Brave-Initiated BAT Purchase ($)</h2>
+            @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
         </div>
     </div>
     <div class="flex flex-wrap">
@@ -54,12 +61,12 @@ communities')
             @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave-Initiated BAT Purchase ($)</h2>
-            @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
+            <h2 class="py-8 text-xl font-semibold text-center">BAT Price ($)</h2>
+            @include('charts.line', ['id' => 'bat_price', 'unit' => 'day'])
         </div>
     </div>
 </div>
-<div class="bg-gray-100">
+{{-- <div class="bg-gray-100">
     <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
         <div class="text-3xl text-center">
             Growing Creator Community
@@ -68,5 +75,5 @@ communities')
         @include('partials.channel_charts', ['channel' => $channel])
         @endforeach
     </div>
-</div>
+</div> --}}
 @endsection

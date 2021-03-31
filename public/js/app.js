@@ -17586,6 +17586,101 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
+/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+/* harmony import */ var _Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../Composables/useChartData */ "./resources/js/components/Composables/useChartData.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
+/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_1__);
+
+
+
+chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
+  beforeDraw: function beforeDraw(chartInstance) {
+    var ctx = chartInstance.chart.ctx;
+    ctx.fillStyle = 'white';
+    ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height);
+  }
+});
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.defineComponent)({
+  props: {
+    url: {
+      type: String,
+      required: true
+    }
+  },
+  setup: function setup(props) {
+    var canvas = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+    var chart = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+    var data = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+    var filteringDays = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+    var imageSrc = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_3__.ref)(null);
+    var unit = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
+      return filteringDays.value >= 90 || !filteringDays.value ? 'month' : 'day';
+    });
+    var buttons = {
+      '7D': 7,
+      '1M': 30,
+      '3M': 90,
+      '1Y': 365,
+      All: null
+    };
+    (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.onMounted)(function () {
+      axios.get(props.url).then(function (res) {
+        data.value = res.data;
+        console.log(data.value);
+        chart.value = new (chart_js__WEBPACK_IMPORTED_MODULE_1___default())(canvas.value, {
+          type: 'line',
+          data: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, null),
+          options: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useLineChatOption)(unit.value)
+        });
+      });
+    });
+
+    var toggle = function toggle(days) {
+      filteringDays.value = days;
+
+      var _useChartData = (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, days),
+          labels = _useChartData.labels,
+          datasets = _useChartData.datasets;
+
+      chart.value.data.labels = labels;
+      chart.value.data.datasets = datasets;
+      chart.value.update();
+    };
+
+    var screenshot = function screenshot() {
+      imageSrc.value = chart.value.toBase64Image();
+      var a = document.createElement('a');
+      a.href = chart.value.toBase64Image();
+      a.download = 'Image.png';
+      a.click();
+    };
+
+    return {
+      canvas: canvas,
+      chart: chart,
+      toggle: toggle,
+      buttons: buttons,
+      filteringDays: filteringDays,
+      screenshot: screenshot,
+      imageSrc: imageSrc
+    };
+  }
+}));
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/InstantSearch.vue?vue&type=script&lang=js":
 /*!*******************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/InstantSearch.vue?vue&type=script&lang=js ***!
@@ -17597,42 +17692,42 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _vueuse_core__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vueuse/core */ "./node_modules/@vueuse/shared/dist/index.esm.js");
+/* harmony import */ var _vueuse_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @vueuse/core */ "./node_modules/@vueuse/shared/dist/index.esm.js");
 /* harmony import */ var _InstantSearchItem__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./InstantSearchItem */ "./resources/js/components/InstantSearchItem.vue");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
-/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
+/* harmony import */ var _vue_reactivity__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @vue/reactivity */ "./node_modules/@vue/reactivity/dist/reactivity.esm-bundler.js");
+/* harmony import */ var _vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @vue/runtime-core */ "./node_modules/@vue/runtime-core/dist/runtime-core.esm-bundler.js");
 
 
 
 
 
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.defineComponent)({
   components: {
     InstantSearchItem: _InstantSearchItem__WEBPACK_IMPORTED_MODULE_0__.default
   },
   setup: function setup() {
-    var term = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref)('');
-    var results = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref)([]);
-    var loading = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_2__.ref)(false);
+    var term = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_3__.ref)('');
+    var results = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_3__.ref)([]);
+    var loading = (0,_vue_reactivity__WEBPACK_IMPORTED_MODULE_3__.ref)(false);
 
     var search = function search() {
       if (searchReady.value) {
-        console.log('search');
         loading.value = true;
         results.value = [];
         axios__WEBPACK_IMPORTED_MODULE_1___default().post("/search?term=".concat(term.value)).then(function (response) {
           results.value = response.data;
           loading.value = false;
+          console.log(results.value);
         });
       }
     };
 
-    var debouncedFn = (0,_vueuse_core__WEBPACK_IMPORTED_MODULE_3__.useDebounceFn)(function () {
+    var debouncedFn = (0,_vueuse_core__WEBPACK_IMPORTED_MODULE_4__.useDebounceFn)(function () {
       search();
     }, 250);
-    var searchReady = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_4__.computed)(function () {
+    var searchReady = (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
       return term.value.length >= 3;
     });
     return {
@@ -17644,7 +17739,7 @@ __webpack_require__.r(__webpack_exports__);
       debouncedFn: debouncedFn
     };
   }
-});
+}));
 
 /***/ }),
 
@@ -17690,6 +17785,75 @@ __webpack_require__.r(__webpack_exports__);
     }
   }
 });
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+
+var _hoisted_1 = {
+  "class": "flex justify-end mb-2 mr-2 text-xs"
+};
+var _hoisted_2 = {
+  "class": "flex items-center px-1 py-1 space-x-1 bg-gray-200 rounded-md"
+};
+
+var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+  "class": "w-4 h-4",
+  fill: "none",
+  stroke: "currentColor",
+  viewBox: "0 0 24 24"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"
+}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("path", {
+  "stroke-linecap": "round",
+  "stroke-linejoin": "round",
+  "stroke-width": "2",
+  d: "M15 13a3 3 0 11-6 0 3 3 0 016 0z"
+})], -1
+/* HOISTED */
+);
+
+var _hoisted_4 = {
+  ref: "canvas"
+};
+function render(_ctx, _cache, $props, $setup, $data, $options) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.buttons, function (days, label) {
+    return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
+      key: label,
+      onClick: function onClick($event) {
+        return _ctx.toggle(days);
+      },
+      "class": ["px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200", {
+        'bg-white': days === _ctx.filteringDays
+      }]
+    }, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(label), 11
+    /* TEXT, CLASS, PROPS */
+    , ["onClick"]);
+  }), 128
+  /* KEYED_FRAGMENT */
+  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+    onClick: _cache[1] || (_cache[1] = function () {
+      return _ctx.screenshot && _ctx.screenshot.apply(_ctx, arguments);
+    }),
+    "class": "inline-flex items-center justify-center px-2 py-1 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+  }, [_hoisted_3])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("canvas", _hoisted_4, null, 512
+  /* NEED_PATCH */
+  )]);
+}
 
 /***/ }),
 
@@ -17764,7 +17928,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("input", {
     id: "search",
     "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
-      return $setup.term = $event;
+      return _ctx.term = $event;
     }),
     "aria-label": "search",
     name: "search",
@@ -17773,22 +17937,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "w-64 px-8 py-2 text-sm bg-gray-300 rounded-full text-brand-dark focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50",
     placeholder: "Search Verified Creators",
     onKeyup: _cache[2] || (_cache[2] = function () {
-      return $setup.debouncedFn && $setup.debouncedFn.apply($setup, arguments);
+      return _ctx.debouncedFn && _ctx.debouncedFn.apply(_ctx, arguments);
     })
   }, null, 544
   /* HYDRATE_EVENTS, NEED_PATCH */
-  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $setup.term, void 0, {
+  ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, _ctx.term, void 0, {
     trim: true
-  }]]), _hoisted_2, $setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), $setup.searchReady ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [$setup.results.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.results, function (result) {
+  }]]), _hoisted_2, _ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_3, [_hoisted_4])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), _ctx.searchReady ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_5, [_ctx.results.length ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("ul", _hoisted_6, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.results, function (result, index) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_InstantSearchItem, {
-      key: result.id,
+      key: index,
       result: result
     }, null, 8
     /* PROPS */
     , ["result"]);
   }), 128
   /* KEYED_FRAGMENT */
-  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !$setup.results.length && !$setup.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_7, " No results for '" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($setup.term) + "'! ", 1
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), !_ctx.results.length && !_ctx.loading ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_7, " No results for '" + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.term) + "'! ", 1
   /* TEXT */
   )) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true)])]);
 }
@@ -18069,17 +18233,140 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 /* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/InstantSearch.vue */ "./resources/js/components/InstantSearch.vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Charts/ToggleableLineChart.vue */ "./resources/js/components/Charts/ToggleableLineChart.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 
-(0,vue__WEBPACK_IMPORTED_MODULE_2__.createApp)({
+
+var app = (0,vue__WEBPACK_IMPORTED_MODULE_3__.createApp)({
   components: {
+    ToggleableLineChart: _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_2__.default,
     InstantSearch: _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_1__.default
   }
-}).mount('#app');
+}); // import upperFirst from 'lodash/upperFirst'
+// import camelCase from 'lodash/camelCase'
+// const requireComponent = require.context(
+//   './components',
+//   true,
+//   /Base[A-Z]\w+\.(vue|js)$/
+// )
+// requireComponent.keys().forEach((fileName) => {
+//   const componentConfig = requireComponent(fileName)
+//   const componentName = upperFirst(
+//     camelCase(
+//       fileName
+//         .split('/')
+//         .pop()
+//         .replace(/\.\w+$/, '')
+//     )
+//   )
+//   app.component(componentName, componentConfig.default || componentConfig)
+// })
+
+app.mount('#app');
+
+/***/ }),
+
+/***/ "./resources/js/components/Composables/useChartData.js":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/Composables/useChartData.js ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "useChartData": () => (/* binding */ useChartData),
+/* harmony export */   "useLineChatOption": () => (/* binding */ useLineChatOption)
+/* harmony export */ });
+var colors = ['#fb542b', '#4299e1', '#667eea', '#9f7aea', '#ed64a6', '#a0aec0', '#f56565', '#ed8936', '#ecc94b', '#48bb78', '#38b2ac', '#90cdf4', '#a3bffa', '#d6bcfa', '#fbb6ce', '#e2e8f0', '#feb2b2', '#fbd38d', '#faf089', '#9ae6b4', '#81e6d9'];
+var brandColors = {
+  youtube: '#ff0000',
+  reddit: '#ff4500',
+  twitch: '#6441a5',
+  vimeo: '#1ab7ea',
+  github: '#4078c0',
+  twitter: '#1da1f2',
+  website: '#343546'
+};
+var useChartData = function useChartData(data, days) {
+  var brand = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : null;
+  var labels;
+
+  if (days) {
+    labels = data.labels.slice(0, days);
+  } else {
+    labels = data.labels;
+  }
+
+  var datasets = [];
+  Object.keys(data.data).forEach(function (key, index) {
+    var temp;
+
+    if (days) {
+      temp = data.data[key].slice(0, days);
+    } else {
+      temp = data.data[key];
+    }
+
+    var myNewDataset = {
+      label: key,
+      borderWidth: 1,
+      data: temp,
+      backgroundColor: brand ? brandColors[brand] : colors[index],
+      borderColor: brand ? brandColors[brand] : colors[index],
+      fill: false,
+      borderCapStyle: 'butt',
+      pointRadius: 3,
+      lineTension: 0,
+      cubicInterpolationMode: 'default'
+    };
+    datasets.push(myNewDataset);
+  });
+  return {
+    labels: labels,
+    datasets: datasets
+  };
+};
+var useLineChatOption = function useLineChatOption() {
+  var unit = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'month';
+  return {
+    legend: {
+      display: true,
+      labels: {
+        boxWidth: 12,
+        usePointStyle: false
+      }
+    },
+    scales: {
+      xAxes: [{
+        gridLines: {
+          display: false
+        },
+        ticks: {
+          autoSkip: true,
+          maxRotation: 0,
+          autoSkipPadding: 10
+        },
+        distribution: 'series',
+        type: 'time',
+        time: {
+          unit: unit
+        }
+      }],
+      yAxes: [{
+        ticks: {
+          suggestedMin: 0,
+          autoSkip: true
+        },
+        distribution: 'linear'
+      }]
+    }
+  };
+};
 
 /***/ }),
 
@@ -55905,6 +56192,32 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
+/***/ "./resources/js/components/Charts/ToggleableLineChart.vue":
+/*!****************************************************************!*\
+  !*** ./resources/js/components/Charts/ToggleableLineChart.vue ***!
+  \****************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ToggleableLineChart_vue_vue_type_template_id_6c5a3e0d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d */ "./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d");
+/* harmony import */ var _ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ToggleableLineChart.vue?vue&type=script&lang=js */ "./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js");
+
+
+
+_ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.render = _ToggleableLineChart_vue_vue_type_template_id_6c5a3e0d__WEBPACK_IMPORTED_MODULE_0__.render
+/* hot reload */
+if (false) {}
+
+_ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default.__file = "resources/js/components/Charts/ToggleableLineChart.vue"
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_1__.default);
+
+/***/ }),
+
 /***/ "./resources/js/components/InstantSearch.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/InstantSearch.vue ***!
@@ -56125,6 +56438,22 @@ script.__file = "resources/js/components/Logos/YoutubeLogo.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js":
+/*!****************************************************************************************!*\
+  !*** ./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js ***!
+  \****************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__.default)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ToggleableLineChart_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ToggleableLineChart.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=script&lang=js");
+ 
+
+/***/ }),
+
 /***/ "./resources/js/components/InstantSearch.vue?vue&type=script&lang=js":
 /*!***************************************************************************!*\
   !*** ./resources/js/components/InstantSearch.vue?vue&type=script&lang=js ***!
@@ -56154,6 +56483,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_InstantSearchItem_vue_vue_type_script_lang_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./InstantSearchItem.vue?vue&type=script&lang=js */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/InstantSearchItem.vue?vue&type=script&lang=js");
  
+
+/***/ }),
+
+/***/ "./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d":
+/*!**********************************************************************************************!*\
+  !*** ./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d ***!
+  \**********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ToggleableLineChart_vue_vue_type_template_id_6c5a3e0d__WEBPACK_IMPORTED_MODULE_0__.render)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_use_0_node_modules_vue_loader_dist_templateLoader_js_ruleSet_1_rules_2_node_modules_vue_loader_dist_index_js_ruleSet_0_use_0_ToggleableLineChart_vue_vue_type_template_id_6c5a3e0d__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!../../../../node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!../../../../node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5.use[0]!./node_modules/vue-loader/dist/templateLoader.js??ruleSet[1].rules[2]!./node_modules/vue-loader/dist/index.js??ruleSet[0].use[0]!./resources/js/components/Charts/ToggleableLineChart.vue?vue&type=template&id=6c5a3e0d");
+
 
 /***/ }),
 

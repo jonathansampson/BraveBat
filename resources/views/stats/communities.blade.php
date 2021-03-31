@@ -15,7 +15,9 @@
                     class="text-brand-orange">{{community_name($site, $community)}}</a>
             </h1>
             <div class='mb-3 mr-4'>
-                @include('charts.line', ['id' => 'communities/'.$site.'/'.$community, 'unit' => 'day'])
+                <toggleable-line-chart url="{{'/charts/communities/'.$site.'/'.$community}}"></toggleable-line-chart>
+
+                {{-- @include('charts.line', ['id' => 'communities/'.$site.'/'.$community, 'unit' => 'day']) --}}
             </div>
         </div>
         @endforeach

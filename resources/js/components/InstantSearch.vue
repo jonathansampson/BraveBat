@@ -51,8 +51,8 @@
       >
         <ul v-if="results.length" class="divide-y divide-gray-400">
           <InstantSearchItem
-            v-for="result in results"
-            :key="result.id"
+            v-for="(result, index) in results"
+            :key="index"
             :result="result"
           >
           </InstantSearchItem>
@@ -73,9 +73,9 @@ import { useDebounceFn } from '@vueuse/core'
 import InstantSearchItem from './InstantSearchItem'
 import axios from 'axios'
 import { ref } from '@vue/reactivity'
-import { computed } from '@vue/runtime-core'
+import { computed, defineComponent } from '@vue/runtime-core'
 
-export default {
+export default defineComponent({
   components: {
     InstantSearchItem
   },
@@ -87,13 +87,13 @@ export default {
 
     const search = () => {
       if (searchReady.value) {
-        console.log('search')
         loading.value = true
         results.value = []
 
         axios.post(`/search?term=${term.value}`).then((response) => {
           results.value = response.data
           loading.value = false
+          console.log(results.value)
         })
       }
     }
@@ -106,5 +106,5 @@ export default {
 
     return { term, results, loading, search, searchReady, debouncedFn }
   }
-}
+})
 </script>
