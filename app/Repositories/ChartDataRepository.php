@@ -275,7 +275,7 @@ class ChartDataRepository
                 FROM creator_daily_stats
                 WHERE top_count IS NOT NULL
                 AND channel = ?
-                ORDER BY record_date", [$channel]);
+                ORDER BY record_date DESC", [$channel]);
         $labels = collect($data)->map(fn($item) => $item->record_date);
         $top_count = collect($data)->map(fn($item) => $item->top_count);
         return [
@@ -294,7 +294,7 @@ class ChartDataRepository
             FROM creator_daily_stats
             WHERE invalid_percent IS NOT NULL
             AND channel = ?
-            ORDER BY record_date", [$channel]);
+            ORDER BY record_date DESC", [$channel]);
         $labels = collect($data)->map(fn($item) => $item->record_date);
         $invalid_percent = collect($data)->map(fn($item) => $item->invalid_percent);
         return [
