@@ -17642,7 +17642,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
         chart.value = new (chart_js__WEBPACK_IMPORTED_MODULE_1___default())(canvas.value, {
           type: 'line',
           data: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, null),
-          options: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useLineChatOption)(unit.value)
+          options: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useLineChatOption)()
         });
       });
     });
@@ -17656,6 +17656,8 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
 
       chart.value.data.labels = labels;
       chart.value.data.datasets = datasets;
+      chart.value.options.scales.xAxes[0].time.unit = unit;
+      console.log(chart.value.options.scales.xAxes[0].time.unit);
       chart.value.update();
     };
 
@@ -17663,7 +17665,7 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
       imageSrc.value = chart.value.toBase64Image();
       var a = document.createElement('a');
       a.href = chart.value.toBase64Image();
-      a.download = 'Image.png';
+      a.download = 'image.png';
       a.click();
     };
 
@@ -17674,7 +17676,8 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
       buttons: buttons,
       filteringDays: filteringDays,
       screenshot: screenshot,
-      imageSrc: imageSrc
+      imageSrc: imageSrc,
+      unit: unit
     };
   }
 }));

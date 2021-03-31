@@ -86,7 +86,7 @@ export default defineComponent({
         chart.value = new Chart(canvas.value, {
           type: 'line',
           data: useChartData(data.value, null),
-          options: useLineChatOption(unit.value)
+          options: useLineChatOption()
         })
       })
     })
@@ -96,6 +96,8 @@ export default defineComponent({
       let { labels, datasets } = useChartData(data.value, days)
       chart.value.data.labels = labels
       chart.value.data.datasets = datasets
+      chart.value.options.scales.xAxes[0].time.unit = unit
+      console.log(chart.value.options.scales.xAxes[0].time.unit)
       chart.value.update()
     }
 
@@ -103,7 +105,7 @@ export default defineComponent({
       imageSrc.value = chart.value.toBase64Image()
       let a = document.createElement('a')
       a.href = chart.value.toBase64Image()
-      a.download = 'Image.png'
+      a.download = 'image.png'
       a.click()
     }
 
@@ -114,7 +116,8 @@ export default defineComponent({
       buttons,
       filteringDays,
       screenshot,
-      imageSrc
+      imageSrc,
+      unit
     }
   }
 })

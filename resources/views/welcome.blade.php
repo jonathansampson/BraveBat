@@ -58,22 +58,13 @@ communities')
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
-            @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
+            <toggleable-line-chart url="/charts/active_ad_campaigns"></toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">BAT Price ($)</h2>
-            @include('charts.line', ['id' => 'bat_price', 'unit' => 'day'])
+            <toggleable-line-chart url="/charts/bat_price"></toggleable-line-chart>
         </div>
     </div>
 </div>
-{{-- <div class="bg-gray-100">
-    <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
-        <div class="text-3xl text-center">
-            Growing Creator Community
-        </div>
-        @foreach (['website', 'youtube', 'twitter', 'vimeo', 'twitch', 'github', 'reddit'] as $channel)
-        @include('partials.channel_charts', ['channel' => $channel])
-        @endforeach
-    </div>
-</div> --}}
+
 @endsection
