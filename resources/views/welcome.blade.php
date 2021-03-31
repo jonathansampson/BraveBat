@@ -55,13 +55,13 @@ communities')
             @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
         </div>
     </div>
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap mt-8">
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
+            <h2 class="py-4 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
             <toggleable-line-chart url="/charts/active_ad_campaigns"></toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">BAT Price ($)</h2>
+            <h2 class="py-4 text-xl font-semibold text-center">BAT Price ($)</h2>
             <toggleable-line-chart url="/charts/bat_price"></toggleable-line-chart>
         </div>
     </div>

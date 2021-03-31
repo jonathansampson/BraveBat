@@ -160,7 +160,7 @@ class ChartDataController extends Controller
             return [
                 'labels' => $labels,
                 'data' => [
-                    'Number of Active Campaigns' => $campaigns,
+                    'Number of Brave Active Ads Campaigns' => $campaigns,
                 ],
             ];
         });
