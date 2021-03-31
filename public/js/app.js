@@ -17614,9 +17614,17 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.defineComponent)({
   props: {
+    title: {
+      type: String,
+      required: true
+    },
     url: {
       type: String,
       required: true
+    },
+    toggleable: {
+      type: Boolean,
+      "default": true
     }
   },
   setup: function setup(props) {
@@ -17804,13 +17812,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-end mb-2 mr-6 text-xxs"
+  "class": "py-4 text-xl font-semibold text-center"
 };
 var _hoisted_2 = {
+  "class": "flex justify-end mb-2 mr-6 text-xxs"
+};
+var _hoisted_3 = {
   "class": "flex items-center px-1 py-0.5 space-x-0.5 bg-gray-200 rounded-md"
 };
+var _hoisted_4 = {
+  key: 0
+};
 
-var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
+var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("svg", {
   "class": "w-3 h-3",
   fill: "none",
   stroke: "currentColor",
@@ -17829,11 +17843,13 @@ var _hoisted_3 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("
 /* HOISTED */
 );
 
-var _hoisted_4 = {
+var _hoisted_6 = {
   ref: "canvas"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.buttons, function (days, label) {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("h2", _hoisted_1, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.title), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("div", _hoisted_3, [_ctx.toggleable ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("div", _hoisted_4, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)(_ctx.buttons, function (days, label) {
     return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)("button", {
       key: label,
       onClick: function onClick($event) {
@@ -17847,12 +17863,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     , ["onClick"]);
   }), 128
   /* KEYED_FRAGMENT */
-  )), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
+  ))])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("button", {
     onClick: _cache[1] || (_cache[1] = function () {
       return _ctx.screenshot && _ctx.screenshot.apply(_ctx, arguments);
     }),
     "class": "inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
-  }, [_hoisted_3])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("canvas", _hoisted_4, null, 512
+  }, [_hoisted_5])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)("canvas", _hoisted_6, null, 512
   /* NEED_PATCH */
   )]);
 }
@@ -18306,14 +18322,7 @@ var useChartData = function useChartData(data, days) {
 
   var datasets = [];
   Object.keys(data.data).forEach(function (key, index) {
-    var temp;
-
-    if (days) {
-      temp = data.data[key].slice(0, days);
-    } else {
-      temp = data.data[key];
-    }
-
+    var temp = days ? data.data[key].slice(0, days) : data.data[key];
     var myNewDataset = {
       label: key,
       borderWidth: 1,
@@ -18322,7 +18331,7 @@ var useChartData = function useChartData(data, days) {
       borderColor: brand ? brandColors[brand] : colors[index],
       fill: false,
       borderCapStyle: 'butt',
-      pointRadius: 3,
+      pointRadius: temp.length > 30 ? 1 : 3,
       lineTension: 0,
       cubicInterpolationMode: 'default'
     };
@@ -18335,6 +18344,20 @@ var useChartData = function useChartData(data, days) {
 };
 var useLineChatOption = function useLineChatOption() {
   return {
+    tooltips: {
+      callbacks: {
+        label: function label(tooltipItem, data) {
+          var label = data.datasets[tooltipItem.datasetIndex].label || '';
+
+          if (label) {
+            label += ': ';
+          }
+
+          label += tooltipItem.yLabel.toLocaleString();
+          return label;
+        }
+      }
+    },
     legend: {
       display: true,
       labels: {
@@ -18344,24 +18367,27 @@ var useLineChatOption = function useLineChatOption() {
     },
     scales: {
       xAxes: [{
+        type: 'time',
         gridLines: {
           display: false
         },
         ticks: {
           autoSkip: true,
           maxRotation: 0,
-          autoSkipPadding: 10
+          autoSkipPadding: 20
         },
         distribution: 'series',
-        type: 'time',
         time: {
-          unit: "month"
+          unit: 'month'
         }
       }],
       yAxes: [{
         ticks: {
           suggestedMin: 0,
-          autoSkip: true
+          autoSkip: true,
+          callback: function callback(value, index, values) {
+            return value.toLocaleString();
+          }
         },
         distribution: 'linear'
       }]

@@ -1,18 +1,23 @@
 <template>
   <div>
+    <h2 class="py-4 text-xl font-semibold text-center">
+      {{ title }}
+    </h2>
     <div class="flex justify-end mb-2 mr-6 text-xxs">
       <div
         class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-200 rounded-md"
       >
-        <button
-          v-for="(days, label) in buttons"
-          :key="label"
-          @click="toggle(days)"
-          class="px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
-          :class="{ 'bg-white': days === filteringDays }"
-        >
-          {{ label }}
-        </button>
+        <div v-if="toggleable">
+          <button
+            v-for="(days, label) in buttons"
+            :key="label"
+            @click="toggle(days)"
+            class="px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
+            :class="{ 'bg-white': days === filteringDays }"
+          >
+            {{ label }}
+          </button>
+        </div>
         <button
           @click="screenshot"
           class="inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-100 focus:outline-none focus:ring-1 focus:ring-gray-200"
@@ -58,9 +63,17 @@ Chart.plugins.register({
 
 export default defineComponent({
   props: {
+    title: {
+      type: String,
+      required: true
+    },
     url: {
       type: String,
       required: true
+    },
+    toggleable: {
+      type: Boolean,
+      default: true
     }
   },
   setup(props) {

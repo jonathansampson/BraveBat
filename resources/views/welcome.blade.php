@@ -28,41 +28,35 @@ communities')
     <div class="text-3xl text-center">
         Thriving Platform Ecosystem
     </div>
-    {{-- <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
-            <toggleable-line-chart url="/charts/active_ad_campaigns"></toggleable-line-chart>
-            <toggleable-line-chart url="/charts/dau"></toggleable-line-chart>
-        </div>
-    </div> --}}
-    <div class="flex flex-wrap">
+    <div class="flex flex-wrap mt-8">
         <div class="w-full lg:w-1/2">
             <h2 class="py-8 text-xl font-semibold text-center">Verified Creator Platform Distribution</h2>
             @include('charts.donut', ['id' => 'bat_creator_summary'])
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Total Brave Creators</h2>
-            @include('charts.line', ['id' => 'creator_stats'])
-        </div>
-    </div>
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave Browser Daily Active Users (M)</h2>
-            @include('charts.line', ['id' => 'dau'])
-        </div>
-        <div class="w-full lg:w-1/2">
-            <h2 class="py-8 text-xl font-semibold text-center">Brave-Initiated BAT Purchase ($)</h2>
-            @include('charts.line', ['id' => 'bat_purchases_in_dollars'])
+            <h2 class="py-8 text-xl font-semibold text-center"></h2>
+            <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false">
+            </toggleable-line-chart>
         </div>
     </div>
     <div class="flex flex-wrap mt-8">
         <div class="w-full lg:w-1/2">
-            <h2 class="py-4 text-xl font-semibold text-center">Brave Ads Active Campaigns</h2>
-            <toggleable-line-chart url="/charts/active_ad_campaigns"></toggleable-line-chart>
+            <toggleable-line-chart url="/charts/dau" title="Brave Browser DAU (M)" :toggleable="false">
+            </toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
-            <h2 class="py-4 text-xl font-semibold text-center">BAT Price ($)</h2>
-            <toggleable-line-chart url="/charts/bat_price"></toggleable-line-chart>
+            <toggleable-line-chart url="/charts/bat_purchases_in_dollars" title="Brave-Initiated BAT Purchase ($)"
+                :toggleable="false">
+            </toggleable-line-chart>
+        </div>
+    </div>
+    <div class="flex flex-wrap mt-8">
+        <div class="w-full lg:w-1/2">
+            <toggleable-line-chart url="/charts/active_ad_campaigns" title="Brave Ads Active Campaigns">
+            </toggleable-line-chart>
+        </div>
+        <div class="w-full lg:w-1/2">
+            <toggleable-line-chart url="/charts/bat_price" title="BAT Price ($)"></toggleable-line-chart>
         </div>
     </div>
 </div>

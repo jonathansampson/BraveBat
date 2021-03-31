@@ -19,7 +19,7 @@ class ChartDataController extends Controller
             return [
                 'labels' => $labels,
                 'data' => [
-                    'Daily Active Users' => $dau,
+                    'Brave Browser DAU (M)' => $dau,
                 ],
             ];
         });
@@ -88,7 +88,7 @@ class ChartDataController extends Controller
             return [
                 'labels' => $labels,
                 'data' => [
-                    'BAT Purchased In Dollars' => $dollar_amount,
+                    'Brave-Initiated BAT Purchase ($)' => $dollar_amount,
                 ],
             ];
         });
@@ -213,7 +213,7 @@ class ChartDataController extends Controller
             return [
                 'labels' => $labels,
                 'data' => [
-                    'Verified Creators' => $verified_creators,
+                    'Brave Verified Creators' => $verified_creators,
                 ],
             ];
         });

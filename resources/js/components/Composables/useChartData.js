@@ -41,12 +41,7 @@ export const useChartData = (data, days, brand = null) => {
   }
   let datasets = []
   Object.keys(data.data).forEach((key, index) => {
-    let temp
-    if (days) {
-      temp = data.data[key].slice(0, days)
-    } else {
-      temp = data.data[key]
-    }
+    const temp = days ? data.data[key].slice(0, days) : data.data[key]
     let myNewDataset = {
       label: key,
       borderWidth: 1,
@@ -55,7 +50,7 @@ export const useChartData = (data, days, brand = null) => {
       borderColor: brand ? brandColors[brand] : colors[index],
       fill: false,
       borderCapStyle: 'butt',
-      pointRadius: 3,
+      pointRadius: temp.length > 30 ? 1 : 3,
       lineTension: 0,
       cubicInterpolationMode: 'default'
     }
@@ -70,6 +65,18 @@ export const useChartData = (data, days, brand = null) => {
 
 export const useLineChatOption = () => {
   return {
+    tooltips: {
+      callbacks: {
+        label: function (tooltipItem, data) {
+          var label = data.datasets[tooltipItem.datasetIndex].label || ''
+          if (label) {
+            label += ': '
+          }
+          label += tooltipItem.yLabel.toLocaleString()
+          return label
+        }
+      }
+    },
     legend: {
       display: true,
       labels: {
@@ -80,18 +87,18 @@ export const useLineChatOption = () => {
     scales: {
       xAxes: [
         {
+          type: 'time',
           gridLines: {
             display: false
           },
           ticks: {
             autoSkip: true,
             maxRotation: 0,
-            autoSkipPadding: 10
+            autoSkipPadding: 20
           },
           distribution: 'series',
-          type: 'time',
           time: {
-            unit: "month"
+            unit: 'month'
           }
         }
       ],
@@ -99,7 +106,10 @@ export const useLineChatOption = () => {
         {
           ticks: {
             suggestedMin: 0,
-            autoSkip: true
+            autoSkip: true,
+            callback: function (value, index, values) {
+              return value.toLocaleString()
+            }
           },
           distribution: 'linear'
         }
