@@ -18448,45 +18448,23 @@ function render(_ctx, _cache) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
-/* harmony import */ var chart_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(chart_js__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/InstantSearch.vue */ "./resources/js/components/InstantSearch.vue");
-/* harmony import */ var _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Charts/ToggleableLineChart.vue */ "./resources/js/components/Charts/ToggleableLineChart.vue");
-/* harmony import */ var _components_Charts_CreatorDonutChart_vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Charts/CreatorDonutChart.vue */ "./resources/js/components/Charts/CreatorDonutChart.vue");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
+/* harmony import */ var _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./components/InstantSearch.vue */ "./resources/js/components/InstantSearch.vue");
+/* harmony import */ var _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./components/Charts/ToggleableLineChart.vue */ "./resources/js/components/Charts/ToggleableLineChart.vue");
+/* harmony import */ var _components_Charts_CreatorDonutChart_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/Charts/CreatorDonutChart.vue */ "./resources/js/components/Charts/CreatorDonutChart.vue");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 
 
-
-var app = (0,vue__WEBPACK_IMPORTED_MODULE_4__.createApp)({
+var app = (0,vue__WEBPACK_IMPORTED_MODULE_3__.createApp)({
   components: {
-    ToggleableLineChart: _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_2__.default,
-    InstantSearch: _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_1__.default,
-    CreatorDonutChart: _components_Charts_CreatorDonutChart_vue__WEBPACK_IMPORTED_MODULE_3__.default
+    ToggleableLineChart: _components_Charts_ToggleableLineChart_vue__WEBPACK_IMPORTED_MODULE_1__.default,
+    InstantSearch: _components_InstantSearch_vue__WEBPACK_IMPORTED_MODULE_0__.default,
+    CreatorDonutChart: _components_Charts_CreatorDonutChart_vue__WEBPACK_IMPORTED_MODULE_2__.default
   }
-}); // import upperFirst from 'lodash/upperFirst'
-// import camelCase from 'lodash/camelCase'
-// const requireComponent = require.context(
-//   './components',
-//   true,
-//   /Base[A-Z]\w+\.(vue|js)$/
-// )
-// requireComponent.keys().forEach((fileName) => {
-//   const componentConfig = requireComponent(fileName)
-//   const componentName = upperFirst(
-//     camelCase(
-//       fileName
-//         .split('/')
-//         .pop()
-//         .replace(/\.\w+$/, '')
-//     )
-//   )
-//   app.component(componentName, componentConfig.default || componentConfig)
-// })
-
+});
 app.mount('#app');
 
 /***/ }),

@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>BraveBat | @yield('title' , "Resource on Brave Browser, BAT and Beyond")</title>
+    <title>BraveBat | @yield('title' , "Resources on Brave Browser and BAT (Basic Attention Token)")</title>
     <meta name="description"
         content="@yield('description', 'Your comprehensive resource on Brave Browser, Basic Attention Token and their passionate communities')" />
 
