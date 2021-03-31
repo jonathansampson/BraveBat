@@ -8,7 +8,7 @@
     <div class="flex flex-wrap">
         <div class="w-full">
             <toggleable-line-chart url="{{'/charts/active_ad_campaigns?country=' . $country}}"
-                title="{{"Brave Active Ads Campaigns in " . $country}}" :toggleable="false">
+                title="{{"Brave Active Ads Campaigns in " . $country}}">
             </toggleable-line-chart>
         </div>
     </div>
