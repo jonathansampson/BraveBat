@@ -153,7 +153,7 @@ class ChartDataController extends Controller
             GROUP BY
                 month
             ORDER BY
-                month");
+                month DESC");
             $labels = collect($data)->map(fn($item) => $item->month);
             $campaigns = collect($data)->map(fn($item) => $item->campaigns);
 

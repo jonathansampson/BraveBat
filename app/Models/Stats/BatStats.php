@@ -45,7 +45,7 @@ class BatStats extends Model
     public static function getData()
     {
         $result = cache()->remember('bat_stats', 86400, function () {
-            $data = DB::select("SELECT record_date, holders_count, holders_add, price, volume, market_cap FROM bat_stats ORDER BY record_date");
+            $data = DB::select("SELECT record_date, holders_count, holders_add, price, volume, market_cap FROM bat_stats ORDER BY record_date DESC");
             return collect($data);
         });
         return $result;
