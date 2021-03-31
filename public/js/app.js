@@ -17638,7 +17638,6 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
     (0,_vue_runtime_core__WEBPACK_IMPORTED_MODULE_2__.onMounted)(function () {
       axios.get(props.url).then(function (res) {
         data.value = res.data;
-        console.log(data.value);
         chart.value = new (chart_js__WEBPACK_IMPORTED_MODULE_1___default())(canvas.value, {
           type: 'line',
           data: (0,_Composables_useChartData__WEBPACK_IMPORTED_MODULE_0__.useChartData)(data.value, null),
@@ -17657,15 +17656,15 @@ chart_js__WEBPACK_IMPORTED_MODULE_1___default().plugins.register({
       chart.value.data.labels = labels;
       chart.value.data.datasets = datasets;
       chart.value.options.scales.xAxes[0].time.unit = unit;
-      console.log(chart.value.options.scales.xAxes[0].time.unit);
       chart.value.update();
     };
 
     var screenshot = function screenshot() {
+      var filename = props.url.split(/\//).pop();
       imageSrc.value = chart.value.toBase64Image();
       var a = document.createElement('a');
       a.href = chart.value.toBase64Image();
-      a.download = 'image.png';
+      a.download = "".concat(filename, ".png");
       a.click();
     };
 

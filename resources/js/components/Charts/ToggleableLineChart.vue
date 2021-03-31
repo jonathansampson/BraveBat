@@ -82,7 +82,6 @@ export default defineComponent({
     onMounted(() => {
       axios.get(props.url).then((res) => {
         data.value = res.data
-        console.log(data.value)
         chart.value = new Chart(canvas.value, {
           type: 'line',
           data: useChartData(data.value, null),
@@ -97,15 +96,15 @@ export default defineComponent({
       chart.value.data.labels = labels
       chart.value.data.datasets = datasets
       chart.value.options.scales.xAxes[0].time.unit = unit
-      console.log(chart.value.options.scales.xAxes[0].time.unit)
       chart.value.update()
     }
 
     const screenshot = () => {
+      let filename = props.url.split(/\//).pop()
       imageSrc.value = chart.value.toBase64Image()
       let a = document.createElement('a')
       a.href = chart.value.toBase64Image()
-      a.download = 'image.png'
+      a.download = `${filename}.png`
       a.click()
     }
 
