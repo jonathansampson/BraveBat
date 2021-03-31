@@ -5,9 +5,9 @@
 
 @section('content')
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-    <h1 class="py-4 text-2xl font-semibold">Total Brave Creators</h1>
     <div class='mb-3'>
-        @include('charts.line', ['id' => 'creator_stats'])
+        <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false">
+        </toggleable-line-chart>
     </div>
     <h1 class="py-2 text-2xl font-semibold">Data</h1>
     <table class="w-full">

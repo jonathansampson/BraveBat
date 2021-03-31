@@ -2,351 +2,85 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BraveUsage;
-use DB;
+use App\Repositories\ChartDataRepository;
 use Illuminate\Http\Request;
-use Illuminate\Support\Str;
 
 class ChartDataController extends Controller
 {
+// return cache()->remember('dau', 86400, function () {
+//     return $this->chartDataRepository->dau();
+// });
+
+    private $chartDataRepository;
+
+    public function __construct(ChartDataRepository $chartDataRepository)
+    {
+        $this->chartDataRepository = $chartDataRepository;
+    }
+
     public function dau()
     {
-        $data = BraveUsage::all();
-        $result = cache()->remember('dau', 86400, function () {
-            $data = BraveUsage::all();
-            $labels = collect($data)->map(fn($item) => $item['month']);
-            $dau = collect($data)->map(fn($item) => round(($item['dau'] / 1000000), 1));
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Brave Browser DAU (M)' => $dau,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->dau();
     }
 
     public function mau()
     {
-
-        $result = cache()->remember('mau', 86400, function () {
-            $data = array_filter(BraveUsage::all(), function ($item) {
-                return isset($item['mau']);
-            });
-            $labels = collect($data)->map(fn($item) => $item['month']);
-            $mau = collect($data)->map(fn($item) => round(($item['mau'] / 1000000), 1));
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Monthly Active Users' => $mau,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->mau();
     }
 
-    public function batPurchases()
+    public function bat_purchases()
     {
-        $result = cache()->remember('bat_purchase', 86400, function () {
-            $data = DB::select("SELECT
-                DATE_FORMAT(transaction_date, '%Y-%m') AS month,
-                sum(transaction_amount) AS bat_tokens
-            FROM
-                bat_purchases
-            GROUP BY
-                month
-            ORDER BY
-                month");
-            $labels = collect($data)->map(fn($item) => $item->month);
-            $bat_tokens = collect($data)->map(fn($item) => $item->bat_tokens);
-
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'BAT Tokens Purchased' => $bat_tokens,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->bat_purchases();
     }
 
-    public function batPurchasesDollars()
+    public function bat_purchases_in_dollars()
     {
-        $result = cache()->remember('bat_purchase_dollar', 86400, function () {
-            $data = DB::select("SELECT
-                DATE_FORMAT(transaction_date, '%Y-%m') AS month,
-                sum(dollar_amount) AS dollar_amount
-            FROM
-                bat_purchases
-            GROUP BY
-                month
-            ORDER BY
-                month");
-            $labels = collect($data)->map(fn($item) => $item->month);
-            $dollar_amount = collect($data)->map(fn($item) => $item->dollar_amount);
-
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Brave-Initiated BAT Purchase ($)' => $dollar_amount,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->bat_purchase_in_dollars();
     }
 
-    public function adCampaignSupportedCountries()
+    public function ad_campaign_supported_countries()
     {
-        $result = cache()->remember('ad_campaign_supported_countries', 86400, function () {
-            $data = DB::select("SELECT
-                -- DATE_FORMAT(record_date, '%Y-%m') AS month,
-                DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
-                max(countries) AS countries
-            FROM (
-                SELECT
-                    record_date,
-                    count(campaigns) AS countries
-                FROM
-                    brave_ad_campaigns
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date) t
-            GROUP BY
-                month
-            ORDER BY
-                month");
-            $labels = collect($data)->map(fn($item) => $item->month);
-            $countries = collect($data)->map(fn($item) => $item->countries);
-
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Number of Supported Countries' => $countries,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->ad_campaign_supported_countries();
     }
 
-    public function activeAdCampaigns(Request $request)
+    public function active_ad_campaigns(Request $request)
     {
-        $country = $request->country;
-        $country_string = ($country) ? '_' . Str::snake($country) : '';
-        $result = cache()->remember('active_ad_campaigns' . $country_string, 86400, function () use ($country) {
-            $country_sql = $country ? "WHERE country = '{$country}'" : "";
-            $data = DB::select("SELECT
-                -- DATE_FORMAT(record_date, '%Y-%m') AS month,
-                DATE_FORMAT(record_date, '%Y-%m-%d') AS month,
-                max(campaigns) AS campaigns
-            FROM (
-                SELECT
-                    record_date,
-                    sum(campaigns) AS campaigns
-                FROM
-                    brave_ad_campaigns
-                {$country_sql}
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date) t
-            GROUP BY
-                month
-            ORDER BY
-                month DESC");
-            $labels = collect($data)->map(fn($item) => $item->month);
-            $campaigns = collect($data)->map(fn($item) => $item->campaigns);
-
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Number of Brave Active Ads Campaigns' => $campaigns,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->active_ad_campaigns($request->country);
     }
 
-    public function batCreatorSummary()
+    public function bat_creator_summary()
     {
-        $result = cache()->remember('bat_creator_summary', 3600, function () {
-            $data = DB::select("SELECT
-                channel,
-                count(id) AS summary
-            FROM
-                creators
-            GROUP BY
-                channel
-            ORDER BY
-                summary desc");
-            $labels = collect($data)->map(fn($item) => $item->channel);
-            $summaries = collect($data)->map(fn($item) => $item->summary);
-            return [
-                'labels' => $labels,
-                'data' => $summaries,
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->bat_creator_summary();
     }
 
-    public function creatorStats()
+    public function creator_stats()
     {
-        $result = cache()->remember('creator_stats', 86400, function () {
-            $data = DB::select("SELECT
-                DATE_FORMAT(record_date, '%Y-%m') AS month,
-                max(verified_creators) AS verified_creators
-            FROM (
-                SELECT
-                    record_date,
-                    sum(verified_creators) AS verified_creators
-                FROM
-                    creator_stats
-                GROUP BY
-                    record_date) t
-            GROUP BY
-                month
-            ORDER BY
-                month");
-            $labels = collect($data)->map(fn($item) => $item->month);
-            $verified_creators = collect($data)->map(fn($item) => $item->verified_creators);
-
-            return [
-                'labels' => $labels,
-                'data' => [
-                    'Brave Verified Creators' => $verified_creators,
-                ],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->creator_stats();
     }
 
-    public function creatorDailyTotalStats($channel = null)
+    public function creator_daily_total_stats($channel = null)
     {
-        $result = cache()->remember('creator_daily_total_stats_' . $channel, 86400, function () use ($channel) {
-            if ($channel) {
-                $data = DB::select("SELECT
-                    record_date,
-                    sum(total) AS total
-                FROM
-                    creator_daily_stats
-                WHERE
-                    channel = ?
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date", [$channel]);
-            } else {
-                $data = DB::select("SELECT
-                    record_date,
-                    sum(total) AS total
-                FROM
-                    creator_daily_stats
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date");
-            }
-            $labels = collect($data)->map(fn($item) => $item->record_date);
-            $total = collect($data)->map(fn($item) => $item->total);
-            return [
-                'labels' => $labels,
-                'data' => ['Total Verified Creators' => $total],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->creator_daily_total_stats($channel);
     }
 
-    public function creatorDailyAdditionStats($channel = null)
+    public function creator_daily_addition_stats($channel = null)
     {
-        $result = cache()->remember('creator_daily_addition_stats_' . $channel, 86400, function () use ($channel) {
-            if ($channel) {
-                $data = DB::select("SELECT
-                    record_date,
-                    sum(addition) AS addition
-                FROM
-                    creator_daily_stats
-                WHERE
-                    channel = ? AND record_date >= '2020-05-02'
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date", [$channel]);
-            } else {
-                $data = DB::select("SELECT
-                    record_date,
-                    sum(addition) AS addition
-                WHERE
-                    record_date >= '2020-04-25'
-                FROM
-                    creator_daily_stats
-                GROUP BY
-                    record_date
-                ORDER BY
-                    record_date");
-            }
-            $labels = collect($data)->map(fn($item) => $item->record_date);
-            $addition = collect($data)->map(fn($item) => $item->addition);
-            return [
-                'labels' => $labels,
-                'data' => ['Daily New Verified Creators' => $addition],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->creator_daily_addition_stats($channel);
     }
 
-    public function topCreators($channel)
+    public function top_creators($channel)
     {
-        $result = cache()->remember('top_creators_' . $channel, 86400, function () use ($channel) {
-            $data = DB::select("SELECT record_date,
-                top_count
-                FROM creator_daily_stats
-                WHERE top_count IS NOT NULL
-                AND channel = ?
-                ORDER BY record_date", [$channel]);
-            $labels = collect($data)->map(fn($item) => $item->record_date);
-            $top_count = collect($data)->map(fn($item) => $item->top_count);
-            return [
-                'labels' => $labels,
-                'data' => ['Top Creators' => $top_count],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->top_creators($channel);
     }
 
-    public function creatorValidation($channel)
+    public function creator_validation($channel)
     {
-        $result = cache()->remember('creator_validation_' . $channel, 86400, function () use ($channel) {
-            $data = DB::select("SELECT record_date,
-            invalid_percent
-            FROM creator_daily_stats
-            WHERE invalid_percent IS NOT NULL
-            AND channel = ?
-            ORDER BY record_date", [$channel]);
-            $labels = collect($data)->map(fn($item) => $item->record_date);
-            $invalid_percent = collect($data)->map(fn($item) => $item->invalid_percent);
-            return [
-                'labels' => $labels,
-                'data' => ['Invalid Percent (%)' => $invalid_percent],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->creator_validation($channel);
+
     }
 
     public function communities($site, $community)
     {
-        $result = cache()->remember('community_' . $site . '_' . $community, 86400, function () use ($site, $community) {
-            $data = DB::select("SELECT record_date,
-                subscribers
-                FROM communities
-                WHERE site = ? AND community = ?
-                ORDER BY record_date DESC", [$site, $community]);
-            $labels = collect($data)->map(fn($item) => $item->record_date);
-            $subscribers = collect($data)->map(fn($item) => $item->subscribers);
-            return [
-                'labels' => $labels,
-                'data' => ['Subscribers' => $subscribers],
-            ];
-        });
-        return $result;
+        return $this->chartDataRepository->communities($site, $community);
     }
 }

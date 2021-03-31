@@ -7,16 +7,12 @@
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave Daily Active User (Millions)</h1>
-            <div class='mb-3'>
-                @include('charts.line', ['id' => 'dau'])
-            </div>
+            <toggleable-line-chart url="/charts/dau" title="Brave Browser DAU (M)" :toggleable="false">
+            </toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave Monthly Active User (Millions)</h1>
-            <div class='mb-3'>
-                @include('charts.line', ['id' => 'mau'])
-            </div>
+            <toggleable-line-chart url="/charts/mau" title="Brave Browser MAU (M)" :toggleable="false">
+            </toggleable-line-chart>
         </div>
     </div>
     <h1 class="py-2 text-2xl font-semibold">Data</h1>

@@ -7,16 +7,13 @@
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
     <div class="flex flex-wrap">
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave Ads Supported Countries/States</h1>
-            <div class='mb-3'>
-                @include('charts.line', ['id' => 'ad_campaign_supported_countries', 'unit' => 'day'])
-            </div>
+            <toggleable-line-chart url="/charts/ad_campaign_supported_countries"
+                title="Brave Ads Supported Countries/States">
+            </toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">Brave Ads Active Campaigns</h1>
-            <div class='mb-3'>
-                @include('charts.line', ['id' => 'active_ad_campaigns', 'unit' => 'day'])
-            </div>
+            <toggleable-line-chart url="/charts/active_ad_campaigns" title="Brave Ads Active Campaigns">
+            </toggleable-line-chart>
         </div>
     </div>
     <h1 class="py-2 text-2xl font-semibold">Country-Specific Data</h1>
