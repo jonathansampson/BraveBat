@@ -339,7 +339,7 @@ class ChartDataController extends Controller
                 subscribers
                 FROM communities
                 WHERE site = ? AND community = ?
-                ORDER BY record_date", [$site, $community]);
+                ORDER BY record_date DESC", [$site, $community]);
             $labels = collect($data)->map(fn($item) => $item->record_date);
             $subscribers = collect($data)->map(fn($item) => $item->subscribers);
             return [

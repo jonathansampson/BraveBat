@@ -17802,7 +17802,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-end mb-2 mr-2 text-xs"
+  "class": "flex justify-end mb-2 mr-8 text-xs"
 };
 var _hoisted_2 = {
   "class": "flex items-center px-1 py-1 space-x-1 bg-gray-200 rounded-md"

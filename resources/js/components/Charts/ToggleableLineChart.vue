@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-end mb-2 mr-2 text-xs">
+    <div class="flex justify-end mb-2 mr-8 text-xs">
       <div class="flex items-center px-1 py-1 space-x-1 bg-gray-200 rounded-md">
         <button
           v-for="(days, label) in buttons"
