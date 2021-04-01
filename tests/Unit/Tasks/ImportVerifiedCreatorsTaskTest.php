@@ -12,8 +12,11 @@ class ImportVerifiedCreatorsTaskTest extends TestCase
 
     use RefreshDatabase;
 
-    /** @test */
-    public function it_can_test()
+    /**
+     * @test
+     * @group=brotli
+     **/
+    public function it_can_hanele_()
     {
         $task = new ImportVerifiedCreatorsTask();
         $task->handle(['0000']);

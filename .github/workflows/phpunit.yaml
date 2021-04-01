@@ -41,7 +41,7 @@ jobs:
           cp .env.example .env
           php artisan key:generate
       - name: Run Testsuite
-        run: vendor/bin/phpunit --exclude=api
+        run: vendor/bin/phpunit --exclude=api,brotli
 
       - name: Notify Slack
         uses: 8398a7/action-slack@v3
