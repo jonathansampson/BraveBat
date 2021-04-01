@@ -4,7 +4,6 @@ export default function useWebShare(shareMessage) {
   const { share, isSupported } = useShare()
   const webShare = () => {
     return share({
-      title: shareMessage,
       text: shareMessage,
       url: location.href
     }).catch(function (e) {})
