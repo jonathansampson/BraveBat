@@ -1,7 +1,9 @@
 /node_modules
+/public/hot
+/public/storage
+/public/sitemap.xml
 /storage/*.key
 /vendor
-/public
 .env
 .env.backup
 .phpunit.result.cache
@@ -10,3 +12,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 .lasso
+/public/report
