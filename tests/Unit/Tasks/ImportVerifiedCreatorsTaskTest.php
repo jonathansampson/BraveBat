@@ -14,7 +14,7 @@ class ImportVerifiedCreatorsTaskTest extends TestCase
 
     /**
      * @test
-     * @group=brotli
+     * @group brotli
      **/
     public function it_can_hanele_()
     {
