@@ -55,7 +55,7 @@ export default defineComponent({
     let params = {
       text: props.shareMessage,
       url: location.href,
-      via: 'bravebatinfo'
+      via: 'BraveBatInfo'
     }
 
     var esc = encodeURIComponent
