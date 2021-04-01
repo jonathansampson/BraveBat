@@ -1,9 +1,12 @@
 <template>
   <div>
-    <h2 class="py-4 text-xl font-semibold text-center" v-if="title">
-      {{ title }}
-    </h2>
-    <toggle-panel :toggleable="true" @screenshot="screenshot" @toggle="toggle">
+    <h2 class="py-4 text-xl font-semibold text-center" v-html="title"></h2>
+    <toggle-panel
+      :toggleable="true"
+      @screenshot="screenshot"
+      @toggle="toggle"
+      :title="title"
+    >
     </toggle-panel>
     <canvas ref="canvas"> </canvas>
   </div>
@@ -23,7 +26,7 @@ export default defineComponent({
   props: {
     title: {
       type: String,
-      required: false
+      required: true
     },
     url: {
       type: String,

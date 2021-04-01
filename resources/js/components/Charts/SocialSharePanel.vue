@@ -45,9 +45,15 @@ export default defineComponent({
     ShareIcon,
     TwitterIcon
   },
-  setup() {
+  props: {
+    shareMessage: {
+      type: String,
+      required: true
+    }
+  },
+  setup(props) {
     let params = {
-      text: 'Check out BraveBat!',
+      text: props.shareMessage,
       url: location.href,
       via: 'bravebatinfo'
     }
@@ -56,7 +62,6 @@ export default defineComponent({
     var query = Object.keys(params)
       .map((k) => esc(k) + '=' + esc(params[k]))
       .join('&')
-    console.log(query)
 
     const twitterIntentUrl = 'https://twitter.com/intent/tweet?' + query
     return { twitterIntentUrl }

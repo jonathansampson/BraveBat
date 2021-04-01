@@ -9,13 +9,9 @@
         @foreach (config('bravebat.communities') as $site => $communities)
         @foreach ($communities as $community => $communityID)
         <div class="w-full lg:w-1/2">
-            <h1 class="py-4 text-2xl font-semibold">
-                {{community_site_name($site)}}:
-                <a href="{{community_link($site, $community)}}" rel="nofollow" target="_blank"
-                    class="text-brand-orange">{{community_name($site, $community)}}</a>
-            </h1>
             <div class='mb-3 mr-4'>
-                <toggleable-line-chart url="{{'/charts/communities/'.$site.'/'.$community}}">
+                <toggleable-line-chart url="{{'/charts/communities/'.$site.'/'.$community}}"
+                    title="{{community_site_name($site)}}: <a href='{{community_link($site, $community)}}' rel='nofollow' target='_blank' class='text-brand-orange'>{{community_name($site, $community)}}</a>">
                 </toggleable-line-chart>
             </div>
         </div>

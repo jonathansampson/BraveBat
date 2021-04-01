@@ -28,7 +28,10 @@
         >
           <share-icon class="w-3 h-3"></share-icon>
         </button>
-        <social-share-panel v-else></social-share-panel>
+        <social-share-panel
+          v-else
+          :share-message="shareMessage"
+        ></social-share-panel>
       </div>
     </div>
   </div>
@@ -51,11 +54,17 @@ export default defineComponent({
     toggleable: {
       type: Boolean,
       default: false
+    },
+    title: {
+      type: String,
+      required: true
     }
   },
   emits: ['screenshot', 'toggle'],
-  setup(_, { emit }) {
+  setup(props, { emit }) {
     const filteringDays = ref(null)
+    const shareMessage = `Check out this ${props.title} chart`
+
     const buttons = {
       '7D': 7,
       '1M': 30,
@@ -63,7 +72,9 @@ export default defineComponent({
       '1Y': 365,
       All: null
     }
-    const { webShare, isSupported: isWebShareSupported } = useWebShare()
+    const { webShare, isSupported: isWebShareSupported } = useWebShare(
+      shareMessage
+    )
 
     const screenshot = () => {
       emit('screenshot')
@@ -80,7 +91,8 @@ export default defineComponent({
       toggle,
       filteringDays,
       isWebShareSupported,
-      webShare
+      webShare,
+      shareMessage
     }
   }
 })
