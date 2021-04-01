@@ -37,7 +37,8 @@ class Kernel extends ConsoleKernel
         $schedule->command('creator:rank')->dailyAt('18:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
 
-        // $schedule->command('import:creator')->dailyAt("10:18");
+        $schedule->command('import:creator')->dailyAt("00:01");
+
         // $schedule->command('backfill:website')->dailyAt("11:41"); // 8000
         // $schedule->command('backfill:twitter')->dailyAt("11:42"); // 10000
         // $schedule->command('backfill:vimeo')->dailyAt("11:43"); // 10000

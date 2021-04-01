@@ -11,7 +11,6 @@ use App\Models\CreatorProcessors\YoutubeProcessor;
 use App\Models\Stats\CreatorDailyStats;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
 use App\Services\TweetService;
-use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -22,37 +21,20 @@ class Creator extends Model
 
     use HasFactory;
 
-    /**
-     * Handle incomings from Brave API
-     *
-     * @param $incomings
-     * @return void
-     */
     public static function handleIncomings($incomings)
     {
         foreach ($incomings as $incoming) {
-            $creator = self::make([
-                'creator' => $incoming,
-                'verified_at' => Carbon::today(),
-            ]);
-            $creator->fillChannel();
-        }
-    }
-
-    /**
-     * Handle outgoings from Brave API
-     *
-     * @param $outgoings
-     * @return void
-     */
-    public static function handleOutgoings($outgoings)
-    {
-        if (count($outgoings) <= 20000) {
-            foreach ($outgoings as $outgoing) {
-                self::where('creator', $outgoing)->delete();
+            $existingCreator = self::where('creator', $incoming)->first();
+            if ($existingCreator) {
+                $existingCreator->update(['confirmed_at' => today()]);
+            } else {
+                $creator = self::create([
+                    'creator' => $incoming,
+                    'verified_at' => today(),
+                    'confirmed_at' => today(),
+                ]);
+                $creator->fillChannel();
             }
-        } else {
-            SimpleScheduledTaskSlackAndLogService::message('something is wrong with outgoing creators. No deletion is made');
         }
     }
 

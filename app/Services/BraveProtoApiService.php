@@ -17,21 +17,7 @@ class BraveProtoApiService
         $channelResponseList = new ChannelResponseList();
         $channelResponseList->mergeFromString($response);
         $channels = $channelResponseList->getChannelResponses();
-        $items = [];
-        foreach ($channels as $channel) {
-            $item = [];
-            $string = $channel->getChannelIdentifier();
-            $parts = explode("#channel:", $string);
-            if (count($parts) === 1) {
-                $item['type'] = 'website';
-                $item['id'] = $parts[0];
-            } else {
-                $item['type'] = $parts[0];
-                $item['id'] = $parts[1];
-            }
-            $items[] = $item;
-        }
-        return $items;
+        return collect($channels)->map(fn($channel) => $channel->getChannelIdentifier())->toArray();
     }
 
     /**

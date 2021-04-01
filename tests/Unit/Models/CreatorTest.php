@@ -10,9 +10,20 @@ class CreatorTest extends TestCase
 {
     use RefreshDatabase;
 
-    /**
-     * @test
-     */
+    /** @test*/
+    public function creator_can_handle_incoming_creators()
+    {
+        $creator = Creator::factory()->create(['creator' => 'bravebat.info']);
+        $incomings = ['bravebat.info', "another.website"];
+        Creator::handleIncomings($incomings);
+        $this->assertEquals($creator->fresh()->confirmed_at, today()->toDateString());
+        $this->assertEquals(2, Creator::count());
+        $secondCreator = Creator::orderBy('id', 'desc')->first();
+        $this->assertEquals($secondCreator->confirmed_at, today()->toDateString());
+        $this->assertEquals($secondCreator->creator, "another.website");
+    }
+
+    /** @test*/
     public function creator_can_fill_website_channel()
     {
         $creator = Creator::factory()->create(['creator' => 'bravebat.info']);

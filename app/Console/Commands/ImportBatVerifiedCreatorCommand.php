@@ -2,9 +2,8 @@
 
 namespace App\Console\Commands;
 
-use App\Models\Stats\CreatorDailyStats;
-use App\Services\BraveApiService;
-use Carbon\Carbon;
+use App\Services\SimpleScheduledTaskSlackAndLogService;
+use App\Tasks\ImportVerifiedCreatorsTask;
 use Illuminate\Console\Command;
 
 class ImportBatVerifiedCreatorCommand extends Command
@@ -40,8 +39,11 @@ class ImportBatVerifiedCreatorCommand extends Command
      */
     public function handle()
     {
-        BraveApiService::import();
-        CreatorDailyStats::generate(Carbon::today()->toDateString());
-        $this->call('cache:clear');
+        SimpleScheduledTaskSlackAndLogService::message('start importing brave creators');
+        $task = (new ImportVerifiedCreatorsTask);
+        $task->handle($task->generatePrefixes());
+        SimpleScheduledTaskSlackAndLogService::message('Finish importing brave creators');
+        // CreatorDailyStats::generate(Carbon::today()->toDateString());
+        // $this->call('cache:clear');
     }
 }

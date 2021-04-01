@@ -15,9 +15,7 @@ class BraveProtoApiServiceTest extends TestCase
     {
         $service = new BraveProtoApiService();
         $channels = $service->getChannels("12e3");
-        $this->assertEquals('website', $channels[0]['type']);
-        $this->assertEquals('zeetreby.com', $channels[0]['id']);
-
+        $this->assertTrue(in_array('zeetreby.com', $channels));
     }
 
     /**

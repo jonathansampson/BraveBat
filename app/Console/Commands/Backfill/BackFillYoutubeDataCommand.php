@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands\Backfill;
 
-use Log;
 use App\Models\Creator;
-use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use Illuminate\Console\Command;
 
 class BackFillYoutubeDataCommand extends Command
 {
