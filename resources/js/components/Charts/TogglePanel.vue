@@ -1,33 +1,35 @@
 <template>
-  <div class="flex justify-end mb-2 mr-6 text-xxs">
-    <div
-      class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-100 rounded-md"
-    >
-      <div v-if="toggleable">
+  <div class="relative mr-6 text-xxs">
+    <div class="flex justify-end">
+      <div
+        class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-100 rounded-md"
+      >
+        <div v-if="toggleable">
+          <button
+            v-for="(days, label) in buttons"
+            :key="label"
+            @click="toggle(days)"
+            class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+            :class="{ 'bg-white': days === filteringDays }"
+          >
+            {{ label }}
+          </button>
+        </div>
         <button
-          v-for="(days, label) in buttons"
-          :key="label"
-          @click="toggle(days)"
+          @click="screenshot"
           class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
-          :class="{ 'bg-white': days === filteringDays }"
         >
-          {{ label }}
+          <screenshot-icon class="w-3 h-3"></screenshot-icon>
         </button>
+        <button
+          @click="webShare"
+          v-if="isWebShareSupported"
+          class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+        >
+          <share-icon class="w-3 h-3"></share-icon>
+        </button>
+        <social-share-panel v-else></social-share-panel>
       </div>
-      <button
-        @click="screenshot"
-        class="inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
-        :class="{}"
-      >
-        <screenshot-icon class="w-3 h-3"></screenshot-icon>
-      </button>
-      <button
-        v-if="isWebShareSupported"
-        @click="chartShare"
-        class="inline-flex items-center justify-center px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
-      >
-        <share-icon class="w-3 h-3"></share-icon>
-      </button>
     </div>
   </div>
 </template>
@@ -37,11 +39,13 @@ import ScreenshotIcon from '../Icons/ScreenshotIcon.vue'
 import ShareIcon from '../Icons/ShareIcon.vue'
 import { defineComponent, ref } from '@vue/runtime-core'
 import useWebShare from '../Composables/useWebShare'
+import SocialSharePanel from './SocialSharePanel.vue'
 
 export default defineComponent({
   components: {
     ScreenshotIcon,
-    ShareIcon
+    ShareIcon,
+    SocialSharePanel
   },
   props: {
     toggleable: {
@@ -59,7 +63,7 @@ export default defineComponent({
       '1Y': 365,
       All: null
     }
-    const { chartShare, isSupported: isWebShareSupported } = useWebShare()
+    const { webShare, isSupported: isWebShareSupported } = useWebShare()
 
     const screenshot = () => {
       emit('screenshot')
@@ -72,11 +76,11 @@ export default defineComponent({
 
     return {
       screenshot,
-      chartShare,
-      isWebShareSupported,
       buttons,
       toggle,
-      filteringDays
+      filteringDays,
+      isWebShareSupported,
+      webShare
     }
   }
 })

@@ -2,10 +2,10 @@ import { useShare } from '@vueuse/core'
 
 export default function useWebShare() {
   const { share, isSupported } = useShare()
-  const chartShare = () => {
+  const webShare = () => {
     return share({
       url: location.href
     }).catch(function (e) {})
   }
-  return { chartShare, isSupported }
+  return { webShare, isSupported }
 }

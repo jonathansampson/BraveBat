@@ -1,0 +1,65 @@
+<template>
+  <Menu>
+    <MenuButton
+      class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+    >
+      <share-icon class="w-3 h-3"></share-icon>
+    </MenuButton>
+    <transition
+      enter-active-class="transition duration-100 ease-out"
+      enter-from-class="transform scale-95 opacity-0"
+      enter-to-class="transform scale-100 opacity-100"
+      leave-active-class="transition duration-75 ease-out"
+      leave-from-class="transform scale-100 opacity-100"
+      leave-to-class="transform scale-95 opacity-0"
+    >
+      <MenuItems
+        class="absolute right-0 flex items-center justify-center p-0.5 mt-2 origin-top-right bg-white border border-gray-100 rounded-md outline-none top-4"
+      >
+        <MenuItem>
+          <a
+            class="rounded-sm outline-none cursor-pointer hover:bg-gray-50 p-0.5"
+            :href="twitterIntentUrl"
+            target="_blank"
+          >
+            <twitter-icon class="w-3 h-3"></twitter-icon>
+          </a>
+        </MenuItem>
+      </MenuItems>
+    </transition>
+  </Menu>
+</template>
+
+<script>
+import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
+import { defineComponent } from '@vue/runtime-core'
+import ShareIcon from '../Icons/ShareIcon.vue'
+import TwitterIcon from '../Icons/TwitterIcon'
+
+export default defineComponent({
+  components: {
+    Menu,
+    MenuButton,
+    MenuItems,
+    MenuItem,
+    ShareIcon,
+    TwitterIcon
+  },
+  setup() {
+    let params = {
+      text: 'Check out BraveBat!',
+      url: location.href,
+      via: 'bravebatinfo'
+    }
+
+    var esc = encodeURIComponent
+    var query = Object.keys(params)
+      .map((k) => esc(k) + '=' + esc(params[k]))
+      .join('&')
+    console.log(query)
+
+    const twitterIntentUrl = 'https://twitter.com/intent/tweet?' + query
+    return { twitterIntentUrl }
+  }
+})
+</script>

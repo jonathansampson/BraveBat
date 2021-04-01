@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\BraveUsage;
 use App\Models\BatPurchase;
-use Illuminate\Http\Request;
 use App\Models\BraveAdCampaign;
+use App\Models\BraveUsage;
 use App\Models\Stats\CreatorStats;
+use Illuminate\Http\Request;
 
 class StatsController extends Controller
 {
@@ -58,11 +58,11 @@ class StatsController extends Controller
     public function creator_validation()
     {
         $channels = [
-            'youtube' => 'Invalid YouTube Creator Percentage (%)',
-            'twitch' => 'Invalid Twitch Creator Percentage (%)',
-            'twitter' => 'Invalid Twitter Creator Percentage (%)',
-            'vimeo' => 'Invalid Vimeo Creator Percentage (%)',
-            'github' => 'Invalid GitHub Creator Percentage (%)',
+            'youtube' => 'Invalid YouTube Creator (%)',
+            'twitch' => 'Invalid Twitch Creator (%)',
+            'twitter' => 'Invalid Twitter Creator (%)',
+            'vimeo' => 'Invalid Vimeo Creator (%)',
+            'github' => 'Invalid GitHub Creator (%)',
         ];
         return view('stats.creator_validation', compact('channels'));
     }
