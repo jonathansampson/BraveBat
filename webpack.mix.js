@@ -5,5 +5,6 @@ mix
   .vue()
   .postCss('resources/css/app.css', 'public/css', [require('tailwindcss')])
   .version()
+  .sourceMaps()
   .browserSync({ proxy: 'bravebat.test' })
   .disableNotifications()

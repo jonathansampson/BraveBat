@@ -93,7 +93,6 @@ export default defineComponent({
         axios.post(`/search?term=${term.value}`).then((response) => {
           results.value = response.data
           loading.value = false
-          console.log(results.value)
         })
       }
     }
