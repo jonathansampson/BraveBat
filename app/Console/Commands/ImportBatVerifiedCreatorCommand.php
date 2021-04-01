@@ -2,10 +2,10 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Stats\CreatorDailyStats;
+use App\Services\BraveApiService;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
-use App\Services\BraveApiService;
-use App\Models\Stats\CreatorDailyStats;
 
 class ImportBatVerifiedCreatorCommand extends Command
 {

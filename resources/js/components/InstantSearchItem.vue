@@ -1,7 +1,7 @@
 <template>
   <li>
     <a
-      :href="`creators/${result.channel}/${result.id}`"
+      :href="`/creators/${result.channel}/${result.id}`"
       class="flex items-center py-4 transition duration-150 ease-in-out text-brand-dark hover:bg-gray-700 hover:text-brand-light"
       tabindex="-1"
     >

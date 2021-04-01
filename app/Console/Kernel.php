@@ -32,18 +32,9 @@ class Kernel extends ConsoleKernel
         $schedule->command('communities:generate')->dailyAt('00:02');
         $schedule->command('sitemap:generate')->dailyAt("00:03");
 
-        // $schedule->command('import:creator')->dailyAt("00:01");
-        // $schedule->command('backfill:website')->dailyAt("03:41"); // 8000
-        // $schedule->command('backfill:twitter')->dailyAt("03:42"); // 10000
-        // $schedule->command('backfill:vimeo')->dailyAt("03:43"); // 10000
-        // $schedule->command('backfill:twitch')->dailyAt("03:44"); // 10000
-        // $schedule->command('backfill:github')->dailyAt("03:45"); // 15000
-        // $schedule->command('backfill:youtube')->dailyAt("03:46"); // 20000
-
         $schedule->command('backfill:all')->dailyAt("09:00");
 
         $schedule->command('creator:rank')->dailyAt('18:00');
-        $schedule->command('creator_daily_stats:generate_from_bat_growth')->dailyAt('18:30');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
 
         // $schedule->command('import:creator')->dailyAt("10:18");
