@@ -24,18 +24,6 @@ class BraveProtoApiServiceTest extends TestCase
      * @test
      * @group api
      */
-    public function experiment()
-    {
-        $service = new BraveProtoApiService();
-        $channels = $service->getChannels("22cd");
-        $this->assertEquals('website', $channels[0]['type']);
-        $this->assertEquals('zeetreby.com', $channels[0]['id']);
-    }
-
-    /**
-     * @test
-     * @group api
-     */
     public function it_tries_to_get_prefix_list()
     {
         $service = new BraveProtoApiService();
