@@ -15,6 +15,7 @@ class CreatorFactory extends Factory
         return [
             'creator' => 'bravebat.info',
             'channel' => 'website',
+            'name' => $this->faker->name,
         ];
     }
 }

@@ -199,4 +199,14 @@ class Creator extends Model
     {
         return config('bravebat.s3') . $this->screenshot;
     }
+
+    public function toSearchArray()
+    {
+        return [
+            'id' => $this->id,
+            'channel' => $this->channel,
+            'name' => $this->name,
+            'ranking' => $this->ranking,
+        ];
+    }
 }
