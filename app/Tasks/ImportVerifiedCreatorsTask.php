@@ -34,8 +34,8 @@ class ImportVerifiedCreatorsTask
         $date = Carbon::parse('2020-01-02');
         $today = Carbon::today();
 
-        $index = $date->diffInDays($today) % 32;
-        $chunkedPrefixes = array_chunk($prefixes, 2048);
+        $index = $date->diffInDays($today) % 8;
+        $chunkedPrefixes = array_chunk($prefixes, 8192);
         return $chunkedPrefixes[$index];
     }
 }
