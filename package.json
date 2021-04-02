@@ -21,6 +21,7 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-prettier-vue": "^2.1.1",
     "eslint-plugin-vue": "^7.8.0",
+    "laravel-mix": "^6.0",
     "lodash": "^4.17.20",
     "node-sass": "^5.0.0",
     "prettier": "^2.2.1",
@@ -29,8 +30,7 @@
     "tailwindcss": "^2.0.2",
     "vue": "^3.0.5",
     "vue-loader": "^16.1.2",
-    "vue-template-compiler": "^2.6.12",
-    "laravel-mix": "^6.0"
+    "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
     "@headlessui/vue": "^0.3.0",
@@ -38,6 +38,7 @@
     "@tailwindcss/forms": "^0.2.1",
     "@vueuse/core": "^4.6.2",
     "chart.js": "^2.9.4",
-    "vue-chartjs": "^3.5.1"
+    "vue-chartjs": "^3.5.1",
+    "vue-instantsearch": "https://github.com/SteveLewisES/vue-instantsearch"
   }
 }
