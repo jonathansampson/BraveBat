@@ -1,7 +1,7 @@
 <div class="bg-brand-dark" id='search'>
     <nav class="container px-4 py-2 mx-auto sm:px-6 md:px-8">
         <div class="flex flex-col items-center justify-between sm:flex-row">
-            <div class="mb-4 sm:mb-0">
+            <div class="mb-2 sm:mb-0">
                 <a href="{{ url('/') }}" class="flex items-center font-semibold no-underline text-brand-orange">
                     <div class="w-6 h-6">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" class="fill-current">
@@ -13,9 +13,6 @@
                         BraveBat
                     </div>
                 </a>
-            </div>
-            <div class="flex items-center text-brand-light">
-                <instant-search></instant-search>
             </div>
         </div>
     </nav>

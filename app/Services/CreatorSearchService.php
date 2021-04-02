@@ -85,12 +85,22 @@ class CreatorSearchService
         $this->index->deleteDocument($id);
     }
 
-    public function search($term)
+    public function search($term, $channels = [])
     {
-        return $this->index->search($term);
+        $options = [
+            'attributesToHighlight' => ['name'],
+            'facetsDistribution' => ['channel'],
+        ];
+        if (count($channels)) {
+            $options['facetFilters'] = [];
+            $channelArray = array_map(function ($channel) {
+                return 'channel:' . $channel;
+            }, $channels);
+            $options['facetFilters'] = [$channelArray];
+        }
+        return $this->index->search($term, $options);
     }
 
-    // use App\Services\CreatorSearchService;
     // $service = new App\Services\CreatorSearchService("creators");
     // $service->massIndex();
     public function massIndex()

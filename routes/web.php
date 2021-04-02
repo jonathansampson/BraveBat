@@ -50,3 +50,6 @@ Route::any('/charts/bat_volume', 'ChartDataBatStatsController@batVolume')->name(
 Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')->name('charts.bat_market_cap');
 
 Route::post('/search', 'SearchController@index')->name('search');
+Route::post('/meili', 'SearchController@meili')->name('meili');
+
+Route::get('/test', 'HomeController@test')->name('test');

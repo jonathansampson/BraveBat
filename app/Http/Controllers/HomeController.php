@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
-use DB;
 
 class HomeController extends Controller
 {
@@ -26,5 +25,11 @@ class HomeController extends Controller
     public function terms_of_service()
     {
         return view('terms_of_service');
+    }
+
+    public function test()
+    {
+        return view('test');
+
     }
 }

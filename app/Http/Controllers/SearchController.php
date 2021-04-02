@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
+use App\Services\CreatorSearchService;
 use Illuminate\Http\Request;
 
 class SearchController extends Controller
@@ -22,4 +23,23 @@ class SearchController extends Controller
         }
     }
 
+    public function meili(Request $request)
+    {
+        $term = $request->term;
+        $channels = $request->channels;
+        $service = new CreatorSearchService();
+        $results = $service->search($term, $channels);
+        $hits = array_map(function ($hit) {
+            return $hit['_formatted'];
+        }, $results->getHits());
+
+        $channels = $results->getFacetsDistribution()['channel'];
+        ksort($channels);
+
+        return response()->json([
+            'hits' => $hits,
+            'channels' => $channels,
+        ]);
+
+    }
 }
