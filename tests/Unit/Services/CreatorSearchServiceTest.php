@@ -10,6 +10,7 @@ use Tests\TestCase;
 class CreatorSearchServiceTest extends TestCase
 {
     use RefreshDatabase;
+
     /**
      * @test
      * @group api
@@ -23,13 +24,14 @@ class CreatorSearchServiceTest extends TestCase
         ]);
 
         $service = new CreatorSearchService("test_creator");
-        $service->updateRankingRules();
-        $service->updateSearchableAttributes();
+        $service->updateSettings();
+
         $creatorsArray = Creator::all()->map(function ($creator) {
             return $creator->toSearchArray();
         })->toArray();
         $service->addDocument($creatorsArray);
         sleep(1);
+        $this->assertEquals(11, $service->getStats()['numberOfDocuments']);
 
         $results = $service->search('songhuasonghuasonghua');
         $this->assertEquals(1, count($results));

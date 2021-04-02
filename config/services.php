@@ -12,7 +12,7 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -36,7 +36,7 @@ return [
     ],
 
     'youtube' => [
-        'api_key' => env('YOUTUBE_API_KEY')
+        'api_key' => env('YOUTUBE_API_KEY'),
     ],
 
     'twitch' => [
@@ -57,7 +57,7 @@ return [
     ],
 
     'slack' => [
-        'webhook' => env('SLACK_WEBHOOK')
+        'webhook' => env('SLACK_WEBHOOK'),
     ],
 
     'recaptcha' => [
@@ -72,5 +72,11 @@ return [
 
     'telegram' => [
         'bot_token' => env('TELEGRAM_BOT_TOKEN'),
-    ]
+    ],
+
+    'meili' => [
+        'master_key' => env('MEILI_MASTER_KEY'),
+        'public_key' => env('MEILI_PUBLIC_KEY'),
+        'private_key' => env('MEILI_PRIVATE_KEY'),
+    ],
 ];

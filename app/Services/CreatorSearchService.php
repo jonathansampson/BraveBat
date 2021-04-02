@@ -15,14 +15,22 @@ class CreatorSearchService
     public function __construct($indexName = "creators")
     {
         $this->endpoint = "http://127.0.0.1:7700";
-        $this->client = new Client($this->endpoint);
+        $this->client = new Client($this->endpoint, config('services.meili.private_key'));
         $this->indexName = $indexName;
         $this->index = $this->client->index($indexName);
     }
 
+    public function getKeys()
+    {
+        $masterClient = new Client($this->endpoint, config('services.meili.master_key'));
+        return $masterClient->getKeys();
+    }
+
     public function createIndex()
     {
-        $this->client->createIndex($this->indexName, ['primaryKey' => 'id']);
+        $this->client->createIndex($this->indexName, [
+            'primaryKey' => 'id',
+        ]);
     }
 
     public function deleteIndex()
@@ -30,34 +38,46 @@ class CreatorSearchService
         $this->client->deleteIndex($this->indexName);
     }
 
+    public function getStats()
+    {
+        return $this->index->stats();
+    }
+
     public function addDocument($creatorArray)
     {
         $this->index->addDocuments($creatorArray);
     }
 
-    public function updateSearchableAttributes()
+    public function getSettings()
     {
-        $this->index->updateSearchableAttributes([
-            'name',
-        ]);
+        return $this->index->getSettings();
     }
 
-    public function updateRankingRules()
+    public function updateSettings()
     {
-        $this->index->updateRankingRules([
-            'desc(ranking)',
-            'typo',
-            'words',
-            'proximity',
-            'attribute',
-            'wordsPosition',
-            'exactness',
+        $this->index->updateSettings([
+            'rankingRules' => [
+                'desc(ranking)',
+                'typo',
+                'words',
+                'proximity',
+                'attribute',
+                'wordsPosition',
+                'exactness',
+            ],
+            'searchableAttributes' => [
+                'name',
+            ],
+            'displayedAttributes' => [
+                '*',
+            ],
+            'attributesForFaceting' => [
+                'channel',
+            ],
+            'stopWords' => null,
+            'synonyms' => null,
+            'distinctAttribute' => null,
         ]);
-    }
-
-    public function getRankingRules()
-    {
-        return $this->index->getRankingRules();
     }
 
     public function deleteDocument($id)
@@ -71,7 +91,7 @@ class CreatorSearchService
     }
 
     // use App\Services\CreatorSearchService;
-    // $service = new CreatorSearchService("creators");
+    // $service = new App\Services\CreatorSearchService("creators");
     // $service->massIndex();
     public function massIndex()
     {
