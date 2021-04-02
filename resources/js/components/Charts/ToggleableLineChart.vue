@@ -2,7 +2,7 @@
   <div>
     <h2 class="py-4 text-xl font-semibold text-center" v-html="title"></h2>
     <toggle-panel
-      :toggleable="true"
+      :toggleable="toggleable"
       @screenshot="screenshot"
       @toggle="toggle"
       :title="title"
