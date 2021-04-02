@@ -43,7 +43,7 @@ class ImportBatVerifiedCreatorCommand extends Command
         $task = (new ImportVerifiedCreatorsTask);
         $task->handle($task->generatePrefixes());
         SimpleScheduledTaskSlackAndLogService::message('Finish importing brave creators');
-        // CreatorDailyStats::generate(Carbon::today()->toDateString());
-        // $this->call('cache:clear');
+        CreatorDailyStats::generate(Carbon::today()->toDateString());
+        $this->call('cache:clear');
     }
 }

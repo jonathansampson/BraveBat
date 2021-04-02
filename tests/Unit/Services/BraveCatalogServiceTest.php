@@ -61,7 +61,6 @@ class BraveCatalogServiceTest extends TestCase
     {
         $service = new BraveCatalogService();
         $geoTargets = $service->getGeoTargets();
-        dd($geoTargets);
         $this->assertGreaterThan(20, count($geoTargets));
     }
 }

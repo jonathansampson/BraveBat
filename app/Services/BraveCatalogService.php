@@ -10,7 +10,7 @@ class BraveCatalogService
 
     public function __construct()
     {
-        $this->data = Http::get(config("bravebat.catelog_page.v3"))->json();
+        $this->data = Http::get(config("bravebat.catelog_page.v7"))->json();
     }
 
     public function getIssuers()
