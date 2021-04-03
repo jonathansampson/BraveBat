@@ -27,9 +27,9 @@ class HomeController extends Controller
         return view('terms_of_service');
     }
 
-    public function test()
+    public function search()
     {
-        return view('test');
+        return view('search');
 
     }
 }

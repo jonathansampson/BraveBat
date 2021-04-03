@@ -1,8 +1,8 @@
 window.axios = require('axios')
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
-import InstantSearch from './components/InstantSearch.vue'
-import AdvancedSearch from './components/AdvancedSearch.vue'
+import InstantSearch from './components/Search/InstantSearch.vue'
+import AdvancedSearch from './components/Search/AdvancedSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import { createApp } from 'vue'
