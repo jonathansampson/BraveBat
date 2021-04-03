@@ -1,12 +1,16 @@
 <template>
   <div class="flex flex-col sm:space-x-4 sm:flex-row">
-    <div class="w-full p-4 sm:w-64 sm:border sm:border-gray-100 sm:rounded-lg">
-      <search-input v-model="term" @clear="clearTerm"></search-input>
+    <div class="w-full sm:w-64">
+      <search-input
+        v-model="term"
+        @clear="clearTerm"
+        :auto-focus="true"
+      ></search-input>
       <div>
-        <div class="mt-4 sm:hidden">
+        <div class="mt-4 mb-4 sm:hidden">
           <div class="flex items-center justify-between">
             <div class="text-lg font-semibold">
-              {{ totalCreators.toLocaleString() }} Creators Found
+              {{ totalCreators }} Creators Found
             </div>
             <div>
               <base-button-gray-rounded
@@ -43,7 +47,7 @@
       </div>
     </div>
 
-    <div class="flex-1 px-2">
+    <div class="flex-1 px-1 sm:px-4">
       <div class="hidden mb-2 text-lg font-semibold sm:block">
         {{ totalCreators.toLocaleString() }} Creators Found
       </div>
@@ -58,6 +62,14 @@
         >
         </advanced-search-item>
       </ul>
+      <div class="flex justify-center mt-4" v-if="hasMore">
+        <base-button-gray-rounded
+          @click="loadMore"
+          class="px-3 py-1 text-sm text-brand-orange"
+        >
+          Load More
+        </base-button-gray-rounded>
+      </div>
     </div>
   </div>
 </template>
@@ -87,21 +99,22 @@ export default defineComponent({
     const term = ref('')
     const selectedChannels = ref([])
     const mobileChannelFaucet = ref(false)
+    const offset = computed(() => hits.value.length)
     const searchOptions = computed(() => ({
       term: term.value,
       channels: selectedChannels.value
     }))
 
-    const { hits, channels, totalCreators, search } = useSearch(searchOptions)
+    const { hits, channels, totalCreators, search, hasMore } = useSearch()
 
     onMounted(() => {
-      search()
+      search(searchOptions.value)
     })
 
     watch(
       [selectedChannels, term],
       () => {
-        search()
+        search(searchOptions.value)
       },
       {
         deep: true
@@ -131,6 +144,13 @@ export default defineComponent({
       mobileChannelFaucet.value = !mobileChannelFaucet.value
     }
 
+    const loadMore = () => {
+      search({
+        ...searchOptions.value,
+        offset: offset.value
+      })
+    }
+
     return {
       term,
       search,
@@ -142,7 +162,9 @@ export default defineComponent({
       totalCreators,
       toggleChannel,
       toggleMobileChannelFaucet,
-      mobileChannelFaucet
+      mobileChannelFaucet,
+      loadMore,
+      hasMore
     }
   }
 })

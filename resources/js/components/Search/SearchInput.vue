@@ -4,11 +4,15 @@
       aria-label="search"
       name="search"
       autocomplete="off"
+      autocorrect="off"
+      autocapitalize="off"
+      spellcheck="false"
       type="text"
       class="w-full px-8 py-2 text-sm placeholder-gray-300 border border-gray-200 rounded-full bg-gray-50 focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
       placeholder="Search Creators"
       :value="modelValue"
       @input="onChanged"
+      ref="searchInput"
     />
     <div class="absolute inset-y-0 flex items-center left-3">
       <base-icon-search class="w-4 h-4"></base-icon-search>
@@ -22,23 +26,36 @@
 </template>
 
 <script>
-import { defineComponent } from '@vue/runtime-core'
+import { defineComponent, onMounted, ref } from '@vue/runtime-core'
 
 export default defineComponent({
   emits: ['update:modelValue'],
   props: {
-    modelValue: String
+    modelValue: String,
+    autoFocus: {
+      type: Boolean,
+      default: false
+    }
   },
   setup(props, { emit }) {
+    const searchInput = ref(null)
+
     const onChanged = (e) => {
       emit('update:modelValue', e.currentTarget.value)
     }
     const clear = () => {
       emit('clear')
     }
+    onMounted(() => {
+      if (props.autoFocus) {
+        searchInput.value.focus()
+      }
+    })
+
     return {
       onChanged,
-      clear
+      clear,
+      searchInput
     }
   }
 })

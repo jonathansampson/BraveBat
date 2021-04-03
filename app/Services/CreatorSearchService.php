@@ -85,11 +85,13 @@ class CreatorSearchService
         $this->index->deleteDocument($id);
     }
 
-    public function search($term, $channels = [])
+    public function search($term, $channels = [], $offset = null)
     {
         $options = [
             'attributesToHighlight' => ['name'],
             'facetsDistribution' => ['channel'],
+            'limit' => 20,
+            'offset' => $offset,
         ];
         if (count($channels)) {
             $options['facetFilters'] = [];

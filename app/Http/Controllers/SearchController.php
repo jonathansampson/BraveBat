@@ -27,8 +27,10 @@ class SearchController extends Controller
     {
         $term = $request->term;
         $channels = $request->channels;
+        $offset = $request->offset ? $request->offset : 0;
+
         $service = new CreatorSearchService('creators');
-        $results = $service->search($term, $channels);
+        $results = $service->search($term, $channels, $offset);
         $hits = array_map(function ($hit) {
             return $hit['_formatted'];
         }, $results->getHits());
@@ -39,6 +41,7 @@ class SearchController extends Controller
         return response()->json([
             'hits' => $hits,
             'channels' => $channels,
+            'nbHits' => $results->getNbHits(),
         ]);
 
     }

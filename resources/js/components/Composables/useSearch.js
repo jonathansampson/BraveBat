@@ -2,20 +2,23 @@ import { ref } from '@vue/reactivity'
 import { computed } from '@vue/runtime-core'
 import { isEmpty } from 'lodash'
 
-export default function useSearch(searchOptions) {
+export default function useSearch() {
   const hits = ref([])
   const channels = ref({})
-  const totalCreators = computed(() => {
-    if (isEmpty(channels.value)) return 0
-    return Object.values(channels.value).reduce((a, b) => a + b)
-  })
+  const totalCreators = ref(0)
+  const hasMore = computed(() => totalCreators.value > hits.value.length)
 
-  const search = () => {
-    axios.post('/meili', searchOptions.value).then((response) => {
-      hits.value = response.data.hits
+  const search = (searchOptions) => {
+    axios.post('/meili', searchOptions).then((response) => {
+      if (searchOptions.hasOwnProperty('offset')) {
+        hits.value.push(...response.data.hits)
+      } else {
+        hits.value = response.data.hits
+      }
       channels.value = response.data.channels
+      totalCreators.value = response.data.nbHits
     })
   }
 
-  return { hits, channels, totalCreators, search }
+  return { hits, channels, totalCreators, search, hasMore }
 }

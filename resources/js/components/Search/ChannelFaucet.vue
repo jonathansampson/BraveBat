@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex justify-between mb-1 text-gray-500">
+    <div class="flex justify-between mb-2 text-gray-500">
       <h1 class="font-semibold uppercase">Channel</h1>
       <div class="flex items-center">
         <base-button-gray-rounded @click="clear" v-if="selectedChannels.length">

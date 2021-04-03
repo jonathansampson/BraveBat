@@ -16,7 +16,7 @@
           </div>
         </div>
         <div v-else class="flex flex-col items-end">
-          <div class="text-gray-500 uppercase text-xxs">Follower Count</div>
+          <div class="text-gray-500 uppercase text-xxs">Follower</div>
           <div>
             {{ hit.follower_count.toLocaleString() }}
           </div>
