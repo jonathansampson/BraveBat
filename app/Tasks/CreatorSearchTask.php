@@ -19,7 +19,6 @@ class CreatorSearchTask
     {
         $this->service->createIndex();
         $this->service->updateSettings();
-        $this->refresh();
     }
 
     public function recreateIndex()
@@ -27,7 +26,6 @@ class CreatorSearchTask
         $this->service->deleteIndex();
         $this->service->createIndex();
         $this->service->updateSettings();
-        $this->refresh();
     }
 
     public function updateSetting()
