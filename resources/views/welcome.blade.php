@@ -20,7 +20,7 @@ communities')
             </div>
         </div>
         <div class="flex items-center justify-center">
-            <x-ddownownload-badge></x-ddownownload-badge>
+            <x-download-badge></x-download-badge>
         </div>
     </div>
 </div>
