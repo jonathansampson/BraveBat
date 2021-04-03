@@ -11,6 +11,7 @@ class CreatorSearchService
     private $indexName;
     private $endpoint;
 
+    // new CreatorSearchService('creators')
     public function __construct($indexName)
     {
         $this->endpoint = config('services.meili.endpoint');
