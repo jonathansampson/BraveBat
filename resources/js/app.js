@@ -8,6 +8,9 @@ import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import { createApp } from 'vue'
 import Chart from 'chart.js'
 
+import upperFirst from 'lodash/upperFirst'
+import camelCase from 'lodash/camelCase'
+
 Chart.plugins.register({
   beforeDraw: function (chartInstance) {
     var ctx = chartInstance.chart.ctx
@@ -23,5 +26,23 @@ const app = createApp({
     CreatorDonutChart,
     AdvancedSearch
   }
+})
+
+const requireComponent = require.context(
+  './components/Base',
+  true,
+  /Base[A-Z]\w+\.(vue|js)$/
+)
+requireComponent.keys().forEach((fileName) => {
+  const componentConfig = requireComponent(fileName)
+  const componentName = upperFirst(
+    camelCase(
+      fileName
+        .split('/')
+        .pop()
+        .replace(/\.\w+$/, '')
+    )
+  )
+  app.component(componentName, componentConfig.default || componentConfig)
 })
 app.mount('#app')

@@ -5,7 +5,7 @@
       class="flex items-center justify-between px-2 py-4 transition duration-150 ease-in-out"
     >
       <div class="flex items-center">
-        <component :is="`${hit.channel}-logo`" class="w-6 h-6" />
+        <component :is="`base-logo-${hit.channel}`" class="w-6 h-6" />
         <span class="ml-2 meili" v-html="hit.name"></span>
       </div>
       <div>
@@ -27,26 +27,9 @@
 </template>
 
 <script>
-import YoutubeLogo from './Logos/YoutubeLogo.vue'
-import WebsiteLogo from './Logos/WebsiteLogo.vue'
-import TwitterLogo from './Logos/TwitterLogo.vue'
-import TwitchLogo from './Logos/TwitchLogo.vue'
-import RedditLogo from './Logos/RedditLogo.vue'
-import VimeoLogo from './Logos/VimeoLogo.vue'
-import GithubLogo from './Logos/GithubLogo.vue'
 import { defineComponent } from '@vue/runtime-core'
 
 export default defineComponent({
-  components: {
-    YoutubeLogo,
-    GithubLogo,
-    WebsiteLogo,
-    RedditLogo,
-    TwitchLogo,
-    TwitterLogo,
-    VimeoLogo
-  },
-
   props: {
     hit: {
       type: Object,

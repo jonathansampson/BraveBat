@@ -19,14 +19,14 @@
           @click="screenshot"
           class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
         >
-          <screenshot-icon class="w-3 h-3"></screenshot-icon>
+          <base-icon-screenshot class="w-3 h-3"></base-icon-screenshot>
         </button>
         <button
           @click="webShare"
           v-if="isWebShareSupported"
           class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
         >
-          <share-icon class="w-3 h-3"></share-icon>
+          <base-icon-share class="w-3 h-3"></base-icon-share>
         </button>
         <social-share-panel
           v-else
@@ -38,16 +38,12 @@
 </template>
 
 <script>
-import ScreenshotIcon from '../Icons/ScreenshotIcon.vue'
-import ShareIcon from '../Icons/ShareIcon.vue'
 import { defineComponent, ref } from '@vue/runtime-core'
 import useWebShare from '../Composables/useWebShare'
 import SocialSharePanel from './SocialSharePanel.vue'
 
 export default defineComponent({
   components: {
-    ScreenshotIcon,
-    ShareIcon,
     SocialSharePanel
   },
   props: {

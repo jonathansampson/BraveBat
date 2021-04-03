@@ -3,7 +3,7 @@
     <MenuButton
       class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
     >
-      <share-icon class="w-3 h-3"></share-icon>
+      <base-icon-share class="w-3 h-3"></base-icon-share>
     </MenuButton>
     <transition
       enter-active-class="transition duration-100 ease-out"
@@ -22,7 +22,7 @@
             :href="twitterIntentUrl"
             target="_blank"
           >
-            <twitter-icon class="w-3 h-3"></twitter-icon>
+            <base-logo-twitter class="w-3 h-3"></base-logo-twitter>
           </a>
         </MenuItem>
       </MenuItems>
@@ -33,17 +33,13 @@
 <script>
 import { Menu, MenuButton, MenuItems, MenuItem } from '@headlessui/vue'
 import { defineComponent } from '@vue/runtime-core'
-import ShareIcon from '../Icons/ShareIcon.vue'
-import TwitterIcon from '../Icons/TwitterIcon'
 
 export default defineComponent({
   components: {
     Menu,
     MenuButton,
     MenuItems,
-    MenuItem,
-    ShareIcon,
-    TwitterIcon
+    MenuItem
   },
   props: {
     shareMessage: {

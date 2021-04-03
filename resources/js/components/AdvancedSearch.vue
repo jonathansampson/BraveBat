@@ -13,18 +13,30 @@
           ref="advancedSearch"
         />
         <div class="absolute inset-y-0 flex items-center left-3">
-          <search-icon class="w-4 h-4"></search-icon>
+          <base-icon-search class="w-4 h-4"></base-icon-search>
         </div>
         <div class="absolute inset-y-0 flex items-center right-3" v-if="term">
           <button
-            class="flex items-center justify-center p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-200 hover:bg-gray-200"
+            class="flex items-center justify-center p-0.5 rounded-full focus:outline-none focus:ring-2 focus:ring-gray-200 bg-gray-200 hover:bg-gray-300"
             @click="clearTerm"
           >
-            <close-icon class="w-4 h-4"></close-icon>
+            <base-icon-close class="w-4 h-4"></base-icon-close>
           </button>
         </div>
       </div>
-      <div class="hidden px-1 py-4 sm:block">
+      <div class="flex items-center justify-between mt-4" v-if="totalCreators">
+        <div class="text-lg font-semibold">
+          {{ totalCreators.toLocaleString() }} Creators
+        </div>
+        <div>
+          <button class="flex items-center p-1 rounded-full bg-gray-50">
+            <base-icon-filter
+              class="w-4 h-4 text-brand-orange"
+            ></base-icon-filter>
+          </button>
+        </div>
+      </div>
+      <div class="hidden px-1 py-2 sm:block">
         <div class="flex justify-between mb-1 text-gray-500">
           <h1 class="font-semibold uppercase">Channel</h1>
           <div class="flex items-center">
@@ -63,7 +75,7 @@
         </div>
       </div>
     </div>
-    <div class="flex-1">
+    <div class="flex-1 px-2">
       <ul
         v-if="hits.length"
         class="border border-gray-100 divide-y divide-gray-100 rounded"
@@ -82,14 +94,10 @@
 <script>
 import { defineComponent, onMounted, ref, watch } from '@vue/runtime-core'
 import axios from 'axios'
-import SearchIcon from './Icons/SearchIcon'
-import CloseIcon from './Icons/CloseIcon'
 import AdvancedSearchItem from './AdvancedSearchItem'
 
 export default defineComponent({
   components: {
-    SearchIcon,
-    CloseIcon,
     AdvancedSearchItem
   },
   setup() {
@@ -98,6 +106,7 @@ export default defineComponent({
     const channels = ref({})
     const selectedChannels = ref([])
     const advancedSearch = ref(null)
+    const totalCreators = ref(10000)
     const search = () => {
       axios
         .post('/meili', {
@@ -107,6 +116,9 @@ export default defineComponent({
         .then((response) => {
           hits.value = response.data.hits
           channels.value = response.data.channels
+          totalCreators.value = Object.values(channels.value).reduce(
+            (a, b) => a + b
+          )
         })
     }
 
@@ -135,7 +147,8 @@ export default defineComponent({
       selectedChannels,
       advancedSearch,
       clearSelectedChannels,
-      clearTerm
+      clearTerm,
+      totalCreators
     }
   }
 })
