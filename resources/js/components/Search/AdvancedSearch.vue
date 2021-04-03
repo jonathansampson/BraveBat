@@ -63,11 +63,18 @@
 </template>
 
 <script>
-import { defineComponent, onMounted, ref, watch } from '@vue/runtime-core'
-import axios from 'axios'
+import {
+  computed,
+  defineComponent,
+  onMounted,
+  ref,
+  watch,
+  watchEffect
+} from '@vue/runtime-core'
 import AdvancedSearchItem from './AdvancedSearchItem'
 import SearchInput from './SearchInput'
 import ChannelFaucet from './ChannelFaucet'
+import useSearch from '../Composables/useSearch'
 
 export default defineComponent({
   name: 'AdvancedSearch',
@@ -78,25 +85,14 @@ export default defineComponent({
   },
   setup() {
     const term = ref('')
-    const hits = ref([])
-    const channels = ref({})
     const selectedChannels = ref([])
-    const totalCreators = ref(0)
     const mobileChannelFaucet = ref(false)
+    const searchOptions = computed(() => ({
+      term: term.value,
+      channels: selectedChannels.value
+    }))
 
-    const search = () => {
-      axios
-        .post('/meili', {
-          term: term.value,
-          channels: selectedChannels.value
-        })
-        .then((response) => {
-          hits.value = response.data.hits
-          channels.value = response.data.channels
-          let total = Object.values(channels.value).reduce((a, b) => a + b)
-          totalCreators.value = total ? total : 0
-        })
-    }
+    const { hits, channels, totalCreators, search } = useSearch(searchOptions)
 
     onMounted(() => {
       search()

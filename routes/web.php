@@ -51,5 +51,4 @@ Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')
 
 Route::post('/search', 'SearchController@index')->name('search');
 Route::post('/meili', 'SearchController@meili')->name('meili');
-
 Route::get('/search', 'HomeController@search');
