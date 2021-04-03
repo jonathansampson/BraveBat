@@ -10,9 +10,24 @@ class CreatorSearchTask
     // app("App\Tasks\CreatorSearchTask")->refresh();
     private $service;
 
-    public function __construct(CreatorSearchService $service)
+    public function __construct()
     {
-        $this->service = $service;
+        $this->service = new CreatorSearchService('creators');
+    }
+
+    public function createIndex()
+    {
+        $this->service->createIndex();
+        $this->service->updateSettings();
+        $this->refresh();
+    }
+
+    public function recreateIndex()
+    {
+        $this->service->deleteIndex();
+        $this->service->createIndex();
+        $this->service->updateSettings();
+        $this->refresh();
     }
 
     public function redoSearchIndex()
