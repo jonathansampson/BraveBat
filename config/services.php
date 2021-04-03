@@ -78,5 +78,6 @@ return [
         'master_key' => env('MEILI_MASTER_KEY'),
         'public_key' => env('MEILI_PUBLIC_KEY'),
         'private_key' => env('MEILI_PRIVATE_KEY'),
+        'endpoint' => env('MEILI_ENDPOINT'),
     ],
 ];

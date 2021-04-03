@@ -2,7 +2,6 @@
 
 namespace App\Services;
 
-use App\Models\Creator;
 use MeiliSearch\Client;
 
 class CreatorSearchService
@@ -12,9 +11,9 @@ class CreatorSearchService
     private $indexName;
     private $endpoint;
 
-    public function __construct($indexName = "creators")
+    public function __construct($indexName)
     {
-        $this->endpoint = "http://127.0.0.1:7700";
+        $this->endpoint = config('services.meili.endpoint');
         $this->client = new Client($this->endpoint, config('services.meili.private_key'));
         $this->indexName = $indexName;
         $this->index = $this->client->index($indexName);
@@ -101,15 +100,4 @@ class CreatorSearchService
         return $this->index->search($term, $options);
     }
 
-    // $service = new App\Services\CreatorSearchService("creators");
-    // $service->massIndex();
-    public function massIndex()
-    {
-        Creator::chunk(10000, function ($creators) {
-            $creatorsArray = $creators->map(function ($creator) {
-                return $creator->toSearchArray();
-            })->toArray();
-            $this->addDocument($creatorsArray);
-        });
-    }
 }

@@ -207,6 +207,8 @@ class Creator extends Model
             'channel' => $this->channel,
             'name' => $this->name,
             'ranking' => $this->ranking,
+            'follower_count' => $this->follower_count,
+            'alexa_ranking' => $this->alexa_ranking,
         ];
     }
 }

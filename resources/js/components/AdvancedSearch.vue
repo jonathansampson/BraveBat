@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col space-x-4 sm:flex-row">
+  <div class="flex flex-col sm:space-x-4 sm:flex-row">
     <div class="w-full p-4 sm:w-64 sm:border sm:border-gray-100 sm:rounded-lg">
       <div class="relative text-gray-700">
         <input
@@ -64,8 +64,10 @@
       </div>
     </div>
     <div class="flex-1">
-      <div>Output</div>
-      <ul v-if="hits.length">
+      <ul
+        v-if="hits.length"
+        class="border border-gray-100 divide-y divide-gray-100 rounded"
+      >
         <advanced-search-item
           v-for="(hit, index) in hits"
           :key="index"

@@ -27,7 +27,7 @@ class SearchController extends Controller
     {
         $term = $request->term;
         $channels = $request->channels;
-        $service = new CreatorSearchService();
+        $service = new CreatorSearchService('creators');
         $results = $service->search($term, $channels);
         $hits = array_map(function ($hit) {
             return $hit['_formatted'];
