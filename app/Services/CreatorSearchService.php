@@ -85,7 +85,7 @@ class CreatorSearchService
         $this->index->deleteDocument($id);
     }
 
-    public function search($term, $channels = [], $offset = null)
+    public function search($term, $channels = [], $offset = 0)
     {
         $options = [
             'attributesToHighlight' => ['name'],
