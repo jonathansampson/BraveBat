@@ -28,14 +28,14 @@ class CreatorSearchService
 
     public function createIndex()
     {
-        $this->client->createIndex($this->indexName, [
+        return $this->client->createIndex($this->indexName, [
             'primaryKey' => 'id',
         ]);
     }
 
     public function deleteIndex()
     {
-        $this->client->deleteIndex($this->indexName);
+        return $this->client->deleteIndex($this->indexName);
     }
 
     public function getStats()
@@ -45,7 +45,7 @@ class CreatorSearchService
 
     public function addDocument($creatorArray)
     {
-        $this->index->addDocuments($creatorArray);
+        return $this->index->addDocuments($creatorArray);
     }
 
     public function getSettings()
@@ -53,9 +53,14 @@ class CreatorSearchService
         return $this->index->getSettings();
     }
 
+    public function createDump()
+    {
+        return $this->client->createDump();
+    }
+
     public function updateSettings()
     {
-        $this->index->updateSettings([
+        return $this->index->updateSettings([
             'rankingRules' => [
                 'desc(ranking)',
                 'typo',
@@ -82,7 +87,7 @@ class CreatorSearchService
 
     public function deleteDocument($id)
     {
-        $this->index->deleteDocument($id);
+        return $this->index->deleteDocument($id);
     }
 
     public function search($term, $channels = [], $offset = 0)

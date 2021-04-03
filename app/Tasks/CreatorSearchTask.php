@@ -33,6 +33,11 @@ class CreatorSearchTask
         $this->service->updateSettings();
     }
 
+    public function createDump()
+    {
+        return $this->service->createDump();
+    }
+
     public function refresh()
     {
         Creator::whereNotNull(['channel', 'name', 'ranking'])
