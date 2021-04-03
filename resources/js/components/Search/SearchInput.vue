@@ -8,7 +8,7 @@
       autocapitalize="off"
       spellcheck="false"
       type="text"
-      class="w-full px-8 py-2 text-sm placeholder-gray-300 border border-gray-200 rounded-full bg-gray-50 focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
+      class="w-full px-8 py-2 placeholder-gray-300 border border-gray-200 rounded-full bg-gray-50 focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
       placeholder="Search Creators"
       :value="modelValue"
       @input="onChanged"
