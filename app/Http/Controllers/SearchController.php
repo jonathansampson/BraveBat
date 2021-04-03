@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Creator;
 use App\Services\CreatorSearchService;
 use Illuminate\Http\Request;
 
@@ -10,23 +9,13 @@ class SearchController extends Controller
 {
     public function index(Request $request)
     {
-        $term = $request->term;
-        if ($term && strlen($term) >= 3) {
-            return Creator::select('name', 'channel', 'id')
-                ->where("valid", true)
-                ->whereNotNull("name")
-                ->whereNotNull('ranking')
-                ->where('name', 'LIKE', '%' . $request->term . '%')
-                ->orderBy('ranking', 'desc')
-                ->take(10)
-                ->get();
-        }
+        return view('search', ['initialTerm' => $request->term]);
     }
 
     public function meili(Request $request)
     {
         $term = $request->term;
-        $channels = $request->channels;
+        $channels = $request->channels ? $request->channels : [];
         $offset = $request->offset ? $request->offset : 0;
 
         $service = new CreatorSearchService('creators');

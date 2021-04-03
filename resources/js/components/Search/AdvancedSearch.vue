@@ -80,8 +80,7 @@ import {
   defineComponent,
   onMounted,
   ref,
-  watch,
-  watchEffect
+  watch
 } from '@vue/runtime-core'
 import AdvancedSearchItem from './AdvancedSearchItem'
 import SearchInput from './SearchInput'
@@ -90,13 +89,19 @@ import useSearch from '../Composables/useSearch'
 
 export default defineComponent({
   name: 'AdvancedSearch',
+  props: {
+    initialTerm: {
+      type: String,
+      default: ''
+    }
+  },
   components: {
     AdvancedSearchItem,
     SearchInput,
     ChannelFaucet
   },
-  setup() {
-    const term = ref('')
+  setup(props) {
+    const term = ref(props.initialTerm)
     const selectedChannels = ref([])
     const mobileChannelFaucet = ref(false)
     const offset = computed(() => hits.value.length)

@@ -49,6 +49,5 @@ Route::any('/charts/bat_holders_add', 'ChartDataBatStatsController@batHoldersAdd
 Route::any('/charts/bat_volume', 'ChartDataBatStatsController@batVolume')->name('charts.bat_volume');
 Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')->name('charts.bat_market_cap');
 
-Route::post('/search', 'SearchController@index')->name('search');
+Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/meili', 'SearchController@meili')->name('meili');
-Route::get('/search', 'HomeController@search');
