@@ -30,17 +30,8 @@ class CreatorSearchTask
         $this->refresh();
     }
 
-    public function redoSearchIndex()
-    {
-        $this->service->deleteIndex();
-        $this->service->createIndex();
-        $this->service->updateSettings();
-        $this->refresh();
-    }
-
     public function updateSetting()
     {
-        $this->service = new CreatorSearchService("creators");
         $this->service->updateSettings();
     }
 
@@ -54,4 +45,5 @@ class CreatorSearchTask
                 $this->service->addDocument($creatorsArray);
             });
     }
+
 }
