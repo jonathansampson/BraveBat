@@ -8,11 +8,12 @@
       autocapitalize="off"
       spellcheck="false"
       type="text"
-      class="w-full px-8 py-2 placeholder-gray-300 border border-gray-200 rounded-full sm:text-sm bg-gray-50 focus:border-brand-orange focus:ring focus:ring-brand-orange focus:ring-opacity-50"
+      class="w-full px-8 py-2 placeholder-gray-300 border border-gray-200 rounded-full sm:text-sm bg-gray-50 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange focus:ring-opacity-50"
       placeholder="Search Creators"
       :value="modelValue"
       @input="onChanged"
       ref="searchInput"
+      @keyup.escape="clear"
     />
     <div class="absolute inset-y-0 flex items-center left-3">
       <base-icon-search class="w-4 h-4"></base-icon-search>

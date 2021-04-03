@@ -2,7 +2,7 @@
   <li>
     <a
       :href="`/creators/${hit.channel}/${hit.id}`"
-      class="flex items-center py-4 transition duration-150 ease-in-out text-brand-dark hover:bg-gray-700 hover:text-brand-light"
+      class="flex items-center py-4 transition duration-150 ease-in-out bg-gray-100 text-brand-dark hover:bg-gray-200"
       tabindex="-1"
     >
       <div class="w-4 h-4 ml-2">

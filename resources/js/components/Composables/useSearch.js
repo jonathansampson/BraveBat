@@ -1,6 +1,5 @@
 import { ref } from '@vue/reactivity'
 import { computed } from '@vue/runtime-core'
-import { isEmpty } from 'lodash'
 
 export default function useSearch() {
   const hits = ref([])
