@@ -211,4 +211,9 @@ class Creator extends Model
             'alexa_ranking' => $this->alexa_ranking,
         ];
     }
+
+    public function scopeSearchable($query)
+    {
+        return $query->whereNotNull(['channel', 'name', 'ranking']);
+    }
 }

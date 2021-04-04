@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
+use App\Services\CreatorSearchService;
 
 class HomeController extends Controller
 {
@@ -34,6 +35,11 @@ class HomeController extends Controller
 
     public function dashboard()
     {
-        return view('dashboard');
+        $searchable = Creator::searchable()->count();
+        $indexStats = (new CreatorSearchService())->getStats();
+        return view('dashboard', [
+            'searchable' => $searchable,
+            'indexStats' => $indexStats,
+        ]);
     }
 }

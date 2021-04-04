@@ -40,7 +40,7 @@ class CreatorSearchTask
 
     public function refresh()
     {
-        Creator::whereNotNull(['channel', 'name', 'ranking'])
+        Creator::searchable()
             ->chunk(1000, function ($creators) {
                 $creatorsArray = $creators->map(function ($creator) {
                     return $creator->toSearchArray();

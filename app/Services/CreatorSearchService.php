@@ -12,7 +12,7 @@ class CreatorSearchService
     private $endpoint;
 
     // new CreatorSearchService('creators')
-    public function __construct($indexName)
+    public function __construct($indexName = "creators")
     {
         $this->endpoint = config('services.meili.endpoint');
         $this->client = new Client($this->endpoint, config('services.meili.private_key'));
