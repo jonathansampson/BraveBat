@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Stats\CreatorDailyStats;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
 use App\Tasks\ImportVerifiedCreatorsTask;
 use Illuminate\Console\Command;

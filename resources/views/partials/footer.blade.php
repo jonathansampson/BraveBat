@@ -7,16 +7,30 @@
                         <a class="text-brand-light" href="{{route('welcome')}}">Home</a>
                     </li>
                     <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('search')}}">
+                            Creator Search
+                        </a>
+                    </li>
+                    <li class="pb-4">
                         <a class="text-brand-light" href="/docs/index.html">API Docs</a>
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('login')}}">Developer Login</a>
                     </li>
                     <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('search')}}">
-                            Creator Search
+                        <a class="text-brand-light" href="{{route('stats.top_creators')}}">
+                            Top Creators Analysis
                         </a>
                     </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.creator_validation')}}">
+                            Creator Validation Analysis
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pt-3 md:w-1/3">
+                <ul>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">
                             Brave Active Users
@@ -40,38 +54,6 @@
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('stats.communities')}}">Communities</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="pt-3 md:w-1/3">
-                <ul>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'youtube')}}">Youtube Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'website')}}">Website Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'twitch')}}">Twitch Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'twitter')}}">Twitter Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'vimeo')}}">Vimeo Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('creators.index', 'github')}}">Github Creators</a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('stats.top_creators')}}">
-                            Top Creators Analysis
-                        </a>
-                    </li>
-                    <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('stats.creator_validation')}}">
-                            Creator Validation Analysis
-                        </a>
                     </li>
                 </ul>
             </div>
