@@ -63,12 +63,22 @@
         </advanced-search-item>
       </ul>
       <div class="flex justify-center mt-4" v-if="hasMore">
-        <base-button-gray-rounded
-          @click="loadMore"
-          class="px-3 py-1 text-sm text-brand-orange"
-        >
-          Load More
-        </base-button-gray-rounded>
+        <div v-if="loading">
+          <base-button-gray-rounded class="px-3 py-1 text-sm text-brand-orange">
+            <div class="flex items-center space-x-1">
+              <base-icon-spinner class="w-3 h-3"></base-icon-spinner>
+              <span>Loading...</span>
+            </div>
+          </base-button-gray-rounded>
+        </div>
+        <div v-else>
+          <base-button-gray-rounded
+            @click="loadMore"
+            class="px-3 py-1 text-sm text-brand-orange"
+          >
+            Load More
+          </base-button-gray-rounded>
+        </div>
       </div>
     </div>
   </div>
@@ -110,7 +120,14 @@ export default defineComponent({
       channels: selectedChannels.value
     }))
 
-    const { hits, channels, totalCreators, search, hasMore } = useSearch()
+    const {
+      hits,
+      channels,
+      totalCreators,
+      search,
+      hasMore,
+      loading
+    } = useSearch()
 
     onMounted(() => {
       search(searchOptions.value)
@@ -169,7 +186,8 @@ export default defineComponent({
       toggleMobileChannelFaucet,
       mobileChannelFaucet,
       loadMore,
-      hasMore
+      hasMore,
+      loading
     }
   }
 })
