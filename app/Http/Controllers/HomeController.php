@@ -41,7 +41,7 @@ class HomeController extends Controller
         $vitalStats = DB::select("SELECT
             count(id) as 'Total',
             sum(case when confirmed_at is null then 1 else 0 end) as 'Not Confirmed',
-            sum(case when last_processed_at is null then 1 else 0 end) as 'Not Processed',
+            sum(case when last_processed_at is null and channel != 'reddit' then 1 else 0 end) as 'Not Processed (exclude Reddit)',
             sum(case when last_processed_at is null and channel = 'website' then 1 else 0 end) as 'Not Processed Website',
             sum(case when last_processed_at is null and channel = 'youtube' then 1 else 0 end) as 'Not Processed Youtube',
             sum(case when last_processed_at is null and channel = 'twitch' then 1 else 0 end) as 'Not Processed Twitch',
