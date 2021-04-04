@@ -60,6 +60,9 @@ class Kernel extends ConsoleKernel
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
+
+        // index creators
+        $schedule->command('creators_search:refresh_index')->dailyAt('14:30');
     }
 
     /**
