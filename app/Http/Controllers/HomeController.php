@@ -42,6 +42,12 @@ class HomeController extends Controller
             count(id) as 'Total',
             sum(case when confirmed_at is null then 1 else 0 end) as 'Not Confirmed',
             sum(case when last_processed_at is null then 1 else 0 end) as 'Not Processed',
+            sum(case when last_processed_at is null and channel = 'website' then 1 else 0 end) as 'Not Processed Website',
+            sum(case when last_processed_at is null and channel = 'youtube' then 1 else 0 end) as 'Not Processed Youtube',
+            sum(case when last_processed_at is null and channel = 'twitch' then 1 else 0 end) as 'Not Processed Twitch',
+            sum(case when last_processed_at is null and channel = 'vimeo' then 1 else 0 end) as 'Not Processed Vimeo',
+            sum(case when last_processed_at is null and channel = 'github' then 1 else 0 end) as 'Not Processed Github',
+            sum(case when last_processed_at is null and channel = 'twitter' then 1 else 0 end) as 'Not Processed Twitter',
             sum(case when name is null and channel != 'reddit' and valid = 1 then 1 else 0 end) as 'Valid Non-Reddit without Name',
             sum(case when ranking is null and channel != 'reddit' and valid = 1  then 1 else 0 end) as 'Valid Non-Reddit without Ranking'
             from creators
