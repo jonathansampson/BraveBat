@@ -13,8 +13,14 @@
                         <a class="text-brand-light" href="{{route('login')}}">Developer Login</a>
                     </li>
                     <li class="pb-4">
-                        <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">Brave Active
-                            Users</a>
+                        <a class="text-brand-light" href="{{route('search')}}">
+                            Creator Search
+                        </a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">
+                            Brave Active Users
+                        </a>
                     </li>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('stats.brave_initiated_bat_purchase')}}">Brave
