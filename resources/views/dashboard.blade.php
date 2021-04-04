@@ -3,10 +3,10 @@
 @section('content')
 <div class="container px-4 py-6 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-2 gap-4">
-        <div>Total Indexed Creators: {{number_format($searchable)}}</div>
+        <div>Total Indexable Creators: {{number_format($searchable)}}</div>
         <div>
             <p>
-                Indexable Creators: {{number_format($indexStats["numberOfDocuments"])}}
+                Indexed Creators: {{number_format($indexStats["numberOfDocuments"])}}
             </p>
             <p>
                 Indexing?:
@@ -29,6 +29,7 @@
         <div>1</div>
         <div>1</div>
         <div>1</div>
+
     </div>
 </div>
 @endsection
