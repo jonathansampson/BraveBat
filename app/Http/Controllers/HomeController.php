@@ -31,4 +31,9 @@ class HomeController extends Controller
     {
         return view('search');
     }
+
+    public function dashboard()
+    {
+        return view('dashboard');
+    }
 }

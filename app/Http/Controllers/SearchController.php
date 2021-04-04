@@ -12,7 +12,7 @@ class SearchController extends Controller
         return view('search', ['initialTerm' => $request->term]);
     }
 
-    public function meili(Request $request)
+    public function store(Request $request)
     {
         $term = $request->term;
         $channels = $request->channels ? $request->channels : [];

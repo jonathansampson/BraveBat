@@ -1,8 +1,4 @@
 <div class="max-w-md overflow-hidden border rounded shadow-lg">
-    @if ($creator->screenshot)
-    <img class="w-full" src="https://bravebat-prod.s3.us-west-2.amazonaws.com/{{$creator->screenshot}}"
-        alt="{{$creator->name}}">
-    @endif
     <div class="flex items-center justify-between px-4 pt-6">
         <div class="text-left">
             <div class="flex items-center mb-2">

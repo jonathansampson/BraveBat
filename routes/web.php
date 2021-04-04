@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Auth::routes(['verify' => true]);
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 Route::get('terms_of_service', 'HomeController@terms_of_service')->name('terms_of_service');
 // Stats
@@ -50,4 +51,4 @@ Route::any('/charts/bat_volume', 'ChartDataBatStatsController@batVolume')->name(
 Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')->name('charts.bat_market_cap');
 
 Route::get('/search', 'SearchController@index')->name('search');
-Route::post('/meili', 'SearchController@meili')->name('meili');
+Route::post('/search', 'SearchController@store');

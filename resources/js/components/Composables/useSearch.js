@@ -11,7 +11,7 @@ export default function useSearch() {
   const search = (searchOptions) => {
     loading.value = true
     axios
-      .post('/meili', searchOptions)
+      .post('/search', searchOptions)
       .then((response) => {
         if (searchOptions.hasOwnProperty('offset')) {
           hits.value.push(...response.data.hits)
