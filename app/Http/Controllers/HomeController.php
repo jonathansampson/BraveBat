@@ -48,6 +48,14 @@ class HomeController extends Controller
             sum(case when last_processed_at is null and channel = 'vimeo' then 1 else 0 end) as 'Not Processed Vimeo',
             sum(case when last_processed_at is null and channel = 'github' then 1 else 0 end) as 'Not Processed Github',
             sum(case when last_processed_at is null and channel = 'twitter' then 1 else 0 end) as 'Not Processed Twitter',
+
+            sum(case when last_processed_at = current_date and channel = 'website' then 1 else 0 end) as 'Website Processed Today',
+            sum(case when last_processed_at = current_date and channel = 'youtube' then 1 else 0 end) as 'Youtube Processed Today',
+            sum(case when last_processed_at = current_date and channel = 'twitch' then 1 else 0 end) as 'Twitch Processed Today',
+            sum(case when last_processed_at = current_date and channel = 'vimeo' then 1 else 0 end) as 'Vimeo Processed Today',
+            sum(case when last_processed_at = current_date and channel = 'github' then 1 else 0 end) as 'Github Processed Today',
+            sum(case when last_processed_at = current_date and channel = 'twitter' then 1 else 0 end) as 'Twitter Processed Today',
+
             sum(case when name is null and channel != 'reddit' and valid = 1 then 1 else 0 end) as 'Valid Non-Reddit without Name',
             sum(case when ranking is null and channel != 'reddit' and valid = 1  then 1 else 0 end) as 'Valid Non-Reddit without Ranking'
             from creators");
