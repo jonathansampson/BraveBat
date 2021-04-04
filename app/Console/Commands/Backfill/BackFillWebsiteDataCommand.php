@@ -2,11 +2,9 @@
 
 namespace App\Console\Commands\Backfill;
 
-use Log;
 use App\Models\Creator;
-use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
-
+use Illuminate\Console\Command;
 
 class BackFillWebsiteDataCommand extends Command
 {
@@ -43,6 +41,7 @@ class BackFillWebsiteDataCommand extends Command
     {
         $creators->each(function ($creator, $key) {
             $creator->processCreatable();
+            sleep(1);
         });
     }
 }
