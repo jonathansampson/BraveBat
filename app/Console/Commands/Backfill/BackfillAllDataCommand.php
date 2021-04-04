@@ -37,11 +37,11 @@ class BackfillAllDataCommand extends Command
     public function channels()
     {
         return [
-            // 'website' => [
-            //     'take' => 2000,
-            //     'sleep' => 0,
-            //     'gap' => 90,
-            // ],
+            'website' => [
+                'take' => 2000,
+                'sleep' => 0,
+                'gap' => 90,
+            ],
             'youtube' => [
                 'take' => 10000,
                 'sleep' => 0,
