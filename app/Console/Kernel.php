@@ -37,14 +37,15 @@ class Kernel extends ConsoleKernel
         $schedule->command('creator:rank')->dailyAt('18:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
 
-        $schedule->command('import:creator')->dailyAt("00:01");
+        $schedule->command('import:creator')->dailyAt("00:00");
 
-        $schedule->command('backfill:website')->dailyAt("5:41"); // 8000
-        $schedule->command('backfill:twitter')->dailyAt("5:42"); // 10000
-        $schedule->command('backfill:vimeo')->dailyAt("7:43"); // 10000
-        $schedule->command('backfill:twitch')->dailyAt("9:44"); // 10000
-        $schedule->command('backfill:github')->dailyAt("11:45"); // 15000
-        $schedule->command('backfill:youtube')->dailyAt("13:46"); // 20000
+        $schedule->command('backfill:website')->dailyAt("4:00"); // 8000
+        $schedule->command('backfill:twitter')->dailyAt("5:00"); // 10000
+        $schedule->command('backfill:vimeo')->dailyAt("6:00"); // 10000
+        $schedule->command('backfill:twitch')->dailyAt("7:0"); // 10000
+        $schedule->command('backfill:github')->dailyAt("8:00"); // 15000
+        $schedule->command('backfill:youtube')->dailyAt("9:0"); // 20000
+
         // $schedule->command('creator:rank')->dailyAt('14:00');
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
 
