@@ -7,10 +7,6 @@ use Illuminate\Http\Request;
 
 class ChartDataController extends Controller
 {
-// return cache()->remember('dau', 86400, function () {
-//     return $this->chartDataRepository->dau();
-// });
-
     private $chartDataRepository;
 
     public function __construct(ChartDataRepository $chartDataRepository)

@@ -28,27 +28,5 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('tokens', 'TokensController@destroy')->name('tokens.destroy');
 });
 
-// Chart APIs
-Route::any('/charts/dau', 'ChartDataController@dau')->name('charts.dau');
-Route::any('/charts/mau', 'ChartDataController@mau')->name('charts.mau');
-Route::any('/charts/bat_purchases', 'ChartDataController@bat_purchases')->name('charts.bat_purchases');
-Route::any('/charts/bat_purchases_in_dollars', 'ChartDataController@bat_purchases_in_dollars')->name('charts.bat_purchases_in_dollars');
-Route::any('/charts/ad_campaign_supported_countries', 'ChartDataController@ad_campaign_supported_countries')->name('charts.add_campaign_supported_countries');
-Route::any('/charts/active_ad_campaigns', 'ChartDataController@active_ad_campaigns')->name('charts.active_ad_campaigns');
-Route::any('/charts/bat_creator_summary', 'ChartDataController@bat_creator_summary')->name('charts.bat_creator_summary');
-Route::any('/charts/creator_stats', 'ChartDataController@creator_stats')->name('charts.creator_stats');
-Route::any('/charts/creator_daily_addition_stats/{channel?}', 'ChartDataController@creator_daily_addition_stats')->name('charts.creator_daily_addition_stats');
-Route::any('/charts/creator_daily_total_stats/{channel?}', 'ChartDataController@creator_daily_total_stats')->name('charts.creator_daily_total_stats');
-Route::any('/charts/top_creators/{channel}', 'ChartDataController@top_creators')->name('charts.top_creators');
-Route::any('/charts/creator_validation/{channel}', 'ChartDataController@creator_validation')->name('charts.creator_validation');
-Route::any('/charts/communities/{site}/{community}', 'ChartDataController@communities')->name('charts.communities');
-
-// BAT Chart APIS
-Route::any('/charts/bat_price', 'ChartDataBatStatsController@batPrice')->name('charts.bat_price');
-Route::any('/charts/bat_holders_count', 'ChartDataBatStatsController@batHoldersCount')->name('charts.bat_holders_count');
-Route::any('/charts/bat_holders_add', 'ChartDataBatStatsController@batHoldersAdd')->name('charts.bat_holders_add');
-Route::any('/charts/bat_volume', 'ChartDataBatStatsController@batVolume')->name('charts.bat_volume');
-Route::any('/charts/bat_market_cap', 'ChartDataBatStatsController@batMarketCap')->name('charts.bat_market_cap');
-
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/search', 'SearchController@store');

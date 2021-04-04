@@ -45,6 +45,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
+        $this->mapChartDataRoutes();
 
         //
     }
@@ -61,6 +62,21 @@ class RouteServiceProvider extends ServiceProvider
         Route::middleware('web')
             ->namespace($this->namespace)
             ->group(base_path('routes/web.php'));
+    }
+
+    /**
+     * Define the "chart_data" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapChartDataRoutes()
+    {
+        Route::prefix('charts')
+            ->middleware('web')
+            ->namespace($this->namespace)
+            ->group(base_path('routes/chart_data.php'));
     }
 
     /**
