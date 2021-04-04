@@ -44,6 +44,14 @@ return [
         'twitter' => '#1da1f2',
         'website' => '#343546',
     ],
+    "top_creators_cutoff" => [
+        'youtube' => 1000000,
+        'twitter' => 1000000,
+        'twitch' => 100000,
+        'vimeo' => 1000,
+        'github' => 1000,
+        'website' => 1000,
+    ],
     'communities' => [
         'reddit' => [
             'brave_browser' => 'brave_browser',

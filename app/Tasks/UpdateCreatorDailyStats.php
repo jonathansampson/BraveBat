@@ -27,7 +27,7 @@ class UpdateCreatorDailyStats
             CreatorDailyStats::updateOrCreate(
                 [
                     'record_date' => $result->verified_at,
-                    'channel' => $result->channel
+                    'channel' => $result->channel,
                 ],
                 [
                     'invalid_percent' => $result->invalid_percent,
@@ -51,12 +51,12 @@ class UpdateCreatorDailyStats
         $channel = 'website';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('alexa_ranking', '<=', 1000)
+            ->where('alexa_ranking', '<=', config('bravebat.top_creators_cutoff.website'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
@@ -69,12 +69,12 @@ class UpdateCreatorDailyStats
         $channel = 'youtube';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('follower_count', '>=', 1000000)
+            ->where('follower_count', '>=', config('bravebat.top_creators_cutoff.youtube'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
@@ -87,12 +87,12 @@ class UpdateCreatorDailyStats
         $channel = 'twitter';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('follower_count', '>=', 1000000)
+            ->where('follower_count', '>=', config('bravebat.top_creators_cutoff.twitter'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
@@ -105,12 +105,12 @@ class UpdateCreatorDailyStats
         $channel = 'twitch';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('follower_count', '>=', 100000)
+            ->where('follower_count', '>=', config('bravebat.top_creators_cutoff.twitch'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
@@ -123,12 +123,12 @@ class UpdateCreatorDailyStats
         $channel = 'vimeo';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('follower_count', '>=', 1000)
+            ->where('follower_count', '>=', config('bravebat.top_creators_cutoff.vimeo'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
@@ -141,12 +141,12 @@ class UpdateCreatorDailyStats
         $channel = 'github';
         $count = Creator::where('valid', true)
             ->where('channel', $channel)
-            ->where('follower_count', '>=', 1000)
+            ->where('follower_count', '>=', config('bravebat.top_creators_cutoff.github'))
             ->count();
         CreatorDailyStats::updateOrCreate(
             [
                 'record_date' => Carbon::today()->toDateString(),
-                'channel' => $channel
+                'channel' => $channel,
             ],
             [
                 'top_count' => $count,
