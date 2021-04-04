@@ -26,6 +26,6 @@ class BraveProtoApiServiceTest extends TestCase
     {
         $service = new BraveProtoApiService();
         $service->getPrefixes();
-
+        $this->assertEquals(1, 1);
     }
 }
