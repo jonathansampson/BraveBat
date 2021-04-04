@@ -59,4 +59,27 @@ class DashboardDataController extends Controller
             ],
         ];
     }
+
+    public function daily_processed()
+    {
+        $title = 'Daily Processed Creators';
+        $data = DB::select("SELECT
+                last_processed_at as record_date,
+                count(id) AS count
+            FROM
+                creators
+                WHERE last_processed_at > CURRENT_DATE - INTERVAL 90 DAY
+            GROUP BY
+                last_processed_at
+            ORDER BY
+                last_processed_at DESC");
+        $labels = collect($data)->map(fn($item) => $item->record_date);
+        $counts = collect($data)->map(fn($item) => $item->count);
+        return [
+            'labels' => $labels,
+            'data' => [
+                $title => $counts,
+            ],
+        ];
+    }
 }

@@ -30,6 +30,11 @@
                 :toggleable="false">
             </toggleable-line-chart>
         </div>
+        <div>
+            <toggleable-line-chart url="/charts/dashboard/daily_processed" title="Daily Processed Creators"
+                :toggleable="false">
+            </toggleable-line-chart>
+        </div>
         <div>1</div>
         <div>1</div>
         <div>1</div>
