@@ -1,9 +1,10 @@
 <template>
-  <li>
+  <li
+    class="bg-gray-100 border-b border-gray-200 text-brand-dark hover:bg-gray-200"
+  >
     <a
       :href="`/creators/${hit.channel}/${hit.id}`"
-      class="flex items-center py-4 transition duration-150 ease-in-out bg-gray-100 text-brand-dark hover:bg-gray-200"
-      tabindex="-1"
+      class="flex items-center py-4 transition duration-150 ease-in-out"
     >
       <div class="w-4 h-4 ml-2">
         <component :is="`base-logo-${hit.channel}`" class="w-4 h-4" />

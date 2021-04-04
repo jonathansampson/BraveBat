@@ -5,7 +5,7 @@
       v-if="term"
       class="absolute right-0 z-50 w-64 mt-2 text-sm border border-gray-200"
     >
-      <ul class="divide-y divide-gray-200" v-if="hits.length">
+      <ul v-if="hits.length">
         <instant-search-item
           v-for="(hit, index) in hits.slice(0, 5)"
           :key="index"
