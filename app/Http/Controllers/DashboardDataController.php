@@ -6,6 +6,14 @@ use Illuminate\Support\Facades\DB;
 
 class DashboardDataController extends Controller
 {
+
+    public function index($endpoint)
+    {
+        return cache()->remember('dashboard.' . $endpoint, 86400, function () use ($endpoint) {
+            return $this->{$endpoint}();
+        });
+    }
+
     public function daily_verified()
     {
         $title = 'Daily Verified Creators';

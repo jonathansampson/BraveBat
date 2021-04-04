@@ -21,7 +21,8 @@
             @endforeach
         </div>
         <div>
-            <toggleable-line-chart url="/charts/daily_verified" title="Daily Verified Creators" :toggleable="false">
+            <toggleable-line-chart url="/charts/dashboard/daily_verified" title="Daily Verified Creators"
+                :toggleable="false">
             </toggleable-line-chart>
         </div>
         <div>1</div>

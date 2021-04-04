@@ -56,7 +56,7 @@ export default defineComponent({
     )
 
     onMounted(() => {
-      axios.get(props.url).then((res) => {
+      axios.post(props.url).then((res) => {
         data.value = res.data
         chart.value = new Chart(canvas.value, {
           type: 'line',

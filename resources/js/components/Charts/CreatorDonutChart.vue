@@ -39,7 +39,7 @@ export default defineComponent({
     const data = ref(null)
 
     onMounted(() => {
-      axios.get(props.url).then((res) => {
+      axios.post(props.url).then((res) => {
         data.value = res.data
         chart.value = new Chart(canvas.value, {
           type: 'doughnut',
