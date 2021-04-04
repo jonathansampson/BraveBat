@@ -50,8 +50,7 @@ class HomeController extends Controller
             sum(case when last_processed_at is null and channel = 'twitter' then 1 else 0 end) as 'Not Processed Twitter',
             sum(case when name is null and channel != 'reddit' and valid = 1 then 1 else 0 end) as 'Valid Non-Reddit without Name',
             sum(case when ranking is null and channel != 'reddit' and valid = 1  then 1 else 0 end) as 'Valid Non-Reddit without Ranking'
-            from creators
-            ");
+            from creators");
         return view('dashboard', [
             'searchable' => $searchable,
             'indexStats' => $indexStats,
