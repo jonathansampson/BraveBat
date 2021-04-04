@@ -36,4 +36,27 @@ class DashboardDataController extends Controller
             ],
         ];
     }
+
+    public function daily_confirmed()
+    {
+        $title = 'Daily Confirmed Creators';
+        $data = DB::select("SELECT
+                confirmed_at as record_date,
+                count(id) AS count
+            FROM
+                creators
+                WHERE confirmed_at > CURRENT_DATE - INTERVAL 90 DAY
+            GROUP BY
+                confirmed_at
+            ORDER BY
+                confirmed_at DESC");
+        $labels = collect($data)->map(fn($item) => $item->record_date);
+        $counts = collect($data)->map(fn($item) => $item->count);
+        return [
+            'labels' => $labels,
+            'data' => [
+                $title => $counts,
+            ],
+        ];
+    }
 }

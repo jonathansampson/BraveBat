@@ -25,6 +25,11 @@
                 :toggleable="false">
             </toggleable-line-chart>
         </div>
+        <div>
+            <toggleable-line-chart url="/charts/dashboard/daily_confirmed" title="Daily Confirmed Creators"
+                :toggleable="false">
+            </toggleable-line-chart>
+        </div>
         <div>1</div>
         <div>1</div>
         <div>1</div>
