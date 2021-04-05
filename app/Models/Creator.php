@@ -168,7 +168,7 @@ class Creator extends Model
             return "Twitch channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 🎉 {$this->link}";
         }
         if ($this->channel == 'twitter') {
-            return "Twitter account {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 👏 {$this->link}";
+            return "Twitter account {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 👏 @{$this->name}";
         }
         if ($this->channel == 'vimeo') {
             return "Vimeo channel {$this->name} is just verified as a #bravebrowser Creator with {$follower_count} followers. 🙌 {$this->link}";
