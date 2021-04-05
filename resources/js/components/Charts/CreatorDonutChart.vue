@@ -5,7 +5,7 @@
     </h2>
     <toggle-panel @screenshot="screenshot" :title="title"> </toggle-panel>
   </div>
-  <canvas ref="canvas"> </canvas>
+  <canvas ref="canvas" :aria-label="title" role="img"> </canvas>
 </template>
 
 <script>

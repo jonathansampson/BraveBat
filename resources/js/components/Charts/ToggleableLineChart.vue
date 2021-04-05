@@ -8,7 +8,7 @@
       :title="title"
     >
     </toggle-panel>
-    <canvas ref="canvas"> </canvas>
+    <canvas ref="canvas" :aria-label="title" role="img"> </canvas>
   </div>
 </template>
 

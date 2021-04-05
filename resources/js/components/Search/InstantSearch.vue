@@ -26,11 +26,12 @@
 </template>
 
 <script>
-import { defineComponent, ref, watch } from '@vue/runtime-core'
+import { defineComponent, ref } from '@vue/runtime-core'
 import SearchInput from './SearchInput'
 import useSearch from '../Composables/useSearch'
 import InstantSearchItem from './InstantSearchItem'
 import useClickOutside from '../Composables/useClickOutside'
+import { debouncedWatch } from '@vueuse/core'
 
 export default defineComponent({
   components: {
@@ -44,11 +45,15 @@ export default defineComponent({
     const { hits, search } = useSearch()
     useClickOutside(instantSearchBox, clearTerm)
 
-    watch(term, () => {
-      search({
-        term: term.value
-      })
-    })
+    debouncedWatch(
+      term,
+      () => {
+        search({
+          term: term.value
+        })
+      },
+      { debounce: 200 }
+    )
     return { term, clearTerm, hits, instantSearchBox }
   }
 })

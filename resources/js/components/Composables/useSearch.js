@@ -24,5 +24,12 @@ export default function useSearch() {
       .finally(() => (loading.value = false))
   }
 
-  return { hits, channels, totalCreators, search, hasMore, loading }
+  return {
+    hits,
+    channels,
+    totalCreators,
+    hasMore,
+    loading,
+    search
+  }
 }

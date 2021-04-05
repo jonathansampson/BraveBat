@@ -98,6 +98,7 @@ import AdvancedSearchItem from './AdvancedSearchItem'
 import SearchInput from './SearchInput'
 import ChannelFaucet from './ChannelFaucet'
 import useSearch from '../Composables/useSearch'
+import { debouncedWatch } from '@vueuse/core'
 
 export default defineComponent({
   name: 'AdvancedSearch',
@@ -135,13 +136,14 @@ export default defineComponent({
       search(searchOptions.value)
     })
 
-    watch(
+    debouncedWatch(
       [selectedChannels, term],
       () => {
         search(searchOptions.value)
       },
       {
-        deep: true
+        deep: true,
+        debounce: 200
       }
     )
 
