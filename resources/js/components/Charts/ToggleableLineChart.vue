@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="relative z-10">
     <h2 class="py-4 text-xl font-semibold text-center" v-html="title"></h2>
     <toggle-panel
       :toggleable="toggleable"

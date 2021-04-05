@@ -12,7 +12,7 @@
           :hit="hit"
         >
         </instant-search-item>
-        <li class="py-1 text-right bg-white">
+        <li class="py-1 text-right bg-gray-50">
           <a
             :href="`/search?term=${term}`"
             class="pr-1 text-xs font-semibold underline text-brand-orange hover:opacity-70"
