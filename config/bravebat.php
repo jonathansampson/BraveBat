@@ -52,6 +52,14 @@ return [
         'github' => 1000,
         'website' => 1000,
     ],
+    "daily_backfill_take" => [
+        'youtube' => 20000,
+        'twitter' => 10000,
+        'twitch' => 10000,
+        'vimeo' => 10000,
+        'github' => 10000,
+        'website' => 10000,
+    ],
     'communities' => [
         'reddit' => [
             'brave_browser' => 'brave_browser',

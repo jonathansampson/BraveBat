@@ -19,7 +19,7 @@ class BackFillWebsiteDataCommand extends Command
 
     public function handle()
     {
-        $take = 8000;
+        $take = config('bravebat.daily_backfill_take.website');
         SimpleScheduledTaskSlackAndLogService::message('start Website filling');
         $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'website')

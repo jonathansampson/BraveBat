@@ -2,10 +2,9 @@
 
 namespace App\Console\Commands\Backfill;
 
-use Log;
 use App\Models\Creator;
-use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use Illuminate\Console\Command;
 
 class BackFillTwitterDataCommand extends Command
 {
@@ -19,7 +18,7 @@ class BackFillTwitterDataCommand extends Command
 
     public function handle()
     {
-        $take = 10000;
+        $take = config('bravebat.daily_backfill_take.twitter');
         SimpleScheduledTaskSlackAndLogService::message('start Twitter filling');
         $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'twitter')
@@ -41,7 +40,7 @@ class BackFillTwitterDataCommand extends Command
     {
         $creators->each(function ($creator, $key) {
             $creator->processCreatable();
-            sleep(6);
+            sleep(5);
         });
     }
 }

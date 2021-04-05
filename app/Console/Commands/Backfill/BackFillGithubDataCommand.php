@@ -3,8 +3,8 @@
 namespace App\Console\Commands\Backfill;
 
 use App\Models\Creator;
-use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use Illuminate\Console\Command;
 
 class BackFillGithubDataCommand extends Command
 {
@@ -39,7 +39,7 @@ class BackFillGithubDataCommand extends Command
      */
     public function handle()
     {
-        $take = 10000;
+        $take = config('bravebat.daily_backfill_take.github');
         SimpleScheduledTaskSlackAndLogService::message('start Github filling');
         $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'github')

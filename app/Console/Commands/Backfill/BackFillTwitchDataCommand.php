@@ -3,8 +3,8 @@
 namespace App\Console\Commands\Backfill;
 
 use App\Models\Creator;
-use Illuminate\Console\Command;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use Illuminate\Console\Command;
 
 class BackFillTwitchDataCommand extends Command
 {
@@ -18,7 +18,7 @@ class BackFillTwitchDataCommand extends Command
 
     public function handle()
     {
-        $take = 10000;
+        $take = config('bravebat.daily_backfill_take.twitch');
         SimpleScheduledTaskSlackAndLogService::message('start Twitch filling');
         $newCreators = Creator::whereNull('last_processed_at')
             ->where('channel', 'twitch')
