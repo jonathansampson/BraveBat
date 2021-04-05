@@ -40,7 +40,7 @@
     "@tailwindcss/forms": "^0.3.0",
     "@vueuse/core": "^4.6.2",
     "chart.js": "^3.0.0",
-    "chartjs-adapter-date-fns": "^1.1.0-beta.1",
+    "chartjs-adapter-date-fns": "^2.0",
     "date-fns": "^2.19.0",
     "vue-chartjs": "^3.5.1"
   }

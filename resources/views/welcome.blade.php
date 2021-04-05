@@ -25,9 +25,6 @@ communities')
     </div>
 </div>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
-    <div class="mb-8 text-3xl text-center">
-        Thriving Platform Ecosystem
-    </div>
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div>
             <creator-donut-chart url="/charts/bat_creator_summary" title="Verified Creator Platform Distribution" />
