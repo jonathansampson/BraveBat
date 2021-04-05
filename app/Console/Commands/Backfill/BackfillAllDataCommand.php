@@ -2,70 +2,62 @@
 
 namespace App\Console\Commands\Backfill;
 
-use App\Models\Creator;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
+use App\Tasks\CreatorProcessingTask;
 use Illuminate\Console\Command;
 
 class BackfillAllDataCommand extends Command
 {
-    protected $signature = 'backfill:all';
+    protected $signature = 'creator:process';
 
-    protected $description = 'Backfill All Data';
-
-    public function __construct()
-    {
-        parent::__construct();
-    }
+    protected $description = 'Process creator data';
 
     public function handle()
     {
-        SimpleScheduledTaskSlackAndLogService::message("start filling");
-        foreach ($this->channels() as $channel => $element) {
-            $updatableCreators = Creator::where('updated_at', '<', now()->subDay($element['gap']))
-                ->where('channel', $channel)
-                ->orderBy('id', 'asc')
-                ->take($element['take'])
-                ->get();
-            foreach ($updatableCreators as $creator) {
-                $creator->processCreatable();
-                sleep($element['sleep']);
-            }
+        foreach ($this->channels() as $channel => $config) {
+            SimpleScheduledTaskSlackAndLogService::message("start filling" . $channel);
+            (new CreatorProcessingTask())
+                ->setChannel($channel)
+                ->setDays($config['days'])
+                ->setTake($config['take'])
+                ->setSleep($config['sleep'])
+                ->process();
+            SimpleScheduledTaskSlackAndLogService::message("finish filling" . $channel);
         }
-        SimpleScheduledTaskSlackAndLogService::message("finish filling");
     }
 
     public function channels()
     {
         return [
             'website' => [
-                'take' => 2000,
+                'take' => 20000,
                 'sleep' => 0,
-                'gap' => 90,
+                'gap' => 30,
             ],
             'youtube' => [
                 'take' => 10000,
-                'sleep' => 0,
-                'gap' => 40,
+                'sleep' => 5,
+                'gap' => 35,
             ],
             'github' => [
-                'take' => 1000,
-                'sleep' => 6,
-                'gap' => 80,
+                'take' => 10000,
+                'sleep' => 5,
+                'gap' => 40,
             ],
             'twitter' => [
-                'take' => 1000,
-                'sleep' => 6,
-                'gap' => 70,
+                'take' => 10000,
+                'sleep' => 5,
+                'gap' => 45,
             ],
             'vimeo' => [
-                'take' => 1000,
-                'sleep' => 6,
-                'gap' => 60,
+                'take' => 10000,
+                'sleep' => 5,
+                'gap' => 50,
             ],
             'twitch' => [
-                'take' => 1000,
-                'sleep' => 6,
-                'gap' => 50,
+                'take' => 10000,
+                'sleep' => 5,
+                'gap' => 55,
             ],
         ];
     }

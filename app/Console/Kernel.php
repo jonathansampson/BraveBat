@@ -32,32 +32,21 @@ class Kernel extends ConsoleKernel
         $schedule->command('communities:generate')->dailyAt('00:02');
         $schedule->command('sitemap:generate')->dailyAt("00:03");
 
-        // $schedule->command('backfill:all')->dailyAt("09:00");
+        $schedule->command('import:creator')->dailyAt("00:00");
+        $schedule->command('creator:process')->dailyAt("04:00");
 
-        $schedule->command('creator:rank')->dailyAt('18:00');
+        // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
 
-        $schedule->command('import:creator')->dailyAt("00:00");
-
-        $schedule->command('backfill:website')->dailyAt("4:00"); // 8000
-        $schedule->command('backfill:twitter')->dailyAt("5:00"); // 10000
-        $schedule->command('backfill:vimeo')->dailyAt("6:00"); // 10000
-        $schedule->command('backfill:twitch')->dailyAt("7:0"); // 10000
-        $schedule->command('backfill:github')->dailyAt("8:00"); // 15000
-        $schedule->command('backfill:youtube')->dailyAt("9:0"); // 20000
-
-        // $schedule->command('creator:rank')->dailyAt('14:00');
-        // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
-
+        $schedule->command('creator:rank')->dailyAt('11:55');
         // Tweet
         $schedule->command('milestone:tweet')->dailyAt('6:55');
-
-        $schedule->command('top_creator:tweet website 0.0005')->dailyAt('7:55');
-        $schedule->command('top_creator:tweet youtube 0.005')->dailyAt('8:55');
-        $schedule->command('top_creator:tweet twitch 0.005')->dailyAt('9:55');
-        $schedule->command('top_creator:tweet twitter 0.01')->dailyAt('10:55');
-        $schedule->command('top_creator:tweet github 0.01')->dailyAt('11:55');
-        $schedule->command('top_creator:tweet vimeo 0.02')->dailyAt('12:55');
+        $schedule->command('top_creator:tweet website 0.0005')->dailyAt('12:55');
+        $schedule->command('top_creator:tweet youtube 0.005')->dailyAt('13:55');
+        $schedule->command('top_creator:tweet twitch 0.005')->dailyAt('14:55');
+        $schedule->command('top_creator:tweet twitter 0.01')->dailyAt('15:55');
+        $schedule->command('top_creator:tweet github 0.01')->dailyAt('16:55');
+        $schedule->command('top_creator:tweet vimeo 0.02')->dailyAt('17:55');
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
