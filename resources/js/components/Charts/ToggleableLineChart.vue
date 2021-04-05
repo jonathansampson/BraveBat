@@ -84,10 +84,10 @@ export default defineComponent({
     return {
       canvas,
       chart,
+      unit,
       toggle,
       filteringDays,
-      screenshot,
-      unit
+      screenshot
     }
   }
 })
