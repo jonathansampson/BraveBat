@@ -14,7 +14,7 @@ import {
   useDonutChartData,
   useDonutChartOption
 } from '../Composables/useChartData'
-import Chart from 'chart.js'
+import { Chart } from 'chart.js'
 import TogglePanel from './TogglePanel'
 import useChartScreenshot from '../Composables/useChartScreenshot'
 
@@ -35,15 +35,15 @@ export default defineComponent({
   setup(props) {
     const { chartScreenshot } = useChartScreenshot()
     const canvas = ref(null)
-    const chart = ref(null)
-    const data = ref(null)
+    let data = null
+    let chart = null
 
     onMounted(() => {
       axios.post(props.url).then((res) => {
-        data.value = res.data
-        chart.value = new Chart(canvas.value, {
+        data = res.data
+        chart = new Chart(canvas.value, {
           type: 'doughnut',
-          data: useDonutChartData(data.value),
+          data: useDonutChartData(data),
           options: useDonutChartOption()
         })
       })
@@ -51,13 +51,12 @@ export default defineComponent({
 
     const screenshot = () => {
       let filename = props.url.split(/\//).pop()
-      let imageSrc = chart.value.toBase64Image()
+      let imageSrc = chart.toBase64Image()
       chartScreenshot(filename, imageSrc)
     }
 
     return {
       canvas,
-      chart,
       screenshot
     }
   }

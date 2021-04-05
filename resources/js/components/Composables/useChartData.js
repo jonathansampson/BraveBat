@@ -58,65 +58,9 @@ export const useLineChartData = (data, days, brand = null) => {
   }
 }
 
-export const useLineChartOption = () => {
-  return {
-    tooltips: {
-      callbacks: {
-        label: function (tooltipItem, data) {
-          var label = data.datasets[tooltipItem.datasetIndex].label || ''
-          if (label) {
-            label += ': '
-          }
-          label += tooltipItem.yLabel.toLocaleString()
-          return label
-        }
-      }
-    },
-    legend: {
-      display: true,
-      labels: {
-        boxWidth: 12,
-        usePointStyle: false
-      }
-    },
-    scales: {
-      xAxes: [
-        {
-          type: 'time',
-          gridLines: {
-            display: false
-          },
-          ticks: {
-            autoSkip: true,
-            maxRotation: 0,
-            autoSkipPadding: 20
-          },
-          distribution: 'series',
-          time: {
-            unit: 'month'
-          }
-        }
-      ],
-      yAxes: [
-        {
-          ticks: {
-            suggestedMin: 0,
-            autoSkip: true,
-            callback: function (value, index, values) {
-              return value.toLocaleString()
-            }
-          },
-          distribution: 'linear'
-        }
-      ]
-    }
-  }
-}
-
 export const useDonutChartData = (data) => {
   let labels = data.labels
   let colors = labels.map((label) => brandColors[label])
-
   let datasets = [
     {
       data: data.data,
@@ -129,12 +73,48 @@ export const useDonutChartData = (data) => {
   }
 }
 
+export const useLineChartOption = () => {
+  return {
+    plugins: {
+      legend: {
+        display: true,
+        labels: {
+          boxWidth: 12,
+          usePointStyle: false
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'time',
+        grid: {
+          display: false
+        },
+        ticks: {
+          autoSkip: true,
+          maxRotation: 0,
+          autoSkipPadding: 20
+        },
+        time: {
+          unit: 'month'
+        }
+      },
+      y: {
+        suggestedMin: 0
+      }
+    }
+  }
+}
+
 export const useDonutChartOption = () => {
   return {
     responsive: true,
-    legend: {
-      display: true,
-      position: 'bottom'
+    aspectRatio: 2,
+    plugins: {
+      legend: {
+        display: true,
+        position: 'bottom'
+      }
     }
   }
 }

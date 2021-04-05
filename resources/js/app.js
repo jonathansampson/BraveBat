@@ -6,16 +6,71 @@ import AdvancedSearch from './components/Search/AdvancedSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import { createApp } from 'vue'
-import Chart from 'chart.js'
+
+import {
+  Chart,
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip
+} from 'chart.js'
+
+Chart.register(
+  ArcElement,
+  LineElement,
+  BarElement,
+  PointElement,
+  BarController,
+  BubbleController,
+  DoughnutController,
+  LineController,
+  PieController,
+  PolarAreaController,
+  RadarController,
+  ScatterController,
+  CategoryScale,
+  LinearScale,
+  LogarithmicScale,
+  RadialLinearScale,
+  TimeScale,
+  TimeSeriesScale,
+  Decimation,
+  Filler,
+  Legend,
+  Title,
+  Tooltip
+)
+
+import 'chartjs-adapter-date-fns'
 
 import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
-Chart.plugins.register({
-  beforeDraw: function (chartInstance) {
-    var ctx = chartInstance.chart.ctx
+Chart.register({
+  id: 'background-white',
+  beforeDraw: function (chart, args, options) {
+    var ctx = chart.ctx
     ctx.fillStyle = 'white'
-    ctx.fillRect(0, 0, chartInstance.chart.width, chartInstance.chart.height)
+    ctx.fillRect(0, 0, chart.width, chart.height)
   }
 })
 

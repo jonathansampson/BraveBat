@@ -18,7 +18,7 @@ import {
   useLineChartData,
   useLineChartOption
 } from '../Composables/useChartData'
-import Chart from 'chart.js'
+import { Chart } from 'chart.js'
 import TogglePanel from './TogglePanel'
 import useChartScreenshot from '../Composables/useChartScreenshot'
 
@@ -48,19 +48,19 @@ export default defineComponent({
   setup(props) {
     const { chartScreenshot } = useChartScreenshot()
     const canvas = ref(null)
-    const chart = ref(null)
-    const data = ref(null)
     const filteringDays = ref(null)
     const unit = computed(() =>
       filteringDays.value >= 90 || !filteringDays.value ? 'month' : 'day'
     )
+    let chart = null
+    let data = null
 
     onMounted(() => {
       axios.post(props.url).then((res) => {
-        data.value = res.data
-        chart.value = new Chart(canvas.value, {
+        data = res.data
+        chart = new Chart(canvas.value, {
           type: 'line',
-          data: useLineChartData(data.value, null, props.brand),
+          data: useLineChartData(data, null, props.brand),
           options: useLineChartOption()
         })
       })
@@ -68,22 +68,21 @@ export default defineComponent({
 
     const toggle = (days) => {
       filteringDays.value = days
-      let { labels, datasets } = useLineChartData(data.value, days)
-      chart.value.data.labels = labels
-      chart.value.data.datasets = datasets
-      chart.value.options.scales.xAxes[0].time.unit = unit
-      chart.value.update()
+      let { labels, datasets } = useLineChartData(data, days)
+      chart.data.labels = labels
+      chart.data.datasets = datasets
+      chart.options.scales.x.time.unit = unit.value
+      chart.update()
     }
 
     const screenshot = () => {
       let filename = props.url.split(/\//).pop()
-      let imageSrc = chart.value.toBase64Image()
+      let imageSrc = chart.toBase64Image()
       chartScreenshot(filename, imageSrc)
     }
 
     return {
       canvas,
-      chart,
       toggle,
       screenshot,
       filteringDays,
