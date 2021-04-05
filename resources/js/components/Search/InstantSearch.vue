@@ -2,10 +2,10 @@
   <div class="relative" ref="instantSearchBox">
     <search-input v-model="term" @clear="clearTerm"></search-input>
     <div
-      v-if="term"
+      v-if="hits.length && term"
       class="absolute right-0 z-50 w-64 mt-2 text-sm border border-gray-200"
     >
-      <ul v-if="hits.length">
+      <ul>
         <instant-search-item
           v-for="(hit, index) in hits.slice(0, 5)"
           :key="index"
