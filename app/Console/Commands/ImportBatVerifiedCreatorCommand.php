@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Models\Stats\CreatorDailyStats;
 use App\Services\SimpleScheduledTaskSlackAndLogService;
 use App\Tasks\ImportVerifiedCreatorsTask;
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 
 class ImportBatVerifiedCreatorCommand extends Command

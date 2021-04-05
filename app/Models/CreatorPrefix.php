@@ -31,7 +31,7 @@ class CreatorPrefix extends Model
                 if ($existing) {
                     $existing->touch();
                 } else {
-                    self:create(['prefix' => $prefix]);
+                    self::create(['prefix' => $prefix]);
                 }
             } else {
                 break;
