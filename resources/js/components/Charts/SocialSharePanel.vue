@@ -2,6 +2,7 @@
   <Menu>
     <MenuButton
       class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+      aria-label="share"
     >
       <base-icon-share class="w-3 h-3"></base-icon-share>
     </MenuButton>

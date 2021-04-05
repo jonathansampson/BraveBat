@@ -16,6 +16,8 @@
               <base-button-gray-rounded
                 class="p-1"
                 @click="toggleMobileChannelFaucet"
+                aria-label="channel faucet"
+                :aria-expanded="mobileChannelFaucet"
               >
                 <base-icon-close
                   v-if="mobileChannelFaucet"

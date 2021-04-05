@@ -13,7 +13,8 @@
                 @include('partials.icons.'.$creator->channel)
             </div>
             <h1 class="ml-2 text-lg">
-                <a href="{{$creator->link}}" target='_blank' class="text-blue-500" rel="nofollow">{{$creator->name}}</a>
+                <a href="{{$creator->link}}" target='_blank' class="text-blue-500"
+                    rel="nofollow noopener">{{$creator->name}}</a>
             </h1>
         </div>
         <div class="mb-2 text-sm text-gray-500 capitalize">{{$creator->channel}}</div>

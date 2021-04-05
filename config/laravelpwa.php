@@ -13,36 +13,37 @@ return [
         'icons' => [
             '72x72' => [
                 'path' => '/images/logos/apple-icon-120.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '96x96' => [
                 'path' => '/images/logos/apple-icon-120.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '128x128' => [
                 'path' => '/images/logos/apple-icon-152.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '144x144' => [
                 'path' => '/images/logos/apple-icon-152.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '152x152' => [
                 'path' => '/images/logos/apple-icon-152.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '192x192' => [
                 'path' => '/images/logos/apple-icon-192.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '384x384' => [
                 'path' => '/images/logos/apple-icon-512.png',
-                'purpose' => 'any'
+                'purpose' => 'any',
             ],
             '512x512' => [
                 'path' => '/images/logos/apple-icon-512.png',
-                'purpose' => 'any'
+                'purpose' => 'any maskable',
             ],
+
         ],
         'splash' => [
             '640x1136' => '/images/logos/apple-splash-640-1136.png',
@@ -57,6 +58,6 @@ return [
             '2048x2732' => '/images/logos/apple-splash-2048-2732.png',
         ],
         'shortcuts' => [],
-        'custom' => []
-    ]
+        'custom' => [],
+    ],
 ];

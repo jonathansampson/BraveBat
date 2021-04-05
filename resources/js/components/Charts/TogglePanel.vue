@@ -18,12 +18,14 @@
         <button
           @click="screenshot"
           class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+          aria-label="screenshot"
         >
           <base-icon-screenshot class="w-3 h-3"></base-icon-screenshot>
         </button>
         <button
           @click="webShare"
           v-if="isWebShareSupported"
+          aria-label="share"
           class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
         >
           <base-icon-share class="w-3 h-3"></base-icon-share>
