@@ -11,53 +11,27 @@ import {
   Chart,
   ArcElement,
   LineElement,
-  BarElement,
   PointElement,
-  BarController,
-  BubbleController,
   DoughnutController,
   LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
   CategoryScale,
   LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
   TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip
+  Tooltip,
+  Legend
 } from 'chart.js'
 
 Chart.register(
   ArcElement,
-  LineElement,
-  BarElement,
-  PointElement,
-  BarController,
-  BubbleController,
-  DoughnutController,
-  LineController,
-  PieController,
-  PolarAreaController,
-  RadarController,
-  ScatterController,
   CategoryScale,
+  DoughnutController,
+  LineElement,
+  LineController,
+  PointElement,
   LinearScale,
-  LogarithmicScale,
-  RadialLinearScale,
   TimeScale,
-  TimeSeriesScale,
-  Decimation,
-  Filler,
-  Legend,
-  Title,
-  Tooltip
+  Tooltip,
+  Legend
 )
 
 import 'chartjs-adapter-date-fns'
@@ -66,7 +40,7 @@ import upperFirst from 'lodash/upperFirst'
 import camelCase from 'lodash/camelCase'
 
 Chart.register({
-  id: 'background-white',
+  id: 'p1',
   beforeDraw: function (chart, args, options) {
     var ctx = chart.ctx
     ctx.fillStyle = 'white'

@@ -1,5 +1,5 @@
 <template>
-  <div class="relative mr-6 text-xxs">
+  <div class="relative text-xxs">
     <div class="flex justify-end">
       <div
         class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-100 rounded-md"
