@@ -53,6 +53,9 @@ class Kernel extends ConsoleKernel
 
         // index creators
         $schedule->command('creators_search:refresh_index')->dailyAt('14:30');
+
+        $schedule->command('prefix:generate')->dailyAt('14:00');
+
     }
 
     /**

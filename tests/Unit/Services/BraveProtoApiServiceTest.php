@@ -18,14 +18,4 @@ class BraveProtoApiServiceTest extends TestCase
         $this->assertTrue(in_array('zeetreby.com', $channels));
     }
 
-    /**
-     * @test
-     * @group api
-     */
-    public function it_tries_to_get_prefix_list()
-    {
-        $service = new BraveProtoApiService();
-        $service->getPrefixes();
-        $this->assertEquals(1, 1);
-    }
 }
