@@ -5,13 +5,13 @@
 
 @section('content')
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
             <toggleable-line-chart url="/charts/ad_campaign_supported_countries"
                 title="Brave Ads Supported Countries/States">
             </toggleable-line-chart>
         </div>
-        <div class="w-full lg:w-1/2">
+        <div>
             <toggleable-line-chart url="/charts/active_ad_campaigns" title="Brave Ads Active Campaigns">
             </toggleable-line-chart>
         </div>

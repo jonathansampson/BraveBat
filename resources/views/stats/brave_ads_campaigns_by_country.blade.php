@@ -5,9 +5,9 @@
 
 @section('content')
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-    <div class="flex flex-wrap">
-        <div class="w-full">
-            <toggleable-line-chart url="{{'/charts/active_ad_campaigns?country=' . $country}}"
+    <div class="grid grid-cols-1">
+        <div>
+            <toggleable-line-chart url=" {{'/charts/active_ad_campaigns?country=' . $country}}"
                 title="{{"Brave Active Ads Campaigns in " . $country}}">
             </toggleable-line-chart>
         </div>
