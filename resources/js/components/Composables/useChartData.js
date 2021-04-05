@@ -31,6 +31,7 @@ const brandColors = {
   twitter: '#1da1f2',
   website: '#343546'
 }
+import { compareAsc, format, parse } from 'date-fns'
 
 export const useLineChartData = (data, days, brand = null) => {
   let labels = days ? data.labels.slice(0, days) : data.labels
@@ -82,8 +83,27 @@ export const useLineChartOption = () => {
           boxWidth: 12,
           usePointStyle: false
         }
+      },
+      tooltip: {
+        callbacks: {
+          label: function (context) {
+            let date = parse(
+              'Jun 1, 2020, 12:00:00 a.m.',
+              'MMM d, yyyy, hh:mm:ss bbbb',
+              new Date()
+            )
+            var label = format(date, 'yyyy-mm-dd') || ''
+            if (label) {
+              label += ': '
+            }
+            label += context.parsed.y.toLocaleString()
+            return label
+          },
+          title: function (context) {}
+        }
       }
     },
+
     scales: {
       x: {
         type: 'time',

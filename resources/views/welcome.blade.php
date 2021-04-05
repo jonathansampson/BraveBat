@@ -25,37 +25,28 @@ communities')
     </div>
 </div>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
-    <div class="text-3xl text-center">
+    <div class="mb-8 text-3xl text-center">
         Thriving Platform Ecosystem
     </div>
-    <div class="flex flex-wrap mt-8">
-        <div class="w-full lg:w-1/2">
-            <creator-donut-chart url="/charts/bat_creator_summary" title="Verified Creator Platform Distribution">
-            </creator-donut-chart>
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
+            <creator-donut-chart url="/charts/bat_creator_summary" title="Verified Creator Platform Distribution" />
         </div>
-        <div class="w-full lg:w-1/2">
-            <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false">
-            </toggleable-line-chart>
+        <div>
+            <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false" />
         </div>
-    </div>
-    <div class="flex flex-wrap mt-8">
-        <div class="w-full lg:w-1/2">
-            <toggleable-line-chart url="/charts/dau" title="Brave Browser DAU (M)" :toggleable="false">
-            </toggleable-line-chart>
+        <div>
+            <toggleable-line-chart url="/charts/dau" title="Brave Browser DAU (M)" :toggleable="false" />
         </div>
-        <div class="w-full lg:w-1/2">
+        <div>
             <toggleable-line-chart url="/charts/bat_purchases_in_dollars" title="Brave-Initiated BAT Purchase ($)"
-                :toggleable="false">
-            </toggleable-line-chart>
+                :toggleable="false" />
         </div>
-    </div>
-    <div class="flex flex-wrap mt-8">
-        <div class="w-full lg:w-1/2">
-            <toggleable-line-chart url="/charts/active_ad_campaigns" title="Brave Ads Active Campaigns">
-            </toggleable-line-chart>
+        <div>
+            <toggleable-line-chart url="/charts/active_ad_campaigns" title="Brave Ads Active Campaigns" />
         </div>
-        <div class="w-full lg:w-1/2">
-            <toggleable-line-chart url="/charts/bat_price" title="BAT Price ($)"></toggleable-line-chart>
+        <div>
+            <toggleable-line-chart url="/charts/bat_price" title="BAT Price ($)" />
         </div>
     </div>
 </div>

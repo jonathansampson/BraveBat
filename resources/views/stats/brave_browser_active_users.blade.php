@@ -5,12 +5,12 @@
 
 @section('content')
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
-    <div class="flex flex-wrap">
-        <div class="w-full lg:w-1/2">
+    <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
+        <div>
             <toggleable-line-chart url="/charts/dau" title="Brave Browser DAU (M)" :toggleable="false">
             </toggleable-line-chart>
         </div>
-        <div class="w-full lg:w-1/2">
+        <div>
             <toggleable-line-chart url="/charts/mau" title="Brave Browser MAU (M)" :toggleable="false">
             </toggleable-line-chart>
         </div>
