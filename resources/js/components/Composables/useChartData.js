@@ -88,11 +88,11 @@ export const useLineChartOption = () => {
         callbacks: {
           label: function (context) {
             let date = parse(
-              'Jun 1, 2020, 12:00:00 a.m.',
+              context.label,
               'MMM d, yyyy, hh:mm:ss bbbb',
               new Date()
             )
-            var label = format(date, 'yyyy-mm-dd') || ''
+            var label = format(date, 'yyyy-MM-dd') || ''
             if (label) {
               label += ': '
             }
