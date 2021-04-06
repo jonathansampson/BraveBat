@@ -13,18 +13,15 @@
               {{ totalCreators }} Creators Found
             </div>
             <div>
-              <base-button-gray-rounded
+              <base-button-orange-rounded
                 class="p-1"
                 @click="toggleMobileChannelFaucet"
                 aria-label="channel faucet"
                 :aria-expanded="mobileChannelFaucet"
               >
-                <base-icon-close
-                  v-if="mobileChannelFaucet"
-                  class="w-4 h-4 text-brand-orange"
-                />
-                <base-icon-filter v-else class="w-4 h-4 text-brand-orange" />
-              </base-button-gray-rounded>
+                <base-icon-close v-if="mobileChannelFaucet" class="w-4 h-4" />
+                <base-icon-filter v-else class="w-4 h-4" />
+              </base-button-orange-rounded>
             </div>
           </div>
           <base-transition>
@@ -65,40 +62,20 @@
         </advanced-search-item>
       </ul>
       <div class="flex justify-center mt-4" v-if="hasMore">
-        <div v-if="loading">
-          <base-button-gray-rounded class="px-3 py-1 text-sm text-brand-orange">
-            <div class="flex items-center space-x-1">
-              <base-icon-spinner class="w-3 h-3"></base-icon-spinner>
-              <span>Loading...</span>
-            </div>
-          </base-button-gray-rounded>
-        </div>
-        <div v-else>
-          <base-button-gray-rounded
-            @click="loadMore"
-            class="px-3 py-1 text-sm text-brand-orange"
-          >
-            Load More
-          </base-button-gray-rounded>
-        </div>
+        <load-more :loading="loading" @load-more="loadMore"></load-more>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import {
-  computed,
-  defineComponent,
-  onMounted,
-  ref,
-  watch
-} from '@vue/runtime-core'
+import { computed, defineComponent, onMounted, ref } from '@vue/runtime-core'
 import AdvancedSearchItem from './AdvancedSearchItem'
 import SearchInput from './SearchInput'
 import ChannelFaucet from './ChannelFaucet'
 import useSearch from '../Composables/useSearch'
 import { debouncedWatch } from '@vueuse/core'
+import LoadMore from './LoadMore'
 
 export default defineComponent({
   name: 'AdvancedSearch',
@@ -111,7 +88,8 @@ export default defineComponent({
   components: {
     AdvancedSearchItem,
     SearchInput,
-    ChannelFaucet
+    ChannelFaucet,
+    LoadMore
   },
   setup(props) {
     const term = ref(props.initialTerm)

@@ -1,44 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.app-no-search')
 
-@section('title', 'Brave Verified Creators - ' . $channel_info["creator_title"])
-@section('description', 'Brave Verified Creators - ' .$channel_info["creator_title"])
+@section('title', "{$channel} creators")
+@section('description', "Find your favorite creators among the {$count} {$channel} creators")
 
 @section('content')
-<div class='container px-4 mx-auto sm:px-6 md:px-8'>
-    @include('partials.channel_charts', ['channel' => $channel])
-    <div class="py-8">
-        <table class="w-full">
-            <thead>
-                <tr>
-                    <th class="px-2 py-4 text-left">Name</th>
-                    <th class="px-2 py-4 text-left">{{$channel_info['rank_column_title']}}</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($creators as $key => $creator)
-                <tr>
-
-                    <td class="px-2 py-4 border">
-                        <a href="{{route('creators.show', [$creator->channel, $creator->id])}}"
-                            class="text-brand-orange">
-                            {{$creator->name}}
-                        </a>
-                    </td>
-                    <td class="px-2 py-4 border">
-                        {{ number_format($creator->{$column}) }}
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div class="flex flex-col items-center justify-between my-6">
-            <div class="hidden md:block">
-                {{$creators->links()}}
-            </div>
-            <div class="block md:hidden">
-                {{$creators->links('vendor.pagination.simple-default')}}
-            </div>
+<div class="container px-4 py-6 mx-auto sm:px-6 md:px-8">
+    <div class="flex items-center justify-center text-2xl">
+        <div class="w-8 h-8 mr-2">
+            @includeIf('partials.icons.'.$channel)
+        </div>
+        <div>
+            {{number_format($count)}} Creators
         </div>
     </div>
+    <channel-search channel="{{$channel}}" :count="{{$count}}"></channel-search>
 </div>
 @endsection

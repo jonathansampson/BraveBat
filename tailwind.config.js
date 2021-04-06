@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [
     './resources/**/*.blade.php',
@@ -13,7 +15,8 @@ module.exports = {
         'brand-gray': '#A0A1B2',
         'brand-light': '#f0f0f0',
         'brand-purple': '#a3278f',
-        'brand-blue': '#4f30ab'
+        'brand-blue': '#4f30ab',
+        orange: colors.orange
       },
       fontSize: {
         xxs: '.5rem'

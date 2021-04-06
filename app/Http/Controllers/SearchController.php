@@ -23,7 +23,6 @@ class SearchController extends Controller
         $hits = array_map(function ($hit) {
             return $hit['_formatted'];
         }, $results->getHits());
-
         $channels = $results->getFacetsDistribution()['channel'];
         ksort($channels);
 

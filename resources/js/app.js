@@ -3,6 +3,7 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
 
 import InstantSearch from './components/Search/InstantSearch.vue'
 import AdvancedSearch from './components/Search/AdvancedSearch.vue'
+import ChannelSearch from './components/Search/ChannelSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import { createApp } from 'vue'
@@ -53,7 +54,8 @@ const app = createApp({
     ToggleableLineChart,
     InstantSearch,
     CreatorDonutChart,
-    AdvancedSearch
+    AdvancedSearch,
+    ChannelSearch
   }
 })
 

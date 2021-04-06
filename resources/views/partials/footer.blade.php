@@ -1,7 +1,7 @@
 <div class="text-white bg-gray-800">
     <footer class="container px-4 py-6 mx-auto sm:px-6 md:px-8 text-brand-light">
         <div class="text-center md:text-left md:flex">
-            <div class="pt-3 md:w-1/3">
+            <div class="pt-3 md:w-1/4">
                 <ul>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('welcome')}}">Home</a>
@@ -29,7 +29,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="pt-3 md:w-1/3">
+            <div class="pt-3 md:w-1/4">
                 <ul>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('stats.brave_browser_active_users')}}">
@@ -57,8 +57,29 @@
                     </li>
                 </ul>
             </div>
-
-            <div class="pt-3 md:w-1/3">
+            <div class="pt-3 md:w-1/4">
+                <ul>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'website')}}">Website Creators</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'youtube')}}">YouTube Creators</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'twitter')}}">Twitter Creators</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'github')}}">GitHub Creators</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'twitch')}}">Twitch Creators</a>
+                    </li>
+                    <li class="pb-4">
+                        <a class="text-brand-light" href="{{route('creators.index', 'vimeo')}}">Vimeo Creators</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="pt-3 md:w-1/4">
                 <ul>
                     <li class="pb-4">
                         <a class="text-brand-light" href="{{route('privacy_policy')}}">Privacy Policy</a>
