@@ -4,14 +4,14 @@ return [
     'heartbeat' => 'http://beats.envoyer.io/heartbeat/hNLvIxNdSHEosAG',
     'admin_email' => 'songhua@gmail.com',
     'transparency_page' => 'https://brave.com/transparency/',
-    'bat_watch' => 'https://bat.watch/',
-    'bat_growth' => 'https://batgrowth.com/',
     'referral_link' => 'https://brave.com/?ref=iuv633',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",
     'catelog_page' => [
         'v3' => "https://ads-serve.brave.com/v3/catalog",
         'v7' => "https://ads-serve.brave.com/v7/catalog",
     ],
+    "brave_prefix_list_url" => 'https://rewards.brave.com/publishers/prefix-list',
+    "brave_prefix_channel_url" => 'https://pcdn.brave.com/publishers/prefixes/',
     'colors' => [
         '#fb542b',
         '#4299e1',
@@ -51,14 +51,6 @@ return [
         'vimeo' => 1000,
         'github' => 1000,
         'website' => 1000,
-    ],
-    "daily_backfill_take" => [
-        'youtube' => 20000,
-        'twitter' => 10000,
-        'twitch' => 10000,
-        'vimeo' => 10000,
-        'github' => 10000,
-        'website' => 10000,
     ],
     'communities' => [
         'reddit' => [

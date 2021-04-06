@@ -15,7 +15,7 @@ class CreatorPrefix extends Model
 
     public static function generate()
     {
-        $data = file_get_contents("https://rewards.brave.com/publishers/prefix-list");
+        $data = file_get_contents(config("bravebat.brave_prefix_list_url"));
         $prefixList = new PublisherPrefixList();
         $prefixList->mergeFromString($data);
         $byteArray = unpack("C*", brotli_uncompress($prefixList->getPrefixes()));

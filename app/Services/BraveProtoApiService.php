@@ -8,7 +8,7 @@ class BraveProtoApiService
 {
     public function getChannels(string $prefix)
     {
-        $fp = fopen("https://pcdn.brave.com/publishers/prefixes/" . $prefix, 'rb');
+        $fp = fopen(config('bravebat.brave_prefix_channel_url') . $prefix, 'rb');
         $header = fread($fp, 4);
         $length = hexdec(bin2hex($header));
         $body = fread($fp, $length);

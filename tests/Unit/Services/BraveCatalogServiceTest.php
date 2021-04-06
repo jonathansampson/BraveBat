@@ -29,7 +29,7 @@ class BraveCatalogServiceTest extends TestCase
     {
         $service = new BraveCatalogService();
         $campaigns = $service->getCampaigns();
-        $this->assertGreaterThan(10, count($campaigns));
+        $this->assertGreaterThan(6, count($campaigns));
         $campaign1 = $campaigns[0];
         $this->assertArrayHasKey('endAt', $campaign1);
         $this->assertArrayHasKey('startAt', $campaign1);
@@ -50,7 +50,7 @@ class BraveCatalogServiceTest extends TestCase
     {
         $service = new BraveCatalogService();
         $dayParts = $service->getDayParts();
-        $this->assertGreaterThan(10, count($dayParts));
+        $this->assertGreaterThan(6, count($dayParts));
     }
 
     /**
@@ -61,6 +61,6 @@ class BraveCatalogServiceTest extends TestCase
     {
         $service = new BraveCatalogService();
         $geoTargets = $service->getGeoTargets();
-        $this->assertGreaterThan(10, count($geoTargets));
+        $this->assertGreaterThan(6, count($geoTargets));
     }
 }
