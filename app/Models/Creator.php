@@ -216,4 +216,5 @@ class Creator extends Model
     {
         return $query->whereNotNull(['channel', 'name', 'ranking']);
     }
+
 }

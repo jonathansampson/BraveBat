@@ -24,7 +24,7 @@ return [
          */
         'excluded_files' => [],
 
-        'excluded_directories' => ['report'],
+        'excluded_directories' => ['report', 'storage'],
 
     ],
 
