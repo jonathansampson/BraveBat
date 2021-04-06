@@ -32,32 +32,32 @@ class BackfillAllDataCommand extends Command
             'website' => [
                 'take' => 20000,
                 'sleep' => 0,
-                'gap' => 30,
+                'days' => 30,
             ],
             'youtube' => [
                 'take' => 10000,
                 'sleep' => 5,
-                'gap' => 35,
+                'days' => 35,
             ],
             'github' => [
                 'take' => 10000,
                 'sleep' => 5,
-                'gap' => 40,
+                'days' => 40,
             ],
             'twitter' => [
                 'take' => 10000,
                 'sleep' => 5,
-                'gap' => 45,
+                'days' => 45,
             ],
             'vimeo' => [
                 'take' => 10000,
                 'sleep' => 5,
-                'gap' => 50,
+                'days' => 50,
             ],
             'twitch' => [
                 'take' => 10000,
                 'sleep' => 5,
-                'gap' => 55,
+                'days' => 55,
             ],
         ];
     }
