@@ -64,16 +64,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.176.8",
+            "version": "3.176.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0"
+                "reference": "17dc67514b148979994758fbfb54088a8a3393bf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/776b944988167fa3d563d2cbc5fcb6763424a9f0",
-                "reference": "776b944988167fa3d563d2cbc5fcb6763424a9f0",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/17dc67514b148979994758fbfb54088a8a3393bf",
+                "reference": "17dc67514b148979994758fbfb54088a8a3393bf",
                 "shasum": ""
             },
             "require": {
@@ -148,9 +148,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.176.8"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.176.9"
             },
-            "time": "2021-04-05T18:16:29+00:00"
+            "time": "2021-04-06T18:13:47+00:00"
         },
         {
             "name": "brick/math",
@@ -8773,16 +8773,16 @@
     "packages-dev": [
         {
             "name": "barryvdh/laravel-debugbar",
-            "version": "v3.5.2",
+            "version": "v3.5.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/barryvdh/laravel-debugbar.git",
-                "reference": "cae0a8d1cb89b0f0522f65e60465e16d738e069b"
+                "reference": "b8af309dea71eab3f2c942652969f518130228ee"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/cae0a8d1cb89b0f0522f65e60465e16d738e069b",
-                "reference": "cae0a8d1cb89b0f0522f65e60465e16d738e069b",
+                "url": "https://api.github.com/repos/barryvdh/laravel-debugbar/zipball/b8af309dea71eab3f2c942652969f518130228ee",
+                "reference": "b8af309dea71eab3f2c942652969f518130228ee",
                 "shasum": ""
             },
             "require": {
@@ -8842,7 +8842,7 @@
             ],
             "support": {
                 "issues": "https://github.com/barryvdh/laravel-debugbar/issues",
-                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.5.2"
+                "source": "https://github.com/barryvdh/laravel-debugbar/tree/v3.5.4"
             },
             "funding": [
                 {
@@ -8850,7 +8850,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2021-01-06T14:21:44+00:00"
+            "time": "2021-04-06T18:11:42+00:00"
         },
         {
             "name": "brianium/paratest",
