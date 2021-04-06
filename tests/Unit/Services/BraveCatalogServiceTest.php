@@ -2,25 +2,19 @@
 
 namespace Tests\Unit\Services;
 
+use App\Models\Ads\AdsCampaign;
+use App\Models\Ads\AdsCreative;
+use App\Models\Ads\AdsGeo;
+use App\Models\Ads\AdsOs;
+use App\Models\Ads\AdsSegment;
+use App\Models\Ads\AdsSet;
 use App\Services\BraveCatalogService;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class BraveCatalogServiceTest extends TestCase
 {
-    /**
-     * @test
-     * @group api
-     */
-    public function it_can_get_issuers()
-    {
-        $service = new BraveCatalogService();
-        $issuers = $service->getIssuers();
-        $this->assertGreaterThan(5, count($issuers));
-        $issuer1 = $issuers[0];
-        $this->assertArrayHasKey('name', $issuer1);
-        $this->assertArrayHasKey('publicKey', $issuer1);
-    }
-
+    use RefreshDatabase;
     /**
      * @test
      * @group api
@@ -28,7 +22,7 @@ class BraveCatalogServiceTest extends TestCase
     public function it_can_get_campaigns()
     {
         $service = new BraveCatalogService();
-        $campaigns = $service->getCampaigns();
+        $campaigns = $service->getCampaignsData();
         $this->assertGreaterThan(6, count($campaigns));
         $campaign1 = $campaigns[0];
         $this->assertArrayHasKey('endAt', $campaign1);
@@ -46,21 +40,19 @@ class BraveCatalogServiceTest extends TestCase
      * @test
      * @group api
      */
-    public function it_can_get_day_parts()
+    public function it_can_process_a_campaign()
     {
         $service = new BraveCatalogService();
-        $dayParts = $service->getDayParts();
-        $this->assertGreaterThan(6, count($dayParts));
+        $campaigns = $service->getCampaignsData();
+        $campaign = $campaigns[0];
+        $service->processCampaignData($campaign);
+        $this->assertGreaterThanOrEqual(1, AdsCampaign::count());
+        $this->assertGreaterThanOrEqual(1, AdsGeo::count());
+        $this->assertGreaterThanOrEqual(1, AdsSet::count());
+        $this->assertGreaterThanOrEqual(1, AdsOs::count());
+        $this->assertGreaterThanOrEqual(1, AdsSegment::count());
+        $this->assertGreaterThanOrEqual(1, AdsCreative::count());
+
     }
 
-    /**
-     * @test
-     * @group api
-     */
-    public function it_can_get_geo_targets()
-    {
-        $service = new BraveCatalogService();
-        $geoTargets = $service->getGeoTargets();
-        $this->assertGreaterThan(6, count($geoTargets));
-    }
 }

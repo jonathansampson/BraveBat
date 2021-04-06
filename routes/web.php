@@ -30,3 +30,6 @@ Route::group(['middleware' => ['auth']], function () {
 
 Route::get('/search', 'SearchController@index')->name('search');
 Route::post('/search', 'SearchController@store');
+
+Route::get('/ads_campaigns', 'AdsCampaignsController@index')->name('ads_campaigns.index');
+Route::get('/ads_campaigns/{adsCampaign}', 'AdsCampaignsController@show')->name('ads_campaigns.show');
