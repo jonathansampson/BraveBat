@@ -72,7 +72,7 @@ class CreatorDailyStats extends Model
             $todayTotal = floor(self::total($today, $channel) / $threshold);
             $yesterdayTotal = floor(self::total($yesterday, $channel) / $threshold);
             if ($todayTotal > $yesterdayTotal) {
-                $milestone = $todayTotal * $threshold;
+                $milestone = number_format($todayTotal * $threshold);
                 $message = "The number of verified {$channel} Brave Creators has just surpassed {$milestone}! Be #brave. https://bravebat.info";
                 SimpleScheduledTaskSlackAndLogService::message($message);
                 $tweet_service = new TweetService();
