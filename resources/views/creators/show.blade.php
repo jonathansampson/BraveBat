@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
-@section('title', "Brave Verified Creator | {$creator->channel} | {$creator->name}")
-@section('description', "Brave Verified Creator | {$creator->channel} | {$creator->name}")
+@section('title', "{$creator->channel} | {$creator->name}")
+@section('description', "{$creator->name} is a {$creator->channel} creator verified by Brave. Show your support
+by tipping the creator with the Brave Browser")
 
 @section('content')
 
