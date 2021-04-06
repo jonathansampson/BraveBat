@@ -69,11 +69,9 @@ class GenerateSitemap extends Command
             $sitemap = $this->generateCreatorSitemap($creators, $count);
             $count++;
             $sitemapIndex->add($sitemap);
-            if ($count >= 10) {
-                $sitemapIndex->writeToFile(public_path('storage/creators_sitemap.xml'));
-                dd(12);
-            }
         });
+        $sitemapIndex->writeToFile(public_path('storage/creators_sitemap.xml'));
+
     }
 
     public function generateCreatorSitemap($chunk, $index)

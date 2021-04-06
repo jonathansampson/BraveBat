@@ -30,7 +30,6 @@ class Kernel extends ConsoleKernel
         $schedule->command('import:transparency')->hourly();
         $schedule->command('bat_stats:generate')->dailyAt('00:01');
         $schedule->command('communities:generate')->dailyAt('00:02');
-        $schedule->command('sitemap:generate')->dailyAt("00:03");
 
         $schedule->command('import:creator')->dailyAt("00:00");
         $schedule->command('creator:process')->dailyAt("04:00");
@@ -56,6 +55,8 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('prefix:generate')->dailyAt('14:05');
         // $schedule->command('ads:sync')->dailyAt('20:30');
+
+        $schedule->command('sitemap:generate --full')->monthly();
 
     }
 
