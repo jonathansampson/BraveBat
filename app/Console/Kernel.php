@@ -36,8 +36,8 @@ class Kernel extends ConsoleKernel
 
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
-
         $schedule->command('creator:rank')->dailyAt('11:55');
+
         // Tweet
         $schedule->command('milestone:tweet')->dailyAt('6:55');
         $schedule->command('top_creator:tweet website 0.0005')->dailyAt('12:55');
@@ -49,14 +49,12 @@ class Kernel extends ConsoleKernel
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
+        $schedule->command('sitemap:generate --full')->monthly(1, "00:00");
+        $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 
-        // index creators
-        $schedule->command('creators_search:refresh_index')->dailyAt('14:30');
-
+        // EXPERIMENTS
         // $schedule->command('prefix:generate')->dailyAt('14:05');
         // $schedule->command('ads:sync')->dailyAt('20:30');
-
-        $schedule->command('sitemap:generate --full')->monthly();
 
     }
 
