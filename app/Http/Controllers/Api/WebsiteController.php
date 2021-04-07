@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Creator;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 
 /**
@@ -15,9 +15,9 @@ class WebsiteController extends Controller
     use ApiResponseTrait;
     /**
      * Website
-     * Check if a website is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the URL link, 
-     * alexa ranking and screenshot. 
-     * 
+     * Check if a website is a verified Brave Browser Creator. When it is confirmed, the endpoint returns the URL link,
+     * alexa ranking and screenshot.
+     *
      * @bodyParam url string required The URL of the website. Example: wikipedia.org
      * @response 200 {
      *   "success": true,
@@ -39,7 +39,7 @@ class WebsiteController extends Controller
     public function index(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'url' => 'required'
+            'url' => 'required',
         ]);
         if ($validator->fails()) {
             return self::missing_field_response();
@@ -62,8 +62,8 @@ class WebsiteController extends Controller
             'data' => [
                 'link' => $creator->link,
                 'alexa_ranking' => $creator->alexa_ranking,
-                'screenshot' => $creator->screenshot()
-            ]
+                'screenshot' => $creator->screenshot(),
+            ],
         ], 200);
     }
 }

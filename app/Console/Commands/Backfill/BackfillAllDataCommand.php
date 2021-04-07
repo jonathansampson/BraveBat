@@ -36,7 +36,7 @@ class BackfillAllDataCommand extends Command
             ],
             'youtube' => [
                 'take' => 10000,
-                'sleep' => 5,
+                'sleep' => 0,
                 'days' => 35,
             ],
             'github' => [
