@@ -37,7 +37,8 @@
     "sammyjo20/lasso": "^1.2",
     "silviolleite/laravelpwa": "~2.0",
     "spatie/browsershot": "^3.35",
-    "spatie/laravel-sitemap": "^6.0"
+    "spatie/laravel-sitemap": "^6.0",
+    "zircote/swagger-php": "^3.1"
   },
   "require-dev": {
     "barryvdh/laravel-debugbar": "^3.3",
