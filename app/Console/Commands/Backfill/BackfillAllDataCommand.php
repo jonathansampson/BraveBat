@@ -15,14 +15,17 @@ class BackfillAllDataCommand extends Command
     public function handle()
     {
         foreach ($this->channels() as $channel => $config) {
-            SimpleScheduledTaskSlackAndLogService::message("start filling {$channel}");
-            (new CreatorProcessingTask())
-                ->setChannel($channel)
-                ->setDays($config['days'])
-                ->setTake($config['take'])
-                ->setSleep($config['sleep'])
-                ->process();
-            SimpleScheduledTaskSlackAndLogService::message("finish filling {$channel}");
+            try {
+                SimpleScheduledTaskSlackAndLogService::message("start filling {$channel}");
+                (new CreatorProcessingTask())
+                    ->setChannel($channel)
+                    ->setDays($config['days'])
+                    ->setTake($config['take'])
+                    ->setSleep($config['sleep'])
+                    ->process();
+                SimpleScheduledTaskSlackAndLogService::message("finish filling {$channel}");
+            } catch (\Throwable$th) {
+            }
         }
     }
 
@@ -41,7 +44,7 @@ class BackfillAllDataCommand extends Command
             ],
             'github' => [
                 'take' => 10000,
-                'sleep' => 5,
+                'sleep' => 6,
                 'days' => 40,
             ],
             'twitter' => [
