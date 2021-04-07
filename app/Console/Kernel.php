@@ -49,7 +49,7 @@ class Kernel extends ConsoleKernel
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
-        $schedule->command('sitemap:generate --full')->monthly(1, "00:00");
+        $schedule->command('sitemap:generate --full')->monthly(7, "23:00");
         $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 
         // EXPERIMENTS
