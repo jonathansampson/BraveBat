@@ -31,7 +31,8 @@ const brandColors = {
   twitter: '#1da1f2',
   website: '#343546'
 }
-import { compareAsc, format, parse } from 'date-fns'
+import { format, parse } from 'date-fns'
+import useCapitalize from './useCapitalize'
 
 export const useLineChartData = (data, days, brand = null) => {
   let labels = days ? data.labels.slice(0, days) : data.labels
@@ -60,16 +61,16 @@ export const useLineChartData = (data, days, brand = null) => {
 }
 
 export const useDonutChartData = (data) => {
-  let labels = data.labels
-  let colors = labels.map((label) => brandColors[label])
+  const { capitalize } = useCapitalize()
+  let categories = data.map((item) => item.category)
   let datasets = [
     {
-      data: data.data,
-      backgroundColor: colors
+      data: data.map((item) => item.data),
+      backgroundColor: categories.map((category) => brandColors[category])
     }
   ]
   return {
-    labels,
+    labels: categories.map((category) => capitalize(category)),
     datasets
   }
 }

@@ -28,7 +28,7 @@ communities')
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div>
-            <creator-donut-chart url="/charts/bat_creator_summary" title="Verified Creator Platform Distribution" />
+            <creator-donut-chart url="/stats/creators_by_channels" title="Verified Creator Platform Distribution" />
         </div>
         <div>
             <toggleable-line-chart url="/charts/creator_stats" title="Brave Verified Creators" :toggleable="false" />
