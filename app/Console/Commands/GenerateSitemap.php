@@ -85,6 +85,7 @@ class GenerateSitemap extends Command
                     ->setPriority(0.1));
         }
         $sitemap->writeToFile(public_path($fileName));
+        sleep(10);
         return $fileName;
     }
 }

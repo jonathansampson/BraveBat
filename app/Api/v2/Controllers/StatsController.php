@@ -17,12 +17,13 @@ class StatsController extends ApiBaseController
     /**
      * @OA\Get(
      *     path="/stats/creators_by_channels",
-     *     summary="This is summary",
-     *     description="This is a description",
+     *     summary="Get Creator Counts by Channels",
+     *     tags={"Stats"},
      *     @OA\Response(
      *      response=200,
-     *      description="A list with products"
-     *     ),
+     *      description="A list of creator counts by chanenels",
+     *      @OA\JsonContent(ref="#/components/schemas/CreatorCountArray")
+     *     )
      * )
      */
     public function creatorsByChannels()
