@@ -28,6 +28,7 @@
     "laravel/tinker": "^2.0",
     "laravel/ui": "^3.2",
     "league/flysystem-aws-s3-v3": "^1.0",
+    "m1guelpf/laravel-fun": "^1.2",
     "maxbanton/cwh": "^2.0",
     "meilisearch/meilisearch-php": "^0.17.0",
     "nesk/puphpeteer": "^2.0",

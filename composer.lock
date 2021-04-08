@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "77693513b0c1bad30446bb478304caf5",
+    "content-hash": "3275db01eae864f9214e641b4c1261dd",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -3209,6 +3209,69 @@
                 }
             ],
             "time": "2021-01-18T20:58:21+00:00"
+        },
+        {
+            "name": "m1guelpf/laravel-fun",
+            "version": "v1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/m1guelpf/laravel-fun.git",
+                "reference": "4d1ffc078be8e13229cee4d25dd80a2781c43212"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/m1guelpf/laravel-fun/zipball/4d1ffc078be8e13229cee4d25dd80a2781c43212",
+                "reference": "4d1ffc078be8e13229cee4d25dd80a2781c43212",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/http": "8.*",
+                "illuminate/routing": "8.*",
+                "illuminate/support": "8.*"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "M1guelpf\\Fun\\FunServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "M1guelpf\\Fun\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Miguel Piedrafita",
+                    "email": "soy@miguelpiedrafita.com",
+                    "homepage": "https://miguelpiedrafita.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": ":package_description",
+            "homepage": "https://github.com/m1guelpf/laravel-fun",
+            "keywords": [
+                "laravel",
+                "laravel-fun",
+                "m1guelpf"
+            ],
+            "support": {
+                "issues": "https://github.com/m1guelpf/laravel-fun/issues",
+                "source": "https://github.com/m1guelpf/laravel-fun/tree/v1.2"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/m1guelpf",
+                    "type": "github"
+                }
+            ],
+            "time": "2020-11-30T12:42:42+00:00"
         },
         {
             "name": "maxbanton/cwh",
