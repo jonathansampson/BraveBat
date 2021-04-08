@@ -5,7 +5,7 @@
 communities')
 
 @section('content')
-<div class="border-b border-gray-200 background-pattern">
+<div class="background-pattern">
     <div class='container px-4 py-20 mx-auto sm:px-6 md:px-8 sm:py-32'>
         <div class="flex items-center justify-center">
             <div class="text-center">
@@ -24,6 +24,7 @@ communities')
         </div>
     </div>
 </div>
+<stats-cards></stats-cards>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div>

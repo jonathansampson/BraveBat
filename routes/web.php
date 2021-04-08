@@ -8,6 +8,8 @@ Route::get('/', 'HomeController@welcome')->name('welcome');
 Route::get('dashboard', 'HomeController@dashboard')->name('dashboard');
 Route::get('privacy_policy', 'HomeController@privacy_policy')->name('privacy_policy');
 Route::get('terms_of_service', 'HomeController@terms_of_service')->name('terms_of_service');
+Route::get('api_doc', 'HomeController@api_doc')->name('api_doc');
+
 // Stats
 Route::get('brave_browser_active_users', 'StatsController@brave_browser_active_users')->name('stats.brave_browser_active_users');
 Route::get('brave_initiated_bat_purchase', 'StatsController@brave_initiated_bat_purchase')->name('stats.brave_initiated_bat_purchase');

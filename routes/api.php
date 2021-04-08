@@ -1,5 +1,6 @@
 <?php
 
+use App\Api\v2\Controllers\StatsController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:sanctum')->post('v1/github', 'Api\GithubController@index')->name('api.v1.github');
@@ -14,3 +15,4 @@ Route::middleware('auth:sanctum')->post('v1/youtube', 'Api\YoutubeController@ind
 // production: 1|7qv6lBwPoMJp0qb2kMmO3vNYF5n4DiLcYEdPCaTPGyZ0XR29lM8k3cJzSjZuXW1QFafY1QaYsKK5eUgL
 
 Route::post('v2/creatorsyoutube', 'Api\v2\CreatorsController@youtube');
+Route::any('v2/stats/creators_by_channels', [StatsController::class, 'creatorsByChannels']);

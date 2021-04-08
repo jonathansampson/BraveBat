@@ -34,6 +34,11 @@ class HomeController extends Controller
         return view('search');
     }
 
+    public function api_doc()
+    {
+        return view('api_doc');
+    }
+
     public function dashboard()
     {
         $searchable = Creator::searchable()->count();

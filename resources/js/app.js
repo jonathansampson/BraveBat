@@ -6,7 +6,13 @@ import AdvancedSearch from './components/Search/AdvancedSearch.vue'
 import ChannelSearch from './components/Search/ChannelSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
-import { createApp } from 'vue'
+import StatsCards from './components/Cards/StatsCards.vue'
+
+import { createApp, defineAsyncComponent } from 'vue'
+
+const SwaggerUi = defineAsyncComponent(() =>
+  import(/* webpackChunkName: "SwaggerUi" */ './components/Api/SwaggerUi.vue')
+)
 
 import {
   Chart,
@@ -55,7 +61,9 @@ const app = createApp({
     InstantSearch,
     CreatorDonutChart,
     AdvancedSearch,
-    ChannelSearch
+    ChannelSearch,
+    StatsCards,
+    SwaggerUi
   }
 })
 
