@@ -10,4 +10,9 @@ class AdsCreative extends Model
     use HasFactory;
     protected $guarded = [];
 
+    public function url()
+    {
+        $url = $this->notification_target_url ?? $this->page_destination_url;
+        return parse_url($url)['host'];
+    }
 }

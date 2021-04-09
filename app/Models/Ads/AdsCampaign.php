@@ -21,4 +21,14 @@ class AdsCampaign extends Model
     {
         return $this->belongsToMany(AdsGeo::class, 'ads_campaign_geo', 'ads_campaign_id', 'ads_geo_id');
     }
+
+    public function firstAdsCreative()
+    {
+        return $this->adsSets()->first()->adsCreatives()->first();
+    }
+
+    public function landingUrl()
+    {
+        return $this->firstAdsCreative()->url();
+    }
 }

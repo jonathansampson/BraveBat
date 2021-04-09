@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
-// use App\Services\BraveTransparencyService;
 use App\Services\BraveTransparencyJsonService;
+// use App\Services\BraveTransparencyService;
+use Illuminate\Database\Eloquent\Model;
 
 class BraveAdCampaign extends Model
 {
@@ -27,4 +27,5 @@ class BraveAdCampaign extends Model
             );
         }
     }
+
 }
