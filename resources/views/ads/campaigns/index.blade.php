@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
-@section('title', 'Brave Ad Campaigns and Supported Countries')
-@section('description', 'Brave Ad Campaigns and Supported Countries')
+{{-- @section('title', 'Brave Ad Campaigns and Supported Countries')
+@section('description', 'Brave Ad Campaigns and Supported Countries') --}}
 
 @section('content')
 <div class='container px-4 py-4 mx-auto sm:px-6 md:px-8'>
@@ -10,6 +10,7 @@
       <thead>
         <tr>
           <th>Id</th>
+          <th>Company</th>
           <th>Start</th>
           <th>End</th>
           <th>Daily Cap</th>
@@ -24,6 +25,7 @@
         @foreach ($adsCampaigns as $adsCampaign)
         <tr>
           <td>{{$adsCampaign->id}}</td>
+          <td>{{$adsCampaign->adsAdvertiser?->name}}</td>
           <td>{{$adsCampaign->start_at}}</td>
           <td>{{$adsCampaign->end_at}}</td>
           <td>{{$adsCampaign->daily_cap}}</td>

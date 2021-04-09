@@ -2,6 +2,7 @@
 
 namespace App\Models\Ads;
 
+use App\Models\Ads\AdsAdvertiser;
 use App\Models\Ads\AdsGeo;
 use App\Models\Ads\AdsSet;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -30,5 +31,10 @@ class AdsCampaign extends Model
     public function landingUrl()
     {
         return $this->firstAdsCreative()->url();
+    }
+
+    public function adsAdvertiser()
+    {
+        return $this->belongsTo(AdsAdvertiser::class, "ads_advertiser_id");
     }
 }
