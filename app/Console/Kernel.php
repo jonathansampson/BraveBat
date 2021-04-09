@@ -54,8 +54,7 @@ class Kernel extends ConsoleKernel
 
         // EXPERIMENTS
         $schedule->command('prefix:sync')->weeklyOn(1, '8:00');
-        // $schedule->command('ads:sync')->dailyAt('20:30');
-
+        $schedule->command('ads:sync')->dailyAt('20:30');
     }
 
     /**
