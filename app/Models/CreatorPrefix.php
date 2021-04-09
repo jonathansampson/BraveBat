@@ -4,7 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Publishers_pb\PublisherPrefixList;
 
 class CreatorPrefix extends Model
 {
@@ -13,40 +12,22 @@ class CreatorPrefix extends Model
 
     protected $guarded = [];
 
-    public static function generate()
+    public static function sync(array $newPrefixes)
     {
-        $data = file_get_contents(config("bravebat.brave_prefix_list_url"));
-        $prefixList = new PublisherPrefixList();
-        $prefixList->mergeFromString($data);
-        $byteArray = unpack("C*", brotli_uncompress($prefixList->getPrefixes()));
-
-        while (true) {
-            $part1 = dechex(array_shift($byteArray));
-            $part2 = dechex(array_shift($byteArray));
-            $part3 = dechex(array_shift($byteArray));
-            $part4 = dechex(array_shift($byteArray));
-            $prefix = $part1 . $part2 . $part3 . $part4;
-            if ($prefix) {
-                $existing = self::where('prefix', $prefix)->first();
-                if ($existing) {
-                    $existing->touch();
-                } else {
-                    self::create(['prefix' => $prefix]);
-                }
-            } else {
-                break;
-            }
+        $existingPrefixes = self::pluck('prefix')->toArray();
+        $new = array_diff($newPrefixes, $existingPrefixes);
+        $existing = array_intersect($newPrefixes, $existingPrefixes);
+        self::whereIn('prefix', $existing)->update([
+            'updated_at' => now(),
+        ]);
+        $data = [];
+        foreach ($new as $element) {
+            $data[] = [
+                'prefix' => $element,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ];
         }
+        self::insert($data);
     }
 }
-
-// /**
-//  * @test
-//  * @group api
-//  */
-// public function it_tries_to_get_prefix_list()
-// {
-//     $service = new BraveProtoApiService();
-//     $service->getPrefixes();
-//     $this->assertEquals(1, 1);
-// }
