@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\v2;
 
 use App\Models\Creator;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class WebsiteTest extends TestCase
@@ -17,7 +16,7 @@ class WebsiteTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->endpoint = '/api/v1/website';
+        $this->endpoint = '/api/v2/creators/website';
         $this->user = User::factory()->create();
         Creator::factory()->create([
             'channel' => 'website',
@@ -30,51 +29,49 @@ class WebsiteTest extends TestCase
     }
 
     /** @test */
-    public function website_api_reject_unauthenticated_call()
-    {
-        $response = $this->postJson($this->endpoint, ['url' => 'wikipedia.org']);
-        $response->assertStatus(401);
-    }
-
-    /** @test */
     public function website_api_reject_missing_field()
     {
-        Sanctum::actingAs($this->user);
-        $response = $this->postJson($this->endpoint, ['dsf' => 'wikipedia.org']);
+        $response = $this->postJson($this->endpoint, [
+            'dsf' => 'wikipedia.org',
+        ]);
         $response->assertStatus(422);
-        $response->assertJson(['success' => false, 'message' => "Missing required field"]);
+        $response->assertJson([
+            'error' => 'missing_field',
+            'message' => "The url field is required.",
+        ]);
     }
 
     /** @test */
     public function website_api_reject_not_found()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['url' => 'wikipedia.com']);
         $response->assertStatus(404);
-        $response->assertJson(['success' => false, 'message' => "Not found"]);
+        $response->assertJson([
+            'error' => 'not_found',
+            'message' => "We cannot find this website creator.",
+        ]);
     }
 
     /** @test */
     public function website_api_success()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['url' => 'wikipedia.org']);
         $response->assertStatus(200);
-        $response->assertJson(['success' => true, 'data' => [
+        $response->assertJson([
             'link' => 'https://wikipedia.org',
             'alexa_ranking' => 10,
-        ]]);
+        ]);
     }
 
     /** @test */
     public function website_api_success_with_safeguard()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['url' => 'http://wikipedia.org/hahah']);
         $response->assertStatus(200);
-        $response->assertJson(['success' => true, 'data' => [
+        $response->assertJson([
             'link' => 'https://wikipedia.org',
             'alexa_ranking' => 10,
-        ]]);
+            "verified" => true,
+        ]);
     }
 }

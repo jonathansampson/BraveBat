@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\v1;
 
 use App\Models\Creator;
 use App\User;
@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
-class TwitchTest extends TestCase
+class GithubTest extends TestCase
 {
     use RefreshDatabase;
     protected $endpoint;
@@ -17,29 +17,29 @@ class TwitchTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->endpoint = '/api/v1/twitch';
+        $this->endpoint = '/api/v1/github';
         $this->user = User::factory()->create();
         Creator::factory()->create([
-            'channel' => 'twitch',
+            'channel' => 'github',
             'channel_id' => '12345',
-            'name' => 'hello',
-            'display_name' => 'Some display name',
+            'name' => 'some name',
+            'display_name' => 'some display name',
             'description' => 'some description',
-            'link' => 'https://twitch.com/12345',
+            'link' => 'https://github.com/husonghua',
             'follower_count' => 10,
-            'view_count' => 1000,
+            'repo_count' => 1,
         ]);
     }
 
     /** @test */
-    public function twitch_api_reject_unauthenticated_call()
+    public function github_api_reject_unauthenticated_call()
     {
-        $response = $this->postJson($this->endpoint, ['twitch_id' => '1234']);
+        $response = $this->postJson($this->endpoint, ['github_id' => '1234']);
         $response->assertStatus(401);
     }
 
     /** @test */
-    public function twitch_api_reject_missing_field()
+    public function github_api_reject_missing_field()
     {
         Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['dsf' => '1234']);
@@ -48,27 +48,27 @@ class TwitchTest extends TestCase
     }
 
     /** @test */
-    public function twitch_api_reject_not_found()
+    public function github_api_reject_not_found()
     {
         Sanctum::actingAs($this->user);
-        $response = $this->postJson($this->endpoint, ['twitch_id' => '1234']);
+        $response = $this->postJson($this->endpoint, ['github_id' => '1234']);
         $response->assertStatus(404);
         $response->assertJson(['success' => false, 'message' => "Not found"]);
     }
 
     /** @test */
-    public function twitch_api_success()
+    public function github_api_success()
     {
         Sanctum::actingAs($this->user);
-        $response = $this->postJson($this->endpoint, ['twitch_id' => '12345']);
+        $response = $this->postJson($this->endpoint, ['github_id' => '12345']);
         $response->assertStatus(200);
         $response->assertJson(['success' => true, 'data' => [
-            'name' => 'hello',
-            'display_name' => 'Some display name',
+            'name' => 'some name',
+            'display_name' => 'some display name',
             'description' => 'some description',
-            'link' => 'https://twitch.com/12345',
+            'link' => 'https://github.com/husonghua',
             'followers' => 10,
-            'views' => 1000,
+            'repos' => 1,
         ]]);
     }
 }

@@ -1,11 +1,10 @@
 <?php
 
-namespace Tests\Feature\Api;
+namespace Tests\Feature\Api\v2;
 
 use App\Models\Creator;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Laravel\Sanctum\Sanctum;
 use Tests\TestCase;
 
 class GithubTest extends TestCase
@@ -17,7 +16,7 @@ class GithubTest extends TestCase
     public function setUp(): void
     {
         parent::setUp();
-        $this->endpoint = '/api/v1/github';
+        $this->endpoint = '/api/v2/creators/github';
         $this->user = User::factory()->create();
         Creator::factory()->create([
             'channel' => 'github',
@@ -32,43 +31,41 @@ class GithubTest extends TestCase
     }
 
     /** @test */
-    public function github_api_reject_unauthenticated_call()
-    {
-        $response = $this->postJson($this->endpoint, ['github_id' => '1234']);
-        $response->assertStatus(401);
-    }
-
-    /** @test */
     public function github_api_reject_missing_field()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['dsf' => '1234']);
         $response->assertStatus(422);
-        $response->assertJson(['success' => false, 'message' => "Missing required field"]);
+        $response->assertJson([
+            'error' => "missing_field",
+            'message' => "The github id field is required.",
+        ]);
     }
 
     /** @test */
     public function github_api_reject_not_found()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['github_id' => '1234']);
         $response->assertStatus(404);
-        $response->assertJson(['success' => false, 'message' => "Not found"]);
+        $response->assertJson([
+            'error' => "not_found",
+            'message' => "We cannot find this github creator.",
+        ]);
+
     }
 
     /** @test */
     public function github_api_success()
     {
-        Sanctum::actingAs($this->user);
         $response = $this->postJson($this->endpoint, ['github_id' => '12345']);
         $response->assertStatus(200);
-        $response->assertJson(['success' => true, 'data' => [
+        $response->assertJson([
             'name' => 'some name',
             'display_name' => 'some display name',
             'description' => 'some description',
             'link' => 'https://github.com/husonghua',
             'followers' => 10,
             'repos' => 1,
-        ]]);
+            "verified" => true,
+        ]);
     }
 }
