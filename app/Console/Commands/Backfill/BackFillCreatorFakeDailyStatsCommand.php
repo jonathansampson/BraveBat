@@ -20,7 +20,7 @@ class BackFillCreatorFakeDailyStatsCommand extends Command
         foreach (config('bravebat.channels') as $channel) {
             $startingCount = CreatorDailyStats::where('channel', $channel)->where('record_date', '2021-01-18')->first()->total;
             $endingCount = CreatorDailyStats::where('channel', $channel)->where('record_date', '2021-04-10')->first()->total;
-            $rawDailyAddition = floor(($endingCount - $startingCount) / 80);
+            $rawDailyAddition = floor(($endingCount - $startingCount) / 81);
             foreach ($period as $date) {
                 $startingCount += $rawDailyAddition;
                 CreatorDailyStats::updateOrCreate(
