@@ -19,10 +19,8 @@
       </div>
     </div>
   </div>
-
 </div>
 <div class="pb-4">
-
   <x-table.table>
     <thead>
       <x-table.header-cell>Progress</x-table.header-cell>
@@ -32,7 +30,6 @@
     </thead>
     <x-table.body>
       @foreach ($adsCampaigns as $adsCampaign)
-
       <x-table.cell>
         @if ($adsCampaign->notStarted())
         Not started

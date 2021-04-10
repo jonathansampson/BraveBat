@@ -32,5 +32,6 @@ class AdsAdvertisersController extends Controller
             'website' => 'required',
         ]);
         AdsAdvertiser::create($request->only('name', 'website'));
+        return redirect()->route('ads_advertisers.index');
     }
 }

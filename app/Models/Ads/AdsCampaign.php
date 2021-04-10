@@ -36,6 +36,16 @@ class AdsCampaign extends Model
         return $this->firstAdsCreative()->url();
     }
 
+    public function copyTitle()
+    {
+        return $this->firstAdsCreative()->copyTitle();
+    }
+
+    public function copyBody()
+    {
+        return $this->firstAdsCreative()->copyBody();
+    }
+
     public function adsAdvertiser()
     {
         return $this->belongsTo(AdsAdvertiser::class, "ads_advertiser_id");
@@ -58,4 +68,31 @@ class AdsCampaign extends Model
         return $this->progress() > 100;
     }
 
+    public function segments()
+    {
+        return $this->adsSets->map(function ($adsSet) {
+            return $adsSet->adsSegments()->pluck('name');
+        })->collapse()->unique();
+    }
+
+    public function oses()
+    {
+        return $this->adsSets->map(function ($adsSet) {
+            return $adsSet->adsOSes()->pluck('name');
+        })->collapse()->unique();
+    }
+
+    public function creatives()
+    {
+        return $this->adsSets->map(function ($adsSet) {
+            return $adsSet->adsCreatives;
+        })->collapse()
+            ->map(function ($adsCreative) {
+                return [
+                    'body' => $adsCreative->copyBody(),
+                    'title' => $adsCreative->copyTitle(),
+                    'type' => $adsCreative->type(),
+                ];
+            });
+    }
 }
