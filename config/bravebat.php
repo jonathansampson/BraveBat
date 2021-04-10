@@ -69,4 +69,12 @@ return [
             'bravesoftware' => 'UCFNTTISby1c_H-rm5Ww5rZg',
         ],
     ],
+    'channels' => [
+        'youtube',
+        'twitter',
+        'twitch',
+        'vimeo',
+        'github',
+        'website',
+    ],
 ];

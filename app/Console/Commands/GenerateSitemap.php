@@ -13,49 +13,27 @@ use Spatie\Sitemap\Tags\Url;
 
 class GenerateSitemap extends Command
 {
-    /**
-     * The name and signature of the console command.
-     *
-     * @var string
-     */
+    const FOLDER = '/storage/sitemaps';
+
     protected $signature = 'sitemap:generate {--full}';
 
-    /**
-     * The console command description.
-     *
-     * @var string
-     */
     protected $description = 'Generate the sitemaps';
 
-    /**
-     * Create a new command instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        parent::__construct();
-    }
-
-    /**
-     * Execute the console command.
-     *
-     * @return mixed
-     */
     public function handle()
     {
         $fullScan = $this->option('full');
 
         SitemapIndex::create(config('app.url'))
-            ->add('/storage/sitemaps/app.xml')
-            ->add('/storage/sitemaps/creators.xml')
+            ->add(self::CONSTANT . '/app.xml')
+            ->add(self::CONSTANT . '/creators.xml')
             ->writeToFile(public_path('sitemap.xml'));
 
         SitemapGenerator::create(config('app.url'))
             ->configureCrawler(function (Crawler $crawler) {
                 $crawler->setMaximumDepth(1);
             })
-            ->writeToFile(public_path('storage/sitemaps/app.xml'));
+            ->writeToFile(public_path(self::CONSTANT . '/app.xml'));
+
         if ($fullScan) {
             $this->generateCreatorSitemapIndex();
         }
@@ -68,13 +46,13 @@ class GenerateSitemap extends Command
         $sitemapIndex = SitemapIndex::create(config('app.url'));
 
         for ($i = 0; $i < $filesCount; $i++) {
-            $sitemapIndex->add("storage/sitemaps/creators_{$i}.xml");
+            $sitemapIndex->add(self::CONSTANT . "/creators_{$i}.xml");
         }
-        $sitemapIndex->writeToFile(public_path('storage/sitemaps/creators.xml'));
+        $sitemapIndex->writeToFile(public_path(self::CONSTANT . "/creators.xml"));
 
         for ($i = 0; $i < $filesCount; $i++) {
             $sitemap = Sitemap::create(config('app.url'));
-            $fileName = "storage/sitemaps/creators_{$i}.xml";
+            $fileName = self::CONSTANT . "/creators_{$i}.xml";
             $creators = Creator::where('id', ">=", $i * 1000)->where("id", "<", ($i + 1) * 1000)->get();
             foreach ($creators as $creator) {
                 $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
@@ -82,8 +60,8 @@ class GenerateSitemap extends Command
                         ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                         ->setPriority(0.1));
             }
-            sleep(60);
             $sitemap->writeToFile(public_path($fileName));
+            sleep(60);
         }
     }
 }

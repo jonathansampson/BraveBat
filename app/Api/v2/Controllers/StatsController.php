@@ -3,33 +3,21 @@
 namespace App\Api\v2\Controllers;
 
 use App\Api\v2\Controllers\ApiBaseController;
-use App\Api\v2\Repositories\StatsRepository;
+use App\Repositories\CreatorStatsRepository;
 
 class StatsController extends ApiBaseController
 {
-    private $statsRepository;
+    private $createStatsRepository;
 
-    public function __construct(StatsRepository $statsRepository)
+    public function __construct(CreatorStatsRepository $createStatsRepository)
     {
-        $this->statsRepository = $statsRepository;
+        $this->createStatsRepository = $createStatsRepository;
     }
 
-    /**
-     * @OA\Get(
-     *     path="/stats/creators_by_channels",
-     *     summary="Get Creator Counts by Channels",
-     *     tags={"Stats"},
-     *     @OA\Response(
-     *      response=200,
-     *      description="A list of creator counts by chanenels",
-     *      @OA\JsonContent(ref="#/components/schemas/CreatorCountArray")
-     *     )
-     * )
-     */
     public function creatorsByChannels()
     {
         return cache()->remember('creatorsByChannels', 86400, function () {
-            return $this->statsRepository->creatorsByChannels();
+            return $this->createStatsRepository->creatorsByChannels();
         });
     }
 }
