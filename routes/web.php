@@ -17,6 +17,8 @@ Route::get('dashboard', [HomeController::class, 'dashboard'])->name('dashboard')
 Route::get('privacy_policy', [HomeController::class, 'privacy_policy'])->name('privacy_policy');
 Route::get('terms_of_service', [HomeController::class, 'terms_of_service'])->name('terms_of_service');
 Route::get('api_doc', [HomeController::class, 'api_doc'])->name('api_doc');
+Route::get('search', [SearchController::class, 'index'])->name('search');
+Route::post('search', [SearchController::class, 'store']);
 
 // Stats
 Route::get('brave_browser_active_users', [StatsController::class, 'brave_browser_active_users'])->name('stats.brave_browser_active_users');
@@ -38,13 +40,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('tokens', [TokensController::class, 'destroy'])->name('tokens.destroy');
 });
 
-Route::get('/search', [SearchController::class, 'index'])->name('search');
-Route::post('/search', [SearchController::class, 'store']);
-
 Route::group(['middleware' => ['auth', "isAdmin"]], function () {
     Route::get('/ads_campaigns', [AdsCampaignsController::class, 'index'])->name('ads_campaigns.index');
     Route::get('/ads_campaigns/{adsCampaign}', [AdsCampaignsController::class, 'show'])->name('ads_campaigns.show');
-
     Route::resource('ads_advertisers', AdsAdvertisersController::class);
-
 });

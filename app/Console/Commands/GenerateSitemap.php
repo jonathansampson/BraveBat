@@ -47,15 +47,15 @@ class GenerateSitemap extends Command
         $fullScan = $this->option('full');
 
         SitemapIndex::create(config('app.url'))
-            ->add('/storage/app_sitemap.xml')
-            ->add('/storage/creators_sitemap.xml')
+            ->add('/storage/sitemaps/app.xml')
+            ->add('/storage/sitemaps/creators.xml')
             ->writeToFile(public_path('sitemap.xml'));
 
         SitemapGenerator::create(config('app.url'))
             ->configureCrawler(function (Crawler $crawler) {
                 $crawler->setMaximumDepth(1);
             })
-            ->writeToFile(public_path('storage/app_sitemap.xml'));
+            ->writeToFile(public_path('storage/sitemaps/app.xml'));
         if ($fullScan) {
             $this->generateCreatorSitemapIndex();
         }
@@ -63,29 +63,26 @@ class GenerateSitemap extends Command
 
     public function generateCreatorSitemapIndex()
     {
+        $lastCreatorId = Creator::orderBy('id', 'desc')->first()->id;
+        $filesCount = (int) ceil($lastCreatorId / 1000);
         $sitemapIndex = SitemapIndex::create(config('app.url'));
-        $count = 0;
-        Creator::chunk(5000, function ($creators) use (&$count, &$sitemapIndex) {
-            $sitemap = $this->generateCreatorSitemap($creators, $count);
-            $count++;
-            $sitemapIndex->add($sitemap);
-        });
-        $sitemapIndex->writeToFile(public_path('storage/creators_sitemap.xml'));
 
-    }
-
-    public function generateCreatorSitemap($chunk, $index)
-    {
-        $sitemap = Sitemap::create(config('app.url'));
-        $fileName = "storage/creators_{$index}.xml";
-        foreach ($chunk as $creator) {
-            $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
-                    ->setLastModificationDate(Carbon::yesterday())
-                    ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
-                    ->setPriority(0.1));
+        for ($i = 0; $i < $filesCount; $i++) {
+            $sitemapIndex->add("storage/sitemaps/creators_{$i}.xml");
         }
-        $sitemap->writeToFile(public_path($fileName));
-        sleep(300);
-        return $fileName;
+        $sitemapIndex->writeToFile(public_path('storage/sitemaps/creators.xml'));
+
+        for ($i = 0; $i < $filesCount; $i++) {
+            $sitemap = Sitemap::create(config('app.url'));
+            $fileName = "storage/sitemaps/creators_{$i}.xml";
+            $creators = Creator::where('id', ">=", $i * 1000)->where("id", "<=", ($i + 1) * 1000)->get();
+            foreach ($creators as $creator) {
+                $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
+                        ->setLastModificationDate(Carbon::yesterday())
+                        ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
+                        ->setPriority(0.1));
+            }
+            $sitemap->writeToFile(public_path($fileName));
+        }
     }
 }
