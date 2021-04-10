@@ -16,7 +16,8 @@ class AdsAdvertisersController extends Controller
 
     public function show(AdsAdvertiser $adsAdvertiser)
     {
-        return view('ads.advertisers.show', compact('adsAdvertiser'));
+        $adsCampaigns = $adsAdvertiser->adsCampaigns()->orderBy('end_at', 'desc')->get();
+        return view('ads.advertisers.show', compact('adsAdvertiser', 'adsCampaigns'));
     }
 
     public function create()

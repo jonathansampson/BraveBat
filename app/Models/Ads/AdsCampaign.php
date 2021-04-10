@@ -12,6 +12,9 @@ class AdsCampaign extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    protected $dates = [
+        'start_at', 'end_at',
+    ];
 
     public function adsSets()
     {
@@ -37,4 +40,22 @@ class AdsCampaign extends Model
     {
         return $this->belongsTo(AdsAdvertiser::class, "ads_advertiser_id");
     }
+
+    public function progress()
+    {
+        $spent = now()->diffInSeconds($this->start_at, false);
+        $total = $this->end_at->diffInSeconds($this->start_at, false);
+        return ($spent / $total) * 100;
+    }
+
+    public function notStarted()
+    {
+        return $this->progress() < 0;
+    }
+
+    public function finished()
+    {
+        return $this->progress() > 100;
+    }
+
 }

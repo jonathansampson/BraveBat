@@ -53,7 +53,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 
         // EXPERIMENTS
-        $schedule->command('prefix:sync')->weeklyOn(1, '8:00');
+        // $schedule->command('prefix:sync')->weeklyOn(1, '8:00');
         $schedule->command('ads:sync')->dailyAt('20:30');
     }
 
