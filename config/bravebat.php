@@ -76,5 +76,6 @@ return [
         'vimeo',
         'github',
         'website',
+        'reddit',
     ],
 ];
