@@ -75,13 +75,14 @@ class GenerateSitemap extends Command
         for ($i = 0; $i < $filesCount; $i++) {
             $sitemap = Sitemap::create(config('app.url'));
             $fileName = "storage/sitemaps/creators_{$i}.xml";
-            $creators = Creator::where('id', ">=", $i * 1000)->where("id", "<=", ($i + 1) * 1000)->get();
+            $creators = Creator::where('id', ">=", $i * 1000)->where("id", "<", ($i + 1) * 1000)->get();
             foreach ($creators as $creator) {
                 $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
                         ->setLastModificationDate(Carbon::yesterday())
                         ->setChangeFrequency(Url::CHANGE_FREQUENCY_MONTHLY)
                         ->setPriority(0.1));
             }
+            sleep(60);
             $sitemap->writeToFile(public_path($fileName));
         }
     }
