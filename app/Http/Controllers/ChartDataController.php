@@ -49,13 +49,6 @@ class ChartDataController extends Controller
         });
     }
 
-    public function bat_creator_summary()
-    {
-        return cache()->remember('bat_creator_summary', 86400, function () {
-            return $this->chartDataRepository->bat_creator_summary();
-        });
-    }
-
     public function creator_stats()
     {
         return cache()->remember('creator_stats', 86400, function () {

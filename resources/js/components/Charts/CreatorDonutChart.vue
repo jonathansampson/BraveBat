@@ -43,7 +43,7 @@ export default defineComponent({
         data = res.data
         chart = new Chart(canvas.value, {
           type: 'doughnut',
-          data: useDonutChartData(data),
+          data: useDonutChartData(data, 'channel', 'total_today'),
           options: useDonutChartOption()
         })
       })

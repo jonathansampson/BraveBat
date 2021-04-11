@@ -7,17 +7,17 @@ use App\Repositories\CreatorStatsRepository;
 
 class StatsController extends ApiBaseController
 {
-    private $createStatsRepository;
+    private $creatorStatsRepository;
 
-    public function __construct(CreatorStatsRepository $createStatsRepository)
+    public function __construct(CreatorStatsRepository $creatorStatsRepository)
     {
-        $this->createStatsRepository = $createStatsRepository;
+        $this->creatorStatsRepository = $creatorStatsRepository;
     }
 
     public function creatorsByChannels()
     {
         return cache()->remember('creatorsByChannels', 86400, function () {
-            return $this->createStatsRepository->creatorsByChannels();
+            return $this->creatorStatsRepository->creatorsByChannels();
         });
     }
 }

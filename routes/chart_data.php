@@ -12,7 +12,6 @@ Route::any('/bat_purchases', [ChartDataController::class, 'bat_purchases'])->nam
 Route::any('/bat_purchases_in_dollars', [ChartDataController::class, 'bat_purchases_in_dollars'])->name('charts.bat_purchases_in_dollars');
 Route::any('/ad_campaign_supported_countries', [ChartDataController::class, 'ad_campaign_supported_countries'])->name('charts.add_campaign_supported_countries');
 Route::any('/active_ad_campaigns', [ChartDataController::class, 'active_ad_campaigns'])->name('charts.active_ad_campaigns');
-Route::any('/bat_creator_summary', [ChartDataController::class, 'bat_creator_summary'])->name('charts.bat_creator_summary');
 Route::any('/creator_stats', [ChartDataController::class, 'creator_stats'])->name('charts.creator_stats');
 Route::any('/creator_daily_addition_stats/{channel?}', [ChartDataController::class, 'creator_daily_addition_stats'])->name('charts.creator_daily_addition_stats');
 Route::any('/creator_daily_total_stats/{channel?}', [ChartDataController::class, 'creator_daily_total_stats'])->name('charts.creator_daily_total_stats');

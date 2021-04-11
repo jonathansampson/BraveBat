@@ -145,25 +145,6 @@ class ChartDataRepository
         ];
     }
 
-    public function bat_creator_summary()
-    {
-        $data = DB::select("SELECT
-                channel,
-                count(id) AS summary
-            FROM
-                creators
-            GROUP BY
-                channel
-            ORDER BY
-                summary desc");
-        $labels = collect($data)->map(fn($item) => $item->channel);
-        $summaries = collect($data)->map(fn($item) => $item->summary);
-        return [
-            'labels' => $labels,
-            'data' => $summaries,
-        ];
-    }
-
     public function creator_stats()
     {
         $title = 'Brave Verified Creators';
