@@ -1,17 +1,27 @@
 <template>
-  <div class="flex items-center py-8 bg-gray-50" v-if="creatorsByChannels">
+  <div class="flex items-center py-8 bg-gray-50">
     <div class="container px-4 mx-auto sm:px-6 md:px-8">
-      <div class="grid grid-cols-2 gap-2 sm:gap-6 lg:grid-cols-4">
+      <div class="flex justify-end mb-2 text-xxs">
+        <div
+          class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-100 rounded-md"
+        >
+          <button
+            v-for="(option, index) in options"
+            :key="index"
+            @click="toggle(option)"
+            class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+            :class="{ 'bg-white': option === selectedOption }"
+          >
+            {{ option }}
+          </button>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-2 sm:gap-6 xl:grid-cols-4">
         <stats-card
-          :count="overallCreatorsCount"
-          channelLogo="base-logo-brave"
-          channelName="Overall"
-        ></stats-card>
-        <stats-card
-          :count="creatorsByChannel.data"
-          :channelName="capitalize(creatorsByChannel.category)"
-          :channelLogo="`base-logo-${creatorsByChannel.category}`"
-          v-for="creatorsByChannel in creatorsByChannels"
+          :stat="stat"
+          v-for="stat in stats"
+          :period="selectedOption"
         ></stats-card>
       </div>
     </div>
@@ -20,28 +30,27 @@
 
 <script>
 import { defineComponent, ref } from '@vue/runtime-core'
-import axios from 'axios'
 import StatsCard from './StatsCard'
-import useCapitalize from '../Composables/useCapitalize'
 
 export default defineComponent({
   name: 'StatsCards',
   components: {
     StatsCard
   },
+  props: {
+    stats: {
+      type: Array,
+      required: true
+    }
+  },
   setup() {
-    const { capitalize } = useCapitalize()
-    const creatorsByChannels = ref()
-    const overallCreatorsCount = ref(0)
-    axios.post('/api/v2/stats/creators_by_channels').then((res) => {
-      creatorsByChannels.value = res.data
-      overallCreatorsCount.value = res.data.reduce((a, c) => {
-        return a + c.data
-      }, 0)
-    })
-    return { creatorsByChannels, capitalize, overallCreatorsCount }
+    const selectedOption = ref('7D')
+    const options = ['7D', '1M', '3M', '1Y']
+    const toggle = (option) => {
+      selectedOption.value = option
+    }
+
+    return { options, selectedOption, toggle }
   }
 })
 </script>
-
-<style></style>

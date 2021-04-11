@@ -14,7 +14,7 @@ communities')
                 </h1>
                 <p class="pb-8 text-sm leading-normal text-gray-700 sm:text-lg sm:pb-16">
                     Use Brave Browser to protect your online privacy and support
-                    <span class="font-semibold">{{round($creator_count['overall'] / 1000000) }}M</span>
+                    <span class="font-semibold">{{round($creatorTotalCount / 1000000, 1) }}M</span>
                     amazing verified creators
                 </p>
             </div>
@@ -24,7 +24,7 @@ communities')
         </div>
     </div>
 </div>
-<stats-cards></stats-cards>
+<stats-cards :stats="{{json_encode($creatorStats)}}"></stats-cards>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
         <div>

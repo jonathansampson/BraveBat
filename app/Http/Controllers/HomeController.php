@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Creator;
+use App\Repositories\CreatorStatsRepository;
 use App\Services\CreatorSearchService;
 use Illuminate\Support\Facades\DB;
 
@@ -15,8 +16,18 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        $creator_count = Creator::creator_count();
-        return view('welcome', compact('creator_count'));
+        $creatorStats = (new CreatorStatsRepository())->creatorsByChannels();
+        $creatorTotalCount = collect($creatorStats)->reduce(fn($c, $a) => $c + $a->total_today);
+        $overall = (object) [
+            'channel' => 'overall',
+            'total_today' => $creatorTotalCount,
+            'total_7d_ago' => collect($creatorStats)->reduce(fn($c, $a) => $c + $a->total_7d_ago),
+            'total_1m_ago' => collect($creatorStats)->reduce(fn($c, $a) => $c + $a->total_1m_ago),
+            'total_3m_ago' => collect($creatorStats)->reduce(fn($c, $a) => $c + $a->total_3m_ago),
+            'total_1y_ago' => collect($creatorStats)->reduce(fn($c, $a) => $c + $a->total_1y_ago),
+        ];
+        array_unshift($creatorStats, $overall);
+        return view('welcome', compact('creatorTotalCount', 'creatorStats'));
     }
 
     public function privacy_policy()
