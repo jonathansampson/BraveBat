@@ -62,11 +62,6 @@ export default defineComponent({
     const channelName = computed(() => capitalize(props.stat.channel))
     const channelCount = computed(() => props.stat.total_today.toLocaleString())
     const channelGrowth = computed(() => {
-      if (props.period === '7D') {
-        return Math.round(
-          (props.stat.total_today / props.stat.total_7d_ago - 1) * 100
-        )
-      }
       if (props.period === '1M') {
         return Math.round(
           (props.stat.total_today / props.stat.total_1m_ago - 1) * 100

@@ -44,8 +44,8 @@ export default defineComponent({
     }
   },
   setup() {
-    const selectedOption = ref('7D')
-    const options = ['7D', '1M', '3M', '1Y']
+    const selectedOption = ref('1M')
+    const options = ['1M', '3M', '1Y']
     const toggle = (option) => {
       selectedOption.value = option
     }
