@@ -26,6 +26,9 @@ class Kernel extends ConsoleKernel
     {
         $schedule->call(function () {})->everyTenMinutes()->thenPing(config('bravebat.heartbeat'));
 
+        $schedule->command('schedule-monitor:sync')->dailyAt('04:56');
+        $schedule->command('schedule-monitor:clean')->daily();
+
         $schedule->command('horizon:snapshot')->hourly();
         $schedule->command('import:transparency')->hourly();
         $schedule->command('bat_stats:generate')->dailyAt('00:01');
@@ -49,7 +52,7 @@ class Kernel extends ConsoleKernel
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
-        $schedule->command('sitemap:generate --full')->monthlyOn(7, "23:00");
+        $schedule->command('sitemap:generate --full')->monthlyOn(12, "11:15");
         $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 
         // EXPERIMENTS
