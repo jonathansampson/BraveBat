@@ -5,6 +5,7 @@ namespace App\Tasks;
 use App\Models\Creator;
 use App\Services\BraveProtoApiService;
 use Carbon\Carbon;
+use Throwable;
 
 class ImportVerifiedCreatorsTask
 {
@@ -12,8 +13,13 @@ class ImportVerifiedCreatorsTask
     {
         $service = new BraveProtoApiService();
         foreach ($prefixes as $prefix) {
-            $channels = $service->getChannels($prefix);
-            Creator::handleIncomings($channels);
+            try {
+                $channels = $service->getChannels($prefix);
+                Creator::handleIncomings($channels);
+            } catch (Throwable $e) {
+                report($e);
+                return false;
+            }
             sleep(1);
         }
     }
