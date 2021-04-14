@@ -34,7 +34,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('bat_stats:generate')->dailyAt('00:01');
         $schedule->command('communities:generate')->dailyAt('00:02');
 
-        $schedule->command('import:creator')->dailyAt("00:00");
+        $schedule->command('creator:import')->dailyAt("00:00");
         $schedule->command('creator:process')->dailyAt("04:00");
 
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');

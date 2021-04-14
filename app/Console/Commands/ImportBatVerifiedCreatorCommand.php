@@ -15,7 +15,7 @@ class ImportBatVerifiedCreatorCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'import:creator';
+    protected $signature = 'creator:import';
 
     /**
      * The console command description.
