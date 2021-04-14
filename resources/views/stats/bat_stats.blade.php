@@ -19,7 +19,7 @@
             </toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
-            <toggleable-line-chart url="/charts/bat_market_cap" title="BBAT Market Cap ($Millions)">
+            <toggleable-line-chart url="/charts/bat_market_cap" title="BAT Market Cap ($Millions)">
             </toggleable-line-chart>
         </div>
         <div class="w-full lg:w-1/2">
