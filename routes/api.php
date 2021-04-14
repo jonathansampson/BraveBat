@@ -1,7 +1,8 @@
 <?php
 
+use App\Api\v2\Controllers\BatStatsController;
 use App\Api\v2\Controllers\CreatorsController;
-use App\Api\v2\Controllers\StatsController;
+use App\Api\v2\Controllers\CreatorStatsController;
 use App\Http\Controllers\Api\GithubController;
 use App\Http\Controllers\Api\RedditController;
 use App\Http\Controllers\Api\TwitchController;
@@ -22,7 +23,8 @@ Route::middleware('auth:sanctum')->post('v1/youtube', [YoutubeController::class,
 // dev: 1|oNB57nL40oZCxnz3fb09xmKAvwgvSOYzbdCAYEBzfWLTeG6II0ZIm3DBrTQS4aw5aBHPAtBlhGYeKITw
 // production: 1|7qv6lBwPoMJp0qb2kMmO3vNYF5n4DiLcYEdPCaTPGyZ0XR29lM8k3cJzSjZuXW1QFafY1QaYsKK5eUgL
 
-Route::any('v2/stats/creators_by_channels', [StatsController::class, 'creatorsByChannels']);
+Route::any('v2/creator_stats/by_channels', [CreatorStatsController::class, 'creatorsByChannels']);
+Route::any('v2/bat_stats/all', [BatStatsController::class, 'all']);
 
 Route::any('v2/creators/github', [CreatorsController::class, 'github']);
 Route::any('v2/creators/website', [CreatorsController::class, 'website']);

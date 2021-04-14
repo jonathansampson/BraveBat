@@ -11,7 +11,8 @@ class CreatorStatsRepositoryTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_example()
+    /** @test */
+    public function it_can_get_creator_by_channels_data()
     {
         CreatorDailyStats::factory()->create([
             'channel' => 'youtube',

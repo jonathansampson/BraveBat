@@ -60,12 +60,12 @@ export const useLineChartData = (data, days, brand = null) => {
   }
 }
 
-export const useDonutChartData = (data) => {
+export const useDonutChartData = (data, label, dataField) => {
   const { capitalize } = useCapitalize()
-  let categories = data.map((item) => item.channel)
+  let categories = data.map((item) => item[label])
   let datasets = [
     {
-      data: data.map((item) => item.total_today),
+      data: data.map((item) => item[dataField]),
       backgroundColor: categories.map((category) => brandColors[category])
     }
   ]

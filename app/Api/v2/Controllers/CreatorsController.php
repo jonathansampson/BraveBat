@@ -152,19 +152,9 @@ class CreatorsController extends ApiBaseController
         return new CreatorYoutubeResource($creator);
     }
 
-    public function missingFieldResponse($message)
-    {
-        return response()->json([
-            'error' => 'missing_field',
-            'message' => $message,
-        ], 422);
-    }
-
     public function notFoundResponse($channel)
     {
-        return response()->json([
-            'error' => 'not_found',
-            'message' => "We cannot find this {$channel} creator.",
-        ], 404);
+        $message = "We cannot find this {$channel} creator.";
+        return parent::notFoundResponse($message);
     }
 }

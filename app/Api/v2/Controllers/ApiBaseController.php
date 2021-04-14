@@ -6,39 +6,27 @@ use App\Http\Controllers\Controller;
 
 class ApiBaseController extends Controller
 {
+    public function missingFieldResponse($message)
+    {
+        return response()->json([
+            'error' => 'missing_field',
+            'message' => $message,
+        ], 422);
+    }
 
+    // public function notFoundResponse($channel)
+    // {
+    //     return response()->json([
+    //         'error' => 'not_found',
+    //         'message' => "We cannot find this {$channel} creator.",
+    //     ], 404);
+    // }
+
+    public function notFoundResponse($message)
+    {
+        return response()->json([
+            'error' => 'not_found',
+            'message' => $message,
+        ], 404);
+    }
 }
-
-/**
- * @OA\Info(
- *   title="BraveBat API",
- *   version="2.0",
- *   @OA\Contact(
- *     email="bravebatinfo@gmail.com"
- *   ),
- *  termsOfService="https: //bravebat.info/terms_of_service",
- *   @OA\License(
- *      name="Apache 2.0",
- *      url="http://www.apache.org/licenses/LICENSE-2.0.html"
- *   )
- * )
- */
-
-/**
- * @OA\Server(url="https://bravebat.info/api/v2/")
- * @OA\ExternalDocumentation(
- *     description="Find out more about BraveBat",
- *     url="https://bravebat.info"
- * )
- */
-
-/**
- * @OA\Tag(
- *     name="Stats",
- *     description="Aggragated stats on Brave Browser, BAT token and related communities",
- * )
- * @OA\Tag(
- *     name="Creator",
- *     description="Verified Creator by Brave Browser",
- * )
- */
