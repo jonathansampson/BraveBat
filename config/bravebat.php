@@ -9,6 +9,7 @@ return [
     'catelog_page' => [
         'v3' => "https://ads-serve.brave.com/v3/catalog",
         'v7' => "https://ads-serve.brave.com/v7/catalog",
+        'proxy' => "https://proxy.bravebat.info",
     ],
     "brave_prefix_list_url" => 'https://rewards.brave.com/publishers/prefix-list',
     "brave_prefix_channel_url" => 'https://pcdn.brave.com/publishers/prefixes/',

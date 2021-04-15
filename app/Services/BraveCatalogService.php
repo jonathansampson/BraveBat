@@ -19,7 +19,7 @@ class BraveCatalogService
 
     public function getData()
     {
-        $data = file_get_contents(config("bravebat.catelog_page.v7"));
+        $data = file_get_contents(config("bravebat.catelog_page.proxy"));
         if ($data) {
             file_put_contents(public_path('brave_catalog.txt'), $data);
             $this->data = json_decode($data, true);
