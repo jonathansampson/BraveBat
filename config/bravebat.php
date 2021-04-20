@@ -6,6 +6,7 @@ return [
     'transparency_page' => 'https://brave.com/transparency/',
     'referral_link' => 'https://brave.com/?ref=iuv633',
     's3' => "https://bravebat-prod.s3.us-west-2.amazonaws.com/",
+    'sitemap_folder' => '/storage/sitemaps',
     'catelog_page' => [
         'v3' => "https://ads-serve.brave.com/v3/catalog",
         'v7' => "https://ads-serve.brave.com/v7/catalog",
