@@ -51,12 +51,18 @@ class GenerateSitemap extends Command
         }
         $sitemapIndex->writeToFile(public_path(self::FOLDER . "/creators.xml"));
 
-        $segment = Carbon::now()->day - 1;
+        // $segment = Carbon::now()->day - 1;
+        $segment = 10;
 
         for ($i = 100 * $segment; $i < 100 * ($segment + 1); $i++) {
             $sitemap = Sitemap::create(config('app.url'));
             $fileName = self::FOLDER . "/creators_{$i}.xml";
             $creators = Creator::where('id', ">=", $i * self::CHUNK)->where("id", "<", ($i + 1) * self::CHUNK)->get();
+
+            if (!$creators->count()) {
+                break;
+            }
+
             foreach ($creators as $creator) {
                 $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
                         ->setLastModificationDate(Carbon::yesterday())
