@@ -14,6 +14,7 @@ use Spatie\Sitemap\Tags\Url;
 class GenerateSitemap extends Command
 {
     const FOLDER = '/storage/sitemaps';
+    const CHUNK = 1000;
 
     protected $signature = 'sitemap:generate {--full}';
 
@@ -42,7 +43,7 @@ class GenerateSitemap extends Command
     public function generateCreatorSitemapIndex()
     {
         $lastCreatorId = Creator::orderBy('id', 'desc')->first()->id;
-        $filesCount = (int) ceil($lastCreatorId / 1000);
+        $filesCount = (int) ceil($lastCreatorId / self::CHUNK);
         $sitemapIndex = SitemapIndex::create(config('app.url'));
 
         for ($i = 0; $i < $filesCount; $i++) {
@@ -50,10 +51,12 @@ class GenerateSitemap extends Command
         }
         $sitemapIndex->writeToFile(public_path(self::FOLDER . "/creators.xml"));
 
-        for ($i = 0; $i < $filesCount; $i++) {
+        $segment = Carbon::now()->day - 1;
+
+        for ($i = 100 * $segment; $i < 100 * ($segment + 1); $i++) {
             $sitemap = Sitemap::create(config('app.url'));
             $fileName = self::FOLDER . "/creators_{$i}.xml";
-            $creators = Creator::where('id', ">=", $i * 1000)->where("id", "<", ($i + 1) * 1000)->get();
+            $creators = Creator::where('id', ">=", $i * self::CHUNK)->where("id", "<", ($i + 1) * self::CHUNK)->get();
             foreach ($creators as $creator) {
                 $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
                         ->setLastModificationDate(Carbon::yesterday())
@@ -61,7 +64,7 @@ class GenerateSitemap extends Command
                         ->setPriority(0.1));
             }
             $sitemap->writeToFile(public_path($fileName));
-            sleep(60);
+            sleep(3);
         }
     }
 }
