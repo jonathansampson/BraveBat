@@ -5,7 +5,6 @@ namespace App\Tasks\Sitemap;
 use App\Models\Creator;
 use Carbon\Carbon;
 use Spatie\Sitemap\Sitemap;
-use Spatie\Sitemap\SitemapIndex;
 use Spatie\Sitemap\Tags\Url;
 
 class CreatorSitemap
@@ -25,17 +24,7 @@ class CreatorSitemap
 
     public function handle()
     {
-        $this->createIndexSitemap();
         $this->createShowSitemap();
-    }
-
-    public function createIndexSitemap()
-    {
-        $sitemapIndex = SitemapIndex::create(config('app.url'));
-        for ($i = 0; $i < $this->filesCount; $i++) {
-            $sitemapIndex->add($this->folder . "/creators_{$i}.xml");
-        }
-        $sitemapIndex->writeToFile(public_path($this->folder . "/creators.xml"));
     }
 
     public function createShowSitemap()
