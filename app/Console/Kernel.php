@@ -36,6 +36,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('creator:import')->dailyAt("00:00");
         $schedule->command('creator:process')->dailyAt("04:00");
+        $schedule->command('creator_stats:generate --full')->dailyAt('13:00');
 
         // $schedule->command('creator_daily_stats:generate')->dailyAt('15:00');
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
@@ -51,7 +52,7 @@ class Kernel extends ConsoleKernel
         $schedule->command('top_creator:tweet vimeo 0.02')->dailyAt('17:55');
 
         // Monthly
-        $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
+
         $schedule->command('sitemap:generate --full')->monthlyOn(12, "11:15");
         $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 

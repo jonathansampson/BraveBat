@@ -51,9 +51,7 @@ class GenerateSitemap extends Command
         }
         $sitemapIndex->writeToFile(public_path(self::FOLDER . "/creators.xml"));
 
-        // $segment = Carbon::now()->day - 1;
-        $segment = 10;
-
+        $segment = Carbon::now()->day - 1;
         for ($i = 100 * $segment; $i < 100 * ($segment + 1); $i++) {
             $sitemap = Sitemap::create(config('app.url'));
             $fileName = self::FOLDER . "/creators_{$i}.xml";
