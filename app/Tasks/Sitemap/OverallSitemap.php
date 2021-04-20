@@ -9,7 +9,7 @@ use Spatie\Sitemap\SitemapIndex;
 
 class OverallSitemap
 {
-    const CHUNK = 1000;
+    const CHUNK = 2000;
     public $filesCount;
     public $folder;
     public $lastCreatorId;

@@ -9,8 +9,8 @@ use Spatie\Sitemap\Tags\Url;
 
 class CreatorSitemap
 {
-    const CHUNK = 1000;
-    const TAKE = 100;
+    const CHUNK = 2000;
+    const TAKE = 50;
     public $filesCount;
     public $folder;
     public $lastCreatorId;
