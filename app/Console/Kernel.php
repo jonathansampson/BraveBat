@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('creator:import')->dailyAt("00:00");
         $schedule->command('creator:process')->dailyAt("04:00");
-        $schedule->command('sitenmap:generate --full')->hourly();
+        $schedule->command('sitemap:generate --full')->hourly();
 
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
         $schedule->command('creator:rank')->dailyAt('11:55');
@@ -52,7 +52,6 @@ class Kernel extends ConsoleKernel
 
         // Monthly
         $schedule->command('creator_stats:generate')->monthlyOn(2, '15:00');
-        $schedule->command('sitemap:generate --full')->monthlyOn(12, "11:15");
         $schedule->command('creators_search:refresh_index')->monthlyOn(2, "00:00");
 
         // EXPERIMENTS
