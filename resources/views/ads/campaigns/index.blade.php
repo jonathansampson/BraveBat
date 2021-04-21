@@ -15,7 +15,6 @@
       <x-table.header-cell>Priority</x-table.header-cell>
       <x-table.header-cell>URL</x-table.header-cell>
       <x-table.header-cell>Copy Title</x-table.header-cell>
-      <x-table.header-cell>Copy Body</x-table.header-cell>
       <x-table.header-cell>Company</x-table.header-cell>
       <x-table.header-cell></x-table.header-cell>
     </thead>
@@ -30,7 +29,6 @@
         <x-table.cell>{{$adsCampaign->priority}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->landingUrl()}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->copyTitle()}}</x-table.cell>
-        <x-table.cell>{{$adsCampaign->copyBody()}}</x-table.cell>
         <x-table.cell>
           @if ($adsCampaign->adsAdvertiser)
           {{$adsCampaign->adsAdvertiser->name}}
