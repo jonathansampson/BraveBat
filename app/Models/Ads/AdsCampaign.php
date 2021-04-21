@@ -89,6 +89,7 @@ class AdsCampaign extends Model
         })->collapse()
             ->map(function ($adsCreative) {
                 return [
+                    'id' => $adsCreative->id,
                     'body' => $adsCreative->copyBody(),
                     'title' => $adsCreative->copyTitle(),
                     'type' => $adsCreative->type(),

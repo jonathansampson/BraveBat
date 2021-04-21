@@ -66,6 +66,7 @@
 <div class="py-4">
   <x-table.table>
     <thead>
+      <x-table.header-cell>ID</x-table.header-cell>
       <x-table.header-cell>Ad Type</x-table.header-cell>
       <x-table.header-cell>Copy Title</x-table.header-cell>
       <x-table.header-cell>Copy Body</x-table.header-cell>
@@ -73,6 +74,7 @@
     <x-table.body>
       @foreach ($adsCampaign->creatives() as $creative)
       <tr>
+        <x-table.cell>{{$creative['id']}}</x-table.cell>
         <x-table.cell>{{$creative['type']}}</x-table.cell>
         <x-table.cell>{{$creative['title']}}</x-table.cell>
         <x-table.cell>{{$creative['body']}}</x-table.cell>
