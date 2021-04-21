@@ -9,7 +9,7 @@
       spellcheck="false"
       type="text"
       class="w-full px-8 py-2 placeholder-gray-300 border border-gray-200 rounded-full sm:text-sm bg-gray-50 focus:border-brand-orange focus:ring-1 focus:ring-brand-orange focus:ring-opacity-50"
-      placeholder="Search Creators"
+      :placeholder="placeholder"
       :value="modelValue"
       @input="onChanged"
       ref="searchInput"
@@ -36,6 +36,10 @@ export default defineComponent({
     autoFocus: {
       type: Boolean,
       default: false
+    },
+    placeholder: {
+      type: String,
+      default: 'Search...'
     }
   },
   emits: ['clear', 'update:modelValue'],

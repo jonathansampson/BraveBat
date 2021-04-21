@@ -54,7 +54,7 @@ export default defineComponent({
         website: website.value
       }
       axios
-        .post('/ads_advertisers', data)
+        .post('/ads_advertisers_api', data)
         .then((res) => {
           successToast()
           clearForm()

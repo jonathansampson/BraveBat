@@ -4,11 +4,12 @@
       class="flex flex-col py-4 pt-8 sm:space-x-4 sm:flex-row sm:justify-between sm:items-center"
     >
       <div class="w-full sm:w-64">
-        <search-input
+        <base-search-input
           v-model="term"
           @clear="clearTerm"
           :auto-focus="true"
-        ></search-input>
+          placeholder="Search Creators"
+        ></base-search-input>
       </div>
       <div class="pt-4 text-sm text-center sm:pt-0">
         {{ totalCreators.toLocaleString() }} Found
@@ -37,7 +38,6 @@
 <script>
 import { computed, defineComponent, onMounted, ref } from '@vue/runtime-core'
 import AdvancedSearchItem from './AdvancedSearchItem'
-import SearchInput from './SearchInput'
 import useSearch from '../Composables/useSearch'
 import { debouncedWatch } from '@vueuse/core'
 import LoadMore from './LoadMore'
@@ -56,7 +56,6 @@ export default defineComponent({
   },
   components: {
     AdvancedSearchItem,
-    SearchInput,
     LoadMore
   },
   setup(props) {

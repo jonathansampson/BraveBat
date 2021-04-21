@@ -5,7 +5,11 @@
       <ads-advertiser-create @submit="submit"></ads-advertiser-create>
     </div>
     <div>
-      <search-input v-model="term" @clear="clearSearch"></search-input>
+      <base-search-input
+        v-model="term"
+        @clear="clearSearch"
+        placeholder="Search Advertisers"
+      ></base-search-input>
     </div>
     <div>
       <ul class="space-y-4">
@@ -28,14 +32,12 @@ import AdsAdvertiserItem from './AdsAdvertiserItem'
 import AdsAdvertiserCreate from './AdsAdvertiserCreate'
 import useToast from '../Composables/useToast'
 import useAlert from '../Composables/useAlert'
-import SearchInput from '../Search/SearchInput'
 
 export default defineComponent({
   name: 'AdsAdvertiserList',
   components: {
     AdsAdvertiserItem,
-    AdsAdvertiserCreate,
-    SearchInput
+    AdsAdvertiserCreate
   },
   setup() {
     const { successToast, errorToast } = useToast()
@@ -53,7 +55,7 @@ export default defineComponent({
     })
 
     onMounted(() => {
-      axios.get('/ads_advertisers').then((res) => {
+      axios.get('/ads_advertisers_api').then((res) => {
         advertisers.value = res.data
       })
     })

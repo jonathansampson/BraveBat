@@ -1,11 +1,12 @@
 <template>
   <div class="flex flex-col sm:space-x-4 sm:flex-row">
     <div class="w-full sm:w-64">
-      <search-input
+      <base-search-input
         v-model="term"
         @clear="clearTerm"
         :auto-focus="true"
-      ></search-input>
+        placeholder="Search Creators"
+      ></base-search-input>
       <div>
         <div class="mt-4 mb-4 sm:hidden">
           <div class="flex items-center justify-between">
@@ -71,7 +72,6 @@
 <script>
 import { computed, defineComponent, onMounted, ref } from '@vue/runtime-core'
 import AdvancedSearchItem from './AdvancedSearchItem'
-import SearchInput from './SearchInput'
 import ChannelFaucet from './ChannelFaucet'
 import useSearch from '../Composables/useSearch'
 import { debouncedWatch } from '@vueuse/core'
@@ -87,7 +87,6 @@ export default defineComponent({
   },
   components: {
     AdvancedSearchItem,
-    SearchInput,
     ChannelFaucet,
     LoadMore
   },

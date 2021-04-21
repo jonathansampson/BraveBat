@@ -1,6 +1,10 @@
 <template>
   <div class="relative" ref="instantSearchBox">
-    <search-input v-model="term" @clear="clearTerm"></search-input>
+    <base-search-input
+      v-model="term"
+      @clear="clearTerm"
+      placeholder="Search Creators"
+    ></base-search-input>
     <div
       v-if="hits.length && term"
       class="absolute right-0 z-50 w-64 mt-2 text-sm border border-gray-200"
@@ -27,7 +31,6 @@
 
 <script>
 import { defineComponent, ref } from '@vue/runtime-core'
-import SearchInput from './SearchInput'
 import useSearch from '../Composables/useSearch'
 import InstantSearchItem from './InstantSearchItem'
 import useClickOutside from '../Composables/useClickOutside'
@@ -35,7 +38,6 @@ import { debouncedWatch } from '@vueuse/core'
 
 export default defineComponent({
   components: {
-    SearchInput,
     InstantSearchItem
   },
   setup() {
