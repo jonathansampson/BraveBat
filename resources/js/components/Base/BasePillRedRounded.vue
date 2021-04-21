@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-center text-red-600 bg-red-100 rounded-full">
+  <span class="flex items-center text-red-600 bg-red-100 rounded-full">
     <slot></slot>
-  </div>
+  </span>
 </template>
 
 <script>

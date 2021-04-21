@@ -22,7 +22,6 @@
     <x-table.body>
       @foreach ($adsCampaigns as $adsCampaign)
       <tr>
-
         <x-table.cell>{{$adsCampaign->id}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->start_at->format('Y-m-d')}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->end_at->format('Y-m-d')}}</x-table.cell>
@@ -32,7 +31,11 @@
         <x-table.cell>{{$adsCampaign->landingUrl()}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->copyTitle()}}</x-table.cell>
         <x-table.cell>{{$adsCampaign->copyBody()}}</x-table.cell>
-        <x-table.cell>{{$adsCampaign->adsAdvertiser?->name}}</x-table.cell>
+        <x-table.cell>
+          @if ($adsCampaign->adsAdvertiser)
+          {{$adsCampaign->adsAdvertiser->name}}
+          @endif
+        </x-table.cell>
         <x-table.cell class="text-right">
           <base-link-button-orange-rounded href="{{route('ads_campaigns.show', $adsCampaign)}}"
             class="px-2 text-xs sm:px-3 sm:py-1 sm:text-sm">

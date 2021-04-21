@@ -1,7 +1,7 @@
 <template>
-  <div class="px-2 text-xs text-gray-700 bg-gray-100 rounded-full">
+  <span class="px-2 py-0.5 text-xs text-gray-700 bg-gray-100 rounded-full">
     <slot></slot>
-  </div>
+  </span>
 </template>
 
 <script>

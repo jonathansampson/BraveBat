@@ -42,8 +42,7 @@ Route::group(['middleware' => ['auth']], function () {
 });
 
 Route::group(['middleware' => ['auth', "isAdmin"]], function () {
-    Route::get('/ads_campaigns', [AdsCampaignsController::class, 'index'])->name('ads_campaigns.index');
-    Route::get('/ads_campaigns/{adsCampaign}', [AdsCampaignsController::class, 'show'])->name('ads_campaigns.show');
+    Route::resource('ads_campaigns', AdsCampaignsController::class)->only(['index', 'show', 'update']);
     Route::resource('ads_advertisers', AdsAdvertisersController::class)->only(['index', 'show']);
     Route::resource('ads_advertisers_api', AdsAdvertisersApiController::class)->only(['index', 'store', 'destroy']);
 });

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Ads;
 
 use App\Http\Controllers\Controller;
+use App\Models\Ads\AdsAdvertiser;
 use App\Models\Ads\AdsCampaign;
+use Illuminate\Http\Request;
 
 class AdsCampaignsController extends Controller
 {
@@ -15,6 +17,15 @@ class AdsCampaignsController extends Controller
 
     public function show(AdsCampaign $adsCampaign)
     {
-        return view('ads.campaigns.show', compact('adsCampaign'));
+        $adsAdvertisers = AdsAdvertiser::orderBy('name')->get();
+        return view('ads.campaigns.show', compact('adsCampaign', 'adsAdvertisers'));
+    }
+
+    public function update(Request $request, AdsCampaign $adsCampaign)
+    {
+        if ($request->adsAdvertiserId) {
+            $adsCampaign->update(['ads_advertiser_id' => $request->adsAdvertiserId]);
+        }
+        return back();
     }
 }
