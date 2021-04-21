@@ -35,8 +35,10 @@
     "vue-template-compiler": "^2.6.12"
   },
   "dependencies": {
-    "@headlessui/vue": "^0.3.0",
-    "@heroicons/vue": "^1.0.0",
+    "@antfu/utils": "^0.1.0",
+    "@headlessui/vue": "^1.0.0",
+    "@heroicons/vue": "^1.0.1",
+    "@meforma/vue-toaster": "^1.2.2",
     "@nesk/puphpeteer": "2.0",
     "@tailwindcss/forms": "^0.3.0",
     "@vueuse/core": "^4.6.2",
@@ -44,6 +46,7 @@
     "chartjs-adapter-date-fns": "^2.0",
     "date-fns": "^2.19.0",
     "swagger-ui": "^3.46.0",
+    "sweetalert": "^2.1.2",
     "vue-chartjs": "^3.5.1"
   }
 }

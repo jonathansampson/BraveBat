@@ -1,5 +1,10 @@
 window.axios = require('axios')
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest'
+window.axios.defaults.headers.common = {
+  'X-Requested-With': 'XMLHttpRequest',
+  'Content-Type': 'application/json',
+  Accept: 'application/json'
+}
+import Toaster from '@meforma/vue-toaster'
 
 import InstantSearch from './components/Search/InstantSearch.vue'
 import AdvancedSearch from './components/Search/AdvancedSearch.vue'
@@ -7,6 +12,7 @@ import ChannelSearch from './components/Search/ChannelSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import StatsCards from './components/Cards/StatsCards.vue'
+import AdsAdvertiserList from './components/Ads/AdsAdvertiserList.vue'
 
 import { createApp, defineAsyncComponent } from 'vue'
 
@@ -63,7 +69,8 @@ const app = createApp({
     AdvancedSearch,
     ChannelSearch,
     StatsCards,
-    SwaggerUi
+    SwaggerUi,
+    AdsAdvertiserList
   }
 })
 
@@ -84,4 +91,5 @@ requireComponent.keys().forEach((fileName) => {
   )
   app.component(componentName, componentConfig.default || componentConfig)
 })
+app.use(Toaster).provide('toast', app.config.globalProperties.$toast)
 app.mount('#app')

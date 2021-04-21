@@ -10,8 +10,11 @@ class AdsAdvertisersController extends Controller
 {
     public function index()
     {
-        $adsAdvertisers = AdsAdvertiser::all();
-        return view('ads.advertisers.index', compact('adsAdvertisers'));
+        $adsAdvertisers = AdsAdvertiser::orderBy('id', 'desc')->get();
+        if (request()->wantsJson()) {
+            return $adsAdvertisers;
+        }
+        return view('ads.advertisers.index');
     }
 
     public function show(AdsAdvertiser $adsAdvertiser)
@@ -28,10 +31,15 @@ class AdsAdvertisersController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'website' => 'required',
+            'name' => ['required', 'max:255'],
+            'website' => ['required', 'max:255', 'url'],
         ]);
-        AdsAdvertiser::create($request->only('name', 'website'));
-        return redirect()->route('ads_advertisers.index');
+        $adsAdvertiser = AdsAdvertiser::create($request->only('name', 'website'));
+        return $adsAdvertiser;
+    }
+
+    public function destroy(AdsAdvertiser $adsAdvertiser)
+    {
+        $adsAdvertiser->delete();
     }
 }

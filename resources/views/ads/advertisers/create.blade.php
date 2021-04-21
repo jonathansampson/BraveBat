@@ -1,3 +1,9 @@
+@extends('layouts.app')
+
+@section('title', "Add Brave Advertisers")
+@section('description', 'Add a new advertiser on Brave Browser')
+
+@section('content')
 <div>
   <form method="post" action="{{route('ads_advertisers.store')}}">
     @csrf
@@ -8,3 +14,4 @@
     <button type="submit">Submit</button>
   </form>
 </div>
+@endsection
