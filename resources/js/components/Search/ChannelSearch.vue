@@ -11,12 +11,12 @@
           placeholder="Search Creators"
         ></base-search-input>
       </div>
-      <div class="pt-4 text-sm text-center sm:pt-0">
+      <div class="pt-4 text-sm text-center sm:pt-0" v-if="totalCreators">
         {{ totalCreators.toLocaleString() }} Found
       </div>
     </div>
 
-    <div>
+    <div v-if="totalCreators">
       <ul
         v-if="hits.length"
         class="border border-gray-100 divide-y divide-gray-100 rounded"

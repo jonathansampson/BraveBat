@@ -50,6 +50,7 @@ export default defineComponent({
       emit('update:modelValue', e.currentTarget.value)
     }
     const clear = () => {
+      searchInput.value.focus()
       emit('clear')
     }
     onMounted(() => {

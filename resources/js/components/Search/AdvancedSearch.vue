@@ -11,7 +11,7 @@
         <div class="mt-4 mb-4 sm:hidden">
           <div class="flex items-center justify-between">
             <div class="text-lg font-semibold">
-              {{ totalCreators }} Creators Found
+              <div v-if="totalCreators">{{ totalCreators }} Creators Found</div>
             </div>
             <div>
               <base-button-orange-rounded
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <div class="flex-1 px-1 sm:px-4">
+    <div class="flex-1 px-1 sm:px-4" v-if="totalCreators">
       <div class="hidden mb-2 text-lg font-semibold sm:block">
         {{ totalCreators.toLocaleString() }} Creators Found
       </div>
