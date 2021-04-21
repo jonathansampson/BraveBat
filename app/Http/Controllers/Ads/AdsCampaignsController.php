@@ -11,7 +11,7 @@ class AdsCampaignsController extends Controller
 {
     public function index()
     {
-        $adsCampaigns = AdsCampaign::with(['adsSets', 'adsGeos', 'adsAdvertiser', 'adsSets.adsCreatives', 'adsSets.AdsOses', 'adsSets.adsSegments'])->get();
+        $adsCampaigns = AdsCampaign::with(['adsSets', 'adsGeos', 'adsAdvertiser', 'adsSets.adsCreatives', 'adsSets.AdsOses', 'adsSets.adsSegments'])->orderBy('ads_advertiser_id')->get();
         return view('ads.campaigns.index', compact('adsCampaigns'));
     }
 
