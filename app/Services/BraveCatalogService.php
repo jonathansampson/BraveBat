@@ -7,6 +7,7 @@ use App\Models\Ads\AdsGeo;
 use App\Models\Ads\AdsOs;
 use App\Models\Ads\AdsSegment;
 use DateTime;
+use Illuminate\Support\Facades\Http;
 
 class BraveCatalogService
 {
@@ -19,14 +20,7 @@ class BraveCatalogService
 
     public function getData()
     {
-        $data = file_get_contents(config("bravebat.catelog_page.proxy"));
-        if ($data) {
-            file_put_contents(public_path('brave_catalog.txt'), $data);
-            $this->data = json_decode($data, true);
-        } else {
-            $data = file_get_contents(public_path('brave_catalog.txt'));
-            $this->data = json_decode($data, true);
-        }
+        $this->data = Http::get(config("bravebat.catelog_page.proxy"))->json();
     }
 
     // (new App\Services\BraveCatalogService)->handle();
