@@ -36,7 +36,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('creator:import')->dailyAt("00:00");
         $schedule->command('creator:process')->dailyAt("04:00");
-        $schedule->command('sitemap:generate --full')->hourly();
+        $schedule->command('sitemap:generate --full')->dailyAt("00:05");
 
         $schedule->command('creator_daily_stats:update')->dailyAt('19:00');
         $schedule->command('creator:rank')->dailyAt('11:55');

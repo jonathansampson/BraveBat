@@ -40,7 +40,7 @@ class CreatorSitemap
 
     public function createShowSitemap()
     {
-        $segment = Carbon::now()->hour - 1;
+        $segment = Carbon::now()->day - 1;
         // $segment = 3;
         if ($segment * self::CHUNK * self::TAKE > $this->lastCreatorId) {
             return;
