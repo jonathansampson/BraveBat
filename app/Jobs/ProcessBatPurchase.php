@@ -5,12 +5,11 @@ namespace App\Jobs;
 use App\Models\BatPurchase;
 use App\Services\TweetService;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class ProcessBatPurchase implements ShouldQueue
+class ProcessBatPurchase
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -34,5 +33,6 @@ class ProcessBatPurchase implements ShouldQueue
     {
         $tweetService->postTweet($this->batPurchase->tweetMessage());
         $this->batPurchase->fetchDollarAmount();
+
     }
 }
