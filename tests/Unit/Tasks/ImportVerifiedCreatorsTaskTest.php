@@ -16,7 +16,7 @@ class ImportVerifiedCreatorsTaskTest extends TestCase
      * @test
      * @group brotli
      **/
-    public function it_can_hanele_()
+    public function it_can_handle()
     {
         $task = new ImportVerifiedCreatorsTask();
         $task->handle(['0000']);

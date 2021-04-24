@@ -21,7 +21,7 @@
     <table class="w-full">
         <thead>
             <tr>
-                <th class="px-2 py-4 text-left">Month</th>
+                <th class="px-2 py-4 text-left">Date</th>
                 <th class="px-2 py-4 text-left">Tokens Purchased</th>
                 <th class="px-2 py-4 text-left">Dollar Amount</th>
                 <th class="px-2 py-4 text-left">Site</th>
