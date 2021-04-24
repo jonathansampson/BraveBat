@@ -24,6 +24,7 @@
                 <th class="px-2 py-4 text-left">Month</th>
                 <th class="px-2 py-4 text-left">Tokens Purchased</th>
                 <th class="px-2 py-4 text-left">Dollar Amount</th>
+                <th class="px-2 py-4 text-left">Site</th>
                 <th class="px-2 py-4 text-left">Transaction Record</th>
             </tr>
         </thead>
@@ -33,10 +34,15 @@
                 <td class="px-2 py-4 border">{{$purchase->transaction_date}}</td>
                 <td class="px-2 py-4 border">{{number_format($purchase->transaction_amount)}}</td>
                 <td class="px-2 py-4 border">${{number_format($purchase->dollar_amount)}}</td>
+                <td class="px-2 py-4 border">{{$purchase->transaction_site}}</td>
                 <td class="px-2 py-4 border">
+                    @if ($purchase->transaction_site == "Uphold")
                     <a href="{{$purchase->link()}}" class="text-brand-orange">
                         {{$purchase->transaction_record}}
                     </a>
+                    @else
+                    {{$purchase->transaction_record}}
+                    @endif
                 </td>
             </tr>
             @endforeach
