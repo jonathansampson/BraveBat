@@ -9,6 +9,7 @@ use App\Services\BraveTransparencyJsonService;
 use App\Services\UpholdService;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Bus;
+use Illuminate\Support\Str;
 use Tests\TestCase;
 
 class BatPurchaseTest extends TestCase
@@ -41,7 +42,8 @@ class BatPurchaseTest extends TestCase
             "transaction_amount" => 1000000,
             "transaction_site" => "Coinbase",
         ]);
-        $this->assertEquals("Brave has purchased 1,000,000 BATs for its ad campaigns on Coinbase 🎉 http://bravebat.test/brave_initiated_bat_purchase", $batPurchase->tweetMessage());
+        $contains = Str::contains($batPurchase->tweetMessage(), "Brave has purchased 1,000,000 BATs for its ad campaigns on Coinbase");
+        $this->assertTrue($contains);
     }
 
     /**
