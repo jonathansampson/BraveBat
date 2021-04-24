@@ -23,7 +23,8 @@ class BraveTransparencyJsonService
             $results[] = [
                 'transaction_date' => $date,
                 'transaction_amount' => $transaction['BAT'],
-                'transaction_record' => $key
+                'transaction_record' => $key,
+                "transaction_site" => $transaction['site'],
             ];
         }
         return $results;
@@ -36,7 +37,7 @@ class BraveTransparencyJsonService
             $results[] = [
                 'country' => $item['name'],
                 'campaigns' => $item['count'],
-                'record_date' => Carbon::today()->toDateString()
+                'record_date' => Carbon::today()->toDateString(),
             ];
         }
         return $results;

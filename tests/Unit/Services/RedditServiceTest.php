@@ -18,4 +18,15 @@ class RedditServiceTest extends TestCase
         $this->assertTrue($response['success']);
         $this->assertGreaterThan(20000, $response['result']['subscribers']);
     }
+
+    /**
+     * @test
+     * @group api
+     */
+    public function reddit_service_can_get_access_token()
+    {
+        $service = new RedditService;
+        $response = $service->getAccessToken();
+        $this->assertNotNull($response);
+    }
 }

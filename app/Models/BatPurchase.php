@@ -22,6 +22,7 @@ class BatPurchase extends Model
                     'transaction_record' => $bat_purchase['transaction_record'],
                     'transaction_date' => $bat_purchase['transaction_date'],
                     'transaction_amount' => $bat_purchase['transaction_amount'],
+                    'transaction_site' => $bat_purchase['transaction_site'],
                 ]);
                 $tweet_service = new TweetService();
                 $message = 'Brave has purchased ' . number_format($bat_purchase['transaction_amount']) . ' BATs for its ad campaigns. 🎉 ' . route('stats.brave_initiated_bat_purchase');
