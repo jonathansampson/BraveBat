@@ -27,8 +27,8 @@ class BatPurchase extends Model
                     'transaction_amount' => $bat_purchase['transaction_amount'],
                     'transaction_site' => $bat_purchase['transaction_site'],
                 ]);
+                ProcessBatPurchase::dispatch($newPurchase);
             }
-            ProcessBatPurchase::dispatch($newPurchase);
         }
     }
 
