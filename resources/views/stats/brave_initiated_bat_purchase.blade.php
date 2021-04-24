@@ -23,7 +23,7 @@
             <tr>
                 <th class="px-2 py-4 text-left">Date</th>
                 <th class="px-2 py-4 text-left">Tokens Purchased</th>
-                <th class="px-2 py-4 text-left">Dollar Amount</th>
+                <th class="px-2 py-4 text-left">Dollar Amount*</th>
                 <th class="px-2 py-4 text-left">Site</th>
                 <th class="px-2 py-4 text-left">Transaction Record</th>
             </tr>
@@ -48,5 +48,7 @@
             @endforeach
         </tbody>
     </table>
+    <p class="pt-4 text-sm italic">* The Dollar Amount from Uphold purchase is from the Uphold transaction record.
+        The Dollar Amount from Coinbase purchase is calculated based on the BAT price on the day of the purhcase.</p>
 </div>
 @endsection
