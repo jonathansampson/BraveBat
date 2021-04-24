@@ -6,12 +6,11 @@ use App\Models\BatPurchase;
 use App\Services\TweetService;
 use Illuminate\Bus\Queueable;
 use Illuminate\Foundation\Bus\Dispatchable;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
 class ProcessBatPurchase
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Dispatchable, Queueable, SerializesModels;
 
     protected $batPurchase;
     /**
@@ -33,6 +32,5 @@ class ProcessBatPurchase
     {
         $tweetService->postTweet($this->batPurchase->tweetMessage());
         $this->batPurchase->fetchDollarAmount();
-
     }
 }
