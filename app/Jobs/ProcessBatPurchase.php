@@ -32,7 +32,7 @@ class ProcessBatPurchase implements ShouldQueue
      */
     public function handle(TweetService $tweetService)
     {
-        $this->batPurchase->fetchDollarAmount();
         $tweetService->postTweet($this->batPurchase->tweetMessage());
+        $this->batPurchase->fetchDollarAmount();
     }
 }
