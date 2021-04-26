@@ -48,7 +48,11 @@ class CreatorSitemap
         for ($i = self::TAKE * $segment; $i < self::TAKE * ($segment + 1); $i++) {
             $sitemap = Sitemap::create(config('app.url'));
             $fileName = $this->folder . "/creators_{$i}.xml";
-            $creators = Creator::where('id', ">=", $i * self::CHUNK)->where("id", "<", ($i + 1) * self::CHUNK)->get();
+            $creators = Creator::query()
+                ->where('id', ">=", $i * self::CHUNK)
+                ->where("id", "<", ($i + 1) * self::CHUNK)
+                ->where('channel', "!=", "reddit")
+                ->get();
 
             foreach ($creators as $creator) {
                 $sitemap->add(Url::create(route('creators.show', [$creator->channel, $creator->id]))
