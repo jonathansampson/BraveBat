@@ -6,7 +6,14 @@ class BraveUsage
 {
     public static function all()
     {
+
         return [
+            [
+                'month' => '2021-04',
+                'dau' => 10600000,
+                'mau' => 30000000,
+                'source' => 'https://www.reddit.com/r/BATProject/comments/n2xvjw/brave_browser_now_has_30_million_monthly_active/',
+            ],
             [
                 'month' => '2021-03',
                 'dau' => 9800000,
