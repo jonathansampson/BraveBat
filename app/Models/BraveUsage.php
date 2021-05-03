@@ -12,7 +12,7 @@ class BraveUsage
                 'month' => '2021-04',
                 'dau' => 10600000,
                 'mau' => 30000000,
-                'source' => 'https://www.reddit.com/r/BATProject/comments/n2xvjw/brave_browser_now_has_30_million_monthly_active/',
+                'source' => 'https://twitter.com/BrendanEich/status/1389256491991846915',
             ],
             [
                 'month' => '2021-03',
