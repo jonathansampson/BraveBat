@@ -1,6 +1,6 @@
 <div>
-    <a href="https://brave.com/?ref=iuv633">
-        <button
+    <a href="https://brave.com/?ref=iuv633" class='referral-brave-download'>
+        <div
             class="flex items-center px-4 py-3 border rounded-lg bg-brand-dark focus:outline-none hover:bg-gray-900 focus:shadow-outline focus:border-gray-300">
             <div class='w-8 h-8'>
                 <svg viewBox="0 0 132 132" xmlns="http://www.w3.org/2000/svg">
@@ -20,6 +20,6 @@
                 </svg>
             </div>
             <div class="ml-2 font-bold text-brand-light">Try Brave Browser</div>
-        </button>
+        </div>
     </a>
 </div>
