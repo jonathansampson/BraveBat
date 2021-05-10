@@ -1,8 +1,8 @@
-<div class="flex items-center pb-16 bg-white">
+<div class="flex items-center pb-16">
   <div class="container px-4 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
 
-      <div class="p-2 bg-white">
+      <div class="p-2">
         <div class="relative flex items-center space-x-8">
           <div>
             <svg viewBox="0 0 2000 1719" class="w-16 h-16">
@@ -19,7 +19,7 @@
         </div>
       </div>
 
-      <div class="p-2 bg-white">
+      <div class="p-2">
         <div class="relative flex items-center space-x-8">
           <div>
             <svg enable-background="new 0 0 512 512" viewBox="0 0 512 512" class="w-16 h-16">
@@ -60,11 +60,10 @@
         </div>
       </div>
 
-      <div class="p-2 bg-white">
+      <div class="p-2 ">
         <div class="relative flex items-center space-x-8">
           <div>
-            <svg enable-background="new 0 0 512.007 512.007" height="512" viewBox="0 0 512.007 512.007" width="512"
-              class="w-16 h-16">
+            <svg enable-background="new 0 0 512.007 512.007" viewBox="0 0 512.007 512.007" class="w-16 h-16">
               <g>
                 <path
                   d="m316 31.496c-9.589-1.053-19.268-1.657-29.121-1.284-76.816 2.769-144.111 48.413-181.479 90.22l-.015 206.616 13.037 1.479c39.302 4.482 66.504 16.978 80.874 37.163 15.879 22.31 11.646 48.472 9.976 55.972-5.563 24.913 9.126 50.275 34.292 55.122 14.224 2.725 28.521 4.072 42.715 4.072 9.996 0 19.894-.906 29.722-2.217 111.117-14.829 196.915-109.357 196-224.438-1.004-122.371-99.862-212.156-196.001-222.705z"

@@ -22,8 +22,8 @@ communities')
             <x-download-badge></x-download-badge>
         </div>
     </div>
+    @include('partials.benefits')
 </div>
-@include('partials.benefits')
 <stats-cards :stats="{{json_encode($creatorStats)}}"></stats-cards>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
