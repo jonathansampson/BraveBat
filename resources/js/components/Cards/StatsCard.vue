@@ -1,5 +1,8 @@
 <template>
-  <div class="p-2 bg-white rounded shadow-sm sm:p-5">
+  <a
+    class="p-2 bg-white rounded shadow-sm  sm:p-5 hover:bg-orange-50 focus:ring-2 focus:ring-brand-orange focus:outline-none"
+    :href="channelUrl"
+  >
     <div class="relative flex items-center space-x-2 sm:space-x-4">
       <div class="absolute top-0 right-0">
         <base-pill-green-rounded
@@ -16,7 +19,7 @@
       </div>
       <div>
         <div
-          class="flex items-center justify-center w-8 h-8 rounded-full sm:w-12 sm:h-12 bg-gray-50"
+          class="flex items-center justify-center w-8 h-8 rounded-full  sm:w-12 sm:h-12 bg-gray-50"
         >
           <component
             :is="channelLogo"
@@ -33,7 +36,7 @@
         </div>
       </div>
     </div>
-  </div>
+  </a>
 </template>
 
 <script>
@@ -59,6 +62,12 @@ export default defineComponent({
         ? 'base-logo-brave'
         : `base-logo-${props.stat.channel}`
     })
+    const channelUrl = computed(() => {
+      if (props.stat.channel === 'overall' || props.stat.channel === 'reddit') {
+        return '/search'
+      }
+      return `/creators/${props.stat.channel}`
+    })
     const channelName = computed(() => capitalize(props.stat.channel))
     const channelCount = computed(() => props.stat.total_today.toLocaleString())
     const channelGrowth = computed(() => {
@@ -78,7 +87,7 @@ export default defineComponent({
         )
       }
     })
-    return { channelLogo, channelName, channelCount, channelGrowth }
+    return { channelLogo, channelName, channelCount, channelGrowth, channelUrl }
   }
 })
 </script>

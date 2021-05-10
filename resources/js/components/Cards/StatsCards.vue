@@ -3,19 +3,34 @@
     <div class="container px-4 mx-auto sm:px-6 md:px-8">
       <div>
         <h1 class="p-6 text-3xl font-semibold text-center">
-          <a href="/search"> {{ overallCreatorsCount }}M Brave Creators </a>
+          {{ overallCreatorsCount }}M Brave Creators
         </h1>
       </div>
 
       <div class="flex justify-end mb-2 text-xxs">
         <div
-          class="flex items-center px-1 py-0.5 space-x-0.5 bg-gray-100 rounded-md"
+          class="
+            flex
+            items-center
+            px-1
+            py-0.5
+            space-x-0.5
+            bg-gray-100
+            rounded-md
+          "
         >
           <button
             v-for="(option, index) in options"
             :key="index"
             @click="toggle(option)"
-            class="px-1 py-0.5 rounded-md hover:bg-gray-50 focus:outline-none focus:ring-1 focus:ring-gray-200"
+            class="
+              px-1
+              py-0.5
+              rounded-md
+              hover:bg-gray-50
+              focus:outline-none
+              focus:ring-1 focus:ring-gray-200
+            "
             :class="{ 'bg-white': option === selectedOption }"
           >
             {{ option }}
