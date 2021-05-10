@@ -1,6 +1,6 @@
 <div>
     <a href="https://brave.com/?ref=iuv633"
-        class='flex items-center px-4 py-3 border rounded-lg referral-brave-download bg-brand-dark focus:outline-none hover:bg-gray-600 focus:ring-2 focus:ring-brand-orange'>
+        class='flex items-center px-4 py-3 border rounded-lg referral-brave-download bg-brand-dark focus:outline-none hover:bg-gray-600 focus-visible:ring-2 focus-visible:ring-brand-orange'>
 
         <div class='w-8 h-8'>
             <svg viewBox="0 0 132 132" xmlns="http://www.w3.org/2000/svg">
