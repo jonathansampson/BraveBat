@@ -12,7 +12,6 @@ import ChannelSearch from './components/Search/ChannelSearch.vue'
 import ToggleableLineChart from './components/Charts/ToggleableLineChart.vue'
 import CreatorDonutChart from './components/Charts/CreatorDonutChart.vue'
 import StatsCards from './components/Cards/StatsCards.vue'
-import BenefitsCards from './components/Cards/BenefitsCards.vue'
 import AdsAdvertiserList from './components/Ads/AdsAdvertiserList.vue'
 
 import { createApp, defineAsyncComponent } from 'vue'
@@ -70,7 +69,6 @@ const app = createApp({
     AdvancedSearch,
     ChannelSearch,
     StatsCards,
-    BenefitsCards,
     SwaggerUi,
     AdsAdvertiserList
   }

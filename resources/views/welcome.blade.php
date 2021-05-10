@@ -23,7 +23,7 @@ communities')
         </div>
     </div>
 </div>
-<benefits-cards></benefits-cards>
+@include('partials.benefits')
 <stats-cards :stats="{{json_encode($creatorStats)}}"></stats-cards>
 <div class="container px-4 py-16 mx-auto sm:px-6 md:px-8">
     <div class="grid grid-cols-1 gap-8 lg:grid-cols-2">
