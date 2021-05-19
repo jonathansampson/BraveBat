@@ -49,6 +49,6 @@
         </tbody>
     </table>
     <p class="pt-4 text-sm italic">* The Dollar Amount from Uphold purchase is from the Uphold transaction record.
-        The Dollar Amount from Coinbase purchase is calculated based on the BAT price on the day of the purhcase.</p>
+        The Dollar Amount from Coinbase purchase is calculated based on the BAT price on the day of the purchase.</p>
 </div>
 @endsection
